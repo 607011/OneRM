@@ -1,10 +1,8 @@
 #  1RM
 
-One repetition maximal calculator for iOS
-
+__One repetition maximal calculator for iOS__
 
 ![Main screen](1rm-main.png) ![Percentages screen](percentages.png)
-
 
 
 ## License
