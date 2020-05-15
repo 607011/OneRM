@@ -1,10 +1,4 @@
-//
-//  AppDelegate.swift
-//  1RM
-//
-//  Created by Oliver Lau on 11.05.20.
-//  Copyright © 2020 Oliver Lau. All rights reserved.
-//
+/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
 import CoreData
