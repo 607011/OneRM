@@ -426,7 +426,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="123" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adA-sa-wg3">
-                                            <rect key="frame" x="218" y="8" width="47" height="34"/>
+                                            <rect key="frame" x="188" y="8" width="95" height="34"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
                                             <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                             <nil key="highlightedColor"/>
@@ -453,8 +453,8 @@
                                         <constraint firstItem="iKY-2Q-uMT" firstAttribute="baseline" secondItem="ghQ-D4-4Js" secondAttribute="firstBaseline" id="M9w-FL-PLT"/>
                                         <constraint firstItem="wXN-Z9-Rn9" firstAttribute="trailing" secondItem="CRi-IG-sRP" secondAttribute="trailingMargin" id="MgC-eq-FsS"/>
                                         <constraint firstItem="iKY-2Q-uMT" firstAttribute="firstBaseline" secondItem="wXN-Z9-Rn9" secondAttribute="firstBaseline" id="Ooi-oT-165"/>
-                                        <constraint firstItem="adA-sa-wg3" firstAttribute="leading" secondItem="iKY-2Q-uMT" secondAttribute="trailing" constant="38.5" id="Sts-9p-KA8"/>
-                                        <constraint firstItem="wXN-Z9-Rn9" firstAttribute="leading" secondItem="adA-sa-wg3" secondAttribute="trailing" constant="25" id="Ubm-TC-QL2"/>
+                                        <constraint firstItem="adA-sa-wg3" firstAttribute="leading" secondItem="iKY-2Q-uMT" secondAttribute="trailing" constant="8.5" id="Sts-9p-KA8"/>
+                                        <constraint firstItem="wXN-Z9-Rn9" firstAttribute="leading" secondItem="adA-sa-wg3" secondAttribute="trailing" constant="7" id="Ubm-TC-QL2"/>
                                         <constraint firstItem="adA-sa-wg3" firstAttribute="top" secondItem="CRi-IG-sRP" secondAttribute="topMargin" constant="-3" id="a2d-GU-7Yr"/>
                                         <constraint firstItem="iKY-2Q-uMT" firstAttribute="baseline" secondItem="wXN-Z9-Rn9" secondAttribute="baseline" id="bGG-E0-9UQ"/>
                                         <constraint firstItem="ghQ-D4-4Js" firstAttribute="leading" secondItem="CRi-IG-sRP" secondAttribute="leadingMargin" id="dA3-VS-bmb"/>
