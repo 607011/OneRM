@@ -30,8 +30,29 @@ let DefaultPlateColors: [String] = [
     "white"
 ]
 
+let DefaultExercises: [String] = [
+    "Bench press",
+    "Deadlift",
+    "Squat",
+    "Front squat",
+    "Overhead squat",
+    "Front press",
+    "Push press",
+    "Power clean",
+    "Snatch",
+    "Clean & jerk",
+]
+
+let DefaultMaxPercent = 120
+let DefaultMinPercent = 10
+let DefaultPercentStep = 5
+
 let MassUnitKey = "massUnit"
 let BarWeightKey = "barWeight"
 let WeightKey = "weight"
 let RepsKey = "reps"
 let PlatesKey = "plates"
+let MaxPercentKey = "maxPercent"
+let MinPercentKey = "minPercent"
+let PercentStepKey = "percentStep"
+let ExercisesKey = "exercises"

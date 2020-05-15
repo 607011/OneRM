@@ -8,6 +8,13 @@ This app currently uses only the [Brzycki formula](https://en.wikipedia.org/wiki
 
 The 1RM is useful to determine an individual's maximum strength. It's also useful to determine the correct weights (as % of 1RM) when training for a specific goal. 
 
+
+## Free
+
+_1RM_ is absolutely free: no ads, no in-app purchases! 
+
+You can even build your own version based on the [source code published on GitHub](https://github.com/ola-ct/1RM).
+
 ## License
 
 Copyright &copy; 2020 [Oliver Lau](mailto:oliver@ersatzworld.net)

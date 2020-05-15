@@ -10,9 +10,9 @@ class PercentagesViewController: UITableViewController {
     var reps: Int = 0
     var orm: Double = 0
 
-    let maxPercentage: Int = 120
-    let minPercentage: Int = 5
-    let percentageStep: Int = 5
+    var maxPercent: Int = DefaultMaxPercent
+    var minPercent: Int = DefaultMinPercent
+    var percentStep: Int = DefaultPercentStep
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,19 +25,22 @@ class PercentagesViewController: UITableViewController {
         massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
         weight = UserDefaults.standard.double(forKey: WeightKey)
         reps = UserDefaults.standard.integer(forKey: RepsKey)
+        maxPercent = UserDefaults.standard.integer(forKey: MaxPercentKey)
+        minPercent = UserDefaults.standard.integer(forKey: MinPercentKey)
+        percentStep = UserDefaults.standard.integer(forKey: PercentStepKey)
         orm = brzycki(weight: weight, reps: reps)
         self.tableView.reloadData()
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Int((maxPercentage - minPercentage) / percentageStep)
+        return Int((maxPercent - minPercent) / percentStep) + 1
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "percentageCell", for: indexPath) as! PercentageTableViewCell
         cell.massUnitLabel.text = massUnit
-        let pct = maxPercentage - indexPath.row * percentageStep
+        let pct = maxPercent - indexPath.row * percentStep
         cell.percentageLabel.text = "\(pct)%"
         cell.weightLabel.text = "\((orm * Double(pct) * 1e-2).rounded(toPlaces: 1))"
         return cell

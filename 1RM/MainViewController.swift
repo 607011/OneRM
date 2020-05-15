@@ -1,16 +1,7 @@
 /// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
+import Foundation
 import UIKit
-
-extension Double {
-    func rounded(toPlaces places: Int) -> Double {
-        let divisor = pow(10.0, Double(places))
-        return (self * divisor).rounded() / divisor
-    }
-    func isAlmostNull() -> Bool {
-        return abs(self) <= Double.ulpOfOne
-    }
-}
 
 class MainViewController: UIViewController {
 
@@ -45,15 +36,6 @@ class MainViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        if UserDefaults.standard.object(forKey: BarWeightKey) == nil {
-            UserDefaults.standard.set(DefaultBarWeight, forKey: BarWeightKey)
-        }
-        if UserDefaults.standard.object(forKey: MassUnitKey) == nil {
-            UserDefaults.standard.set(DefaultMassUnit, forKey: MassUnitKey)
-        }
-        if UserDefaults.standard.object(forKey: PlatesKey) == nil {
-            UserDefaults.standard.set(DefaultPlates, forKey: PlatesKey)
-        }
         weightPicker.delegate = self
         weightPicker.dataSource = self
         repsPicker.delegate = self
@@ -125,8 +107,8 @@ extension MainViewController: RMCollectionLayoutDelegate {
 extension MainViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
-        case weightPicker: return 1_000_000
-        case repsPicker: return 1_000_000
+        case weightPicker: return infiniteRow
+        case repsPicker: return infiniteRow
         default: return 0
         }
     }

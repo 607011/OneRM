@@ -2,14 +2,30 @@
 
 import UIKit
 import CoreData
+import Foundation
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
-
-
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        if UserDefaults.standard.object(forKey: BarWeightKey) == nil {
+            UserDefaults.standard.set(DefaultBarWeight, forKey: BarWeightKey)
+        }
+        if UserDefaults.standard.object(forKey: MassUnitKey) == nil {
+            UserDefaults.standard.set(DefaultMassUnit, forKey: MassUnitKey)
+        }
+        if UserDefaults.standard.object(forKey: PlatesKey) == nil {
+            UserDefaults.standard.set(DefaultPlates, forKey: PlatesKey)
+        }
+        if UserDefaults.standard.object(forKey: MaxPercentKey) == nil {
+            UserDefaults.standard.set(DefaultMaxPercent, forKey: MaxPercentKey)
+        }
+        if UserDefaults.standard.object(forKey: MinPercentKey) == nil {
+            UserDefaults.standard.set(DefaultMinPercent, forKey: MinPercentKey)
+        }
+        if UserDefaults.standard.object(forKey: PercentStepKey) == nil {
+            UserDefaults.standard.set(DefaultPercentStep, forKey: PercentStepKey)
+        }
         return true
     }
 
@@ -36,7 +52,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentCloudKitContainer(name: "_RM")
+        let container = NSPersistentCloudKitContainer(name: "net.ersatzworld.1RM")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.

@@ -7,6 +7,16 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		65598426246EEE4F00A5976E /* PercentageLimitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598425246EEE4F00A5976E /* PercentageLimitsViewController.swift */; };
+		65598428246EF28800A5976E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598427246EF28800A5976E /* Extensions.swift */; };
+		6559842A246EFECE00A5976E /* ExercisesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598429246EFECE00A5976E /* ExercisesTableViewController.swift */; };
+		6559842C246F010100A5976E /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559842B246F010100A5976E /* ExerciseTableViewCell.swift */; };
+		6559842E246F1F4F00A5976E /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559842D246F1F4F00A5976E /* LicenseViewController.swift */; };
+		65598430246F21B800A5976E /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6559842F246F21B800A5976E /* LICENSE */; };
+		65598432246F235D00A5976E /* gpl-3.0.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 65598431246F235D00A5976E /* gpl-3.0.rtf */; };
+		65598434246F28A000A5976E /* About-1RM.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 65598433246F28A000A5976E /* About-1RM.rtf */; };
+		65598436246F2C5500A5976E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598435246F2C5500A5976E /* AboutViewController.swift */; };
+		65598438246F354A00A5976E /* AddExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598437246F354A00A5976E /* AddExerciseViewController.swift */; };
 		656EC38F246929DB00A30C43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC38E246929DB00A30C43 /* AppDelegate.swift */; };
 		656EC391246929DB00A30C43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC390246929DB00A30C43 /* SceneDelegate.swift */; };
 		656EC393246929DB00A30C43 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC392246929DB00A30C43 /* MainViewController.swift */; };
@@ -38,6 +48,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		65598425246EEE4F00A5976E /* PercentageLimitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageLimitsViewController.swift; sourceTree = "<group>"; };
+		65598427246EF28800A5976E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		65598429246EFECE00A5976E /* ExercisesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTableViewController.swift; sourceTree = "<group>"; };
+		6559842B246F010100A5976E /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
+		6559842D246F1F4F00A5976E /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
+		6559842F246F21B800A5976E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
+		65598431246F235D00A5976E /* gpl-3.0.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "gpl-3.0.rtf"; sourceTree = "<group>"; };
+		65598433246F28A000A5976E /* About-1RM.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "About-1RM.rtf"; sourceTree = "<group>"; };
+		65598435246F2C5500A5976E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
+		65598437246F354A00A5976E /* AddExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddExerciseViewController.swift; sourceTree = "<group>"; };
 		656EC38B246929DB00A30C43 /* 1RM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = 1RM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		656EC38E246929DB00A30C43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		656EC390246929DB00A30C43 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -105,6 +125,7 @@
 			children = (
 				656EC3C2246C258600A30C43 /* Defaults.swift */,
 				656EC3B524693AA100A30C43 /* Formulae.swift */,
+				65598427246EF28800A5976E /* Extensions.swift */,
 				656EC38E246929DB00A30C43 /* AppDelegate.swift */,
 				656EC390246929DB00A30C43 /* SceneDelegate.swift */,
 				656EC392246929DB00A30C43 /* MainViewController.swift */,
@@ -114,8 +135,14 @@
 				656EC3C0246C21F300A30C43 /* MassUnitPickerViewController.swift */,
 				659E63F2246D1E79004B9E20 /* WeightsViewController.swift */,
 				656EC394246929DB00A30C43 /* PercentagesViewController.swift */,
+				65598425246EEE4F00A5976E /* PercentageLimitsViewController.swift */,
 				65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */,
 				659E63F4246D3367004B9E20 /* PlateTableViewCell.swift */,
+				65598429246EFECE00A5976E /* ExercisesTableViewController.swift */,
+				65598437246F354A00A5976E /* AddExerciseViewController.swift */,
+				6559842B246F010100A5976E /* ExerciseTableViewCell.swift */,
+				6559842D246F1F4F00A5976E /* LicenseViewController.swift */,
+				65598435246F2C5500A5976E /* AboutViewController.swift */,
 				656EC39C246929DC00A30C43 /* Assets.xcassets */,
 				656EC396246929DB00A30C43 /* Main.storyboard */,
 				656EC39E246929DC00A30C43 /* LaunchScreen.storyboard */,
@@ -137,6 +164,9 @@
 		65EF2E6D246EBE3600A828DE /* doc */ = {
 			isa = PBXGroup;
 			children = (
+				65598433246F28A000A5976E /* About-1RM.rtf */,
+				65598431246F235D00A5976E /* gpl-3.0.rtf */,
+				6559842F246F21B800A5976E /* LICENSE */,
 				65EF2E6E246EBE4A00A828DE /* README.md */,
 			);
 			name = doc;
@@ -223,9 +253,12 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65598432246F235D00A5976E /* gpl-3.0.rtf in Resources */,
 				656EC3A0246929DC00A30C43 /* LaunchScreen.storyboard in Resources */,
 				656EC39D246929DC00A30C43 /* Assets.xcassets in Resources */,
+				65598430246F21B800A5976E /* LICENSE in Resources */,
 				656EC398246929DB00A30C43 /* Main.storyboard in Resources */,
+				65598434246F28A000A5976E /* About-1RM.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -246,16 +279,23 @@
 				656EC3B624693AA100A30C43 /* Formulae.swift in Sources */,
 				656EC395246929DB00A30C43 /* PercentagesViewController.swift in Sources */,
 				656EC3C7246C2B8300A30C43 /* SettingsViewController.swift in Sources */,
+				65598438246F354A00A5976E /* AddExerciseViewController.swift in Sources */,
+				65598426246EEE4F00A5976E /* PercentageLimitsViewController.swift in Sources */,
 				656EC3BA2469423900A30C43 /* RepCollectionViewCell.swift in Sources */,
 				656EC393246929DB00A30C43 /* MainViewController.swift in Sources */,
 				65EF2E6C246E9F3A00A828DE /* PercentageTableViewCell.swift in Sources */,
+				6559842A246EFECE00A5976E /* ExercisesTableViewController.swift in Sources */,
 				656EC3BF246AA89800A30C43 /* RMCollectionLayout.swift in Sources */,
 				659E63F5246D3367004B9E20 /* PlateTableViewCell.swift in Sources */,
 				656EC38F246929DB00A30C43 /* AppDelegate.swift in Sources */,
 				656EC391246929DB00A30C43 /* SceneDelegate.swift in Sources */,
+				65598428246EF28800A5976E /* Extensions.swift in Sources */,
+				6559842E246F1F4F00A5976E /* LicenseViewController.swift in Sources */,
 				659E63F3246D1E79004B9E20 /* WeightsViewController.swift in Sources */,
 				656EC3C3246C258600A30C43 /* Defaults.swift in Sources */,
+				6559842C246F010100A5976E /* ExerciseTableViewCell.swift in Sources */,
 				656EC39B246929DB00A30C43 /* _RM.xcdatamodeld in Sources */,
+				65598436246F2C5500A5976E /* AboutViewController.swift in Sources */,
 				656EC3C1246C21F300A30C43 /* MassUnitPickerViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -423,7 +463,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -442,7 +482,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0;
+				MARKETING_VERSION = 0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

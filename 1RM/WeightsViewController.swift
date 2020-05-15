@@ -10,7 +10,6 @@ class WeightsViewController: UITableViewController {
 
     private var allowedCharacters = CharacterSet.decimalDigits
 
-
     private var plates: [Double] = DefaultPlates {
         didSet {
             UserDefaults.standard.set(plates, forKey: PlatesKey)
@@ -37,27 +36,7 @@ class WeightsViewController: UITableViewController {
         barWeightTextField.text = "\(barWeight.rounded(toPlaces: 2))"
         massUnitLabel.text = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
     }
-
-//    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-//        switch section {
-//        case 0: return 1
-//        case 1: return 1
-//        default: return 0
-//        }
-//    }
-
-//    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-//        return PlateTableViewCell()
-//    }
 }
-
-extension WeightsViewController /* : UITableViewDelegate */ {
-}
-
-
-extension WeightsViewController /* : UITableViewDataSource */ {
-}
-
 
 extension WeightsViewController: UITextFieldDelegate {
 
@@ -70,6 +49,6 @@ extension WeightsViewController: UITextFieldDelegate {
     }
 
     func textFieldDidEndEditing(_ textField: UITextField) {
-        barWeight = Double(barWeightTextField.text ?? "\(DefaultBarWeight)") ?? DefaultBarWeight
+        barWeight = Double(barWeightTextField.text!)!
     }
 }
