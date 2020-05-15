@@ -4,6 +4,9 @@ __One repetition maximal calculator for iOS__
 
 ![Main screen](1rm-main.png) ![Percentages screen](percentages.png)
 
+This app currently uses only the ![Brzycki formula](https://en.wikipedia.org/wiki/One-repetition_maximum#Brzycki) to calculate the 1RM from a given weight lifted for a certain number of repetitions.
+
+The 1RM is useful to determine an individual's maximum strength. It's also useful to determine the correct weights (as % of 1RM) when training for a specific goal. 
 
 ## License
 
