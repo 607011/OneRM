@@ -3,7 +3,7 @@
 One repetition maximal calculator for iOS
 
 
-![Main screen](1rm.png) ![Percentages screen](percentages.png)
+![Main screen](1rm-main.png) ![Percentages screen](percentages.png)
 
 
 
