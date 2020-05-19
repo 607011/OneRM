@@ -11,7 +11,7 @@
         <!--Main-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
-                <viewController storyboardIdentifier="MainViewController" title="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9pv-A4-QxB" customClass="MainViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MainViewController" title="Main" useStoryboardIdentifierAsRestorationIdentifier="YES" id="9pv-A4-QxB" customClass="MainViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="tsR-hK-woN">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -32,9 +32,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hjc-8D-H0K">
                                 <rect key="frame" x="16" y="299" width="290" height="220"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
-                                <collectionViewLayout key="collectionViewLayout" id="oTW-s6-4WY" customClass="RMCollectionLayout" customModule="_RM" customModuleProvider="target"/>
+                                <collectionViewLayout key="collectionViewLayout" id="oTW-s6-4WY" customClass="RMCollectionLayout" customModule="OneRM" customModuleProvider="target"/>
                                 <cells>
-                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="repsCell" id="htX-Gn-wbK" customClass="RepCollectionViewCell" customModule="_RM" customModuleProvider="target">
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="repsCell" id="htX-Gn-wbK" customClass="RepCollectionViewCell" customModule="OneRM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="0.0" width="100" height="75"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="uxu-iS-Za3">
@@ -138,8 +138,8 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
-                    <tabBarItem key="tabBarItem" title="" image="number" catalog="system" selectedImage="number.square.fill" id="acW-dT-cKf"/>
-                    <navigationItem key="navigationItem" title="1RM" id="ZP5-My-5RT">
+                    <tabBarItem key="tabBarItem" title="Weight &amp; Reps" image="number" catalog="system" selectedImage="number.square.fill" id="acW-dT-cKf"/>
+                    <navigationItem key="navigationItem" title="OneRM" id="ZP5-My-5RT">
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" id="W68-Va-bXI">
                             <connections>
                                 <segue destination="i1l-P8-Fd0" kind="show" id="hBD-A6-2VZ"/>
@@ -159,7 +159,7 @@
         <!--Settings-->
         <scene sceneID="AOM-hc-d38">
             <objects>
-                <tableViewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i1l-P8-Fd0" customClass="SettingsViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i1l-P8-Fd0" customClass="SettingsViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ndc-gU-Zzw">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -399,21 +399,21 @@
         <!--Add Exercise Controller-->
         <scene sceneID="3pv-6Q-Yez">
             <objects>
-                <viewController storyboardIdentifier="AddExerciseViewController" title="Add Exercise Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8jv-4Z-IBZ" customClass="AddExerciseViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddExerciseViewController" title="Add Exercise Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8jv-4Z-IBZ" customClass="EditExerciseViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8kC-jA-oAg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9mf-lz-ZSS">
-                                <rect key="frame" x="16" y="44" width="288" height="34"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <textInputTraits key="textInputTraits"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of new exercise" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9mf-lz-ZSS">
+                                <rect key="frame" x="16" y="64" width="288" height="34"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocorrectionType="no" spellCheckingType="no" smartDashesType="no" smartQuotesType="no"/>
                             </textField>
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
                             <constraint firstItem="9mf-lz-ZSS" firstAttribute="trailing" secondItem="8kC-jA-oAg" secondAttribute="trailingMargin" id="TbY-ku-ZFy"/>
-                            <constraint firstItem="9mf-lz-ZSS" firstAttribute="top" secondItem="GPA-Pi-CKH" secondAttribute="top" id="lAu-se-W5Q"/>
+                            <constraint firstItem="9mf-lz-ZSS" firstAttribute="top" secondItem="GPA-Pi-CKH" secondAttribute="top" constant="20" id="lAu-se-W5Q"/>
                             <constraint firstItem="9mf-lz-ZSS" firstAttribute="leading" secondItem="8kC-jA-oAg" secondAttribute="leadingMargin" id="mTZ-T5-iO5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="GPA-Pi-CKH"/>
@@ -431,7 +431,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="newExerciseField" destination="9mf-lz-ZSS" id="1wl-4B-AbL"/>
+                        <outlet property="exerciseField" destination="9mf-lz-ZSS" id="1wl-4B-AbL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVq-Eq-NS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -441,7 +441,7 @@
         <!--Percentage Limits-->
         <scene sceneID="Xuk-mu-3zX">
             <objects>
-                <tableViewController storyboardIdentifier="PercentageLimitsViewController" title="Percentage Limits" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wXA-eo-4fH" customClass="PercentageLimitsViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PercentageLimitsViewController" title="Percentage Limits" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wXA-eo-4fH" customClass="PercentageLimitsViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="68p-Du-bc8">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -516,14 +516,14 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% step" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnY-Gq-5U6">
-                                                    <rect key="frame" x="16" y="11" width="52" height="22"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% steps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="FnY-Gq-5U6">
+                                                    <rect key="frame" x="16" y="11" width="60.5" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="5" borderStyle="roundedRect" textAlignment="right" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="PnL-5r-DAG">
-                                                    <rect key="frame" x="120" y="2.5" width="184" height="39"/>
+                                                    <rect key="frame" x="128.5" y="2.5" width="175.5" height="39"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="25"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -563,7 +563,7 @@
         <!--License-->
         <scene sceneID="Zj2-01-gi5">
             <objects>
-                <viewController storyboardIdentifier="LicenseViewController" title="License" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HT8-3t-hNt" customClass="LicenseViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="LicenseViewController" title="License" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HT8-3t-hNt" customClass="LicenseViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P3q-qt-Uys">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -597,7 +597,7 @@
         <!--Mass unit-->
         <scene sceneID="rzD-Sx-YEe">
             <objects>
-                <viewController storyboardIdentifier="MassUnitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="82O-mR-chW" customClass="MassUnitPickerViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MassUnitViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="82O-mR-chW" customClass="MassUnitPickerViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="ZBx-Kg-gMY">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -625,13 +625,13 @@
         <!--Exercises View Controller-->
         <scene sceneID="CP5-eP-xeh">
             <objects>
-                <tableViewController storyboardIdentifier="ExercicesTableViewController" title="Exercises View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="THr-9l-qhM" customClass="ExercisesTableViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="ExercicesTableViewController" title="Exercises View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="THr-9l-qhM" customClass="ExercisesTableViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Eb-Nw-Jw7">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="exerciseCell" id="Nod-gy-ZBi" customClass="ExerciseTableViewCell" customModule="_RM" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="exerciseCell" id="Nod-gy-ZBi" customClass="ExerciseTableViewCell" customModule="OneRM" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nod-gy-ZBi" id="YDx-dM-87F">
@@ -670,6 +670,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <segue destination="8jv-4Z-IBZ" kind="show" identifier="editExercise" id="xzY-ai-gtr"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5h-BT-qk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -678,7 +681,7 @@
         <!--Weights-->
         <scene sceneID="XTS-i8-YEU">
             <objects>
-                <tableViewController storyboardIdentifier="BarWeightViewController" title="Weights" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BZu-xg-mDg" customClass="WeightsViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="BarWeightViewController" title="Weights" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BZu-xg-mDg" customClass="WeightsViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="7Ua-zh-Pgc">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -722,7 +725,7 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="Plates" id="x2V-Aq-Kc9">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="plateCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bIg-R1-ttP" customClass="PlateTableViewCell" customModule="_RM" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" restorationIdentifier="plateCell" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" id="bIg-R1-ttP" customClass="PlateTableViewCell" customModule="OneRM" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="127.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="bIg-R1-ttP" id="foG-ds-2Sj">
@@ -751,7 +754,7 @@
         <!--About 1RM-->
         <scene sceneID="VNA-Qj-kri">
             <objects>
-                <viewController storyboardIdentifier="AboutViewController" title="About 1RM" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u82-3C-CCi" customClass="AboutViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AboutViewController" title="About 1RM" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u82-3C-CCi" customClass="AboutViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z9R-9C-CqE">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -773,7 +776,7 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="7Zy-ND-7OG"/>
                     </view>
-                    <navigationItem key="navigationItem" title="About 1RM" id="FRo-cn-QPa"/>
+                    <navigationItem key="navigationItem" title="About OneRM" id="FRo-cn-QPa"/>
                     <connections>
                         <outlet property="aboutTextView" destination="mhe-e8-883" id="JeL-jX-N8P"/>
                     </connections>
@@ -802,13 +805,13 @@
         <!--PercentagesViewController-->
         <scene sceneID="FyF-W0-pzt">
             <objects>
-                <tableViewController storyboardIdentifier="PercentageViewController" title="PercentagesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gdp-l6-PXj" customClass="PercentagesViewController" customModule="_RM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="PercentageViewController" title="PercentagesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gdp-l6-PXj" customClass="PercentagesViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0To-jT-ZFL">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="percentageCell" rowHeight="45" id="O8Y-eM-uPO" customClass="PercentageTableViewCell" customModule="_RM" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="percentageCell" rowHeight="45" id="O8Y-eM-uPO" customClass="PercentageTableViewCell" customModule="OneRM" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="45"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="O8Y-eM-uPO" id="CRi-IG-sRP">
@@ -902,4 +905,7 @@
         <image name="percent" catalog="system" width="64" height="60"/>
         <image name="plus" catalog="system" width="64" height="58"/>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="xzY-ai-gtr"/>
+    </inferredMetricsTieBreakers>
 </document>

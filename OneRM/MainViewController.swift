@@ -7,7 +7,7 @@ class MainViewController: UIViewController {
 
     private typealias MVC = MainViewController
 
-    static let WeightDigitCount: Int = 4
+    static let WeightDigitCount: Int = 5
     static let WeightData: [[Int]] = [[Int]](repeating: Array(0...9), count: MVC.WeightDigitCount)
     static let RepData: [Int] = Array(1...12)
     static let DefaultRepsInView: Int = 12
@@ -44,7 +44,7 @@ class MainViewController: UIViewController {
         repsCollectionView.dataSource = self
         weight = UserDefaults.standard.double(forKey: WeightKey)
         var w = weight
-        var divisor = pow(10.0, Double(MVC.WeightDigitCount - 1))
+        var divisor = pow(10.0, Double(MVC.WeightDigitCount - 2))
         for idx in 0..<MVC.WeightDigitCount {
             let v = Int(w / divisor)
             w -= Double(v) * divisor
@@ -117,7 +117,7 @@ extension MainViewController: UIPickerViewDelegate {
         switch pickerView {
         case weightPicker:
             var w = 0.0
-            var factor = pow(10.0, Double(MVC.WeightDigitCount - 1))
+            var factor = pow(10.0, Double(MVC.WeightDigitCount - 2))
             for idx in 0..<MVC.WeightDigitCount {
                 let v = MVC.WeightData[component][weightPicker.selectedRow(inComponent: idx) % 10]
                 w += Double(v) * factor
@@ -132,18 +132,29 @@ extension MainViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
-            case weightPicker: return String(MVC.WeightData[component][row % 10])
-            case repsPicker: return String(MVC.RepData[row % MVC.RepData.count])
-            default: return ""
+        case weightPicker: return "\(MVC.WeightData[component][row % 10])"
+        case repsPicker: return "\(MVC.RepData[row % MVC.RepData.count])"
+        default: return ""
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         switch pickerView {
-            case weightPicker: return 44
-            case repsPicker: return 44
+            case weightPicker: return 32
+            case repsPicker: return 32
             default: return 0
         }
+    }
+
+    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
+        var attributedString: NSAttributedString?
+        if pickerView == weightPicker && component == 4 {
+            attributedString = NSAttributedString(string: String(MVC.WeightData[component][row % 10]), attributes: [
+                NSAttributedString.Key.backgroundColor: UIColor.gray,
+                NSAttributedString.Key.foregroundColor: UIColor.white,
+            ])
+        }
+        return attributedString
     }
 }
 

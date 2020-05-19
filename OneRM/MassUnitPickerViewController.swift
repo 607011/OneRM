@@ -7,6 +7,8 @@ class MassUnitPickerViewController: UIViewController {
 
     @IBOutlet weak var massUnitPicker: UIPickerView!
 
+    var units: [Unit] = []
+
     var massUnit: String = DefaultMassUnit {
         didSet {
             UserDefaults.standard.set(massUnit, forKey: MassUnitKey)
@@ -17,6 +19,15 @@ class MassUnitPickerViewController: UIViewController {
         super.viewDidLoad()
         massUnitPicker.delegate = self
         massUnitPicker.dataSource = self
+        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
+            let managedObjectContext = appDelegate.persistentContainer.viewContext
+            do {
+                self.units = try managedObjectContext.fetch(LiftDataManager.unitFetchRequest())
+            }
+            catch {
+                debugPrint(error)
+            }
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -30,15 +41,15 @@ class MassUnitPickerViewController: UIViewController {
 
 extension MassUnitPickerViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return WeightUnits.count
+        return units.count
     }
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        massUnit = WeightUnits[row]
+        massUnit = units[row].name
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(WeightUnits[row])"
+        return "\(units[row].name)"
     }
 }
 

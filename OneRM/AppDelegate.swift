@@ -4,6 +4,11 @@ import UIKit
 import CoreData
 import Foundation
 
+enum AppError: Error {
+    case initialized
+    case notInitialized
+}
+
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
@@ -25,6 +30,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if UserDefaults.standard.object(forKey: PercentStepKey) == nil {
             UserDefaults.standard.set(DefaultPercentStep, forKey: PercentStepKey)
+        }
+
+        UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
+        if isFirstStart() {
+            addDefaultEntities(completeFirstLaunch)
         }
         return true
     }
@@ -52,7 +62,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          application to it. This property is optional since there are legitimate
          error conditions that could cause the creation of the store to fail.
         */
-        let container = NSPersistentCloudKitContainer(name: "net.ersatzworld.1RM")
+        let container = NSPersistentCloudKitContainer(name: "OneRM")
         container.loadPersistentStores(completionHandler: { (storeDescription, error) in
             if let error = error as NSError? {
                 // Replace this implementation with code to handle the error appropriately.
@@ -66,7 +76,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  * The store could not be migrated to the current model version.
                  Check the error message to determine what the actual problem was.
                  */
-                fatalError("Unresolved error \(error), \(error.userInfo)")
+                debugPrint("Unresolved error \(error), \(error.userInfo)")
             }
         })
         return container
@@ -79,14 +89,48 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if context.hasChanges {
             do {
                 try context.save()
-            } catch {
+            }
+            catch {
                 // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
                 let nserror = error as NSError
-                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                debugPrint("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }
 
 }
 
+
+extension AppDelegate {
+
+    func isFirstStart() -> Bool {
+        return !UserDefaults.standard.bool(forKey: "appSuccessfullyInitialized")
+    }
+
+    func completeFirstLaunch(_ error: AppError) -> Void {
+        if error == .initialized {
+            debugPrint("SUCCESS: 1st launch successfully completed")
+            UserDefaults.standard.set(true, forKey: "appSuccessfullyInitialized")
+        }
+        else {
+            debugPrint("ERROR: 1st launch not successfully completed")
+        }
+    }
+
+    func addDefaultEntities(_ completionHandler: (_ error: AppError) -> Void) -> Void {
+//        let units = WeightUnits.map { (unitString: String) -> Unit in
+//            let unit = Unit()
+//            unit.name = unitString
+//            return unit
+//        }
+//        try! LiftDataManager.shared.save(units: units)
+
+        let exercises = DefaultExercises.enumerated().map { (order: Int, exerciseString: String) -> Exercise in
+            let exercise = Exercise(entity: Exercise.entity(), insertInto: LiftDataManager.shared.backgroundContext())
+            return exercise
+        }
+        try! LiftDataManager.shared.save(exercises: exercises)
+
+        completionHandler(.initialized)
+    }
+}

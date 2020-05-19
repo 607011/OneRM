@@ -5,11 +5,7 @@ import UIKit
 
 class ExercisesTableViewController: UITableViewController {
 
-    var exercises: [String] = DefaultExercises {
-        didSet {
-            UserDefaults.standard.set(exercises, forKey: ExercisesKey)
-        }
-    }
+    var exercises: [Exercise] = []
     var currentExercise: String?
 
     override func viewDidLoad() {
@@ -17,9 +13,7 @@ class ExercisesTableViewController: UITableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.isEditing = true
-        if UserDefaults.standard.object(forKey: ExercisesKey) != nil {
-            exercises = UserDefaults.standard.object(forKey: ExercisesKey) as! [String]
-        }
+        exercises = LiftDataManager.shared.loadExercises()
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -27,6 +21,10 @@ class ExercisesTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        try! LiftDataManager.shared.save(exercises: exercises)
+    }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "addExercise" {
@@ -49,7 +47,7 @@ extension ExercisesTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! ExerciseTableViewCell
-        cell.exerciseLabel.text = exercises[indexPath.row]
+        cell.exerciseLabel.text = exercises[indexPath.row].name
         return cell
     }
 
@@ -79,12 +77,24 @@ extension ExercisesTableViewController {
         deleteAction.backgroundColor = .systemRed
         deleteAction.image = UIImage(systemName: "trash")
         let editAction = UIContextualAction(style: .normal, title: "edit") {  (contextualAction, view, boolValue) in
-            self.currentExercise = self.exercises[indexPath.row]
+            self.currentExercise = self.exercises[indexPath.row].name
             self.performSegue(withIdentifier: "addExercise", sender: self)
         }
         editAction.backgroundColor = .systemGreen
         editAction.image = UIImage(systemName: "square.and.pencil")
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
         return swipeActions
+    }
+}
+
+
+extension ExercisesTableViewController {
+    func updateExercise(_ exercise: String) {
+        if exercises.contains(where: { return $0.name == exercise }) {
+            // TODO: replace
+        }
+        else {
+            // TODO: add
+        }
     }
 }
