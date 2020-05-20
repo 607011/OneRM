@@ -7,9 +7,12 @@ import UIKit
 class LiftDataManager {
     static let shared = LiftDataManager()
     private init() {}
+    lazy var appDelegate: AppDelegate? = {
+        return UIApplication.shared.delegate as? AppDelegate
+    }()
     lazy var persistentContainer: NSPersistentContainer = {
-        guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
-            debugPrint("AppDelegate not present")
+        guard let appDelegate = self.appDelegate else {
+            debugPrint("WARNING: Could not access AppDelegate. Falling back to NSPersistentContainer.")
             let container = NSPersistentContainer(name: "OneRM")
             container.loadPersistentStores(completionHandler: { _, error in
                 _ = error.map { fatalError("Unresolved error \($0)") }
@@ -41,20 +44,7 @@ class LiftDataManager {
     }
 
     func save() -> Void {
-        let backgroundContext = self.backgroundContext()
-        backgroundContext.parent = LiftDataManager.shared.mainContext
-        backgroundContext.perform {
-            do {
-                try backgroundContext.save()
-                LiftDataManager.shared.mainContext.performAndWait {
-                    // Save viewContext on the main queue in order to store changes persistently
-                    // try? LiftDataManager.shared.mainContext.save()
-                }
-            }
-            catch {
-                fatalError("Error saving exercises: \(error)")
-            }
-        }
+        appDelegate?.saveContext()
     }
 
     func loadUnits() -> [Unit] {
@@ -130,5 +120,21 @@ class LiftDataManager {
             }
             try! ctx.save()
         }
+    }
+
+    func save(lift: LiftData) throws -> Lift {
+        let newLift = Lift(entity: Lift.entity(), insertInto: mainContext)
+        newLift.reps = lift.reps
+        newLift.weight = lift.weight
+        newLift.rating = lift.rating
+        newLift.date = Date()
+        newLift.oneRM = lift.oneRM
+        newLift.exercise = lift.exercise
+        newLift.unit = lift.unit
+        newLift.notes = lift.notes
+        newLift.exercise.ofLift?.update(with: newLift)
+        newLift.unit.ofLift?.update(with: newLift)
+        save()
+        return newLift
     }
 }

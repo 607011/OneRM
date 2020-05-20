@@ -1,7 +1,6 @@
 /// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
-import CoreData
 
 class SaveToLogViewController: UIViewController {
 
@@ -9,10 +8,6 @@ class SaveToLogViewController: UIViewController {
     @IBOutlet weak var repsAndWeightField: UITextField!
     @IBOutlet var starButton: [UIButton]!
     @IBOutlet weak var notesTextView: UITextView!
-
-    lazy var appDelegate: AppDelegate? = {
-        return UIApplication.shared.delegate as? AppDelegate
-    }()
 
     var exercises: [Exercise] = []
     var exercise: Exercise?
@@ -58,19 +53,8 @@ class SaveToLogViewController: UIViewController {
         if segue.identifier == "gotoLog" {
             guard let unit = LiftDataManager.shared.load(unitWithName: massUnit),
                 !exercises.isEmpty else { return }
-            let newLift = Lift(entity: Lift.entity(), insertInto: appDelegate?.persistentContainer.viewContext)
-            newLift.reps = Int16(reps)
-            newLift.weight = weight
-            newLift.rating = Int16(rating)
-            newLift.date = Date()
-            newLift.oneRM = oneRM
-            newLift.exercise = exercise ?? exercises[0]
-            newLift.unit = unit
-            newLift.notes = notesTextView.text
-            newLift.exercise.ofLift?.update(with: newLift)
-            newLift.unit.ofLift?.update(with: newLift)
-            lift = newLift
-            appDelegate?.saveContext()
+            let liftData = LiftData(date: Date(), reps: Int16(reps), weight: weight, oneRM: oneRM, rating: Int16(rating), notes: notesTextView.text, exercise: exercise ?? exercises[0], unit: unit)
+            lift = try? LiftDataManager.shared.save(lift: liftData)
         }
     }
 

@@ -2,6 +2,17 @@
 
 import CoreData
 
+struct LiftData {
+    var date: Date
+    var reps: Int16
+    var weight: Double
+    var oneRM: Double
+    var rating: Int16
+    var notes: String
+    var exercise: Exercise
+    var unit: Unit
+}
+
 @objc(Lift)
 class Lift: NSManagedObject {
     @NSManaged var date: Date
