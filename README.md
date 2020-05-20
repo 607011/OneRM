@@ -18,7 +18,7 @@ You can even build your own version based on the [source code published on GitHu
 ## Features
 
  - Calculate 1RM
- - Display a list of weights for arbitrary percentage of 1RM
+ - Display a list of weights for arbitrary percentages of 1RM
  - Log lifting records of your favorite exercise
  - Customizable list of exercises
  - Customizable list of mass units
