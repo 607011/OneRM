@@ -528,7 +528,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = "1.0-BETA";
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
 				PRODUCT_NAME = OneRM;
 				SWIFT_VERSION = 5.0;
@@ -548,7 +548,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.1;
+				MARKETING_VERSION = "1.0-BETA";
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
 				PRODUCT_NAME = OneRM;
 				SWIFT_VERSION = 5.0;
