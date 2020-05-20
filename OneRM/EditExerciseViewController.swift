@@ -1,16 +1,12 @@
 /// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
-import CoreData
 
 class EditExerciseViewController: UIViewController {
 
     @IBOutlet weak var exerciseField: UITextField!
 
     var currentExercise: Exercise?
-    lazy var appDelegate: AppDelegate? = {
-        return UIApplication.shared.delegate as? AppDelegate
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,13 +28,13 @@ class EditExerciseViewController: UIViewController {
 
     @IBAction func saveExercise(_ sender: Any) {
         if currentExercise == nil {
-            let exercise = Exercise(entity: Exercise.entity(), insertInto: appDelegate?.persistentContainer.viewContext)
-            exercise.name = exerciseField.text ?? ""
+            let exerciseData = ExerciseData(name: exerciseField.text ?? "", order: -1)
+            try! LiftDataManager.shared.save(exercise: exerciseData)
         }
         else {
             currentExercise!.name = exerciseField.text ?? ""
+            LiftDataManager.shared.save()
         }
-        appDelegate?.saveContext()
         self.navigationController?.popViewController(animated: true)
     }
 

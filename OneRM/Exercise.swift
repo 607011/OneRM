@@ -5,6 +5,7 @@ import CoreData
 struct ExerciseData {
     var name: String
     var order: Int16
+    var ofLift: Set<Lift>?
 }
 
 class Exercise: NSManagedObject {

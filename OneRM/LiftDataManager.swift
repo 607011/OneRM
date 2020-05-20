@@ -122,7 +122,7 @@ class LiftDataManager {
         }
     }
 
-    func save(lift: LiftData) throws -> Lift {
+    func save(lift: LiftData) throws -> Void {
         let newLift = Lift(entity: Lift.entity(), insertInto: mainContext)
         newLift.reps = lift.reps
         newLift.weight = lift.weight
@@ -135,6 +135,13 @@ class LiftDataManager {
         newLift.exercise.ofLift?.update(with: newLift)
         newLift.unit.ofLift?.update(with: newLift)
         save()
-        return newLift
+    }
+
+    func save(exercise: ExerciseData) throws -> Void {
+        let newExercise = Exercise(entity: Exercise.entity(), insertInto: mainContext)
+        newExercise.name = exercise.name
+        newExercise.order = exercise.order
+        newExercise.ofLift = exercise.ofLift
+        save()
     }
 }

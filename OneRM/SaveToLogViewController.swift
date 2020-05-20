@@ -16,7 +16,6 @@ class SaveToLogViewController: UIViewController {
     var weight: Double = 0
     var oneRM: Double = 0
     var rating: Int = 0
-    var lift: Lift?
 
     @IBAction func starButtonPressed(_ sender: Any) {
         guard let button = sender as? UIButton else { return }

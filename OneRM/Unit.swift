@@ -4,6 +4,7 @@ import CoreData
 
 struct UnitData {
     var name: String
+    var ofLift: Set<Lift>?
 }
 
 @objc(Unit)

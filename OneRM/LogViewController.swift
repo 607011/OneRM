@@ -1,39 +1,41 @@
 /// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
-import CoreData
 
 class LogViewController: UITableViewController {
 
     var lifts: [Lift] = []
 
-    lazy var appDelegate: AppDelegate? = {
-        return UIApplication.shared.delegate as? AppDelegate
-    }()
-
     @IBAction func refreshButtonPressed(_ sender: Any) {
-        lifts = LiftDataManager.shared.loadLifts()
-        tableView.reloadData()
+        refreshUI()
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
+        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextChanged), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: LiftDataManager.shared.mainContext)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        lifts = LiftDataManager.shared.loadLifts()
-        tableView.reloadData()
+        refreshUI()
     }
 
 }
 
 
 extension LogViewController {
-    func saveContext() {
-        appDelegate?.saveContext()
+    func refreshUI() {
+        lifts = LiftDataManager.shared.loadLifts()
+        tableView.reloadData()
+    }
+
+    @objc
+    func managedObjectContextChanged(notification: NSNotification) {
+        if notification.name == .NSManagedObjectContextObjectsDidChange {
+            refreshUI()
+        }
     }
 }
 
@@ -66,7 +68,7 @@ extension LogViewController {
             LiftDataManager.shared.mainContext.delete(removedLift)
             self.lifts.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.saveContext()
+            LiftDataManager.shared.save()
         }
         deleteAction.backgroundColor = .systemRed
         deleteAction.image = UIImage(systemName: "trash")
