@@ -1,6 +1,6 @@
-#  1RM
+#  OneRM
 
-__One repetition maximal calculator for iOS__
+__One repetition maximum calculator for iOS__
 
 ![Main screen](1rm-main.png) ![Percentages screen](percentages.png)
 
@@ -11,9 +11,18 @@ The 1RM is useful to determine an individual's maximum strength. It's also usefu
 
 ## Free
 
-_1RM_ is absolutely free: no ads, no in-app purchases! 
+_OneRM_ is absolutely free: no ads, no in-app purchases! 
 
 You can even build your own version based on the [source code published on GitHub](https://github.com/ola-ct/1RM).
+
+## Features
+
+ - Calculate 1RM
+ - Display a list of weights for arbitrary percentage of 1RM
+ - Log lifting records of your favorite exercise
+ - Customizable list of exercises
+ - Customizable list of mass units
+ - Sync your settings and lifting records via iCloud
 
 ## License
 
