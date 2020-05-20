@@ -6,11 +6,8 @@ import CoreData
 class ExercisesTableViewController: UITableViewController {
 
     var exercises: [Exercise] = []
+    var lifts: [Lift] = []
     var currentExercise: Exercise?
-
-    lazy var appDelegate: AppDelegate? = {
-        return UIApplication.shared.delegate as? AppDelegate
-    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,12 +20,13 @@ class ExercisesTableViewController: UITableViewController {
         super.viewWillAppear(animated)
         self.currentExercise = nil
         exercises = LiftDataManager.shared.loadExercises()
+        lifts = LiftDataManager.shared.loadLifts()
         tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        saveContext()
+        LiftDataManager.shared.save()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -49,10 +47,6 @@ extension ExercisesTableViewController {
         for (idx, exercise) in exercises.enumerated() {
             exercise.order = Int16(idx)
         }
-    }
-
-    func saveContext() {
-        appDelegate?.saveContext()
     }
 }
 
@@ -85,7 +79,7 @@ extension ExercisesTableViewController {
         exercises.remove(at: sourceIndexPath.row)
         exercises.insert(movedExercise, at: destinationIndexPath.row)
         updateExerciseOrder()
-        self.saveContext()
+        LiftDataManager.shared.save()
     }
 
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
