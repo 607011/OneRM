@@ -342,17 +342,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="260.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="License information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Q-Bh-H4C">
-                                                    <rect key="frame" x="16" y="11.5" width="151" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Q-Bh-H4C">
+                                                    <rect key="frame" x="16" y="11" width="151" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="Y6Q-Bh-H4C" firstAttribute="bottom" secondItem="o61-QG-c3P" secondAttribute="bottomMargin" id="KdP-rv-glN"/>
-                                                <constraint firstItem="Y6Q-Bh-H4C" firstAttribute="leading" secondItem="o61-QG-c3P" secondAttribute="leadingMargin" id="Rfq-gC-gTM"/>
-                                                <constraint firstItem="Y6Q-Bh-H4C" firstAttribute="centerY" secondItem="o61-QG-c3P" secondAttribute="centerY" id="jgc-CW-cDg"/>
+                                                <constraint firstItem="Y6Q-Bh-H4C" firstAttribute="centerY" secondItem="o61-QG-c3P" secondAttribute="centerY" id="WG8-Zc-d45"/>
+                                                <constraint firstItem="Y6Q-Bh-H4C" firstAttribute="leading" secondItem="o61-QG-c3P" secondAttribute="leadingMargin" id="fEj-fi-PmL"/>
+                                                <constraint firstItem="Y6Q-Bh-H4C" firstAttribute="top" secondItem="o61-QG-c3P" secondAttribute="topMargin" id="fuf-w0-d9l"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -366,17 +366,17 @@
                                             <rect key="frame" x="0.0" y="0.0" width="260.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKI-oe-uik">
-                                                    <rect key="frame" x="16" y="11.5" width="47" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKI-oe-uik">
+                                                    <rect key="frame" x="16" y="11" width="47" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="vKI-oe-uik" firstAttribute="leading" secondItem="DF1-Jo-0Dp" secondAttribute="leadingMargin" id="P0a-xc-qJb"/>
-                                                <constraint firstItem="vKI-oe-uik" firstAttribute="centerY" secondItem="DF1-Jo-0Dp" secondAttribute="centerY" id="WpG-4S-v4J"/>
-                                                <constraint firstItem="vKI-oe-uik" firstAttribute="bottom" secondItem="DF1-Jo-0Dp" secondAttribute="bottomMargin" id="YY4-EY-FXL"/>
+                                                <constraint firstItem="vKI-oe-uik" firstAttribute="centerY" secondItem="DF1-Jo-0Dp" secondAttribute="centerY" id="8EZ-or-zUw"/>
+                                                <constraint firstItem="vKI-oe-uik" firstAttribute="leading" secondItem="DF1-Jo-0Dp" secondAttribute="leadingMargin" id="Hen-Fu-w9D"/>
+                                                <constraint firstItem="vKI-oe-uik" firstAttribute="top" secondItem="DF1-Jo-0Dp" secondAttribute="topMargin" id="dss-8P-P4Q"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                         <connections>
@@ -639,7 +639,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoU-Za-6Av">
+                            <textField opaque="NO" userInteractionEnabled="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="uoU-Za-6Av">
                                 <rect key="frame" x="16" y="205" width="288" height="34"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="21"/>
                                 <textInputTraits key="textInputTraits"/>
