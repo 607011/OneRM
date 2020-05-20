@@ -11,17 +11,3 @@ class Unit: NSManagedObject {
     @NSManaged public var name: String
     @NSManaged public var ofLift: Set<Lift>?
 }
-
-//extension Unit {
-//    @objc(addUnitObject:)
-//    @NSManaged public func addToUnits(_ value: Unit)
-//
-//    @objc(removeUnitObject:)
-//    @NSManaged public func removeFromUnits(_ value: Unit)
-//
-//    @objc(addUnits:)
-//    @NSManaged public func addToUnits(_ value: NSSet)
-//
-//    @objc(removeUnits:)
-//    @NSManaged public func removeFromUnits(_ value: NSSet)
-//}
