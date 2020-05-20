@@ -51,10 +51,21 @@ class SaveToLogViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoLog" {
-            guard let unit = LiftDataManager.shared.load(unitWithName: massUnit),
-                !exercises.isEmpty else { return }
-            let liftData = LiftData(date: Date(), reps: Int16(reps), weight: weight, oneRM: oneRM, rating: Int16(rating), notes: notesTextView.text, exercise: exercise ?? exercises[0], unit: unit)
-            lift = try? LiftDataManager.shared.save(lift: liftData)
+            /// XXX: what if the view segued into appears before the request has finished? Is this possible or not?
+            DispatchQueue.main.async {
+                guard let unit = LiftDataManager.shared.load(unitWithName: self.massUnit),
+                    !self.exercises.isEmpty else { return }
+                let liftData = LiftData(
+                    date: Date(),
+                    reps: Int16(self.reps),
+                    weight: self.weight,
+                    oneRM: self.oneRM,
+                    rating: Int16(self.rating),
+                    notes: self.notesTextView.text,
+                    exercise: self.exercise ?? self.exercises[0],
+                    unit: unit)
+                try? LiftDataManager.shared.save(lift: liftData)
+            }
         }
     }
 
