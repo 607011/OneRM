@@ -89,10 +89,30 @@ extension ExercisesTableViewController {
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") {  (contextualAction, view, boolValue) in
             let removedExercise = self.exercises[indexPath.row]
-            LiftDataManager.shared.mainContext.delete(removedExercise)
-            self.exercises.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            self.saveContext()
+
+            func delete() {
+                LiftDataManager.shared.mainContext.delete(removedExercise)
+                self.exercises.remove(at: indexPath.row)
+                tableView.deleteRows(at: [indexPath], with: .automatic)
+                LiftDataManager.shared.save()
+            }
+
+            if self.lifts.contains(where: { $0.exercise == removedExercise }) {
+                let alertController = UIAlertController(title: NSLocalizedString("Really delete exercise?", comment: ""), message: NSLocalizedString("There are lifts that refer to this exercise. Deleting the exercise will delete all associated lifts in your log. Do you really want to delete this exercise? ", comment: ""), preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
+                    self.tableView.reloadRows(at: [indexPath], with: .right);
+                })
+                let okAction = UIAlertAction.init(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { action in
+                    delete()
+                })
+                alertController.addAction(cancelAction)
+                alertController.addAction(okAction)
+                alertController.preferredAction = cancelAction
+                self.present(alertController, animated: true, completion: nil)
+            }
+            else {
+                delete()
+            }
         }
         deleteAction.backgroundColor = .systemRed
         deleteAction.image = UIImage(systemName: "trash")
