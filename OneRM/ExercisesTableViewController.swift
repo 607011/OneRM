@@ -90,7 +90,7 @@ extension ExercisesTableViewController {
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") {  (contextualAction, view, boolValue) in
             let removedExercise = self.exercises[indexPath.row]
 
-            func delete() {
+            func deleteInstantly() {
                 LiftDataManager.shared.mainContext.delete(removedExercise)
                 self.exercises.remove(at: indexPath.row)
                 tableView.deleteRows(at: [indexPath], with: .automatic)
@@ -100,10 +100,10 @@ extension ExercisesTableViewController {
             if self.lifts.contains(where: { $0.exercise == removedExercise }) {
                 let alertController = UIAlertController(title: NSLocalizedString("Really delete exercise?", comment: ""), message: NSLocalizedString("There are lifts that refer to this exercise. Deleting the exercise will delete all associated lifts in your log. Do you really want to delete this exercise? ", comment: ""), preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
-                    self.tableView.reloadRows(at: [indexPath], with: .right);
+                    self.tableView.reloadRows(at: [indexPath], with: .right)
                 })
-                let okAction = UIAlertAction.init(title: NSLocalizedString("OK", comment: ""), style: .default, handler: { action in
-                    delete()
+                let okAction = UIAlertAction.init(title: NSLocalizedString("OK", comment: ""), style: .destructive, handler: { action in
+                    deleteInstantly()
                 })
                 alertController.addAction(cancelAction)
                 alertController.addAction(okAction)
@@ -111,7 +111,7 @@ extension ExercisesTableViewController {
                 self.present(alertController, animated: true, completion: nil)
             }
             else {
-                delete()
+                deleteInstantly()
             }
         }
         deleteAction.backgroundColor = .systemRed
