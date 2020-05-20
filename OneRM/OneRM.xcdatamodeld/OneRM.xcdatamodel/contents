@@ -1,12 +1,15 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="">
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="14903" systemVersion="18G95" minimumToolsVersion="Automatic" sourceLanguage="Swift" usedWithCloudKit="YES" userDefinedModelVersionIdentifier="OneRM">
     <entity name="Exercise" representedClassName=".Exercise" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
         <attribute name="order" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
-        <relationship name="ofLift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lift" inverseName="exercise" inverseEntity="Lift"/>
+        <relationship name="ofLift" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lift" inverseName="exercise" inverseEntity="Lift"/>
     </entity>
     <entity name="Lift" representedClassName=".Lift" syncable="YES">
         <attribute name="date" optional="YES" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="notes" optional="YES" attributeType="String"/>
+        <attribute name="oneRM" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
+        <attribute name="rating" attributeType="Integer 16" minValueString="0" maxValueString="5" defaultValueString="5" usesScalarValueType="YES"/>
         <attribute name="reps" optional="YES" attributeType="Integer 16" defaultValueString="0" usesScalarValueType="YES"/>
         <attribute name="weight" optional="YES" attributeType="Double" defaultValueString="0.0" usesScalarValueType="YES"/>
         <relationship name="exercise" optional="YES" maxCount="1" deletionRule="No Action" destinationEntity="Exercise" inverseName="ofLift" inverseEntity="Exercise"/>
@@ -14,11 +17,11 @@
     </entity>
     <entity name="Unit" representedClassName=".Unit" syncable="YES">
         <attribute name="name" optional="YES" attributeType="String"/>
-        <relationship name="ofLift" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Lift" inverseName="unit" inverseEntity="Lift"/>
+        <relationship name="ofLift" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Lift" inverseName="unit" inverseEntity="Lift"/>
     </entity>
     <elements>
         <element name="Exercise" positionX="137.5390625" positionY="32.8828125" width="128" height="88"/>
-        <element name="Lift" positionX="-63" positionY="-18" width="128" height="118"/>
+        <element name="Lift" positionX="-63" positionY="-18" width="128" height="163"/>
         <element name="Unit" positionX="128.3046875" positionY="115.2890625" width="128" height="73"/>
     </elements>
 </model>

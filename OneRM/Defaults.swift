@@ -2,7 +2,7 @@
 
 import Foundation
 
-let WeightUnits: [String] = [
+let DefaultUnits: [String] = [
     "kg",
     "lbs"
 ]
@@ -17,17 +17,17 @@ let DefaultPlates: [Double] = Locale.current.usesMetricSystem
     : [110.23, 55.12, 44.09, 33.07, 22.05, 11.02, 5.51, 4.41, 3.31, 2.2, 1.1]
 
 let DefaultPlateColors: [String] = [
-    "black",
-    "red",
-    "blue",
-    "yellow",
-    "green",
-    "white",
-    "red",
-    "blue",
-    "yellow",
-    "green",
-    "white"
+    NSLocalizedString("black", comment: ""),
+    NSLocalizedString("red", comment: ""),
+    NSLocalizedString("blue", comment: ""),
+    NSLocalizedString("yellow", comment: ""),
+    NSLocalizedString("green", comment: ""),
+    NSLocalizedString("white", comment: ""),
+    NSLocalizedString("red", comment: ""),
+    NSLocalizedString("blue", comment: ""),
+    NSLocalizedString("yellow", comment: ""),
+    NSLocalizedString("green", comment: ""),
+    NSLocalizedString("white", comment: "")
 ]
 
 let DefaultExercises: [String] = [

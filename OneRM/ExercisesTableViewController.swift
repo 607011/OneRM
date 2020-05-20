@@ -1,38 +1,59 @@
 /// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
-
+import CoreData
 
 class ExercisesTableViewController: UITableViewController {
 
     var exercises: [Exercise] = []
-    var currentExercise: String?
+    var currentExercise: Exercise?
+
+    lazy var appDelegate: AppDelegate? = {
+        return UIApplication.shared.delegate as? AppDelegate
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.isEditing = true
-        exercises = LiftDataManager.shared.loadExercises()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        self.currentExercise = nil
+        exercises = LiftDataManager.shared.loadExercises()
         tableView.reloadData()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        try! LiftDataManager.shared.save(exercises: exercises)
+        saveContext()
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "addExercise" {
-            let destination = segue.destination as! AddExerciseViewController
+        let destination = segue.destination as! EditExerciseViewController
+        switch segue.identifier {
+        case "addExercise":
+            destination.currentExercise = nil
+        case "editExercise":
             destination.currentExercise = currentExercise
+        default: break
         }
     }
 
+}
+
+extension ExercisesTableViewController {
+    func updateExerciseOrder() -> Void {
+        for (idx, exercise) in exercises.enumerated() {
+            exercise.order = Int16(idx)
+        }
+    }
+
+    func saveContext() {
+        appDelegate?.saveContext()
+    }
 }
 
 extension ExercisesTableViewController {
@@ -63,6 +84,8 @@ extension ExercisesTableViewController {
         let movedExercise = self.exercises[sourceIndexPath.row]
         exercises.remove(at: sourceIndexPath.row)
         exercises.insert(movedExercise, at: destinationIndexPath.row)
+        updateExerciseOrder()
+        self.saveContext()
     }
 
     override func tableView(_ tableView: UITableView, shouldIndentWhileEditingRowAt indexPath: IndexPath) -> Bool {
@@ -71,30 +94,21 @@ extension ExercisesTableViewController {
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") {  (contextualAction, view, boolValue) in
+            let removedExercise = self.exercises[indexPath.row]
+            LiftDataManager.shared.mainContext.delete(removedExercise)
             self.exercises.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
+            self.saveContext()
         }
         deleteAction.backgroundColor = .systemRed
         deleteAction.image = UIImage(systemName: "trash")
         let editAction = UIContextualAction(style: .normal, title: "edit") {  (contextualAction, view, boolValue) in
-            self.currentExercise = self.exercises[indexPath.row].name
-            self.performSegue(withIdentifier: "addExercise", sender: self)
+            self.currentExercise = self.exercises[indexPath.row]
+            self.performSegue(withIdentifier: "editExercise", sender: self)
         }
         editAction.backgroundColor = .systemGreen
         editAction.image = UIImage(systemName: "square.and.pencil")
         let swipeActions = UISwipeActionsConfiguration(actions: [deleteAction, editAction])
         return swipeActions
-    }
-}
-
-
-extension ExercisesTableViewController {
-    func updateExercise(_ exercise: String) {
-        if exercises.contains(where: { return $0.name == exercise }) {
-            // TODO: replace
-        }
-        else {
-            // TODO: add
-        }
     }
 }

@@ -8,6 +8,9 @@ class EditExerciseViewController: UIViewController {
     @IBOutlet weak var exerciseField: UITextField!
 
     var currentExercise: Exercise?
+    lazy var appDelegate: AppDelegate? = {
+        return UIApplication.shared.delegate as? AppDelegate
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,28 +19,26 @@ class EditExerciseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         exerciseField.text = currentExercise?.name
-        debugPrint("AddExerciseViewController.viewWillAppear()")
         self.title = (exerciseField.text == "")
-            ? "Add exercise"
-            : "Edit exercise"
+            ? NSLocalizedString("Add exercise", comment: "")
+            : NSLocalizedString("Edit exercise", comment: "")
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        debugPrint("AddExerciseViewController.viewWillDisappear()")
         currentExercise = nil
         exerciseField.text = ""
     }
 
     @IBAction func saveExercise(_ sender: Any) {
-//        guard let viewControllers = self.navigationController?.viewControllers else { return }
-//        guard let caller = viewControllers[viewControllers.count - 2] as? ExercisesTableViewController else { return }
-//        if let newExercise = exerciseField.text {
-//            if !newExercise.isEmpty {
-//                caller.updateExercise(newExercise)
-//            }
-//        }
-        currentExercise?.name = exerciseField.text ?? ""
+        if currentExercise == nil {
+            let exercise = Exercise(entity: Exercise.entity(), insertInto: appDelegate?.persistentContainer.viewContext)
+            exercise.name = exerciseField.text ?? ""
+        }
+        else {
+            currentExercise!.name = exerciseField.text ?? ""
+        }
+        appDelegate?.saveContext()
         self.navigationController?.popViewController(animated: true)
     }
 

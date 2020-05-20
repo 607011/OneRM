@@ -19,21 +19,13 @@ class MassUnitPickerViewController: UIViewController {
         super.viewDidLoad()
         massUnitPicker.delegate = self
         massUnitPicker.dataSource = self
-        if let appDelegate = UIApplication.shared.delegate as? AppDelegate {
-            let managedObjectContext = appDelegate.persistentContainer.viewContext
-            do {
-                self.units = try managedObjectContext.fetch(LiftDataManager.unitFetchRequest())
-            }
-            catch {
-                debugPrint(error)
-            }
-        }
+        units = LiftDataManager.shared.loadUnits()
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         let massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
-        guard let row = WeightUnits.firstIndex(of: massUnit) else { return }
+        guard let row = DefaultUnits.firstIndex(of: massUnit) else { return }
         massUnitPicker.selectRow(row, inComponent: 0, animated: true)
     }
 }
@@ -49,7 +41,7 @@ extension MassUnitPickerViewController: UIPickerViewDelegate {
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return "\(units[row].name)"
+        return units[row].name
     }
 }
 

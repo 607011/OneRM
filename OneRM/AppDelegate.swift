@@ -32,7 +32,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set(DefaultPercentStep, forKey: PercentStepKey)
         }
 
-        UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
+        // UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
         if isFirstStart() {
             addDefaultEntities(completeFirstLaunch)
         }
@@ -109,7 +109,6 @@ extension AppDelegate {
 
     func completeFirstLaunch(_ error: AppError) -> Void {
         if error == .initialized {
-            debugPrint("SUCCESS: 1st launch successfully completed")
             UserDefaults.standard.set(true, forKey: "appSuccessfullyInitialized")
         }
         else {
@@ -118,18 +117,12 @@ extension AppDelegate {
     }
 
     func addDefaultEntities(_ completionHandler: (_ error: AppError) -> Void) -> Void {
-//        let units = WeightUnits.map { (unitString: String) -> Unit in
-//            let unit = Unit()
-//            unit.name = unitString
-//            return unit
-//        }
-//        try! LiftDataManager.shared.save(units: units)
 
-        let exercises = DefaultExercises.enumerated().map { (order: Int, exerciseString: String) -> Exercise in
-            let exercise = Exercise(entity: Exercise.entity(), insertInto: LiftDataManager.shared.backgroundContext())
-            return exercise
-        }
+        let exercises = DefaultExercises.enumerated().map { ExerciseData(name: $0.1, order: Int16($0.0)) }
         try! LiftDataManager.shared.save(exercises: exercises)
+
+        let units = DefaultUnits.map { UnitData(name: $0) }
+        try! LiftDataManager.shared.save(units: units)
 
         completionHandler(.initialized)
     }

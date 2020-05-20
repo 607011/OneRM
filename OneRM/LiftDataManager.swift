@@ -7,8 +7,7 @@ import UIKit
 class LiftDataManager {
     static let shared = LiftDataManager()
     private init() {}
-    private lazy var persistentContainer: NSPersistentContainer = {
-        debugPrint("LiftDataManager.persistentContainer")
+    lazy var persistentContainer: NSPersistentContainer = {
         guard let appDelegate = UIApplication.shared.delegate as? AppDelegate else {
             debugPrint("AppDelegate not present")
             let container = NSPersistentContainer(name: "OneRM")
@@ -17,6 +16,7 @@ class LiftDataManager {
             })
             return container
         }
+        appDelegate.persistentContainer.viewContext.automaticallyMergesChangesFromParent = true
         return appDelegate.persistentContainer
     }()
 
@@ -40,11 +40,29 @@ class LiftDataManager {
         return NSFetchRequest<Unit>(entityName: "Unit")
     }
 
+    func save() -> Void {
+        let backgroundContext = self.backgroundContext()
+        backgroundContext.parent = LiftDataManager.shared.mainContext
+        backgroundContext.perform {
+            do {
+                try backgroundContext.save()
+                LiftDataManager.shared.mainContext.performAndWait {
+                    // Save viewContext on the main queue in order to store changes persistently
+                    // try? LiftDataManager.shared.mainContext.save()
+                }
+            }
+            catch {
+                fatalError("Error saving exercises: \(error)")
+            }
+        }
+    }
+
     func loadUnits() -> [Unit] {
         let mainContext = LiftDataManager.shared.mainContext
         do {
-            var units = try mainContext.fetch(LiftDataManager.unitFetchRequest())
-            units.sort(by: { $0.name < $1.name })
+            let fetchRequest = LiftDataManager.unitFetchRequest()
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "name", ascending: true)]
+            let units = try mainContext.fetch(fetchRequest)
             return units
         }
         catch {
@@ -56,8 +74,9 @@ class LiftDataManager {
     func loadExercises() -> [Exercise] {
         let mainContext = LiftDataManager.shared.mainContext
         do {
-            var exercises = try mainContext.fetch(LiftDataManager.exerciseFetchRequest())
-            exercises.sort(by: { $0.order < $1.order })
+            let fetchRequest = LiftDataManager.exerciseFetchRequest()
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "order", ascending: true)]
+            let exercises = try mainContext.fetch(fetchRequest)
             return exercises
         }
         catch {
@@ -69,8 +88,9 @@ class LiftDataManager {
     func loadLifts() -> [Lift] {
         let mainContext = LiftDataManager.shared.mainContext
         do {
-            var lifts = try mainContext.fetch(LiftDataManager.liftFetchRequest())
-            lifts.sort(by: { $0.date > $1.date })
+            let fetchRequest = LiftDataManager.liftFetchRequest()
+            fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            let lifts = try mainContext.fetch(fetchRequest)
             return lifts
         }
         catch {
@@ -79,62 +99,36 @@ class LiftDataManager {
         return []
     }
 
-    func saveLift(weight: Double, reps: Int, exercise: Exercise) throws {
-        let context = LiftDataManager.shared.backgroundContext()
-        context.perform {
-            let entity = Lift.entity()
-            let lift = Lift(entity: entity, insertInto: context)
-            lift.weight = weight
-            lift.reps = Int16(reps)
-            lift.date = Date()
-            lift.mutableSetValue(forKey: "exercise").add(exercise)
-            try! context.save()
-        }
+    func load(unitWithName name: String) -> Unit? {
+        let fetchRequest = LiftDataManager.unitFetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "name == %@", name)
+        fetchRequest.fetchLimit = 1
+        guard let units = try? LiftDataManager.shared.mainContext.fetch(fetchRequest),
+            units.count == 1
+            else { return nil }
+        return units[0]
     }
 
-    func save() throws -> Void {
-        try backgroundContext().save()
-    }
-
-    func save(exercise: Exercise) throws -> Void {
+    func save(exercises: [ExerciseData]) throws -> Void {
         let ctx = LiftDataManager.shared.backgroundContext()
         ctx.perform {
-            exercise.addToExercises(exercise)
-        }
-    }
-
-    func save(exercise: ExerciseData) throws -> Void {
-        debugPrint("save(exercise: \(exercise.name))")
-        let ctx = LiftDataManager.shared.backgroundContext()
-        ctx.perform {
-            let ex = Exercise(entity: Exercise.entity(), insertInto: ctx)
-            ex.name = exercise.name
-            ex.order = exercise.order
+            for exercise in exercises {
+                let ex = Exercise(entity: Exercise.entity(), insertInto: ctx)
+                ex.name = exercise.name
+                ex.order = exercise.order
+            }
             try! ctx.save()
         }
     }
 
-    func save(exercises: [Exercise]) throws -> Void {
-        for exercise in exercises {
-            try save(exercise: exercise)
+    func save(units: [UnitData]) throws -> Void {
+        let ctx = LiftDataManager.shared.backgroundContext()
+        ctx.perform {
+            for unit in units {
+                let u = Unit(entity: Unit.entity(), insertInto: ctx)
+                u.name = unit.name
+            }
+            try! ctx.save()
         }
-    }
-
-    func save(exercises: [ExerciseData]) throws -> Void {
-        for exercise in exercises {
-            try save(exercise: exercise)
-        }
-    }
-
-    func save(lifts: [Lift]) throws -> Void {
-        debugPrint("save(lifts:)")
-    }
-
-    func save(units: [Unit]) throws -> Void {
-        debugPrint("save(units:)")
-    }
-
-    func replace(exercise: Exercise, with: Exercise) -> Void {
-        debugPrint("replace(exercise:with:)")
     }
 }

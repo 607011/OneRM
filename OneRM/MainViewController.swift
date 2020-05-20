@@ -19,7 +19,6 @@ class MainViewController: UIViewController {
     var repsInView: Int = DefaultRepsInView
     var massUnit: String = DefaultMassUnit
     let repsInViewReuseId: String = "repsCell"
-    let infiniteRow: Int = 10 * 10_000
 
     var reps: Int = 1 {
         didSet {
@@ -31,6 +30,12 @@ class MainViewController: UIViewController {
         didSet {
             repsCollectionView.reloadData()
             UserDefaults.standard.set(weight, forKey: WeightKey)
+        }
+    }
+
+    var oneRM: Double {
+        get {
+            return brzycki(weight: weight, reps: reps)
         }
     }
 
@@ -49,7 +54,7 @@ class MainViewController: UIViewController {
             let v = Int(w / divisor)
             w -= Double(v) * divisor
             guard let row = MVC.WeightData[idx].firstIndex(of: v) else { continue }
-            weightPicker.selectRow(row + infiniteRow / 2, inComponent: idx, animated: false)
+            weightPicker.selectRow(row, inComponent: idx, animated: false)
             divisor /= 10
         }
         reps = min(UserDefaults.standard.integer(forKey: RepsKey), MVC.RepData.last!)
@@ -74,6 +79,16 @@ class MainViewController: UIViewController {
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
         repsCollectionView?.collectionViewLayout.invalidateLayout()
+    }
+
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "saveToLog" {
+            let destination = segue.destination as! SaveToLogViewController
+            destination.reps = reps
+            destination.weight = weight
+            destination.oneRM = oneRM
+            destination.massUnit = massUnit
+        }
     }
 }
 
@@ -107,8 +122,8 @@ extension MainViewController: RMCollectionLayoutDelegate {
 extension MainViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
-        case weightPicker: return infiniteRow
-        case repsPicker: return infiniteRow
+        case weightPicker: return 10
+        case repsPicker: return MVC.RepData.count
         default: return 0
         }
     }
@@ -119,21 +134,21 @@ extension MainViewController: UIPickerViewDelegate {
             var w = 0.0
             var factor = pow(10.0, Double(MVC.WeightDigitCount - 2))
             for idx in 0..<MVC.WeightDigitCount {
-                let v = MVC.WeightData[component][weightPicker.selectedRow(inComponent: idx) % 10]
+                let v = MVC.WeightData[component][weightPicker.selectedRow(inComponent: idx)]
                 w += Double(v) * factor
                 factor /= 10
             }
             weight = w
         case repsPicker:
-            reps = MVC.RepData[row % MVC.RepData.count]
+            reps = MVC.RepData[row]
         default: break
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
-        case weightPicker: return "\(MVC.WeightData[component][row % 10])"
-        case repsPicker: return "\(MVC.RepData[row % MVC.RepData.count])"
+        case weightPicker: return "\(MVC.WeightData[component][row])"
+        case repsPicker: return "\(MVC.RepData[row])"
         default: return ""
         }
     }
@@ -149,7 +164,7 @@ extension MainViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         var attributedString: NSAttributedString?
         if pickerView == weightPicker && component == 4 {
-            attributedString = NSAttributedString(string: String(MVC.WeightData[component][row % 10]), attributes: [
+            attributedString = NSAttributedString(string: String(MVC.WeightData[component][row]), attributes: [
                 NSAttributedString.Key.backgroundColor: UIColor.gray,
                 NSAttributedString.Key.foregroundColor: UIColor.white,
             ])
