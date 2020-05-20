@@ -70,10 +70,6 @@ extension ExercisesTableViewController {
         return true
     }
 
-//    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
-//        return .none
-//    }
-
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
         let movedExercise = self.exercises[sourceIndexPath.row]
         exercises.remove(at: sourceIndexPath.row)
