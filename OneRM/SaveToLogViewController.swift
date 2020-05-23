@@ -42,6 +42,11 @@ class SaveToLogViewController: UIViewController {
         massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
         exercises = LiftDataManager.shared.loadExercises()
         repsAndWeightField.text = "\(reps) × \(weight.rounded(toPlaces: 1)) \(massUnit) ≈ \(oneRM.rounded(toPlaces: 1)) \(massUnit) 1RM"
+        if UserDefaults.standard.object(forKey: LastSavedExerciseKey) != nil {
+            let lastSavedExercise = UserDefaults.standard.string(forKey: LastSavedExerciseKey)
+            guard let idx = exercises.firstIndex(where: { $0.name == lastSavedExercise }) else { return }
+            exercisePicker.selectRow(idx, inComponent: 0, animated: false)
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -78,6 +83,7 @@ extension SaveToLogViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         exercise = exercises[row]
+        UserDefaults.standard.set(exercise?.name, forKey: LastSavedExerciseKey)
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {

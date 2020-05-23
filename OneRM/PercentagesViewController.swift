@@ -13,6 +13,7 @@ class PercentagesViewController: UITableViewController {
     var maxPercent: Int = DefaultMaxPercent
     var minPercent: Int = DefaultMinPercent
     var percentStep: Int = DefaultPercentStep
+    var formula: OneRMFormula = Brzycki()
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,11 @@ class PercentagesViewController: UITableViewController {
         maxPercent = UserDefaults.standard.integer(forKey: MaxPercentKey)
         minPercent = UserDefaults.standard.integer(forKey: MinPercentKey)
         percentStep = UserDefaults.standard.integer(forKey: PercentStepKey)
-        orm = brzycki(weight: weight, reps: reps)
+        if UserDefaults.standard.object(forKey: FormulasKey) != nil {
+            let activeFormulas = UserDefaults.standard.object(forKey: FormulasKey) as! [String]
+            formula = MixedOneRM(formulas: activeFormulas.map({ Formula(rawValue: $0) ?? .brzycki }))
+        }
+        orm = formula.oneRM(weight: weight, reps: reps)
         self.tableView.reloadData()
     }
 

@@ -1,7 +1,6 @@
 /// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
-import CoreData
 
 class ExercisesTableViewController: UITableViewController {
 

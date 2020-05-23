@@ -2,6 +2,7 @@
 
 import Foundation
 import UIKit
+import CloudKit
 
 class MainViewController: UIViewController {
 
@@ -18,7 +19,7 @@ class MainViewController: UIViewController {
 
     var repsInView: Int = DefaultRepsInView
     var massUnit: String = DefaultMassUnit
-    let repsInViewReuseId: String = "repsCell"
+    var formula: OneRMFormula = Brzycki()
 
     var reps: Int = 1 {
         didSet {
@@ -35,7 +36,7 @@ class MainViewController: UIViewController {
 
     var oneRM: Double {
         get {
-            return brzycki(weight: weight, reps: reps)
+            return formula.oneRM(weight: weight, reps: reps)
         }
     }
 
@@ -63,12 +64,19 @@ class MainViewController: UIViewController {
         if let layout = repsCollectionView?.collectionViewLayout as? RMCollectionLayout {
             layout.delegate = self
         }
+        if UserDefaults.standard.object(forKey: FormulasKey) == nil {
+            UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: FormulasKey)
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
         repsCollectionView.reloadData()
+        if UserDefaults.standard.object(forKey: FormulasKey) != nil {
+            let activeFormulas = UserDefaults.standard.object(forKey: FormulasKey) as! [String]
+            formula = MixedOneRM(formulas: activeFormulas.map({ Formula(rawValue: $0) ?? .brzycki }))
+        }
     }
 
     override func viewDidLayoutSubviews() {
@@ -189,13 +197,12 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: repsInViewReuseId, for: indexPath as IndexPath) as! RepCollectionViewCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "repsCell", for: indexPath as IndexPath) as! RepCollectionViewCell
         let reps = indexPath.item + 1
         cell.repLabel.text = "\(reps)RM"
-        cell.unitLabel.text = massUnit
-        let orm = brzycki(weight: self.weight, reps: self.reps)
-        let nrm = brzycki_rev(maxWeight: orm, reps: reps)
-        cell.weightLabel.text = String(format: "%.1f", nrm)
+        let orm = formula.oneRM(weight: self.weight, reps: self.reps)
+        let nrm = formula.rm(for: reps, with: orm)
+        cell.weightLabel.text = "\(String(format: "%.1f", nrm)) \(massUnit)"
         cell.percentLabel.text = orm.isAlmostNull()
             ? ""
             : String(format: "%g%% 1RM", (1e2 * nrm / orm).rounded(toPlaces: 1))
