@@ -12,6 +12,7 @@
 		650940F32472AC0F000BB84D /* LiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650940F22472AC0F000BB84D /* LiftDataManager.swift */; };
 		6555A46A24784848001F7ED3 /* FormulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A46924784848001F7ED3 /* FormulaViewController.swift */; };
 		6555A46C247848E1001F7ED3 /* FormulaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A46B247848E1001F7ED3 /* FormulaTableViewCell.swift */; };
+		6555A48224798FD7001F7ED3 /* OneRMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A48124798FD7001F7ED3 /* OneRMTests.swift */; };
 		65598426246EEE4F00A5976E /* PercentageLimitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598425246EEE4F00A5976E /* PercentageLimitsViewController.swift */; };
 		65598428246EF28800A5976E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598427246EF28800A5976E /* Extensions.swift */; };
 		6559842A246EFECE00A5976E /* ExercisesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598429246EFECE00A5976E /* ExercisesTableViewController.swift */; };
@@ -48,12 +49,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		656EC3A7246929DC00A30C43 /* PBXContainerItemProxy */ = {
+		6555A48424798FD7001F7ED3 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 656EC383246929DA00A30C43 /* Project object */;
 			proxyType = 1;
 			remoteGlobalIDString = 656EC38A246929DA00A30C43;
-			remoteInfo = 1RM;
+			remoteInfo = OneRM;
 		};
 /* End PBXContainerItemProxy section */
 
@@ -64,7 +65,9 @@
 		650940F62472AC95000BB84D /* coredata.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = coredata.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6555A46924784848001F7ED3 /* FormulaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaViewController.swift; sourceTree = "<group>"; };
 		6555A46B247848E1001F7ED3 /* FormulaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaTableViewCell.swift; sourceTree = "<group>"; };
-		6555A46D2478E769001F7ED3 /* OneRMTests-Bridging-Header.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "OneRMTests-Bridging-Header.h"; sourceTree = "<group>"; };
+		6555A47F24798FD7001F7ED3 /* OneRMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneRMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		6555A48124798FD7001F7ED3 /* OneRMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRMTests.swift; sourceTree = "<group>"; };
+		6555A48324798FD7001F7ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		65598425246EEE4F00A5976E /* PercentageLimitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageLimitsViewController.swift; sourceTree = "<group>"; };
 		65598427246EF28800A5976E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		65598429246EFECE00A5976E /* ExercisesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTableViewController.swift; sourceTree = "<group>"; };
@@ -81,7 +84,6 @@
 		656EC394246929DB00A30C43 /* PercentagesViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentagesViewController.swift; sourceTree = "<group>"; };
 		656EC39C246929DC00A30C43 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		656EC3A1246929DC00A30C43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		656EC3A6246929DC00A30C43 /* OneRMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneRMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		656EC3B524693AA100A30C43 /* Formulas.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Formulas.swift; sourceTree = "<group>"; };
 		656EC3B92469423900A30C43 /* RepCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepCollectionViewCell.swift; sourceTree = "<group>"; };
 		656EC3BE246AA89800A30C43 /* RMCollectionLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RMCollectionLayout.swift; sourceTree = "<group>"; };
@@ -105,14 +107,14 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		656EC388246929DA00A30C43 /* Frameworks */ = {
+		6555A47C24798FD7001F7ED3 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		656EC3A3246929DC00A30C43 /* Frameworks */ = {
+		656EC388246929DA00A30C43 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -130,14 +132,23 @@
 			path = Playgrounds;
 			sourceTree = "<group>";
 		};
+		6555A48024798FD7001F7ED3 /* OneRMTests */ = {
+			isa = PBXGroup;
+			children = (
+				6555A48124798FD7001F7ED3 /* OneRMTests.swift */,
+				6555A48324798FD7001F7ED3 /* Info.plist */,
+			);
+			path = OneRMTests;
+			sourceTree = "<group>";
+		};
 		656EC382246929DA00A30C43 = {
 			isa = PBXGroup;
 			children = (
 				650940EE24727FF0000BB84D /* Default-568h@2x.png */,
 				65EF2E6D246EBE3600A828DE /* doc */,
 				656EC38D246929DB00A30C43 /* OneRM */,
+				6555A48024798FD7001F7ED3 /* OneRMTests */,
 				656EC38C246929DB00A30C43 /* Products */,
-				6555A46D2478E769001F7ED3 /* OneRMTests-Bridging-Header.h */,
 			);
 			sourceTree = "<group>";
 		};
@@ -145,7 +156,7 @@
 			isa = PBXGroup;
 			children = (
 				656EC38B246929DB00A30C43 /* OneRM.app */,
-				656EC3A6246929DC00A30C43 /* OneRMTests.xctest */,
+				6555A47F24798FD7001F7ED3 /* OneRMTests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -231,6 +242,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6555A47E24798FD7001F7ED3 /* OneRMTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6555A48624798FD7001F7ED3 /* Build configuration list for PBXNativeTarget "OneRMTests" */;
+			buildPhases = (
+				6555A47B24798FD7001F7ED3 /* Sources */,
+				6555A47C24798FD7001F7ED3 /* Frameworks */,
+				6555A47D24798FD7001F7ED3 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				6555A48524798FD7001F7ED3 /* PBXTargetDependency */,
+			);
+			name = OneRMTests;
+			productName = OneRMTests;
+			productReference = 6555A47F24798FD7001F7ED3 /* OneRMTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		656EC38A246929DA00A30C43 /* OneRM */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 656EC3AF246929DC00A30C43 /* Build configuration list for PBXNativeTarget "OneRM" */;
@@ -248,24 +277,6 @@
 			productReference = 656EC38B246929DB00A30C43 /* OneRM.app */;
 			productType = "com.apple.product-type.application";
 		};
-		656EC3A5246929DC00A30C43 /* OneRMTests */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = 656EC3B2246929DC00A30C43 /* Build configuration list for PBXNativeTarget "OneRMTests" */;
-			buildPhases = (
-				656EC3A2246929DC00A30C43 /* Sources */,
-				656EC3A3246929DC00A30C43 /* Frameworks */,
-				656EC3A4246929DC00A30C43 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				656EC3A8246929DC00A30C43 /* PBXTargetDependency */,
-			);
-			name = OneRMTests;
-			productName = 1RMTests;
-			productReference = 656EC3A6246929DC00A30C43 /* OneRMTests.xctest */;
-			productType = "com.apple.product-type.bundle.unit-test";
-		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -276,13 +287,12 @@
 				LastUpgradeCheck = 1100;
 				ORGANIZATIONNAME = "Oliver Lau";
 				TargetAttributes = {
+					6555A47E24798FD7001F7ED3 = {
+						CreatedOnToolsVersion = 11.0;
+						TestTargetID = 656EC38A246929DA00A30C43;
+					};
 					656EC38A246929DA00A30C43 = {
 						CreatedOnToolsVersion = 11.0;
-					};
-					656EC3A5246929DC00A30C43 = {
-						CreatedOnToolsVersion = 11.0;
-						LastSwiftMigration = 1100;
-						TestTargetID = 656EC38A246929DA00A30C43;
 					};
 				};
 			};
@@ -300,12 +310,19 @@
 			projectRoot = "";
 			targets = (
 				656EC38A246929DA00A30C43 /* OneRM */,
-				656EC3A5246929DC00A30C43 /* OneRMTests */,
+				6555A47E24798FD7001F7ED3 /* OneRMTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6555A47D24798FD7001F7ED3 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		656EC389246929DA00A30C43 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -321,16 +338,17 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		656EC3A4246929DC00A30C43 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6555A47B24798FD7001F7ED3 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6555A48224798FD7001F7ED3 /* OneRMTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		656EC387246929DA00A30C43 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -368,20 +386,13 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
-		656EC3A2246929DC00A30C43 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		656EC3A8246929DC00A30C43 /* PBXTargetDependency */ = {
+		6555A48524798FD7001F7ED3 /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = 656EC38A246929DA00A30C43 /* OneRM */;
-			targetProxy = 656EC3A7246929DC00A30C43 /* PBXContainerItemProxy */;
+			targetProxy = 6555A48424798FD7001F7ED3 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -413,6 +424,46 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6555A48724798FD7001F7ED3 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 64627RE2QD;
+				INFOPLIST_FILE = OneRMTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneRM.app/OneRM";
+			};
+			name = Debug;
+		};
+		6555A48824798FD7001F7ED3 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 64627RE2QD;
+				INFOPLIST_FILE = OneRMTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRMTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneRM.app/OneRM";
+			};
+			name = Release;
+		};
 		656EC3AD246929DC00A30C43 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -567,58 +618,18 @@
 			};
 			name = Release;
 		};
-		656EC3B3246929DC00A30C43 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 64627RE2QD;
-				INFOPLIST_FILE = 1RMTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.ersatzworld.-RMTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "OneRMTests-Bridging-Header.h";
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneRM.app/OneRM";
-			};
-			name = Debug;
-		};
-		656EC3B4246929DC00A30C43 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
-				BUNDLE_LOADER = "$(TEST_HOST)";
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEVELOPMENT_TEAM = 64627RE2QD;
-				INFOPLIST_FILE = 1RMTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = "net.ersatzworld.-RMTests";
-				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = "OneRMTests-Bridging-Header.h";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/OneRM.app/OneRM";
-			};
-			name = Release;
-		};
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6555A48624798FD7001F7ED3 /* Build configuration list for PBXNativeTarget "OneRMTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6555A48724798FD7001F7ED3 /* Debug */,
+				6555A48824798FD7001F7ED3 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		656EC386246929DA00A30C43 /* Build configuration list for PBXProject "OneRM" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -633,15 +644,6 @@
 			buildConfigurations = (
 				656EC3B0246929DC00A30C43 /* Debug */,
 				656EC3B1246929DC00A30C43 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
-		656EC3B2246929DC00A30C43 /* Build configuration list for PBXNativeTarget "OneRMTests" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				656EC3B3246929DC00A30C43 /* Debug */,
-				656EC3B4246929DC00A30C43 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

@@ -10,4 +10,7 @@ extension Double {
     func isAlmostNull() -> Bool {
         return abs(self) <= Double.ulpOfOne
     }
+    func almostEquals(_ other: Double, epsilon: Double = 0.0001) -> Bool {
+        return abs(self - other) < epsilon
+    }
 }

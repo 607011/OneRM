@@ -31,7 +31,9 @@ class PercentagesViewController: UITableViewController {
         percentStep = UserDefaults.standard.integer(forKey: PercentStepKey)
         if UserDefaults.standard.object(forKey: FormulasKey) != nil {
             let activeFormulas = UserDefaults.standard.object(forKey: FormulasKey) as! [String]
-            formula = MixedOneRM(formulas: activeFormulas.map({ Formula(rawValue: $0) ?? .brzycki }))
+            formula = activeFormulas.isEmpty
+                ? Brzycki()
+                : MixedOneRM(formulas: activeFormulas)
         }
         orm = formula.oneRM(weight: weight, reps: reps)
         self.tableView.reloadData()

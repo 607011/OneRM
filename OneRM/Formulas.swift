@@ -9,16 +9,22 @@ protocol OneRMFormula {
 
 class Epley: OneRMFormula {
     func oneRM(weight: Double, reps: Int) -> Double {
-        return weight * (1 + Double(reps) / 30.0)
+        return reps == 1
+            ? weight
+            : weight * (1 + Double(reps) / 30.0)
     }
     func rm(for reps: Int, with oneRM: Double) -> Double {
-        return oneRM / (1 + Double(reps) / 30.0)
+        return reps == 1
+            ? oneRM
+            : oneRM / (1 + Double(reps) / 30.0)
     }
 }
 
 class Brzycki: OneRMFormula {
     func oneRM(weight: Double, reps: Int) -> Double {
-        return weight * 36.0 / Double(37 - reps)
+        return reps == 1
+            ? weight
+            : weight * 36.0 / Double(37 - reps)
     }
     func rm(for reps: Int, with oneRM: Double) -> Double {
         return oneRM * Double(37 - reps) / 36.0
@@ -27,10 +33,14 @@ class Brzycki: OneRMFormula {
 
 class McGlothin: OneRMFormula {
     func oneRM(weight: Double, reps: Int) -> Double {
-        return 1e2 * weight / (101.3 - 2.67123 * Double(reps))
+        return reps == 1
+            ? weight
+            : 1e2 * weight / (101.3 - 2.67123 * Double(reps))
     }
     func rm(for reps: Int, with oneRM: Double) -> Double {
-        return 1e-2 * oneRM * (101.3 - 2.67123 * Double(reps))
+        return reps == 1
+            ? oneRM
+            : 1e-2 * oneRM * (101.3 - 2.67123 * Double(reps))
     }
 }
 
@@ -45,19 +55,27 @@ class Lombardi: OneRMFormula {
 
 class Mayhew: OneRMFormula {
     func oneRM(weight: Double, reps: Int) -> Double {
-        return 1e2 * weight / (52.2 + 41.9 * exp(-0.055 * Double(reps)))
+        return reps == 1
+            ? weight
+            : 1e2 * weight / (52.2 + 41.9 * exp(-0.055 * Double(reps)))
     }
     func rm(for reps: Int, with oneRM: Double) -> Double {
-        return 1e-2 * oneRM * (52.2 + 41.9 * exp(-0.055 * Double(reps)))
+        return reps == 1
+            ? oneRM
+            : 1e-2 * oneRM * (52.2 + 41.9 * exp(-0.055 * Double(reps)))
     }
 }
 
 class OConner: OneRMFormula {
     func oneRM(weight: Double, reps: Int) -> Double {
-        return weight * (1 + Double(reps) / 40.0)
+        return reps == 1
+            ? weight
+            : weight * (1 + Double(reps) / 40.0)
     }
     func rm(for reps: Int, with oneRM: Double) -> Double {
-        return oneRM / (1 + Double(reps) / 40.0)
+        return reps == 1
+            ? oneRM
+            : oneRM / (1 + Double(reps) / 40.0)
     }
 }
 
@@ -75,13 +93,16 @@ class MixedOneRM: OneRMFormula {
     init(formulas: [Formula]) {
         self.formulas = formulas
     }
+    init(formulas: [String]) {
+        self.formulas = formulas.map { Formula(rawValue: $0) ?? .brzycki }
+    }
     func oneRM(weight: Double, reps: Int) -> Double {
-        let sum = self.formulas.map({ DefaultFormulas[$0]!.oneRM(weight: weight, reps: reps) }).reduce(0, +)
-        return sum / Double(self.formulas.count)
+        let sum = formulas.map({ DefaultFormulas[$0]!.oneRM(weight: weight, reps: reps) }).reduce(0, +)
+        return sum / Double(formulas.count)
     }
     func rm(for reps: Int, with oneRM: Double) -> Double {
-        let sum = self.formulas.map({ DefaultFormulas[$0]!.rm(for: reps, with: oneRM) }).reduce(0, +)
-        return sum / Double(self.formulas.count)
+        let sum = formulas.map({ DefaultFormulas[$0]!.rm(for: reps, with: oneRM) }).reduce(0, +)
+        return sum / Double(formulas.count)
     }
 }
 

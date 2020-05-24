@@ -3,6 +3,7 @@
     <device id="retina4_7" orientation="portrait" appearance="dark"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -45,7 +46,7 @@
                                                     <rect key="frame" x="0.0" y="5" width="100" height="16"/>
                                                     <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" type="system" weight="medium" pointSize="14"/>
-                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" name="Olive"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlC-Gn-6gN">
@@ -63,7 +64,7 @@
                                                         <constraint firstAttribute="height" constant="13" id="qqG-fA-vCd"/>
                                                     </constraints>
                                                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
-                                                    <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                    <color key="textColor" name="Olive"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                             </subviews>
@@ -107,8 +108,9 @@
                                     <accessibilityTraits key="traits" button="YES" causesPageTurn="YES"/>
                                 </accessibility>
                                 <fontDescription key="fontDescription" type="system" weight="medium" pointSize="18"/>
+                                <color key="tintColor" name="Olive"/>
                                 <state key="normal" image="text.badge.plus" catalog="system">
-                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                    <color key="titleColor" name="Olive"/>
                                     <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                 </state>
                                 <connections>
@@ -143,6 +145,7 @@
                     <tabBarItem key="tabBarItem" title="Weight &amp; Reps" image="number" catalog="system" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="OneRM" id="ZP5-My-5RT">
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" id="W68-Va-bXI">
+                            <color key="tintColor" name="Olive"/>
                             <connections>
                                 <segue destination="i1l-P8-Fd0" kind="show" id="hBD-A6-2VZ"/>
                             </connections>
@@ -450,11 +453,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="New exercise" id="UwP-uM-jAw">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="gFW-hC-VIi">
+                            <color key="tintColor" name="Olive"/>
                             <connections>
                                 <action selector="cancelAddExercise:" destination="8jv-4Z-IBZ" id="nDv-C8-Obz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="WQW-oV-SbR">
+                            <color key="tintColor" name="Olive"/>
                             <connections>
                                 <action selector="saveExercise:" destination="8jv-4Z-IBZ" id="gb1-zO-n9e"/>
                             </connections>
@@ -693,6 +698,7 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27.5" id="5Wl-hD-iwo"/>
                                         </constraints>
+                                        <color key="tintColor" name="Olive"/>
                                         <state key="normal" image="star" catalog="system">
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
@@ -705,7 +711,9 @@
                                         <constraints>
                                             <constraint firstAttribute="width" constant="27.5" id="VSU-49-dIy"/>
                                         </constraints>
+                                        <color key="tintColor" name="Olive"/>
                                         <state key="normal" image="star" catalog="system">
+                                            <color key="titleColor" name="Olive"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
                                         <connections>
@@ -714,7 +722,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xa-Qp-pyg">
                                         <rect key="frame" x="55" y="0.0" width="27.5" height="25"/>
+                                        <color key="tintColor" name="Olive"/>
                                         <state key="normal" image="star" catalog="system">
+                                            <color key="titleColor" name="Olive"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
                                         <connections>
@@ -723,7 +733,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyI-hj-pre">
                                         <rect key="frame" x="82.5" y="0.0" width="27.5" height="25"/>
+                                        <color key="tintColor" name="Olive"/>
                                         <state key="normal" image="star" catalog="system">
+                                            <color key="titleColor" name="Olive"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
                                         <connections>
@@ -732,7 +744,9 @@
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFI-Tp-H9j">
                                         <rect key="frame" x="110" y="0.0" width="27.5" height="25"/>
+                                        <color key="tintColor" name="Olive"/>
                                         <state key="normal" image="star" catalog="system">
+                                            <color key="titleColor" name="Olive"/>
                                             <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                         </state>
                                         <connections>
@@ -774,6 +788,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Save to log" id="C96-X2-gGE">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="s8o-Vh-xlb">
+                            <color key="tintColor" name="Olive"/>
                             <connections>
                                 <segue destination="sCC-v0-IfH" kind="show" identifier="gotoLog" id="gDU-W8-3TP"/>
                             </connections>
@@ -836,6 +851,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Exercises" id="3xv-JA-TuD">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="XIy-6q-9xf">
+                            <color key="tintColor" name="Olive"/>
                             <connections>
                                 <action selector="addExercise:" destination="THr-9l-qhM" id="ZwO-kB-jOc"/>
                                 <segue destination="8jv-4Z-IBZ" kind="show" identifier="addExercise" id="ax8-sw-wFy"/>
@@ -999,7 +1015,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" verticalHuggingPriority="251" text="123" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="adA-sa-wg3">
                                             <rect key="frame" x="296.5" y="8" width="40.5" height="34"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="24"/>
-                                            <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="Olive"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="wXN-Z9-Rn9">
@@ -1011,7 +1027,7 @@
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ghQ-D4-4Js">
                                             <rect key="frame" x="16" y="10" width="21" height="30"/>
                                             <fontDescription key="fontDescription" type="system" weight="medium" pointSize="25"/>
-                                            <color key="textColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                            <color key="textColor" name="Olive"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
@@ -1124,6 +1140,7 @@
                     <tabBarItem key="tabBarItem" title="Log" image="list.bullet" catalog="system" selectedImage="list.bullet" id="Jid-e2-pwB"/>
                     <navigationItem key="navigationItem" id="bab-Ez-rhY">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="TxY-L3-cMi">
+                            <color key="tintColor" name="Olive"/>
                             <connections>
                                 <action selector="refreshButtonPressed:" destination="sCC-v0-IfH" id="jDG-lB-Zgt"/>
                             </connections>
@@ -1143,6 +1160,7 @@
                         <rect key="frame" x="0.0" y="975" width="768" height="49"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.0" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="selectedImageTintColor" name="Olive"/>
                     </tabBar>
                     <connections>
                         <segue destination="TCg-fe-nlV" kind="relationship" relationship="viewControllers" id="e46-is-MZ3"/>
@@ -1219,9 +1237,13 @@
         <image name="plus" catalog="system" width="64" height="58"/>
         <image name="star" catalog="system" width="64" height="58"/>
         <image name="text.badge.plus" catalog="system" width="64" height="56"/>
+        <namedColor name="Olive">
+            <color red="0.56053167170099116" green="0.72925543076819777" blue="0.3243184090069024" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+        </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="gDU-W8-3TP"/>
         <segue reference="ax8-sw-wFy"/>
     </inferredMetricsTieBreakers>
+    <color key="tintColor" name="Olive"/>
 </document>

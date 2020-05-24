@@ -1,14 +1,13 @@
-//
-//  OneRMTests.swift
-//  OneRMTests
-//
-//  Created by Oliver Lau on 23.05.20.
-//  Copyright © 2020 Oliver Lau. All rights reserved.
-//
+/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import XCTest
 
+@testable import OneRM
+
 class OneRMTests: XCTestCase {
+
+    let weight: Double = 100.0
+    let epsilon = 0.000000001
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -18,15 +17,90 @@ class OneRMTests: XCTestCase {
         // Put teardown code here. This method is called after the invocation of each test method in the class.
     }
 
-    func testExample() {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
+    func testBrzycki() {
+        let formula = Brzycki()
+        for reps in 1...12 {
+            let oneRM = formula.oneRM(weight: weight, reps: reps)
+            let rm = formula.rm(for: reps, with: oneRM)
+            debugPrint(reps, oneRM, rm)
+            XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
+            if reps == 1 {
+                XCTAssert(oneRM.almostEquals(rm, epsilon: epsilon))
+            }
+        }
+    }
+
+    func testEpley() {
+        let formula = Epley()
+        for reps in 1...12 {
+            let oneRM = formula.oneRM(weight: weight, reps: reps)
+            let rm = formula.rm(for: reps, with: oneRM)
+            XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
+            if reps == 1 {
+                XCTAssert(oneRM.almostEquals(rm, epsilon: epsilon))
+            }
+        }
+    }
+
+    func testMcGlothin() {
+        let formula = McGlothin()
+        for reps in 1...12 {
+            let oneRM = formula.oneRM(weight: weight, reps: reps)
+            let rm = formula.rm(for: reps, with: oneRM)
+            XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
+            if reps == 1 {
+                XCTAssert(oneRM.almostEquals(rm, epsilon: epsilon))
+            }
+        }
+    }
+
+    func testLombardi() {
+        let formula = Lombardi()
+        for reps in 1...12 {
+            let oneRM = formula.oneRM(weight: weight, reps: reps)
+            let rm = formula.rm(for: reps, with: oneRM)
+            XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
+            if reps == 1 {
+                XCTAssert(oneRM.almostEquals(rm, epsilon: epsilon))
+            }
+        }
+    }
+
+    func testMayhew() {
+        let formula = Mayhew()
+        for reps in 1...12 {
+            let oneRM = formula.oneRM(weight: weight, reps: reps)
+            let rm = formula.rm(for: reps, with: oneRM)
+            XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
+            if reps == 1 {
+                XCTAssert(oneRM.almostEquals(rm, epsilon: epsilon))
+            }
+        }
+    }
+
+    func testOConner() {
+        let formula = OConner()
+        for reps in 1...12 {
+            let oneRM = formula.oneRM(weight: weight, reps: reps)
+            let rm = formula.rm(for: reps, with: oneRM)
+            XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
+            if reps == 1 {
+                XCTAssert(oneRM.almostEquals(rm, epsilon: epsilon))
+            }
+        }
+    }
+
+    func testWathen() {
+        let formula = Wathen()
+        for reps in 1...12 {
+            let oneRM = formula.oneRM(weight: weight, reps: reps)
+            let rm = formula.rm(for: reps, with: oneRM)
+            XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
+        }
     }
 
     func testPerformanceExample() {
-        // This is an example of a performance test case.
         measure {
-            // Put the code you want to measure the time of here.
         }
     }
 

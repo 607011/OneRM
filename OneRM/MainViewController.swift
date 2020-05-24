@@ -75,7 +75,9 @@ class MainViewController: UIViewController {
         repsCollectionView.reloadData()
         if UserDefaults.standard.object(forKey: FormulasKey) != nil {
             let activeFormulas = UserDefaults.standard.object(forKey: FormulasKey) as! [String]
-            formula = MixedOneRM(formulas: activeFormulas.map({ Formula(rawValue: $0) ?? .brzycki }))
+            formula = activeFormulas.isEmpty
+                ? Brzycki()
+                : MixedOneRM(formulas: activeFormulas)
         }
     }
 

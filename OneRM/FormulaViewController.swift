@@ -8,7 +8,6 @@ class FormulaTableViewController: UITableViewController {
     var activeFormulas: [String] = [] {
         didSet {
             UserDefaults.standard.set(activeFormulas, forKey: FormulasKey)
-            debugPrint(activeFormulas)
         }
     }
 
@@ -61,10 +60,10 @@ extension FormulaTableViewController {
 }
 
 extension FormulaTableViewController {
-    @objc func switchChanged(sender: UISwitch) {
-        guard let cell = sender.superview?.superview as? FormulaTableViewCell else { return }
+    @objc func switchChanged(sender formulaSwitch: UISwitch) {
+        guard let cell = formulaSwitch.superview?.superview as? FormulaTableViewCell else { return }
         guard let formula = cell.formulaLabel.text else { return }
-        if sender.isOn {
+        if formulaSwitch.isOn {
             if !activeFormulas.contains(formula) {
                 activeFormulas.append(formula)
             }
