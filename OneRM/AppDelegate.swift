@@ -36,6 +36,11 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if isFirstStart() {
             addDefaultEntities(completeFirstLaunch)
         }
+
+        UINavigationBar.appearance().backgroundColor = UIColor(named: "Olive")
+        UINavigationBar.appearance().barTintColor = UIColor(named: "Olive")
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = .white
         return true
     }
 

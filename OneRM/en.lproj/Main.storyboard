@@ -145,7 +145,7 @@
                     <tabBarItem key="tabBarItem" title="Weight &amp; Reps" image="number" catalog="system" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="OneRM" id="ZP5-My-5RT">
                         <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" id="W68-Va-bXI">
-                            <color key="tintColor" name="Olive"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="i1l-P8-Fd0" kind="show" id="hBD-A6-2VZ"/>
                             </connections>
@@ -453,13 +453,13 @@
                     </view>
                     <navigationItem key="navigationItem" title="New exercise" id="UwP-uM-jAw">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="gFW-hC-VIi">
-                            <color key="tintColor" name="Olive"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="cancelAddExercise:" destination="8jv-4Z-IBZ" id="nDv-C8-Obz"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="WQW-oV-SbR">
-                            <color key="tintColor" name="Olive"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="saveExercise:" destination="8jv-4Z-IBZ" id="gb1-zO-n9e"/>
                             </connections>
@@ -788,7 +788,7 @@
                     </view>
                     <navigationItem key="navigationItem" title="Save to log" id="C96-X2-gGE">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="s8o-Vh-xlb">
-                            <color key="tintColor" name="Olive"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="sCC-v0-IfH" kind="show" identifier="gotoLog" id="gDU-W8-3TP"/>
                             </connections>
@@ -851,7 +851,7 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="Exercises" id="3xv-JA-TuD">
                         <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="XIy-6q-9xf">
-                            <color key="tintColor" name="Olive"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="addExercise:" destination="THr-9l-qhM" id="ZwO-kB-jOc"/>
                                 <segue destination="8jv-4Z-IBZ" kind="show" identifier="addExercise" id="ax8-sw-wFy"/>
@@ -1140,7 +1140,7 @@
                     <tabBarItem key="tabBarItem" title="Log" image="list.bullet" catalog="system" selectedImage="list.bullet" id="Jid-e2-pwB"/>
                     <navigationItem key="navigationItem" id="bab-Ez-rhY">
                         <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="TxY-L3-cMi">
-                            <color key="tintColor" name="Olive"/>
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="refreshButtonPressed:" destination="sCC-v0-IfH" id="jDG-lB-Zgt"/>
                             </connections>
