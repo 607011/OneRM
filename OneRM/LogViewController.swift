@@ -51,14 +51,7 @@ extension LogViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "logEntryCell", for: indexPath) as! LogTableViewCell
-        let lift = lifts[indexPath.row]
-        cell.exerciseLabel.text = lift.exercise.name
-        let dateFormatter = DateFormatter()
-        dateFormatter.calendar = Locale.current.calendar
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMYHm", options: 0, locale: Locale.current)
-        cell.dateLabel.text = dateFormatter.string(from: lift.date)
-        cell.oneRMLabel.text = "\(lift.oneRM.rounded(toPlaces: 1)) \(lift.unit.name) 1RM"
-        cell.repsAndWeightLabel.text = "\(lift.reps) × \(lift.weight.rounded(toPlaces: 1)) \(lift.unit.name)"
+        cell.lift =  LiftData(from: lifts[indexPath.row])
         return cell
     }
 

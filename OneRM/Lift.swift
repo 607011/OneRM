@@ -11,6 +11,29 @@ struct LiftData {
     var notes: String
     var exercise: Exercise
     var unit: Unit
+
+    init(from lift: Lift) {
+        self.date = lift.date
+        self.reps = lift.reps
+        self.weight = lift.weight
+        self.oneRM = lift.oneRM
+        self.rating = lift.rating
+        self.notes = lift.notes
+        self.exercise = lift.exercise
+        self.unit = lift.unit
+    }
+
+    init(date: Date, reps: Int16, weight: Double, oneRM: Double, rating: Int16, notes: String, exercise: Exercise, unit: Unit) {
+        self.date = date
+        self.reps = reps
+        self.weight = weight
+        self.oneRM = oneRM
+        self.rating = rating
+        self.notes = notes
+        self.exercise = exercise
+        self.unit = unit
+    }
+
 }
 
 @objc(Lift)

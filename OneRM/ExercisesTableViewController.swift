@@ -61,7 +61,7 @@ extension ExercisesTableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
         let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! ExerciseTableViewCell
-        cell.exerciseLabel.text = exercises[indexPath.row].name
+        cell.exercise = exercises[indexPath.row]
         return cell
     }
 
