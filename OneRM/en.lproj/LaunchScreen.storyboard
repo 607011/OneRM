@@ -22,18 +22,17 @@
                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" image="OneRM" highlighted="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xbM-Rm-2uj">
-                                <rect key="frame" x="-49" y="154" width="512" height="512"/>
-                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="default" weight="regular"/>
+                            <imageView opaque="NO" clipsSubviews="YES" clearsContextBeforeDrawing="NO" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="OneRM" highlightedImage="OneRM" translatesAutoresizingMaskIntoConstraints="NO" id="g62-rk-yxY">
+                                <rect key="frame" x="-49" y="107" width="512" height="512"/>
+                                <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" name="Olive"/>
                         <constraints>
-                            <constraint firstItem="B7J-Wd-IhF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="7Uu-Gi-CIE"/>
-                            <constraint firstItem="B7J-Wd-IhF" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" constant="-33" id="IZ4-A6-Ita"/>
-                            <constraint firstItem="B7J-Wd-IhF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="kPS-W9-EpB"/>
-                            <constraint firstItem="xbM-Rm-2uj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="110" id="rWt-XQ-St3"/>
-                            <constraint firstItem="xbM-Rm-2uj" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zhu-9P-cJm"/>
+                            <constraint firstItem="g62-rk-yxY" firstAttribute="centerX" secondItem="B7J-Wd-IhF" secondAttribute="centerX" id="6uz-XE-mwf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="B7J-Wd-IhF" secondAttribute="bottom" constant="33" id="T7R-8x-Bcd"/>
+                            <constraint firstItem="g62-rk-yxY" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="63" id="q3Y-ja-F1q"/>
+                            <constraint firstItem="B7J-Wd-IhF" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="ubT-gO-18z"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>

@@ -8,11 +8,12 @@
 
 /* Begin PBXBuildFile section */
 		650940EF24727FF0000BB84D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650940EE24727FF0000BB84D /* Default-568h@2x.png */; };
-		650940F02472857A000BB84D /* OneRM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 650940EB24727A35000BB84D /* OneRM.xcdatamodeld */; };
 		650940F32472AC0F000BB84D /* LiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650940F22472AC0F000BB84D /* LiftDataManager.swift */; };
 		6555A46A24784848001F7ED3 /* FormulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A46924784848001F7ED3 /* FormulaViewController.swift */; };
 		6555A46C247848E1001F7ED3 /* FormulaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A46B247848E1001F7ED3 /* FormulaTableViewCell.swift */; };
 		6555A48224798FD7001F7ED3 /* OneRMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A48124798FD7001F7ED3 /* OneRMTests.swift */; };
+		6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555A48A247B9CA2001F7ED3 /* CloudKit.framework */; };
+		6555A48F247B9D3E001F7ED3 /* OneRM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6555A48C247B9D3E001F7ED3 /* OneRM.xcdatamodeld */; };
 		65598426246EEE4F00A5976E /* PercentageLimitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598425246EEE4F00A5976E /* PercentageLimitsViewController.swift */; };
 		65598428246EF28800A5976E /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598427246EF28800A5976E /* Extensions.swift */; };
 		6559842A246EFECE00A5976E /* ExercisesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598429246EFECE00A5976E /* ExercisesTableViewController.swift */; };
@@ -59,15 +60,16 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		650940EC24727A35000BB84D /* OneRM.xcdatamodel */ = {isa = PBXFileReference; explicitFileType = wrapper.xcdatamodel; path = OneRM.xcdatamodel; sourceTree = "<group>"; };
 		650940EE24727FF0000BB84D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		650940F22472AC0F000BB84D /* LiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftDataManager.swift; sourceTree = "<group>"; };
-		650940F62472AC95000BB84D /* coredata.playground */ = {isa = PBXFileReference; lastKnownFileType = file.playground; path = coredata.playground; sourceTree = "<group>"; xcLanguageSpecificationIdentifier = xcode.lang.swift; };
 		6555A46924784848001F7ED3 /* FormulaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaViewController.swift; sourceTree = "<group>"; };
 		6555A46B247848E1001F7ED3 /* FormulaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaTableViewCell.swift; sourceTree = "<group>"; };
 		6555A47F24798FD7001F7ED3 /* OneRMTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneRMTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		6555A48124798FD7001F7ED3 /* OneRMTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRMTests.swift; sourceTree = "<group>"; };
 		6555A48324798FD7001F7ED3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		6555A48A247B9CA2001F7ED3 /* CloudKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CloudKit.framework; path = System/Library/Frameworks/CloudKit.framework; sourceTree = SDKROOT; };
+		6555A48D247B9D3E001F7ED3 /* OneRM.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = OneRM.xcdatamodel; sourceTree = "<group>"; };
+		6555A48E247B9D3E001F7ED3 /* OneRM.entitlements */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.entitlements; path = OneRM.entitlements; sourceTree = "<group>"; };
 		65598425246EEE4F00A5976E /* PercentageLimitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageLimitsViewController.swift; sourceTree = "<group>"; };
 		65598427246EF28800A5976E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		65598429246EFECE00A5976E /* ExercisesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisesTableViewController.swift; sourceTree = "<group>"; };
@@ -118,20 +120,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		650940F52472AC65000BB84D /* Playgrounds */ = {
-			isa = PBXGroup;
-			children = (
-				650940F62472AC95000BB84D /* coredata.playground */,
-			);
-			path = Playgrounds;
-			sourceTree = "<group>";
-		};
 		6555A48024798FD7001F7ED3 /* OneRMTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -141,37 +136,17 @@
 			path = OneRMTests;
 			sourceTree = "<group>";
 		};
-		656EC382246929DA00A30C43 = {
+		6555A489247B9CA2001F7ED3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
-				650940EE24727FF0000BB84D /* Default-568h@2x.png */,
-				65EF2E6D246EBE3600A828DE /* doc */,
-				656EC38D246929DB00A30C43 /* OneRM */,
-				6555A48024798FD7001F7ED3 /* OneRMTests */,
-				656EC38C246929DB00A30C43 /* Products */,
+				6555A48A247B9CA2001F7ED3 /* CloudKit.framework */,
 			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		656EC38C246929DB00A30C43 /* Products */ = {
+		6555A497247BB01C001F7ED3 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				656EC38B246929DB00A30C43 /* OneRM.app */,
-				6555A47F24798FD7001F7ED3 /* OneRMTests.xctest */,
-			);
-			name = Products;
-			sourceTree = "<group>";
-		};
-		656EC38D246929DB00A30C43 /* OneRM */ = {
-			isa = PBXGroup;
-			children = (
-				65B8F503247401F700618ECD /* l10n */,
-				650940F52472AC65000BB84D /* Playgrounds */,
-				65D04609246FE01400E45D0D /* Models */,
-				656EC3C2246C258600A30C43 /* Defaults.swift */,
-				656EC3B524693AA100A30C43 /* Formulas.swift */,
-				65598427246EF28800A5976E /* Extensions.swift */,
-				656EC38E246929DB00A30C43 /* AppDelegate.swift */,
-				656EC390246929DB00A30C43 /* SceneDelegate.swift */,
 				656EC392246929DB00A30C43 /* MainViewController.swift */,
 				656EC3B92469423900A30C43 /* RepCollectionViewCell.swift */,
 				656EC3BE246AA89800A30C43 /* RMCollectionLayout.swift */,
@@ -192,10 +167,47 @@
 				65B8F5132474485000618ECD /* LogTableViewCell.swift */,
 				6559842D246F1F4F00A5976E /* LicenseViewController.swift */,
 				65598435246F2C5500A5976E /* AboutViewController.swift */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		656EC382246929DA00A30C43 = {
+			isa = PBXGroup;
+			children = (
+				650940EE24727FF0000BB84D /* Default-568h@2x.png */,
+				65EF2E6D246EBE3600A828DE /* doc */,
+				656EC38D246929DB00A30C43 /* OneRM */,
+				6555A48024798FD7001F7ED3 /* OneRMTests */,
+				656EC38C246929DB00A30C43 /* Products */,
+				6555A489247B9CA2001F7ED3 /* Frameworks */,
+			);
+			sourceTree = "<group>";
+		};
+		656EC38C246929DB00A30C43 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				656EC38B246929DB00A30C43 /* OneRM.app */,
+				6555A47F24798FD7001F7ED3 /* OneRMTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		656EC38D246929DB00A30C43 /* OneRM */ = {
+			isa = PBXGroup;
+			children = (
+				656EC38E246929DB00A30C43 /* AppDelegate.swift */,
+				656EC390246929DB00A30C43 /* SceneDelegate.swift */,
+				65598427246EF28800A5976E /* Extensions.swift */,
+				656EC3C2246C258600A30C43 /* Defaults.swift */,
+				656EC3B524693AA100A30C43 /* Formulas.swift */,
+				65B8F503247401F700618ECD /* l10n */,
+				65D04609246FE01400E45D0D /* Model */,
+				6555A497247BB01C001F7ED3 /* Views */,
 				656EC39C246929DC00A30C43 /* Assets.xcassets */,
 				656EC396246929DB00A30C43 /* Main.storyboard */,
 				656EC39E246929DC00A30C43 /* LaunchScreen.storyboard */,
 				656EC3A1246929DC00A30C43 /* Info.plist */,
+				6555A48E247B9D3E001F7ED3 /* OneRM.entitlements */,
 			);
 			path = OneRM;
 			sourceTree = "<group>";
@@ -216,16 +228,16 @@
 			name = de;
 			sourceTree = "<group>";
 		};
-		65D04609246FE01400E45D0D /* Models */ = {
+		65D04609246FE01400E45D0D /* Model */ = {
 			isa = PBXGroup;
 			children = (
 				650940F22472AC0F000BB84D /* LiftDataManager.swift */,
 				65D04607246FDFF500E45D0D /* Exercise.swift */,
 				65D0460A246FE07700E45D0D /* Unit.swift */,
 				65D0460C246FE08500E45D0D /* Lift.swift */,
-				650940EB24727A35000BB84D /* OneRM.xcdatamodeld */,
+				6555A48C247B9D3E001F7ED3 /* OneRM.xcdatamodeld */,
 			);
-			name = Models;
+			name = Model;
 			sourceTree = "<group>";
 		};
 		65EF2E6D246EBE3600A828DE /* doc */ = {
@@ -365,7 +377,6 @@
 				656EC393246929DB00A30C43 /* MainViewController.swift in Sources */,
 				65EF2E6C246E9F3A00A828DE /* PercentageTableViewCell.swift in Sources */,
 				6559842A246EFECE00A5976E /* ExercisesTableViewController.swift in Sources */,
-				650940F02472857A000BB84D /* OneRM.xcdatamodeld in Sources */,
 				656EC3BF246AA89800A30C43 /* RMCollectionLayout.swift in Sources */,
 				659E63F5246D3367004B9E20 /* PlateTableViewCell.swift in Sources */,
 				65B8F5142474485000618ECD /* LogTableViewCell.swift in Sources */,
@@ -377,6 +388,7 @@
 				6559842E246F1F4F00A5976E /* LicenseViewController.swift in Sources */,
 				659E63F3246D1E79004B9E20 /* WeightsViewController.swift in Sources */,
 				656EC3C3246C258600A30C43 /* Defaults.swift in Sources */,
+				6555A48F247B9D3E001F7ED3 /* OneRM.xcdatamodeld in Sources */,
 				650940F32472AC0F000BB84D /* LiftDataManager.swift in Sources */,
 				6559842C246F010100A5976E /* ExerciseTableViewCell.swift in Sources */,
 				65D0460B246FE07700E45D0D /* Unit.swift in Sources */,
@@ -582,6 +594,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OneRM/OneRM.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64627RE2QD;
@@ -593,6 +607,7 @@
 				MARKETING_VERSION = "1.0-BETA";
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
 				PRODUCT_NAME = OneRM;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -602,6 +617,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = OneRM/OneRM.entitlements;
+				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = 64627RE2QD;
@@ -613,6 +630,7 @@
 				MARKETING_VERSION = "1.0-BETA";
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
 				PRODUCT_NAME = OneRM;
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -651,12 +669,12 @@
 /* End XCConfigurationList section */
 
 /* Begin XCVersionGroup section */
-		650940EB24727A35000BB84D /* OneRM.xcdatamodeld */ = {
+		6555A48C247B9D3E001F7ED3 /* OneRM.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				650940EC24727A35000BB84D /* OneRM.xcdatamodel */,
+				6555A48D247B9D3E001F7ED3 /* OneRM.xcdatamodel */,
 			);
-			currentVersion = 650940EC24727A35000BB84D /* OneRM.xcdatamodel */;
+			currentVersion = 6555A48D247B9D3E001F7ED3 /* OneRM.xcdatamodel */;
 			path = OneRM.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
