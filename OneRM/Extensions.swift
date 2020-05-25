@@ -14,3 +14,13 @@ extension Double {
         return abs(self - other) < epsilon
     }
 }
+
+extension ClosedRange {
+    func clamp(value: Bound) -> Bound {
+        return self.lowerBound > value
+            ? self.lowerBound
+            : (self.upperBound < value
+                ? self.upperBound
+                : value)
+    }
+}

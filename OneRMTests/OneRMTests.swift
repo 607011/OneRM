@@ -99,6 +99,15 @@ class OneRMTests: XCTestCase {
         }
     }
 
+    func testClosedRange() {
+        let range = 1...12
+        XCTAssert(range.clamp(value: 0) == 1)
+        for i in range {
+            XCTAssert(range.clamp(value: i) == i)
+        }
+        XCTAssert(range.clamp(value: 13) == 12)
+    }
+
     func testPerformanceExample() {
         measure {
         }

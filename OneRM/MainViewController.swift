@@ -10,7 +10,8 @@ class MainViewController: UIViewController {
 
     static let WeightDigitCount: Int = 5
     static let WeightData: [[Int]] = [[Int]](repeating: Array(0...9), count: MVC.WeightDigitCount)
-    static let RepData: [Int] = Array(1...12)
+    static let RepInterval: ClosedRange = 1...12
+    static let RepData: [Int] = Array(RepInterval)
     static let DefaultRepsInView: Int = 12
 
     @IBOutlet weak var weightPicker: UIPickerView!
@@ -58,9 +59,10 @@ class MainViewController: UIViewController {
             weightPicker.selectRow(row, inComponent: idx, animated: false)
             divisor /= 10
         }
-        reps = min(UserDefaults.standard.integer(forKey: RepsKey), MVC.RepData.last!)
-        guard let row = MVC.RepData.firstIndex(of: reps) else { return }
-        repsPicker.selectRow(row, inComponent: 0, animated: false)
+        reps = MVC.RepInterval.clamp(value: UserDefaults.standard.integer(forKey: RepsKey))
+        if let row = MVC.RepData.firstIndex(of: reps) {
+            repsPicker.selectRow(row, inComponent: 0, animated: false)
+        }
         if let layout = repsCollectionView?.collectionViewLayout as? RMCollectionLayout {
             layout.delegate = self
         }
