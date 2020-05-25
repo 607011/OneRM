@@ -22,6 +22,8 @@ class MainViewController: UIViewController {
     var massUnit: String = DefaultMassUnit
     var formula: OneRMFormula = Brzycki()
 
+    private var cellWidth: CGFloat = 130
+
     var reps: Int = 1 {
         didSet {
             repsCollectionView.reloadData()
@@ -63,7 +65,7 @@ class MainViewController: UIViewController {
         if let row = MVC.RepData.firstIndex(of: reps) {
             repsPicker.selectRow(row, inComponent: 0, animated: false)
         }
-        if let layout = repsCollectionView?.collectionViewLayout as? RMCollectionLayout {
+        if let layout = repsCollectionView?.collectionViewLayout as? RepCollectionViewCellLayout {
             layout.delegate = self
         }
         if UserDefaults.standard.object(forKey: FormulasKey) == nil {
@@ -74,6 +76,10 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
+        let attributedString = NSAttributedString(string: "8888.8 \(massUnit)", attributes: [.font : UIFont.systemFont(ofSize: 25.0, weight: .semibold)])
+        cellWidth = ceil(attributedString.size().width + self.repsCollectionView.contentInset.left + self.repsCollectionView.contentInset.right)
+        debugPrint("cellWidth = \(cellWidth)")
+        debugPrint(self.repsCollectionView.contentInset.left, self.repsCollectionView.contentInset.right)
         repsCollectionView.reloadData()
         if UserDefaults.standard.object(forKey: FormulasKey) != nil {
             let activeFormulas = UserDefaults.standard.object(forKey: FormulasKey) as! [String]
@@ -124,10 +130,10 @@ extension MainViewController {
     }
 }
 
-extension MainViewController: RMCollectionLayoutDelegate {
+extension MainViewController: RepsCollectionViewCellLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, sizeAtIndexPath indexPath: IndexPath) -> CGSize {
-        let itemSize = (repsCollectionView.frame.width - (repsCollectionView.contentInset.left + repsCollectionView.contentInset.right + 10)) / 2
-        return CGSize(width: itemSize, height: 95)
+        let itemSize = cellWidth
+        return CGSize(width: itemSize, height: 80)
     }
 }
 

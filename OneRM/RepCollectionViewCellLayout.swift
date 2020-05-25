@@ -3,16 +3,16 @@
 import Foundation
 import UIKit
 
-protocol RMCollectionLayoutDelegate: AnyObject {
+protocol RepsCollectionViewCellLayoutDelegate: AnyObject {
   func collectionView(_ collectionView: UICollectionView, sizeAtIndexPath indexPath: IndexPath) -> CGSize
 }
 
-class RMCollectionLayout: UICollectionViewLayout {
-    weak var delegate: RMCollectionLayoutDelegate?
+class RepCollectionViewCellLayout: UICollectionViewLayout {
+    weak var delegate: RepsCollectionViewCellLayoutDelegate?
 
     private let cellPadding: CGFloat = 6
-    private let cellWidth: CGFloat = 100
-    private let cellHeight: CGFloat = 85
+    private let cellWidth: CGFloat = 130
+    private let cellHeight: CGFloat = 70
     private var layoutCache: [UICollectionViewLayoutAttributes] = []
     private var contentHeight: CGFloat = 0
     private var contentWidth: CGFloat {
@@ -27,7 +27,7 @@ class RMCollectionLayout: UICollectionViewLayout {
 
     override func prepare() {
         guard let collectionView = collectionView else { return }
-        let numberOfColumns: Int = Int(contentWidth / (cellWidth + 2 * cellPadding))
+        let numberOfColumns: Int = Int(contentWidth / cellWidth)
         let columnWidth: CGFloat = contentWidth / CGFloat(numberOfColumns)
         var column: Int = 0
         var yOffset: [CGFloat] = .init(repeating: 0, count: numberOfColumns)

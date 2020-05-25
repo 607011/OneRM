@@ -9,13 +9,12 @@ class LogTableViewCell: UITableViewCell {
     @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var exerciseLabel: UILabel!
 
-    let dateFormatter = DateFormatter()
-
-    convenience init() {
-        self.init()
+    let dateFormatter: DateFormatter = {
+        let dateFormatter = DateFormatter()
         dateFormatter.calendar = Locale.current.calendar
         dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMYHm", options: 0, locale: Locale.current)
-    }
+        return dateFormatter
+    }()
 
     var lift: LiftData? {
         didSet {
