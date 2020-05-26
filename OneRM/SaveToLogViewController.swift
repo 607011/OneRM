@@ -12,22 +12,35 @@ class SaveToLogViewController: UITableViewController {
     @IBOutlet weak var datePicker: UIDatePicker!
 
     var exercises: [Exercise] = []
-    var exercise: Exercise?
+    var exercise: Exercise? {
+        didSet {
+            UserDefaults.standard.set(exercise?.name, forKey: LastSavedExerciseKey)
+        }
+    }
+    var date: Date? {
+        didSet {
+            UserDefaults.standard.set(date, forKey: LastSaveDateKey)
+        }
+    }
+    var rating: Int = 0 {
+        didSet {
+            UserDefaults.standard.set(rating, forKey: LastSaveRatingKey)
+            for i in 0..<rating {
+                starButton[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
+            }
+            for i in rating..<starButton.count {
+                starButton[i].setImage(UIImage(systemName: "star"), for: .normal)
+            }
+        }
+    }
     var reps: Int = 0
     var massUnit: String = DefaultMassUnit
     var weight: Double = 0
     var oneRM: Double = 0
-    var rating: Int = 0
 
     @IBAction func starButtonPressed(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
         rating = (button.tag == 1 && rating == 1) ? 0 : button.tag
-        for i in 0..<rating {
-            starButton[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
-        }
-        for i in rating..<starButton.count {
-            starButton[i].setImage(UIImage(systemName: "star"), for: .normal)
-        }
     }
 
     override func viewDidLoad() {
@@ -51,10 +64,18 @@ class SaveToLogViewController: UITableViewController {
             exercisePicker.selectRow(idx, inComponent: 0, animated: false)
             exercise = exercises[idx]
         }
+        if UserDefaults.standard.object(forKey: LastSaveDateKey) != nil {
+            guard let lastDate = UserDefaults.standard.object(forKey: LastSaveDateKey) as? Date else { return }
+            datePicker.date = lastDate
+        }
+        if UserDefaults.standard.object(forKey: LastSaveRatingKey) != nil {
+            rating = UserDefaults.standard.integer(forKey: LastSaveRatingKey)
+        }
     }
 
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
+        date = datePicker.date
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
@@ -84,7 +105,6 @@ extension SaveToLogViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         exercise = exercises[row]
-        UserDefaults.standard.set(exercise?.name, forKey: LastSavedExerciseKey)
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
