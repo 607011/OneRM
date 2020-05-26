@@ -22,6 +22,11 @@ class SaveToLogViewController: UITableViewController {
             UserDefaults.standard.set(date, forKey: LastSaveDateKey)
         }
     }
+    var notes: String? {
+        didSet {
+            UserDefaults.standard.set(notes, forKey: LastSaveNotesKey)
+        }
+    }
     var rating: Int = 0 {
         didSet {
             UserDefaults.standard.set(rating, forKey: LastSaveRatingKey)
@@ -68,6 +73,10 @@ class SaveToLogViewController: UITableViewController {
             guard let lastDate = UserDefaults.standard.object(forKey: LastSaveDateKey) as? Date else { return }
             datePicker.date = lastDate
         }
+        if UserDefaults.standard.object(forKey: LastSaveNotesKey) != nil {
+            guard let lastNotes = UserDefaults.standard.string(forKey: LastSaveNotesKey) else { return }
+            notesTextView.text = lastNotes
+        }
         if UserDefaults.standard.object(forKey: LastSaveRatingKey) != nil {
             rating = UserDefaults.standard.integer(forKey: LastSaveRatingKey)
         }
@@ -76,6 +85,7 @@ class SaveToLogViewController: UITableViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         date = datePicker.date
+        notes = notesTextView.text
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
