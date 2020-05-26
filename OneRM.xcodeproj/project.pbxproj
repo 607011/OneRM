@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		650940EF24727FF0000BB84D /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 650940EE24727FF0000BB84D /* Default-568h@2x.png */; };
 		650940F32472AC0F000BB84D /* LiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650940F22472AC0F000BB84D /* LiftDataManager.swift */; };
 		6555A46A24784848001F7ED3 /* FormulaViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A46924784848001F7ED3 /* FormulaViewController.swift */; };
 		6555A46C247848E1001F7ED3 /* FormulaTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A46B247848E1001F7ED3 /* FormulaTableViewCell.swift */; };
@@ -104,7 +103,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		650940EE24727FF0000BB84D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
 		650940F22472AC0F000BB84D /* LiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftDataManager.swift; sourceTree = "<group>"; };
 		6555A46924784848001F7ED3 /* FormulaViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaViewController.swift; sourceTree = "<group>"; };
 		6555A46B247848E1001F7ED3 /* FormulaTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormulaTableViewCell.swift; sourceTree = "<group>"; };
@@ -219,7 +217,6 @@
 		656EC382246929DA00A30C43 = {
 			isa = PBXGroup;
 			children = (
-				650940EE24727FF0000BB84D /* Default-568h@2x.png */,
 				65EF2E6D246EBE3600A828DE /* doc */,
 				656EC38D246929DB00A30C43 /* OneRM */,
 				6555A48024798FD7001F7ED3 /* OneRMTests */,
@@ -440,7 +437,6 @@
 				65598430246F21B800A5976E /* LICENSE in Resources */,
 				65B8F50B2474024800618ECD /* Localizable.strings in Resources */,
 				656EC398246929DB00A30C43 /* Main.storyboard in Resources */,
-				650940EF24727FF0000BB84D /* Default-568h@2x.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
