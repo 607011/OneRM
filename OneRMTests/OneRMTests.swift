@@ -8,6 +8,7 @@ class OneRMTests: XCTestCase {
 
     let weight: Double = 100.0
     let epsilon = 0.000000001
+    let repRange = 1...12
 
     override func setUp() {
         // Put setup code here. This method is called before the invocation of each test method in the class.
@@ -19,7 +20,7 @@ class OneRMTests: XCTestCase {
 
     func testBrzycki() {
         let formula = Brzycki()
-        for reps in 1...12 {
+        for reps in repRange {
             let oneRM = formula.oneRM(weight: weight, reps: reps)
             let rm = formula.rm(for: reps, with: oneRM)
             debugPrint(reps, oneRM, rm)
@@ -32,7 +33,7 @@ class OneRMTests: XCTestCase {
 
     func testEpley() {
         let formula = Epley()
-        for reps in 1...12 {
+        for reps in repRange {
             let oneRM = formula.oneRM(weight: weight, reps: reps)
             let rm = formula.rm(for: reps, with: oneRM)
             XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
@@ -44,7 +45,7 @@ class OneRMTests: XCTestCase {
 
     func testMcGlothin() {
         let formula = McGlothin()
-        for reps in 1...12 {
+        for reps in repRange {
             let oneRM = formula.oneRM(weight: weight, reps: reps)
             let rm = formula.rm(for: reps, with: oneRM)
             XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
@@ -56,7 +57,7 @@ class OneRMTests: XCTestCase {
 
     func testLombardi() {
         let formula = Lombardi()
-        for reps in 1...12 {
+        for reps in repRange {
             let oneRM = formula.oneRM(weight: weight, reps: reps)
             let rm = formula.rm(for: reps, with: oneRM)
             XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
@@ -68,7 +69,7 @@ class OneRMTests: XCTestCase {
 
     func testMayhew() {
         let formula = Mayhew()
-        for reps in 1...12 {
+        for reps in repRange {
             let oneRM = formula.oneRM(weight: weight, reps: reps)
             let rm = formula.rm(for: reps, with: oneRM)
             XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
@@ -80,7 +81,7 @@ class OneRMTests: XCTestCase {
 
     func testOConner() {
         let formula = OConner()
-        for reps in 1...12 {
+        for reps in repRange {
             let oneRM = formula.oneRM(weight: weight, reps: reps)
             let rm = formula.rm(for: reps, with: oneRM)
             XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
@@ -92,7 +93,7 @@ class OneRMTests: XCTestCase {
 
     func testWathen() {
         let formula = Wathen()
-        for reps in 1...12 {
+        for reps in repRange {
             let oneRM = formula.oneRM(weight: weight, reps: reps)
             let rm = formula.rm(for: reps, with: oneRM)
             XCTAssert(weight.almostEquals(rm, epsilon: epsilon))
@@ -100,12 +101,12 @@ class OneRMTests: XCTestCase {
     }
 
     func testClosedRange() {
-        let range = 1...12
-        XCTAssert(range.clamp(value: 0) == 1)
+        let range = repRange
+        XCTAssert(range.clamp(value: repRange.lowerBound - 1) == 1)
         for i in range {
             XCTAssert(range.clamp(value: i) == i)
         }
-        XCTAssert(range.clamp(value: 13) == 12)
+        XCTAssert(range.clamp(value: repRange.upperBound + 1) == 12)
     }
 
     func testPerformanceExample() {
