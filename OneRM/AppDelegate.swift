@@ -31,6 +31,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if UserDefaults.standard.object(forKey: PercentStepKey) == nil {
             UserDefaults.standard.set(DefaultPercentStep, forKey: PercentStepKey)
         }
+        if UserDefaults.standard.object(forKey: FormulasKey) == nil {
+            UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: FormulasKey)
+        }
+
 
         // UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
         if isFirstStart() {

@@ -68,9 +68,6 @@ class MainViewController: UIViewController {
         if let layout = repsCollectionView?.collectionViewLayout as? RepCollectionViewCellLayout {
             layout.delegate = self
         }
-        if UserDefaults.standard.object(forKey: FormulasKey) == nil {
-            UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: FormulasKey)
-        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
