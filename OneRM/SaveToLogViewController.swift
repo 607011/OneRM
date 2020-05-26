@@ -2,10 +2,11 @@
 
 import UIKit
 
-class SaveToLogViewController: UIViewController {
+class SaveToLogViewController: UITableViewController {
 
     @IBOutlet weak var exercisePicker: UIPickerView!
-    @IBOutlet weak var repsAndWeightField: UITextField!
+    @IBOutlet weak var repsAndWeightLabel: UILabel!
+    @IBOutlet weak var oneRMLabel: UILabel!
     @IBOutlet var starButton: [UIButton]!
     @IBOutlet weak var notesTextView: UITextView!
 
@@ -41,7 +42,8 @@ class SaveToLogViewController: UIViewController {
         super.viewWillAppear(animated)
         massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
         exercises = LiftDataManager.shared.loadExercises()
-        repsAndWeightField.text = "\(reps) × \(weight.rounded(toPlaces: 1)) \(massUnit) ≈ \(oneRM.rounded(toPlaces: 1)) \(massUnit) 1RM"
+        repsAndWeightLabel.text = "\(reps) × \(weight.rounded(toPlaces: 1)) \(massUnit)"
+        oneRMLabel.text = "\(oneRM.rounded(toPlaces: 1)) \(massUnit)"
         if UserDefaults.standard.object(forKey: LastSavedExerciseKey) != nil {
             let lastSavedExercise = UserDefaults.standard.string(forKey: LastSavedExerciseKey)
             guard let idx = exercises.firstIndex(where: { $0.name == lastSavedExercise }) else { return }

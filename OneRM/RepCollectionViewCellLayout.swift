@@ -10,13 +10,20 @@ protocol RepsCollectionViewCellLayoutDelegate: AnyObject {
 class RepCollectionViewCellLayout: UICollectionViewLayout {
     weak var delegate: RepsCollectionViewCellLayoutDelegate?
 
-    private let cellPadding: CGFloat = 6
-    private let cellWidth: CGFloat = 130
-    private let cellHeight: CGFloat = 70
+    private var cellWidth: CGFloat {
+        guard let collectionView = collectionView else { return 130 }
+        let indexPath = IndexPath(item: 0, section: 0)
+        let cellSize = delegate?.collectionView(collectionView, sizeAtIndexPath: indexPath)
+        return cellSize?.width ?? 130
+    }
+    private let cellHeight: CGFloat = 130
+    private var cellSize: CGSize {
+        return CGSize(width: cellWidth, height: cellHeight)
+    }
     private var layoutCache: [UICollectionViewLayoutAttributes] = []
     private var contentHeight: CGFloat = 0
     private var contentWidth: CGFloat {
-        guard let collectionView = collectionView else { return 0 }
+        guard let collectionView = collectionView else { return 130 }
         let insets = collectionView.contentInset
         return collectionView.bounds.width - (insets.left + insets.right)
     }
@@ -27,24 +34,26 @@ class RepCollectionViewCellLayout: UICollectionViewLayout {
 
     override func prepare() {
         guard let collectionView = collectionView else { return }
+        /// set up layout cache
         let numberOfColumns: Int = Int(contentWidth / cellWidth)
         let columnWidth: CGFloat = contentWidth / CGFloat(numberOfColumns)
         var column: Int = 0
         var yOffset: [CGFloat] = .init(repeating: 0, count: numberOfColumns)
         for item in 0..<collectionView.numberOfItems(inSection: 0) {
             let indexPath = IndexPath(item: item, section: 0)
-            let cellSize = delegate?.collectionView(collectionView, sizeAtIndexPath: indexPath) ?? CGSize(width: cellWidth, height: cellHeight)
+            let cellSize = delegate?.collectionView(collectionView, sizeAtIndexPath: indexPath) ?? self.cellSize
             let frame = CGRect(x: CGFloat(column) * columnWidth,
                                y: yOffset[column],
                                width: cellSize.width,
                                height: cellSize.height)
-            let insetFrame = frame.insetBy(dx: cellPadding, dy: cellPadding)
             let attributes = UICollectionViewLayoutAttributes(forCellWith: indexPath)
-            attributes.frame = insetFrame
+            attributes.frame = frame
             layoutCache.append(attributes)
             contentHeight = max(contentHeight, frame.maxY)
             yOffset[column] += cellSize.height
-            column = column < (numberOfColumns - 1) ? (column + 1) : 0
+            column = column < (numberOfColumns - 1)
+                ? column + 1
+                : 0
         }
     }
 

@@ -14,30 +14,30 @@ class MainViewController: UIViewController {
     static let RepData: [Int] = Array(RepInterval)
     static let DefaultRepsInView: Int = 12
 
-    @IBOutlet weak var weightPicker: UIPickerView!
-    @IBOutlet weak var repsPicker: UIPickerView!
-    @IBOutlet weak var repsCollectionView: UICollectionView!
+    @IBOutlet private weak var weightPicker: UIPickerView!
+    @IBOutlet private weak var repsPicker: UIPickerView!
+    @IBOutlet private weak var repsCollectionView: UICollectionView!
 
-    var repsInView: Int = DefaultRepsInView
-    var massUnit: String = DefaultMassUnit
-    var formula: OneRMFormula = Brzycki()
+    private var repsInView: Int = DefaultRepsInView
+    private var massUnit: String = DefaultMassUnit
+    private var formula: OneRMFormula = Brzycki()
 
     private var cellWidth: CGFloat = 130
 
-    var reps: Int = 1 {
+    private var reps: Int = 1 {
         didSet {
             repsCollectionView.reloadData()
             UserDefaults.standard.set(reps, forKey: RepsKey)
         }
     }
-    var weight: Double = 0 {
+    private var weight: Double = 0 {
         didSet {
             repsCollectionView.reloadData()
             UserDefaults.standard.set(weight, forKey: WeightKey)
         }
     }
 
-    var oneRM: Double {
+    private var oneRM: Double {
         get {
             return formula.oneRM(weight: weight, reps: reps)
         }
@@ -76,10 +76,11 @@ class MainViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
+
+        /// cellWidth must be recalculated on every appearance because massUnit could have changed
         let attributedString = NSAttributedString(string: "8888.8 \(massUnit)", attributes: [.font : UIFont.systemFont(ofSize: 25.0, weight: .semibold)])
-        cellWidth = ceil(attributedString.size().width + self.repsCollectionView.contentInset.left + self.repsCollectionView.contentInset.right)
-        debugPrint("cellWidth = \(cellWidth)")
-        debugPrint(self.repsCollectionView.contentInset.left, self.repsCollectionView.contentInset.right)
+        cellWidth = ceil(attributedString.size().width)
+
         repsCollectionView.reloadData()
         if UserDefaults.standard.object(forKey: FormulasKey) != nil {
             let activeFormulas = UserDefaults.standard.object(forKey: FormulasKey) as! [String]
