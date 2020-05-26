@@ -81,10 +81,14 @@ class OConner: OneRMFormula {
 
 class Wathen: OneRMFormula {
     func oneRM(weight: Double, reps: Int) -> Double {
-        return 1e2 * weight / (48.8 + 53.8 * exp(-0.075 * Double(reps)))
+        return reps == 1
+            ? weight
+            : 1e2 * weight / (48.8 + 53.8 * exp(-0.075 * Double(reps)))
     }
     func rm(for reps: Int, with oneRM: Double) -> Double {
-        return 1e-2 * oneRM * (48.8 + 53.8 * exp(-0.075 * Double(reps)))
+        return reps == 1
+            ? oneRM
+            : 1e-2 * oneRM * (48.8 + 53.8 * exp(-0.075 * Double(reps)))
     }
 }
 
