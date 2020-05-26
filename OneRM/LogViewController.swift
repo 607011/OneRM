@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
 
@@ -14,7 +14,10 @@ class LogViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        NotificationCenter.default.addObserver(self, selector: #selector(managedObjectContextChanged), name: NSNotification.Name.NSManagedObjectContextObjectsDidChange, object: LiftDataManager.shared.mainContext)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(managedObjectContextChanged),
+                                               name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
+                                               object: LiftDataManager.shared.mainContext)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -23,7 +26,6 @@ class LogViewController: UITableViewController {
     }
 
 }
-
 
 extension LogViewController {
     func refreshUI() {
@@ -50,13 +52,15 @@ extension LogViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "logEntryCell", for: indexPath) as! LogTableViewCell
-        cell.lift =  LiftData(from: lifts[indexPath.row])
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "logEntryCell", for: indexPath) as? LogTableViewCell {
+            cell.lift =  LiftData(from: lifts[indexPath.row])
+            return cell
+        }
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "delete") {  (contextualAction, view, boolValue) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "delete") {  (_, _, _) in
             let removedLift = self.lifts[indexPath.row]
             LiftDataManager.shared.mainContext.delete(removedLift)
             self.lifts.remove(at: indexPath.row)

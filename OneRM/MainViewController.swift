@@ -19,7 +19,7 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var repsCollectionView: UICollectionView!
 
     private var repsInView: Int = DefaultRepsInView
-    private var massUnit: String = DefaultMassUnit
+    private var massUnit: String = defaultMassUnit
     private var formula: OneRMFormula = Brzycki()
 
     private var cellWidth: CGFloat = 130
@@ -27,20 +27,18 @@ class MainViewController: UIViewController {
     private var reps: Int = 1 {
         didSet {
             repsCollectionView.reloadData()
-            UserDefaults.standard.set(reps, forKey: RepsKey)
+            UserDefaults.standard.set(reps, forKey: repsKey)
         }
     }
     private var weight: Double = 0 {
         didSet {
             repsCollectionView.reloadData()
-            UserDefaults.standard.set(weight, forKey: WeightKey)
+            UserDefaults.standard.set(weight, forKey: weightKey)
         }
     }
 
     private var oneRM: Double {
-        get {
-            return formula.oneRM(weight: weight, reps: reps)
-        }
+        return formula.oneRM(weight: weight, reps: reps)
     }
 
     override func viewDidLoad() {
@@ -51,7 +49,7 @@ class MainViewController: UIViewController {
         repsPicker.dataSource = self
         repsCollectionView.delegate = self
         repsCollectionView.dataSource = self
-        weight = UserDefaults.standard.double(forKey: WeightKey)
+        weight = UserDefaults.standard.double(forKey: weightKey)
         var w = weight
         var divisor = pow(10.0, Double(MVC.WeightDigitCount - 2))
         for idx in 0..<MVC.WeightDigitCount {
@@ -61,7 +59,7 @@ class MainViewController: UIViewController {
             weightPicker.selectRow(row, inComponent: idx, animated: false)
             divisor /= 10
         }
-        reps = MVC.RepInterval.clamp(value: UserDefaults.standard.integer(forKey: RepsKey))
+        reps = MVC.RepInterval.clamp(value: UserDefaults.standard.integer(forKey: repsKey))
         if let row = MVC.RepData.firstIndex(of: reps) {
             repsPicker.selectRow(row, inComponent: 0, animated: false)
         }
@@ -72,15 +70,16 @@ class MainViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
+        massUnit = UserDefaults.standard.string(forKey: massUnitKey) ?? defaultMassUnit
 
         /// cellWidth must be recalculated on every appearance because massUnit could have changed
-        let attributedString = NSAttributedString(string: "8888.8 \(massUnit)", attributes: [.font : UIFont.systemFont(ofSize: 25.0, weight: .semibold)])
+        let attributedString = NSAttributedString(string: "8888.8 \(massUnit)",
+            attributes: [.font: UIFont.systemFont(ofSize: 25.0, weight: .semibold)])
         cellWidth = ceil(attributedString.size().width)
 
         repsCollectionView.reloadData()
-        if UserDefaults.standard.object(forKey: FormulasKey) != nil {
-            let activeFormulas = UserDefaults.standard.object(forKey: FormulasKey) as! [String]
+        if UserDefaults.standard.object(forKey: formulasKey) != nil {
+            guard let activeFormulas = UserDefaults.standard.object(forKey: formulasKey) as? [String] else { return }
             formula = activeFormulas.isEmpty
                 ? Brzycki()
                 : MixedOneRM(formulas: activeFormulas)
@@ -99,7 +98,7 @@ class MainViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveToLog" {
-            let destination = segue.destination as! SaveToLogViewController
+            guard let destination = segue.destination as? SaveToLogViewController else { return }
             destination.reps = reps
             destination.weight = weight
             destination.oneRM = oneRM
@@ -110,8 +109,8 @@ class MainViewController: UIViewController {
 
 extension MainViewController {
     func nextLower(weight: Double) -> (Double, [String]) {
-        var plates: [Double] = DefaultPlates
-        let bar: Double = DefaultBarWeight
+        var plates: [Double] = defaultPlates
+        let bar: Double = defaultBarWeight
         if weight < bar {
             return (0, [])
         }
@@ -171,9 +170,9 @@ extension MainViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         switch pickerView {
-            case weightPicker: return 32
-            case repsPicker: return 32
-            default: return 0
+        case weightPicker: return 32
+        case repsPicker: return 32
+        default: return 0
         }
     }
 
@@ -182,7 +181,7 @@ extension MainViewController: UIPickerViewDelegate {
         if pickerView == weightPicker && component == 4 {
             attributedString = NSAttributedString(string: String(MVC.WeightData[component][row]), attributes: [
                 NSAttributedString.Key.backgroundColor: UIColor.gray,
-                NSAttributedString.Key.foregroundColor: UIColor.white,
+                NSAttributedString.Key.foregroundColor: UIColor.white
             ])
         }
         return attributedString
@@ -205,15 +204,17 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "repsCell", for: indexPath as IndexPath) as! RepCollectionViewCell
-        let reps = indexPath.item + 1
-        cell.repLabel.text = "\(reps)RM"
-        let orm = formula.oneRM(weight: self.weight, reps: self.reps)
-        let nrm = formula.rm(for: reps, with: orm)
-        cell.weightLabel.text = "\(String(format: "%.1f", nrm)) \(massUnit)"
-        cell.percentLabel.text = orm.isAlmostNull()
-            ? ""
-            : String(format: "%g%% 1RM", (1e2 * nrm / orm).rounded(toPlaces: 1))
-        return cell
+        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "repsCell", for: indexPath as IndexPath) as? RepCollectionViewCell {
+            let reps = indexPath.item + 1
+            cell.repLabel.text = "\(reps)RM"
+            let orm = formula.oneRM(weight: self.weight, reps: self.reps)
+            let nrm = formula.rm(for: reps, with: orm)
+            cell.weightLabel.text = "\(String(format: "%.1f", nrm)) \(massUnit)"
+            cell.percentLabel.text = orm.isAlmostNull()
+                ? ""
+                : String(format: "%g%% 1RM", (1e2 * nrm / orm).rounded(toPlaces: 1))
+            return cell
+        }
+        return UICollectionViewCell()
     }
 }

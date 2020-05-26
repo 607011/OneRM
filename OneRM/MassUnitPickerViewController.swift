@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import Foundation
 import UIKit
@@ -9,9 +9,9 @@ class MassUnitPickerViewController: UIViewController {
 
     var units: [Unit] = []
 
-    var massUnit: String = DefaultMassUnit {
+    var massUnit: String = defaultMassUnit {
         didSet {
-            UserDefaults.standard.set(massUnit, forKey: MassUnitKey)
+            UserDefaults.standard.set(massUnit, forKey: massUnitKey)
         }
     }
 
@@ -24,12 +24,11 @@ class MassUnitPickerViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
-        guard let row = DefaultUnits.firstIndex(of: massUnit) else { return }
+        let massUnit = UserDefaults.standard.string(forKey: massUnitKey) ?? defaultMassUnit
+        guard let row = defaultUnits.firstIndex(of: massUnit) else { return }
         massUnitPicker.selectRow(row, inComponent: 0, animated: true)
     }
 }
-
 
 extension MassUnitPickerViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
@@ -44,7 +43,6 @@ extension MassUnitPickerViewController: UIPickerViewDelegate {
         return units[row].name
     }
 }
-
 
 extension MassUnitPickerViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

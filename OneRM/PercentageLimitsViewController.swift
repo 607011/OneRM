@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
 
@@ -8,22 +8,21 @@ class PercentageLimitsViewController: UITableViewController {
     @IBOutlet weak var minPercentField: UITextField!
     @IBOutlet weak var percentStepField: UITextField!
 
-
-    private var maxPercent: Int = DefaultMaxPercent {
+    private var maxPercent: Int = defaultMaxPercent {
         didSet {
-            UserDefaults.standard.set(maxPercent, forKey: MaxPercentKey)
+            UserDefaults.standard.set(maxPercent, forKey: maxPercentKey)
         }
     }
 
-    private var minPercent: Int = DefaultMinPercent {
+    private var minPercent: Int = defaultMinPercent {
         didSet {
-            UserDefaults.standard.set(minPercent, forKey: MinPercentKey)
+            UserDefaults.standard.set(minPercent, forKey: minPercentKey)
         }
     }
 
-    private var percentStep: Int = DefaultPercentStep {
+    private var percentStep: Int = defaultPercentStep {
         didSet {
-            UserDefaults.standard.set(percentStep, forKey: PercentStepKey)
+            UserDefaults.standard.set(percentStep, forKey: percentStepKey)
         }
     }
 
@@ -32,14 +31,14 @@ class PercentageLimitsViewController: UITableViewController {
         maxPercentField.delegate = self
         minPercentField.delegate = self
         percentStepField.delegate = self
-        if UserDefaults.standard.object(forKey: MaxPercentKey) != nil {
-            maxPercent = UserDefaults.standard.integer(forKey: MaxPercentKey)
+        if UserDefaults.standard.object(forKey: maxPercentKey) != nil {
+            maxPercent = UserDefaults.standard.integer(forKey: maxPercentKey)
         }
-        if UserDefaults.standard.object(forKey: MinPercentKey) != nil {
-            minPercent = UserDefaults.standard.integer(forKey: MinPercentKey)
+        if UserDefaults.standard.object(forKey: minPercentKey) != nil {
+            minPercent = UserDefaults.standard.integer(forKey: minPercentKey)
         }
-        if UserDefaults.standard.object(forKey: PercentStepKey) != nil {
-            percentStep = UserDefaults.standard.integer(forKey: PercentStepKey)
+        if UserDefaults.standard.object(forKey: percentStepKey) != nil {
+            percentStep = UserDefaults.standard.integer(forKey: percentStepKey)
         }
         NotificationCenter.default.addObserver(
             self,
@@ -50,33 +49,32 @@ class PercentageLimitsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        maxPercentField.text = "\(UserDefaults.standard.integer(forKey: MaxPercentKey))"
-        minPercentField.text = "\(UserDefaults.standard.integer(forKey: MinPercentKey))"
-        percentStepField.text = "\(UserDefaults.standard.integer(forKey: PercentStepKey))"
+        maxPercentField.text = "\(UserDefaults.standard.integer(forKey: maxPercentKey))"
+        minPercentField.text = "\(UserDefaults.standard.integer(forKey: minPercentKey))"
+        percentStepField.text = "\(UserDefaults.standard.integer(forKey: percentStepKey))"
     }
 
-    @objc func keyboardDidShow(notification: Notification) -> Void {
+    @objc func keyboardDidShow(notification: Notification) {
         guard notification.name == UITextField.textDidChangeNotification else { return }
         guard let field = notification.object as? UITextField else { return }
         switch field {
-            case maxPercentField:
-                maxPercent = Int(maxPercentField.text ?? "") ?? DefaultMaxPercent
-            case minPercentField:
-                minPercent = Int(minPercentField.text ?? "") ?? DefaultMinPercent
-            case percentStepField:
-                percentStep = Int(percentStepField.text ?? "") ?? DefaultPercentStep
-            default: break
+        case maxPercentField:
+            maxPercent = Int(maxPercentField.text ?? "") ?? defaultMaxPercent
+        case minPercentField:
+            minPercent = Int(minPercentField.text ?? "") ?? defaultMinPercent
+        case percentStepField:
+            percentStep = Int(percentStepField.text ?? "") ?? defaultPercentStep
+        default: break
         }
     }
 }
-
 
 extension PercentageLimitsViewController: UITextFieldDelegate {
 
     func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
         switch textField {
-        case maxPercentField: fallthrough
-        case minPercentField: fallthrough
+        case maxPercentField: fallthrough // swiftlint:disable:this no_fallthrough_only
+        case minPercentField: fallthrough // swiftlint:disable:this no_fallthrough_only
         case percentStepField:
             let characterSet = CharacterSet(charactersIn: string)
             return CharacterSet.decimalDigits.isSuperset(of: characterSet)

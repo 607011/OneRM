@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
 
@@ -29,7 +29,7 @@ class ExercisesTableViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let destination = segue.destination as! EditExerciseViewController
+        guard let destination = segue.destination as? EditExerciseViewController else { return }
         switch segue.identifier {
         case "addExercise":
             destination.currentExercise = nil
@@ -42,7 +42,7 @@ class ExercisesTableViewController: UITableViewController {
 }
 
 extension ExercisesTableViewController {
-    func updateExerciseOrder() -> Void {
+    func updateExerciseOrder() {
         for (idx, exercise) in exercises.enumerated() {
             exercise.order = Int16(idx)
         }
@@ -60,9 +60,11 @@ extension ExercisesTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as! ExerciseTableViewCell
-        cell.exercise = exercises[indexPath.row]
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as? ExerciseTableViewCell {
+            cell.exercise = exercises[indexPath.row]
+            return cell
+        }
+        return ExerciseTableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -82,7 +84,7 @@ extension ExercisesTableViewController {
     }
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
-        let deleteAction = UIContextualAction(style: .destructive, title: "delete") {  (contextualAction, view, boolValue) in
+        let deleteAction = UIContextualAction(style: .destructive, title: "delete") {  (_, _, _) in
             let removedExercise = self.exercises[indexPath.row]
 
             func deleteInstantly() {
@@ -93,25 +95,28 @@ extension ExercisesTableViewController {
             }
 
             if self.lifts.contains(where: { $0.exercise == removedExercise }) {
-                let alertController = UIAlertController(title: NSLocalizedString("Really delete exercise?", comment: ""), message: NSLocalizedString("There are lifts that refer to this exercise. Deleting the exercise will delete all associated lifts in your log. Do you really want to delete this exercise? ", comment: ""), preferredStyle: .alert)
-                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { action in
+                let alertController = UIAlertController(title: NSLocalizedString("Really delete exercise?", comment: ""),
+                                                        message: NSLocalizedString("There are lifts that refer to this exercise. " +
+                                                            "Deleting the exercise will delete all associated lifts in your log. " +
+                                                            "Do you really want to delete this exercise? ", comment: ""),
+                                                        preferredStyle: .alert)
+                let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
                     self.tableView.reloadRows(at: [indexPath], with: .right)
                 })
-                let okAction = UIAlertAction.init(title: NSLocalizedString("OK", comment: ""), style: .destructive, handler: { action in
+                let okAction = UIAlertAction.init(title: NSLocalizedString("OK", comment: ""), style: .destructive, handler: { _ in
                     deleteInstantly()
                 })
                 alertController.addAction(cancelAction)
                 alertController.addAction(okAction)
                 alertController.preferredAction = cancelAction
                 self.present(alertController, animated: true, completion: nil)
-            }
-            else {
+            } else {
                 deleteInstantly()
             }
         }
         deleteAction.backgroundColor = .systemRed
         deleteAction.image = UIImage(systemName: "trash")
-        let editAction = UIContextualAction(style: .normal, title: "edit") {  (contextualAction, view, boolValue) in
+        let editAction = UIContextualAction(style: .normal, title: "edit") {  (_, _, _) in
             self.currentExercise = self.exercises[indexPath.row]
             self.performSegue(withIdentifier: "editExercise", sender: self)
         }

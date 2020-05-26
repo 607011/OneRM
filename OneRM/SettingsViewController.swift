@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import Foundation
 import UIKit
@@ -12,8 +12,7 @@ class SettingsViewController: UITableViewController {
     var buildDate: Date {
         if let infoPath = Bundle.main.path(forResource: "Info", ofType: "plist"),
             let infoAttr = try? FileManager.default.attributesOfItem(atPath: infoPath),
-            let infoDate = infoAttr[.modificationDate] as? Date
-        {
+            let infoDate = infoAttr[.modificationDate] as? Date {
             return infoDate
         }
         return Date()
@@ -21,23 +20,23 @@ class SettingsViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        let version: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
-        let build: String = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
-        versionLabel.text = "\(version) (\(build))"
         let dateFormatter = DateFormatter()
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.current
         buildDateLabel.text = "\(dateFormatter.string(from: buildDate))"
+        guard let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String  else { return }
+        guard let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else { return }
+        versionLabel.text = "\(version) (\(build))"
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let massUnit = UserDefaults.standard.string(forKey: MassUnitKey)
-        massUnitLabel.text = "\(massUnit ?? DefaultMassUnit)"
-        let maxPercent = UserDefaults.standard.integer(forKey: MaxPercentKey)
-        let minPercent = UserDefaults.standard.integer(forKey: MinPercentKey)
-        let percentStep = UserDefaults.standard.integer(forKey: PercentStepKey)
+        let massUnit = UserDefaults.standard.string(forKey: massUnitKey)
+        massUnitLabel.text = "\(massUnit ?? defaultMassUnit)"
+        let maxPercent = UserDefaults.standard.integer(forKey: maxPercentKey)
+        let minPercent = UserDefaults.standard.integer(forKey: minPercentKey)
+        let percentStep = UserDefaults.standard.integer(forKey: percentStepKey)
         limitsLabel.text = "\(minPercent)…\(maxPercent) +\(percentStep)"
     }
 }

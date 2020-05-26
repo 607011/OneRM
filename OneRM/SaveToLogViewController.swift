@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
 
@@ -14,22 +14,22 @@ class SaveToLogViewController: UITableViewController {
     var exercises: [Exercise] = []
     var exercise: Exercise? {
         didSet {
-            UserDefaults.standard.set(exercise?.name, forKey: LastSavedExerciseKey)
+            UserDefaults.standard.set(exercise?.name, forKey: lastSavedExerciseKey)
         }
     }
     var date: Date? {
         didSet {
-            UserDefaults.standard.set(date, forKey: LastSaveDateKey)
+            UserDefaults.standard.set(date, forKey: lastSaveDateKey)
         }
     }
     var notes: String? {
         didSet {
-            UserDefaults.standard.set(notes, forKey: LastSaveNotesKey)
+            UserDefaults.standard.set(notes, forKey: lastSaveNotesKey)
         }
     }
     var rating: Int = 0 {
         didSet {
-            UserDefaults.standard.set(rating, forKey: LastSaveRatingKey)
+            UserDefaults.standard.set(rating, forKey: lastSaveRatingKey)
             for i in 0..<rating {
                 starButton[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
             }
@@ -39,7 +39,7 @@ class SaveToLogViewController: UITableViewController {
         }
     }
     var reps: Int = 0
-    var massUnit: String = DefaultMassUnit
+    var massUnit: String = defaultMassUnit
     var weight: Double = 0
     var oneRM: Double = 0
 
@@ -59,26 +59,26 @@ class SaveToLogViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
+        massUnit = UserDefaults.standard.string(forKey: massUnitKey) ?? defaultMassUnit
         exercises = LiftDataManager.shared.loadExercises()
         repsAndWeightLabel.text = "\(reps) × \(weight.rounded(toPlaces: 1)) \(massUnit)"
         oneRMLabel.text = "\(oneRM.rounded(toPlaces: 1)) \(massUnit)"
-        if UserDefaults.standard.object(forKey: LastSavedExerciseKey) != nil {
-            let lastSavedExercise = UserDefaults.standard.string(forKey: LastSavedExerciseKey)
+        if UserDefaults.standard.object(forKey: lastSavedExerciseKey) != nil {
+            let lastSavedExercise = UserDefaults.standard.string(forKey: lastSavedExerciseKey)
             guard let idx = exercises.firstIndex(where: { $0.name == lastSavedExercise }) else { return }
             exercisePicker.selectRow(idx, inComponent: 0, animated: false)
             exercise = exercises[idx]
         }
-        if UserDefaults.standard.object(forKey: LastSaveDateKey) != nil {
-            guard let lastDate = UserDefaults.standard.object(forKey: LastSaveDateKey) as? Date else { return }
+        if UserDefaults.standard.object(forKey: lastSaveDateKey) != nil {
+            guard let lastDate = UserDefaults.standard.object(forKey: lastSaveDateKey) as? Date else { return }
             datePicker.date = lastDate
         }
-        if UserDefaults.standard.object(forKey: LastSaveNotesKey) != nil {
-            guard let lastNotes = UserDefaults.standard.string(forKey: LastSaveNotesKey) else { return }
+        if UserDefaults.standard.object(forKey: lastSaveNotesKey) != nil {
+            guard let lastNotes = UserDefaults.standard.string(forKey: lastSaveNotesKey) else { return }
             notesTextView.text = lastNotes
         }
-        if UserDefaults.standard.object(forKey: LastSaveRatingKey) != nil {
-            rating = UserDefaults.standard.integer(forKey: LastSaveRatingKey)
+        if UserDefaults.standard.object(forKey: lastSaveRatingKey) != nil {
+            rating = UserDefaults.standard.integer(forKey: lastSaveRatingKey)
         }
     }
 
@@ -107,7 +107,6 @@ class SaveToLogViewController: UITableViewController {
 
 }
 
-
 extension SaveToLogViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         return exercises.count
@@ -121,7 +120,6 @@ extension SaveToLogViewController: UIPickerViewDelegate {
         return exercises[row].name
     }
 }
-
 
 extension SaveToLogViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

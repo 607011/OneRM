@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
 
@@ -29,9 +29,9 @@ class EditExerciseViewController: UIViewController {
     @IBAction func saveExercise(_ sender: Any) {
         if currentExercise == nil {
             let exerciseData = ExerciseData(name: exerciseField.text ?? "", order: -1)
+            // swiftlint:disable:next force_try
             try! LiftDataManager.shared.save(exercise: exerciseData)
-        }
-        else {
+        } else {
             currentExercise!.name = exerciseField.text ?? ""
             LiftDataManager.shared.save()
         }

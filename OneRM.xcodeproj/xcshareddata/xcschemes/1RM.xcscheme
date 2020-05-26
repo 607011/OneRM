@@ -32,7 +32,7 @@
             skipped = "NO">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "656EC3A5246929DC00A30C43"
+               BlueprintIdentifier = "6555A47E24798FD7001F7ED3"
                BuildableName = "OneRMTests.xctest"
                BlueprintName = "OneRMTests"
                ReferencedContainer = "container:OneRM.xcodeproj">

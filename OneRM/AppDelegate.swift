@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
 import CoreData
@@ -13,28 +13,27 @@ enum AppError: Error {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if UserDefaults.standard.object(forKey: BarWeightKey) == nil {
-            UserDefaults.standard.set(DefaultBarWeight, forKey: BarWeightKey)
+        if UserDefaults.standard.object(forKey: barWeightKey) == nil {
+            UserDefaults.standard.set(defaultBarWeight, forKey: barWeightKey)
         }
-        if UserDefaults.standard.object(forKey: MassUnitKey) == nil {
-            UserDefaults.standard.set(DefaultMassUnit, forKey: MassUnitKey)
+        if UserDefaults.standard.object(forKey: massUnitKey) == nil {
+            UserDefaults.standard.set(defaultMassUnit, forKey: massUnitKey)
         }
-        if UserDefaults.standard.object(forKey: PlatesKey) == nil {
-            UserDefaults.standard.set(DefaultPlates, forKey: PlatesKey)
+        if UserDefaults.standard.object(forKey: platesKey) == nil {
+            UserDefaults.standard.set(defaultPlates, forKey: platesKey)
         }
-        if UserDefaults.standard.object(forKey: MaxPercentKey) == nil {
-            UserDefaults.standard.set(DefaultMaxPercent, forKey: MaxPercentKey)
+        if UserDefaults.standard.object(forKey: maxPercentKey) == nil {
+            UserDefaults.standard.set(defaultMaxPercent, forKey: maxPercentKey)
         }
-        if UserDefaults.standard.object(forKey: MinPercentKey) == nil {
-            UserDefaults.standard.set(DefaultMinPercent, forKey: MinPercentKey)
+        if UserDefaults.standard.object(forKey: minPercentKey) == nil {
+            UserDefaults.standard.set(defaultMinPercent, forKey: minPercentKey)
         }
-        if UserDefaults.standard.object(forKey: PercentStepKey) == nil {
-            UserDefaults.standard.set(DefaultPercentStep, forKey: PercentStepKey)
+        if UserDefaults.standard.object(forKey: percentStepKey) == nil {
+            UserDefaults.standard.set(defaultPercentStep, forKey: percentStepKey)
         }
-        if UserDefaults.standard.object(forKey: FormulasKey) == nil {
-            UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: FormulasKey)
+        if UserDefaults.standard.object(forKey: formulasKey) == nil {
+            UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: formulasKey)
         }
-
 
         // UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
         if isFirstStart() {
@@ -72,11 +71,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
          error conditions that could cause the creation of the store to fail.
         */
         let container = NSPersistentCloudKitContainer(name: "OneRM")
-        container.loadPersistentStores(completionHandler: { (storeDescription, error) in
+        container.loadPersistentStores(completionHandler: { (_, error) in
             if let error = error as NSError? {
-                // Replace this implementation with code to handle the error appropriately.
-                // fatalError() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development.
-                 
                 /*
                  Typical reasons for an error here include:
                  * The parent directory does not exist, cannot be created, or disallows writing.
@@ -98,8 +94,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if context.hasChanges {
             do {
                 try context.save()
-            }
-            catch {
+            } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 let nserror = error as NSError
                 debugPrint("Unresolved error \(nserror), \(nserror.userInfo)")
@@ -109,28 +104,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 }
 
-
 extension AppDelegate {
 
     func isFirstStart() -> Bool {
         return !UserDefaults.standard.bool(forKey: "appSuccessfullyInitialized")
     }
 
-    func completeFirstLaunch(_ error: AppError) -> Void {
+    func completeFirstLaunch(_ error: AppError) {
         if error == .initialized {
             UserDefaults.standard.set(true, forKey: "appSuccessfullyInitialized")
-        }
-        else {
+        } else {
             debugPrint("ERROR: 1st launch not successfully completed")
         }
     }
 
-    func addDefaultEntities(_ completionHandler: (_ error: AppError) -> Void) -> Void {
+    func addDefaultEntities(_ completionHandler: (_ error: AppError) -> Void) {
 
-        let exercises = DefaultExercises.enumerated().map { ExerciseData(name: $0.1, order: Int16($0.0)) }
+        let exercises = defaultExercises.enumerated().map { ExerciseData(name: $0.1, order: Int16($0.0)) }
+        // swiftlint:disable:next force_try
         try! LiftDataManager.shared.save(exercises: exercises)
 
-        let units = DefaultUnits.map { UnitData(name: $0) }
+        let units = defaultUnits.map { UnitData(name: $0) }
+        // swiftlint:disable:next force_try
         try! LiftDataManager.shared.save(units: units)
 
         completionHandler(.initialized)

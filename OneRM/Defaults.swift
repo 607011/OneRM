@@ -1,22 +1,22 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import Foundation
 
-let DefaultUnits: [String] = [
+let defaultUnits: [String] = [
     "kg",
     "lbs"
 ]
-let DefaultMassUnit: String = Locale.current.usesMetricSystem
+let defaultMassUnit: String = Locale.current.usesMetricSystem
     ? "kg"
     : "lbs"
-let DefaultBarWeight: Double = Locale.current.usesMetricSystem
+let defaultBarWeight: Double = Locale.current.usesMetricSystem
     ? 20
     : 44.0
-let DefaultPlates: [Double] = Locale.current.usesMetricSystem
+let defaultPlates: [Double] = Locale.current.usesMetricSystem
     ? [50, 25, 20, 15, 10, 5, 2.5, 2, 1.5, 1.25, 0.5]
     : [110.23, 55.12, 44.09, 33.07, 22.05, 11.02, 5.51, 4.41, 3.31, 2.2, 1.1]
 
-let DefaultPlateColors: [String] = [
+let defaultPlateColors: [String] = [
     NSLocalizedString("black", comment: ""),
     NSLocalizedString("red", comment: ""),
     NSLocalizedString("blue", comment: ""),
@@ -30,7 +30,7 @@ let DefaultPlateColors: [String] = [
     NSLocalizedString("white", comment: "")
 ]
 
-let DefaultExercises: [String] = [
+let defaultExercises: [String] = [
     "Bench press",
     "Deadlift",
     "Squat",
@@ -40,24 +40,24 @@ let DefaultExercises: [String] = [
     "Push press",
     "Power clean",
     "Snatch",
-    "Clean & jerk",
+    "Clean & jerk"
 ]
 
-let DefaultMaxPercent = 120
-let DefaultMinPercent = 10
-let DefaultPercentStep = 5
+let defaultMaxPercent = 120
+let defaultMinPercent = 10
+let defaultPercentStep = 5
 
-let MassUnitKey = "massUnit"
-let BarWeightKey = "barWeight"
-let WeightKey = "weight"
-let RepsKey = "reps"
-let PlatesKey = "plates"
-let MaxPercentKey = "maxPercent"
-let MinPercentKey = "minPercent"
-let PercentStepKey = "percentStep"
-let ExercisesKey = "exercises"
-let LastSavedExerciseKey = "lastSavedExercise"
-let LastSaveDateKey = "lastSaveDate"
-let LastSaveRatingKey = "lastSaveRating"
-let LastSaveNotesKey = "lastSaveNotes"
-let FormulasKey = "formulas"
+let massUnitKey = "massUnit"
+let barWeightKey = "barWeight"
+let weightKey = "weight"
+let repsKey = "reps"
+let platesKey = "plates"
+let maxPercentKey = "maxPercent"
+let minPercentKey = "minPercent"
+let percentStepKey = "percentStep"
+let exercisesKey = "exercises"
+let lastSavedExerciseKey = "lastSavedExercise"
+let lastSaveDateKey = "lastSaveDate"
+let lastSaveRatingKey = "lastSaveRating"
+let lastSaveNotesKey = "lastSaveNotes"
+let formulasKey = "formulas"

@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import Foundation
 
@@ -101,11 +101,11 @@ class MixedOneRM: OneRMFormula {
         self.formulas = formulas.map { Formula(rawValue: $0) ?? .brzycki }
     }
     func oneRM(weight: Double, reps: Int) -> Double {
-        let sum = formulas.map({ DefaultFormulas[$0]!.oneRM(weight: weight, reps: reps) }).reduce(0, +)
+        let sum = formulas.map({ defaultFormulas[$0]!.oneRM(weight: weight, reps: reps) }).reduce(0, +)
         return sum / Double(formulas.count)
     }
     func rm(for reps: Int, with oneRM: Double) -> Double {
-        let sum = formulas.map({ DefaultFormulas[$0]!.rm(for: reps, with: oneRM) }).reduce(0, +)
+        let sum = formulas.map({ defaultFormulas[$0]!.rm(for: reps, with: oneRM) }).reduce(0, +)
         return sum / Double(formulas.count)
     }
 }
@@ -120,12 +120,12 @@ enum Formula: String {
     case wathen = "Wathen"
 }
 
-let DefaultFormulas: [Formula:OneRMFormula] = [
+let defaultFormulas: [Formula: OneRMFormula] = [
     .epley: Epley(),
     .brzycki: Brzycki(),
     .mcglothin: McGlothin(),
     .lombardi: Lombardi(),
     .mayhew: Mayhew(),
     .oconner: OConner(),
-    .wathen: Wathen(),
+    .wathen: Wathen()
 ]

@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import Foundation
 import UIKit
@@ -10,15 +10,15 @@ class WeightsViewController: UITableViewController {
 
     private var allowedCharacters = CharacterSet.decimalDigits
 
-    private var plates: [Double] = DefaultPlates {
+    private var plates: [Double] = defaultPlates {
         didSet {
-            UserDefaults.standard.set(plates, forKey: PlatesKey)
+            UserDefaults.standard.set(plates, forKey: platesKey)
         }
     }
 
-    var barWeight: Double = DefaultBarWeight {
+    var barWeight: Double = defaultBarWeight {
         didSet {
-            UserDefaults.standard.set(barWeight, forKey: BarWeightKey)
+            UserDefaults.standard.set(barWeight, forKey: barWeightKey)
         }
     }
 
@@ -27,14 +27,14 @@ class WeightsViewController: UITableViewController {
         tableView.insertSections(IndexSet(), with: .automatic)
         allowedCharacters.insert(charactersIn: Locale.current.decimalSeparator ?? ".,")
         barWeightTextField.delegate = self
-        plates = UserDefaults.standard.object(forKey: PlatesKey) as? [Double] ?? DefaultPlates
+        plates = UserDefaults.standard.object(forKey: platesKey) as? [Double] ?? defaultPlates
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let barWeight = UserDefaults.standard.double(forKey: BarWeightKey)
+        let barWeight = UserDefaults.standard.double(forKey: barWeightKey)
         barWeightTextField.text = "\(barWeight.rounded(toPlaces: 2))"
-        massUnitLabel.text = UserDefaults.standard.string(forKey: MassUnitKey) ?? DefaultMassUnit
+        massUnitLabel.text = UserDefaults.standard.string(forKey: massUnitKey) ?? defaultMassUnit
     }
 }
 

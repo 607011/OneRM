@@ -1,14 +1,14 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
 
 class FormulaTableViewController: UITableViewController {
 
-    var formulas: [Formula] = DefaultFormulas.keys.map({ $0 }).sorted(by: { $0.rawValue < $1.rawValue })
+    var formulas: [Formula] = defaultFormulas.keys.map({ $0 }).sorted(by: { $0.rawValue < $1.rawValue })
 
     var activeFormulas: [String] = [] {
         didSet {
-            UserDefaults.standard.set(activeFormulas, forKey: FormulasKey)
+            UserDefaults.standard.set(activeFormulas, forKey: formulasKey)
         }
     }
 
@@ -16,8 +16,8 @@ class FormulaTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        if UserDefaults.standard.object(forKey: FormulasKey) != nil {
-            activeFormulas = UserDefaults.standard.object(forKey: FormulasKey) as! [String]
+        if UserDefaults.standard.object(forKey: formulasKey) != nil {
+            activeFormulas = UserDefaults.standard.object(forKey: formulasKey) as? [String] ?? [Formula.brzycki.rawValue]
         }
     }
 
@@ -32,7 +32,6 @@ class FormulaTableViewController: UITableViewController {
 
 }
 
-
 extension FormulaTableViewController {
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         return false
@@ -44,11 +43,13 @@ extension FormulaTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
-        let cell = tableView.dequeueReusableCell(withIdentifier: "formulaCell", for: indexPath) as! FormulaTableViewCell
-        cell.formulaLabel.text = formulas[indexPath.row].rawValue
-        cell.formulaSwitch.isOn = activeFormulas.contains(formulas[indexPath.row].rawValue)
-        cell.formulaSwitch.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
-        return cell
+        if let cell = tableView.dequeueReusableCell(withIdentifier: "formulaCell", for: indexPath) as? FormulaTableViewCell {
+            cell.formulaLabel.text = formulas[indexPath.row].rawValue
+            cell.formulaSwitch.isOn = activeFormulas.contains(formulas[indexPath.row].rawValue)
+            cell.formulaSwitch.addTarget(self, action: #selector(switchChanged), for: .valueChanged)
+            return cell
+        }
+        return UITableViewCell()
     }
 
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -68,9 +69,8 @@ extension FormulaTableViewController {
             if !activeFormulas.contains(formula) {
                 activeFormulas.append(formula)
             }
-        }
-        else {
-            activeFormulas.removeAll(where: { $0 == formula } )
+        } else {
+            activeFormulas.removeAll(where: { $0 == formula })
         }
     }
 }
