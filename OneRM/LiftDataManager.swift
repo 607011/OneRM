@@ -127,7 +127,7 @@ class LiftDataManager {
         newLift.reps = lift.reps
         newLift.weight = lift.weight
         newLift.rating = lift.rating
-        newLift.date = Date()
+        newLift.date = lift.date
         newLift.oneRM = lift.oneRM
         newLift.exercise = lift.exercise
         newLift.unit = lift.unit

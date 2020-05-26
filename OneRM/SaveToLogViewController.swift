@@ -9,6 +9,7 @@ class SaveToLogViewController: UITableViewController {
     @IBOutlet weak var oneRMLabel: UILabel!
     @IBOutlet var starButton: [UIButton]!
     @IBOutlet weak var notesTextView: UITextView!
+    @IBOutlet weak var datePicker: UIDatePicker!
 
     var exercises: [Exercise] = []
     var exercise: Exercise?
@@ -48,6 +49,7 @@ class SaveToLogViewController: UITableViewController {
             let lastSavedExercise = UserDefaults.standard.string(forKey: LastSavedExerciseKey)
             guard let idx = exercises.firstIndex(where: { $0.name == lastSavedExercise }) else { return }
             exercisePicker.selectRow(idx, inComponent: 0, animated: false)
+            exercise = exercises[idx]
         }
     }
 
@@ -57,21 +59,18 @@ class SaveToLogViewController: UITableViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoLog" {
-            /// XXX: what if the view segued into appears before the request has finished? Is this possible or not?
-            DispatchQueue.main.async {
-                guard let unit = LiftDataManager.shared.load(unitWithName: self.massUnit),
-                    !self.exercises.isEmpty else { return }
-                let liftData = LiftData(
-                    date: Date(),
-                    reps: Int16(self.reps),
-                    weight: self.weight,
-                    oneRM: self.oneRM,
-                    rating: Int16(self.rating),
-                    notes: self.notesTextView.text,
-                    exercise: self.exercise ?? self.exercises[0],
-                    unit: unit)
-                try? LiftDataManager.shared.save(lift: liftData)
-            }
+            guard let unit = LiftDataManager.shared.load(unitWithName: self.massUnit),
+                !self.exercises.isEmpty else { return }
+            let liftData = LiftData(
+                date: self.datePicker.date,
+                reps: Int16(self.reps),
+                weight: self.weight,
+                oneRM: self.oneRM,
+                rating: Int16(self.rating),
+                notes: self.notesTextView.text,
+                exercise: self.exercise ?? self.exercises[0],
+                unit: unit)
+            try? LiftDataManager.shared.save(lift: liftData)
         }
     }
 
