@@ -1,0 +1,3 @@
+[submodule "OneRM/CDMarkdownKit"]
+	path = OneRM/CDMarkdownKit
+	url = https://github.com/chrisdhaan/CDMarkdownKit.git

@@ -20,8 +20,6 @@
 		6559842C246F010100A5976E /* ExerciseTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559842B246F010100A5976E /* ExerciseTableViewCell.swift */; };
 		6559842E246F1F4F00A5976E /* LicenseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6559842D246F1F4F00A5976E /* LicenseViewController.swift */; };
 		65598430246F21B800A5976E /* LICENSE in Resources */ = {isa = PBXBuildFile; fileRef = 6559842F246F21B800A5976E /* LICENSE */; };
-		65598432246F235D00A5976E /* gpl-3.0.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 65598431246F235D00A5976E /* gpl-3.0.rtf */; };
-		65598434246F28A000A5976E /* About-1RM.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 65598433246F28A000A5976E /* About-1RM.rtf */; };
 		65598436246F2C5500A5976E /* AboutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65598435246F2C5500A5976E /* AboutViewController.swift */; };
 		656EC38F246929DB00A30C43 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC38E246929DB00A30C43 /* AppDelegate.swift */; };
 		656EC391246929DB00A30C43 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC390246929DB00A30C43 /* SceneDelegate.swift */; };
@@ -46,6 +44,10 @@
 		65D04608246FDFF500E45D0D /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D04607246FDFF500E45D0D /* Exercise.swift */; };
 		65D0460B246FE07700E45D0D /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0460A246FE07700E45D0D /* Unit.swift */; };
 		65D0460D246FE08500E45D0D /* Lift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0460C246FE08500E45D0D /* Lift.swift */; };
+		65D90598247D37F80036B679 /* CDMarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D90591247D37CE0036B679 /* CDMarkdownKit.framework */; };
+		65D90599247D37F80036B679 /* CDMarkdownKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65D90591247D37CE0036B679 /* CDMarkdownKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65D9059B247D46220036B679 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 65EF2E6E246EBE4A00A828DE /* README.md */; };
+		65D9059D247D47360036B679 /* gpl-3.0.md in Resources */ = {isa = PBXBuildFile; fileRef = 65D9059C247D47360036B679 /* gpl-3.0.md */; };
 		65EF2E6C246E9F3A00A828DE /* PercentageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -57,7 +59,49 @@
 			remoteGlobalIDString = 656EC38A246929DA00A30C43;
 			remoteInfo = OneRM;
 		};
+		65D90590247D37CE0036B679 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65D90589247D37CE0036B679 /* CDMarkdownKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2B365B71F3245800078B962;
+			remoteInfo = "CDMarkdownKit iOS";
+		};
+		65D90592247D37CE0036B679 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65D90589247D37CE0036B679 /* CDMarkdownKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2ACA0771FBF93ED00EABEF6;
+			remoteInfo = "CDMarkdownKit macOS";
+		};
+		65D90594247D37CE0036B679 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65D90589247D37CE0036B679 /* CDMarkdownKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2ACA0841FBF940700EABEF6;
+			remoteInfo = "CDMarkdownKit tvOS";
+		};
+		65D90596247D37CE0036B679 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 65D90589247D37CE0036B679 /* CDMarkdownKit.xcodeproj */;
+			proxyType = 2;
+			remoteGlobalIDString = B2ACA0911FBF941B00EABEF6;
+			remoteInfo = "CDMarkdownKit watchOS";
+		};
 /* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		65D9059A247D37F80036B679 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				65D90599247D37F80036B679 /* CDMarkdownKit.framework in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		650940EE24727FF0000BB84D /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
@@ -76,8 +120,6 @@
 		6559842B246F010100A5976E /* ExerciseTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTableViewCell.swift; sourceTree = "<group>"; };
 		6559842D246F1F4F00A5976E /* LicenseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LicenseViewController.swift; sourceTree = "<group>"; };
 		6559842F246F21B800A5976E /* LICENSE */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE; sourceTree = "<group>"; };
-		65598431246F235D00A5976E /* gpl-3.0.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "gpl-3.0.rtf"; sourceTree = "<group>"; };
-		65598433246F28A000A5976E /* About-1RM.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = "About-1RM.rtf"; sourceTree = "<group>"; };
 		65598435246F2C5500A5976E /* AboutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutViewController.swift; sourceTree = "<group>"; };
 		656EC38B246929DB00A30C43 /* OneRM.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OneRM.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		656EC38E246929DB00A30C43 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -104,6 +146,8 @@
 		65D04607246FDFF500E45D0D /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		65D0460A246FE07700E45D0D /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		65D0460C246FE08500E45D0D /* Lift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lift.swift; sourceTree = "<group>"; };
+		65D90589247D37CE0036B679 /* CDMarkdownKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CDMarkdownKit.xcodeproj; path = CDMarkdownKit/CDMarkdownKit.xcodeproj; sourceTree = "<group>"; };
+		65D9059C247D47360036B679 /* gpl-3.0.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "gpl-3.0.md"; sourceTree = "<group>"; };
 		65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageTableViewCell.swift; sourceTree = "<group>"; };
 		65EF2E6E246EBE4A00A828DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -121,6 +165,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */,
+				65D90598247D37F80036B679 /* CDMarkdownKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,6 +240,7 @@
 		656EC38D246929DB00A30C43 /* OneRM */ = {
 			isa = PBXGroup;
 			children = (
+				65D90589247D37CE0036B679 /* CDMarkdownKit.xcodeproj */,
 				656EC38E246929DB00A30C43 /* AppDelegate.swift */,
 				656EC390246929DB00A30C43 /* SceneDelegate.swift */,
 				65598427246EF28800A5976E /* Extensions.swift */,
@@ -240,13 +286,23 @@
 			name = Model;
 			sourceTree = "<group>";
 		};
+		65D9058A247D37CE0036B679 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				65D90591247D37CE0036B679 /* CDMarkdownKit.framework */,
+				65D90593247D37CE0036B679 /* CDMarkdownKit.framework */,
+				65D90595247D37CE0036B679 /* CDMarkdownKit.framework */,
+				65D90597247D37CE0036B679 /* CDMarkdownKit.framework */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
 		65EF2E6D246EBE3600A828DE /* doc */ = {
 			isa = PBXGroup;
 			children = (
-				65598433246F28A000A5976E /* About-1RM.rtf */,
-				65598431246F235D00A5976E /* gpl-3.0.rtf */,
-				6559842F246F21B800A5976E /* LICENSE */,
 				65EF2E6E246EBE4A00A828DE /* README.md */,
+				65D9059C247D47360036B679 /* gpl-3.0.md */,
+				6559842F246F21B800A5976E /* LICENSE */,
 			);
 			name = doc;
 			sourceTree = "<group>";
@@ -279,6 +335,7 @@
 				656EC387246929DA00A30C43 /* Sources */,
 				656EC388246929DA00A30C43 /* Frameworks */,
 				656EC389246929DA00A30C43 /* Resources */,
+				65D9059A247D37F80036B679 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -319,6 +376,12 @@
 			mainGroup = 656EC382246929DA00A30C43;
 			productRefGroup = 656EC38C246929DB00A30C43 /* Products */;
 			projectDirPath = "";
+			projectReferences = (
+				{
+					ProductGroup = 65D9058A247D37CE0036B679 /* Products */;
+					ProjectRef = 65D90589247D37CE0036B679 /* CDMarkdownKit.xcodeproj */;
+				},
+			);
 			projectRoot = "";
 			targets = (
 				656EC38A246929DA00A30C43 /* OneRM */,
@@ -326,6 +389,37 @@
 			);
 		};
 /* End PBXProject section */
+
+/* Begin PBXReferenceProxy section */
+		65D90591247D37CE0036B679 /* CDMarkdownKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CDMarkdownKit.framework;
+			remoteRef = 65D90590247D37CE0036B679 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65D90593247D37CE0036B679 /* CDMarkdownKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CDMarkdownKit.framework;
+			remoteRef = 65D90592247D37CE0036B679 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65D90595247D37CE0036B679 /* CDMarkdownKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CDMarkdownKit.framework;
+			remoteRef = 65D90594247D37CE0036B679 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+		65D90597247D37CE0036B679 /* CDMarkdownKit.framework */ = {
+			isa = PBXReferenceProxy;
+			fileType = wrapper.framework;
+			path = CDMarkdownKit.framework;
+			remoteRef = 65D90596247D37CE0036B679 /* PBXContainerItemProxy */;
+			sourceTree = BUILT_PRODUCTS_DIR;
+		};
+/* End PBXReferenceProxy section */
 
 /* Begin PBXResourcesBuildPhase section */
 		6555A47D24798FD7001F7ED3 /* Resources */ = {
@@ -339,14 +433,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65598432246F235D00A5976E /* gpl-3.0.rtf in Resources */,
+				65D9059B247D46220036B679 /* README.md in Resources */,
 				656EC3A0246929DC00A30C43 /* LaunchScreen.storyboard in Resources */,
+				65D9059D247D47360036B679 /* gpl-3.0.md in Resources */,
 				656EC39D246929DC00A30C43 /* Assets.xcassets in Resources */,
 				65598430246F21B800A5976E /* LICENSE in Resources */,
 				65B8F50B2474024800618ECD /* Localizable.strings in Resources */,
 				656EC398246929DB00A30C43 /* Main.storyboard in Resources */,
 				650940EF24727FF0000BB84D /* Default-568h@2x.png in Resources */,
-				65598434246F28A000A5976E /* About-1RM.rtf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

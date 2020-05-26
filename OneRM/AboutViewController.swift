@@ -1,6 +1,7 @@
 /// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import UIKit
+import CDMarkdownKit
 
 class AboutViewController: UIViewController {
 
@@ -9,12 +10,10 @@ class AboutViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         aboutTextView.backgroundColor = .white
-        if let filepath = Bundle.main.path(forResource: "About-1RM", ofType: "rtf")  {
-            let attributedStringWithRtf = try? NSAttributedString(
-                url: URL(fileURLWithPath: filepath),
-                options: [.documentType : NSAttributedString.DocumentType.rtf],
-                documentAttributes: nil)
-            aboutTextView.attributedText = attributedStringWithRtf
+        if let filepath = Bundle.main.path(forResource: "README", ofType: "md")  {
+            guard let data = try? Data(contentsOf: URL(fileURLWithPath: filepath)) else { return }
+            guard let markdown = String(bytes: data, encoding: .utf8) else { return }
+            aboutTextView.attributedText = CDMarkdownParser().parse(markdown)
         }
     }
 
