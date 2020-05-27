@@ -8,15 +8,7 @@ class SettingsViewController: UITableViewController {
     @IBOutlet weak var massUnitLabel: UILabel!
     @IBOutlet weak var limitsLabel: UILabel!
     @IBOutlet weak var buildDateLabel: UILabel!
-
-    var buildDate: Date {
-        if let infoPath = Bundle.main.path(forResource: "Info", ofType: "plist"),
-            let infoAttr = try? FileManager.default.attributesOfItem(atPath: infoPath),
-            let infoDate = infoAttr[.modificationDate] as? Date {
-            return infoDate
-        }
-        return Date()
-    }
+    @IBOutlet weak var syncWithiCloudCell: UITableViewCell!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -24,10 +16,15 @@ class SettingsViewController: UITableViewController {
         dateFormatter.dateStyle = .medium
         dateFormatter.timeStyle = .none
         dateFormatter.locale = Locale.current
-        buildDateLabel.text = "\(dateFormatter.string(from: buildDate))"
-        guard let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String  else { return }
-        guard let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String else { return }
-        versionLabel.text = "\(version) (\(build))"
+        if let infoPath = Bundle.main.path(forResource: "Info", ofType: "plist"),
+            let infoAttr = try? FileManager.default.attributesOfItem(atPath: infoPath),
+            let buildDate = infoAttr[.modificationDate] as? Date {
+            buildDateLabel.text = "\(dateFormatter.string(from: buildDate))"
+        }
+        if let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String,
+            let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as? String {
+            versionLabel.text = "\(version) (\(build))"
+        }
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -38,5 +35,8 @@ class SettingsViewController: UITableViewController {
         let minPercent = UserDefaults.standard.integer(forKey: Key.minPercent.rawValue)
         let percentStep = UserDefaults.standard.integer(forKey: Key.percentStep.rawValue)
         limitsLabel.text = "\(minPercent)…\(maxPercent) +\(percentStep)"
+        syncWithiCloudCell.accessoryType = FileManager.default.ubiquityIdentityToken == nil
+            ? .none
+            : .checkmark
     }
 }

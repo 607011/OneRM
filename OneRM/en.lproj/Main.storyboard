@@ -296,8 +296,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0.1" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cx9-PK-TPc">
-                                                    <rect key="frame" x="271" y="12" width="33" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1.0 (1)" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Cx9-PK-TPc">
+                                                    <rect key="frame" x="258" y="12" width="46" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -327,8 +327,8 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="YYYY-MM-DD" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdo-HS-LPf">
-                                                    <rect key="frame" x="194" y="12" width="110" height="20.5"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DD.MM.YYYY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hdo-HS-LPf">
+                                                    <rect key="frame" x="201" y="12" width="103" height="20.5"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -345,8 +345,30 @@
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="detailDisclosureButton" indentationWidth="10" id="ocr-4j-oLM">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" indentationWidth="10" id="Ohg-Ie-8Gw">
                                         <rect key="frame" x="0.0" y="345" width="320" height="43.5"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Ohg-Ie-8Gw" id="ga0-j9-csX">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sync with iCloud" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hVW-tn-BOp">
+                                                    <rect key="frame" x="16" y="11" width="288.5" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="hVW-tn-BOp" firstAttribute="centerY" secondItem="ga0-j9-csX" secondAttribute="centerY" id="8Kk-wm-fW7"/>
+                                                <constraint firstAttribute="trailingMargin" secondItem="hVW-tn-BOp" secondAttribute="trailing" constant="-0.5" id="Ql8-hZ-IHE"/>
+                                                <constraint firstItem="hVW-tn-BOp" firstAttribute="leading" secondItem="ga0-j9-csX" secondAttribute="leadingMargin" id="RS9-qE-WOW"/>
+                                                <constraint firstItem="hVW-tn-BOp" firstAttribute="top" secondItem="ga0-j9-csX" secondAttribute="topMargin" id="kRc-Ku-6oh"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="detailDisclosureButton" indentationWidth="10" id="ocr-4j-oLM">
+                                        <rect key="frame" x="0.0" y="388.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ocr-4j-oLM" id="o61-QG-c3P">
                                             <rect key="frame" x="0.0" y="0.0" width="260.5" height="43.5"/>
@@ -371,7 +393,7 @@
                                         </connections>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" accessoryType="detailDisclosureButton" indentationWidth="10" id="urT-6R-b5P">
-                                        <rect key="frame" x="0.0" y="388.5" width="320" height="43.5"/>
+                                        <rect key="frame" x="0.0" y="432" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="urT-6R-b5P" id="DF1-Jo-0Dp">
                                             <rect key="frame" x="0.0" y="0.0" width="260.5" height="43.5"/>
@@ -410,6 +432,7 @@
                         <outlet property="buildDateLabel" destination="hdo-HS-LPf" id="HOS-0f-0oz"/>
                         <outlet property="limitsLabel" destination="cmN-FR-LFA" id="2xu-LE-T9w"/>
                         <outlet property="massUnitLabel" destination="IqA-km-vE3" id="ci2-DO-Bud"/>
+                        <outlet property="syncWithiCloudCell" destination="Ohg-Ie-8Gw" id="7l0-ch-hpe"/>
                         <outlet property="versionLabel" destination="Cx9-PK-TPc" id="iJB-0w-TuV"/>
                     </connections>
                 </tableViewController>
