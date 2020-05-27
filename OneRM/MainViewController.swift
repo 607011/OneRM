@@ -71,7 +71,7 @@ class MainViewController: UIViewController {
         super.viewWillAppear(animated)
         massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
 
-        /// cellWidth must be recalculated on every appearance because massUnit could have changed
+        // cellWidth must be recalculated on every appearance because massUnit could have changed
         let attributedString = NSAttributedString(string: "8888.8 \(massUnit)",
             attributes: [.font: UIFont.systemFont(ofSize: 25.0, weight: .semibold)])
         cellWidth = ceil(attributedString.size().width)

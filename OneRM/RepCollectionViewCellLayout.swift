@@ -1,4 +1,4 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import Foundation
 import UIKit
@@ -34,7 +34,7 @@ class RepCollectionViewCellLayout: UICollectionViewLayout {
 
     override func prepare() {
         guard let collectionView = collectionView else { return }
-        /// set up layout cache
+        // set up layout cache
         let numberOfColumns: Int = Int(contentWidth / cellWidth)
         let columnWidth: CGFloat = contentWidth / CGFloat(numberOfColumns)
         var column: Int = 0
