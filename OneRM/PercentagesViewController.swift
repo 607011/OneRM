@@ -23,14 +23,14 @@ class PercentagesViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = UserDefaults.standard.string(forKey: massUnitKey) ?? defaultMassUnit
-        weight = UserDefaults.standard.double(forKey: weightKey)
-        reps = UserDefaults.standard.integer(forKey: repsKey)
-        maxPercent = UserDefaults.standard.integer(forKey: maxPercentKey)
-        minPercent = UserDefaults.standard.integer(forKey: minPercentKey)
-        percentStep = UserDefaults.standard.integer(forKey: percentStepKey)
-        if UserDefaults.standard.object(forKey: formulasKey) != nil,
-            let activeFormulas = UserDefaults.standard.object(forKey: formulasKey) as? [String] {
+        massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        weight = UserDefaults.standard.double(forKey: Key.weight.rawValue)
+        reps = UserDefaults.standard.integer(forKey: Key.reps.rawValue)
+        maxPercent = UserDefaults.standard.integer(forKey: Key.maxPercent.rawValue)
+        minPercent = UserDefaults.standard.integer(forKey: Key.minPercent.rawValue)
+        percentStep = UserDefaults.standard.integer(forKey: Key.percentStep.rawValue)
+        if UserDefaults.standard.object(forKey: Key.formulas.rawValue) != nil,
+            let activeFormulas = UserDefaults.standard.object(forKey: Key.formulas.rawValue) as? [String] {
             formula = activeFormulas.isEmpty
                 ? Brzycki()
                 : MixedOneRM(formulas: activeFormulas)

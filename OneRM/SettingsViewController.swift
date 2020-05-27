@@ -32,11 +32,11 @@ class SettingsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let massUnit = UserDefaults.standard.string(forKey: massUnitKey)
+        let massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue)
         massUnitLabel.text = "\(massUnit ?? defaultMassUnit)"
-        let maxPercent = UserDefaults.standard.integer(forKey: maxPercentKey)
-        let minPercent = UserDefaults.standard.integer(forKey: minPercentKey)
-        let percentStep = UserDefaults.standard.integer(forKey: percentStepKey)
+        let maxPercent = UserDefaults.standard.integer(forKey: Key.maxPercent.rawValue)
+        let minPercent = UserDefaults.standard.integer(forKey: Key.minPercent.rawValue)
+        let percentStep = UserDefaults.standard.integer(forKey: Key.percentStep.rawValue)
         limitsLabel.text = "\(minPercent)…\(maxPercent) +\(percentStep)"
     }
 }

@@ -11,7 +11,7 @@ class MassUnitPickerViewController: UIViewController {
 
     var massUnit: String = defaultMassUnit {
         didSet {
-            UserDefaults.standard.set(massUnit, forKey: massUnitKey)
+            UserDefaults.standard.set(massUnit, forKey: Key.massUnit.rawValue)
         }
     }
 
@@ -24,7 +24,7 @@ class MassUnitPickerViewController: UIViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let massUnit = UserDefaults.standard.string(forKey: massUnitKey) ?? defaultMassUnit
+        let massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
         guard let row = defaultUnits.firstIndex(of: massUnit) else { return }
         massUnitPicker.selectRow(row, inComponent: 0, animated: true)
     }

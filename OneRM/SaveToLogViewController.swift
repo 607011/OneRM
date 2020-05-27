@@ -14,22 +14,22 @@ class SaveToLogViewController: UITableViewController {
     var exercises: [Exercise] = []
     var exercise: Exercise? {
         didSet {
-            UserDefaults.standard.set(exercise?.name, forKey: lastSavedExerciseKey)
+            UserDefaults.standard.set(exercise?.name, forKey: Key.lastSavedExercise.rawValue)
         }
     }
     var date: Date? {
         didSet {
-            UserDefaults.standard.set(date, forKey: lastSaveDateKey)
+            UserDefaults.standard.set(date, forKey: Key.lastSaveDate.rawValue)
         }
     }
     var notes: String? {
         didSet {
-            UserDefaults.standard.set(notes, forKey: lastSaveNotesKey)
+            UserDefaults.standard.set(notes, forKey: Key.lastSaveNotes.rawValue)
         }
     }
     var rating: Int = 0 {
         didSet {
-            UserDefaults.standard.set(rating, forKey: lastSaveRatingKey)
+            UserDefaults.standard.set(rating, forKey: Key.lastSaveRating.rawValue)
             for i in 0..<rating {
                 starButton[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
             }
@@ -59,26 +59,26 @@ class SaveToLogViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = UserDefaults.standard.string(forKey: massUnitKey) ?? defaultMassUnit
+        massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
         exercises = LiftDataManager.shared.loadExercises()
         repsAndWeightLabel.text = "\(reps) × \(weight.rounded(toPlaces: 1)) \(massUnit)"
         oneRMLabel.text = "\(oneRM.rounded(toPlaces: 1)) \(massUnit)"
-        if UserDefaults.standard.object(forKey: lastSavedExerciseKey) != nil {
-            let lastSavedExercise = UserDefaults.standard.string(forKey: lastSavedExerciseKey)
+        if UserDefaults.standard.object(forKey: Key.lastSavedExercise.rawValue) != nil {
+            let lastSavedExercise = UserDefaults.standard.string(forKey: Key.lastSavedExercise.rawValue)
             guard let idx = exercises.firstIndex(where: { $0.name == lastSavedExercise }) else { return }
             exercisePicker.selectRow(idx, inComponent: 0, animated: false)
             exercise = exercises[idx]
         }
-        if UserDefaults.standard.object(forKey: lastSaveDateKey) != nil {
-            guard let lastDate = UserDefaults.standard.object(forKey: lastSaveDateKey) as? Date else { return }
+        if UserDefaults.standard.object(forKey: Key.lastSaveDate.rawValue) != nil {
+            guard let lastDate = UserDefaults.standard.object(forKey: Key.lastSaveDate.rawValue) as? Date else { return }
             datePicker.date = lastDate
         }
-        if UserDefaults.standard.object(forKey: lastSaveNotesKey) != nil {
-            guard let lastNotes = UserDefaults.standard.string(forKey: lastSaveNotesKey) else { return }
+        if UserDefaults.standard.object(forKey: Key.lastSaveNotes.rawValue) != nil {
+            guard let lastNotes = UserDefaults.standard.string(forKey: Key.lastSaveNotes.rawValue) else { return }
             notesTextView.text = lastNotes
         }
-        if UserDefaults.standard.object(forKey: lastSaveRatingKey) != nil {
-            rating = UserDefaults.standard.integer(forKey: lastSaveRatingKey)
+        if UserDefaults.standard.object(forKey: Key.lastSaveRating.rawValue) != nil {
+            rating = UserDefaults.standard.integer(forKey: Key.lastSaveRating.rawValue)
         }
     }
 

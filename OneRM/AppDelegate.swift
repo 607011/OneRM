@@ -13,32 +13,32 @@ enum AppError: Error {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if UserDefaults.standard.object(forKey: barWeightKey) == nil {
-            UserDefaults.standard.set(defaultBarWeight, forKey: barWeightKey)
+        if UserDefaults.standard.object(forKey: Key.barWeight.rawValue) == nil {
+            UserDefaults.standard.set(defaultBarWeight, forKey: Key.barWeight.rawValue)
         }
-        if UserDefaults.standard.object(forKey: massUnitKey) == nil {
-            UserDefaults.standard.set(defaultMassUnit, forKey: massUnitKey)
+        if UserDefaults.standard.object(forKey: Key.massUnit.rawValue) == nil {
+            UserDefaults.standard.set(defaultMassUnit, forKey: Key.massUnit.rawValue)
         }
-        if UserDefaults.standard.object(forKey: platesKey) == nil {
-            UserDefaults.standard.set(defaultPlates, forKey: platesKey)
+        if UserDefaults.standard.object(forKey: Key.plates.rawValue) == nil {
+            UserDefaults.standard.set(defaultPlates, forKey: Key.plates.rawValue)
         }
-        if UserDefaults.standard.object(forKey: maxPercentKey) == nil {
-            UserDefaults.standard.set(defaultMaxPercent, forKey: maxPercentKey)
+        if UserDefaults.standard.object(forKey: Key.maxPercent.rawValue) == nil {
+            UserDefaults.standard.set(defaultMaxPercent, forKey: Key.maxPercent.rawValue)
         }
-        if UserDefaults.standard.object(forKey: minPercentKey) == nil {
-            UserDefaults.standard.set(defaultMinPercent, forKey: minPercentKey)
+        if UserDefaults.standard.object(forKey: Key.minPercent.rawValue) == nil {
+            UserDefaults.standard.set(defaultMinPercent, forKey: Key.minPercent.rawValue)
         }
-        if UserDefaults.standard.object(forKey: percentStepKey) == nil {
-            UserDefaults.standard.set(defaultPercentStep, forKey: percentStepKey)
+        if UserDefaults.standard.object(forKey: Key.percentStep.rawValue) == nil {
+            UserDefaults.standard.set(defaultPercentStep, forKey: Key.percentStep.rawValue)
         }
-        if UserDefaults.standard.object(forKey: formulasKey) == nil {
-            UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: formulasKey)
+        if UserDefaults.standard.object(forKey: Key.formulas.rawValue) == nil {
+            UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: Key.formulas.rawValue)
         }
 
         // UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
-        if isFirstStart() {
-            addDefaultEntities(completeFirstLaunch)
-        }
+//        if isFirstStart() {
+//            addDefaultEntities(completeFirstLaunch)
+//        }
 
         UINavigationBar.appearance().backgroundColor = UIColor(named: "Olive")
         UINavigationBar.appearance().barTintColor = UIColor(named: "Olive")

@@ -12,13 +12,13 @@ class WeightsViewController: UITableViewController {
 
     private var plates: [Double] = defaultPlates {
         didSet {
-            UserDefaults.standard.set(plates, forKey: platesKey)
+            UserDefaults.standard.set(plates, forKey: Key.plates.rawValue)
         }
     }
 
     var barWeight: Double = defaultBarWeight {
         didSet {
-            UserDefaults.standard.set(barWeight, forKey: barWeightKey)
+            UserDefaults.standard.set(barWeight, forKey: Key.barWeight.rawValue)
         }
     }
 
@@ -27,14 +27,14 @@ class WeightsViewController: UITableViewController {
         tableView.insertSections(IndexSet(), with: .automatic)
         allowedCharacters.insert(charactersIn: Locale.current.decimalSeparator ?? ".,")
         barWeightTextField.delegate = self
-        plates = UserDefaults.standard.object(forKey: platesKey) as? [Double] ?? defaultPlates
+        plates = UserDefaults.standard.object(forKey: Key.plates.rawValue) as? [Double] ?? defaultPlates
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let barWeight = UserDefaults.standard.double(forKey: barWeightKey)
+        let barWeight = UserDefaults.standard.double(forKey: Key.barWeight.rawValue)
         barWeightTextField.text = "\(barWeight.rounded(toPlaces: 2))"
-        massUnitLabel.text = UserDefaults.standard.string(forKey: massUnitKey) ?? defaultMassUnit
+        massUnitLabel.text = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
     }
 }
 

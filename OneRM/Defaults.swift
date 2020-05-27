@@ -47,17 +47,19 @@ let defaultMaxPercent = 120
 let defaultMinPercent = 10
 let defaultPercentStep = 5
 
-let massUnitKey = "massUnit"
-let barWeightKey = "barWeight"
-let weightKey = "weight"
-let repsKey = "reps"
-let platesKey = "plates"
-let maxPercentKey = "maxPercent"
-let minPercentKey = "minPercent"
-let percentStepKey = "percentStep"
-let exercisesKey = "exercises"
-let lastSavedExerciseKey = "lastSavedExercise"
-let lastSaveDateKey = "lastSaveDate"
-let lastSaveRatingKey = "lastSaveRating"
-let lastSaveNotesKey = "lastSaveNotes"
-let formulasKey = "formulas"
+enum Key: String {
+    case massUnit
+    case barWeight
+    case weight
+    case reps
+    case plates
+    case maxPercent
+    case minPercent
+    case percentStep
+    case exercises
+    case lastSavedExercise
+    case lastSaveDate
+    case lastSaveRating
+    case lastSaveNotes
+    case formulas
+}

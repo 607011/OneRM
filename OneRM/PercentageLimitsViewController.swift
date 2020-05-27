@@ -10,19 +10,19 @@ class PercentageLimitsViewController: UITableViewController {
 
     private var maxPercent: Int = defaultMaxPercent {
         didSet {
-            UserDefaults.standard.set(maxPercent, forKey: maxPercentKey)
+            UserDefaults.standard.set(maxPercent, forKey: Key.maxPercent.rawValue)
         }
     }
 
     private var minPercent: Int = defaultMinPercent {
         didSet {
-            UserDefaults.standard.set(minPercent, forKey: minPercentKey)
+            UserDefaults.standard.set(minPercent, forKey: Key.minPercent.rawValue)
         }
     }
 
     private var percentStep: Int = defaultPercentStep {
         didSet {
-            UserDefaults.standard.set(percentStep, forKey: percentStepKey)
+            UserDefaults.standard.set(percentStep, forKey: Key.percentStep.rawValue)
         }
     }
 
@@ -31,14 +31,14 @@ class PercentageLimitsViewController: UITableViewController {
         maxPercentField.delegate = self
         minPercentField.delegate = self
         percentStepField.delegate = self
-        if UserDefaults.standard.object(forKey: maxPercentKey) != nil {
-            maxPercent = UserDefaults.standard.integer(forKey: maxPercentKey)
+        if UserDefaults.standard.object(forKey: Key.maxPercent.rawValue) != nil {
+            maxPercent = UserDefaults.standard.integer(forKey: Key.maxPercent.rawValue)
         }
-        if UserDefaults.standard.object(forKey: minPercentKey) != nil {
-            minPercent = UserDefaults.standard.integer(forKey: minPercentKey)
+        if UserDefaults.standard.object(forKey: Key.minPercent.rawValue) != nil {
+            minPercent = UserDefaults.standard.integer(forKey: Key.minPercent.rawValue)
         }
-        if UserDefaults.standard.object(forKey: percentStepKey) != nil {
-            percentStep = UserDefaults.standard.integer(forKey: percentStepKey)
+        if UserDefaults.standard.object(forKey: Key.percentStep.rawValue) != nil {
+            percentStep = UserDefaults.standard.integer(forKey: Key.percentStep.rawValue)
         }
         NotificationCenter.default.addObserver(
             self,
@@ -49,9 +49,9 @@ class PercentageLimitsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        maxPercentField.text = "\(UserDefaults.standard.integer(forKey: maxPercentKey))"
-        minPercentField.text = "\(UserDefaults.standard.integer(forKey: minPercentKey))"
-        percentStepField.text = "\(UserDefaults.standard.integer(forKey: percentStepKey))"
+        maxPercentField.text = "\(UserDefaults.standard.integer(forKey: Key.maxPercent.rawValue))"
+        minPercentField.text = "\(UserDefaults.standard.integer(forKey: Key.minPercent.rawValue))"
+        percentStepField.text = "\(UserDefaults.standard.integer(forKey: Key.percentStep.rawValue))"
     }
 
     @objc func keyboardDidShow(notification: Notification) {
