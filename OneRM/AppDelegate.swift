@@ -35,7 +35,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: Key.formulas.rawValue)
         }
 
-        // UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
+        if let idToken = FileManager.default.ubiquityIdentityToken,
+            let newTokenData = try? NSKeyedArchiver.archivedData(withRootObject: idToken, requiringSecureCoding: true) {
+            UserDefaults.standard.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
+            debugPrint("net.ersatzworld.OneRM.UbiquityIdentityToken = \(newTokenData)")
+        } else {
+            UserDefaults.standard.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
+        }
+
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(iCloudAvailabilityChanged),
+                                               name: Notification.Name.NSUbiquityIdentityDidChange,
+                                               object: nil)
+
+//        UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
 //        if isFirstStart() {
 //            addDefaultEntities(completeFirstLaunch)
 //        }
@@ -44,7 +57,20 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().barTintColor = UIColor(named: "Olive")
         UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
         UINavigationBar.appearance().tintColor = .white
+
+//        let alertController = UIAlertController(title: NSLocalizedString("Choose storage", comment: ""),
+//                                      message: NSLocalizedString("Should your data be stored in iCloud and available on all your devices?", comment: ""),
+//                                      preferredStyle: .actionSheet)
+//        let actionLocal = UIAlertAction(title: NSLocalizedString("Local only", comment: ""), style: .default, handler: { action in debugPrint(action) })
+//        let actionCloud = UIAlertAction(title: NSLocalizedString("Use iCloud", comment: ""), style: .default, handler: { action in debugPrint(action) })
+//        alertController.addAction(actionLocal)
+//        alertController.addAction(actionCloud)
+
         return true
+    }
+
+    @objc func iCloudAvailabilityChanged(notification: Notification) {
+        debugPrint("AppDelegate.iCloudAvailabilityChanged()", notification)
     }
 
     // MARK: UISceneSession Lifecycle

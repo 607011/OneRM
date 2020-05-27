@@ -54,8 +54,9 @@ class MainViewController: UIViewController {
         for idx in 0..<MVC.WeightDigitCount {
             let v = Int(w / divisor)
             w -= Double(v) * divisor
-            guard let row = MVC.WeightData[idx].firstIndex(of: v) else { continue }
-            weightPicker.selectRow(row, inComponent: idx, animated: false)
+            if let row = MVC.WeightData[idx].firstIndex(of: v) {
+                weightPicker.selectRow(row, inComponent: idx, animated: false)
+            }
             divisor /= 10
         }
         reps = MVC.RepInterval.clamp(value: UserDefaults.standard.integer(forKey: Key.reps.rawValue))
@@ -65,6 +66,10 @@ class MainViewController: UIViewController {
         if let layout = repsCollectionView?.collectionViewLayout as? RepCollectionViewCellLayout {
             layout.delegate = self
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -83,6 +88,8 @@ class MainViewController: UIViewController {
                 ? Brzycki()
                 : MixedOneRM(formulas: activeFormulas)
         }
+
+        // debugPrint("FileManager.default.ubiquityIdentityToken = \(FileManager.default.ubiquityIdentityToken)")
     }
 
     override func viewDidLayoutSubviews() {
