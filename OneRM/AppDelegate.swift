@@ -84,6 +84,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                 debugPrint("Unresolved error \(error), \(error.userInfo)")
             }
         })
+        let description = container.persistentStoreDescriptions.first
+        description?.setOption(true as NSNumber, forKey: NSPersistentHistoryTrackingKey)
+        description?.setOption(true as NSNumber, forKey: "NSPersistentStoreRemoteChangeNotificationOptionKey")
         return container
     }()
 
