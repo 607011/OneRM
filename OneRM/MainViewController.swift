@@ -1,8 +1,7 @@
-/// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
 
 import Foundation
 import UIKit
-import CloudKit
 
 class MainViewController: UIViewController {
 
