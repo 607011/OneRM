@@ -10,19 +10,19 @@ class PercentageLimitsViewController: UITableViewController {
 
     private var maxPercent: Int = defaultMaxPercent {
         didSet {
-            UserDefaults.standard.set(maxPercent, forKey: Key.maxPercent.rawValue)
+            NSUbiquitousKeyValueStore.default.set(maxPercent, forKey: Key.maxPercent.rawValue)
         }
     }
 
     private var minPercent: Int = defaultMinPercent {
         didSet {
-            UserDefaults.standard.set(minPercent, forKey: Key.minPercent.rawValue)
+            NSUbiquitousKeyValueStore.default.set(minPercent, forKey: Key.minPercent.rawValue)
         }
     }
 
     private var percentStep: Int = defaultPercentStep {
         didSet {
-            UserDefaults.standard.set(percentStep, forKey: Key.percentStep.rawValue)
+            NSUbiquitousKeyValueStore.default.set(percentStep, forKey: Key.percentStep.rawValue)
         }
     }
 
@@ -31,14 +31,14 @@ class PercentageLimitsViewController: UITableViewController {
         maxPercentField.delegate = self
         minPercentField.delegate = self
         percentStepField.delegate = self
-        if UserDefaults.standard.object(forKey: Key.maxPercent.rawValue) != nil {
-            maxPercent = UserDefaults.standard.integer(forKey: Key.maxPercent.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.maxPercent.rawValue) != nil {
+            maxPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.maxPercent.rawValue))
         }
-        if UserDefaults.standard.object(forKey: Key.minPercent.rawValue) != nil {
-            minPercent = UserDefaults.standard.integer(forKey: Key.minPercent.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.minPercent.rawValue) != nil {
+            minPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.minPercent.rawValue))
         }
-        if UserDefaults.standard.object(forKey: Key.percentStep.rawValue) != nil {
-            percentStep = UserDefaults.standard.integer(forKey: Key.percentStep.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.percentStep.rawValue) != nil {
+            percentStep = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.percentStep.rawValue))
         }
         NotificationCenter.default.addObserver(
             self,
@@ -49,9 +49,9 @@ class PercentageLimitsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        maxPercentField.text = "\(UserDefaults.standard.integer(forKey: Key.maxPercent.rawValue))"
-        minPercentField.text = "\(UserDefaults.standard.integer(forKey: Key.minPercent.rawValue))"
-        percentStepField.text = "\(UserDefaults.standard.integer(forKey: Key.percentStep.rawValue))"
+        maxPercentField.text = "\(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.maxPercent.rawValue))"
+        minPercentField.text = "\(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.minPercent.rawValue))"
+        percentStepField.text = "\(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.percentStep.rawValue))"
     }
 
     @objc func keyboardDidShow(notification: Notification) {

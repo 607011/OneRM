@@ -23,14 +23,14 @@ class PercentagesViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
-        weight = UserDefaults.standard.double(forKey: Key.weight.rawValue)
-        reps = UserDefaults.standard.integer(forKey: Key.reps.rawValue)
-        maxPercent = UserDefaults.standard.integer(forKey: Key.maxPercent.rawValue)
-        minPercent = UserDefaults.standard.integer(forKey: Key.minPercent.rawValue)
-        percentStep = UserDefaults.standard.integer(forKey: Key.percentStep.rawValue)
-        if UserDefaults.standard.object(forKey: Key.formulas.rawValue) != nil,
-            let activeFormulas = UserDefaults.standard.object(forKey: Key.formulas.rawValue) as? [String] {
+        massUnit = NSUbiquitousKeyValueStore.default.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
+        reps = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue))
+        maxPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.maxPercent.rawValue))
+        minPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.minPercent.rawValue))
+        percentStep = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.percentStep.rawValue))
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) != nil,
+            let activeFormulas = NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) as? [String] {
             formula = activeFormulas.isEmpty
                 ? Brzycki()
                 : MixedOneRM(formulas: activeFormulas)

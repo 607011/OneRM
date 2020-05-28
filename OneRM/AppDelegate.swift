@@ -13,34 +13,34 @@ enum AppError: Error {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if UserDefaults.standard.object(forKey: Key.barWeight.rawValue) == nil {
-            UserDefaults.standard.set(defaultBarWeight, forKey: Key.barWeight.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.barWeight.rawValue) == nil {
+            NSUbiquitousKeyValueStore.default.set(defaultBarWeight, forKey: Key.barWeight.rawValue)
         }
-        if UserDefaults.standard.object(forKey: Key.massUnit.rawValue) == nil {
-            UserDefaults.standard.set(defaultMassUnit, forKey: Key.massUnit.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.massUnit.rawValue) == nil {
+            NSUbiquitousKeyValueStore.default.set(defaultMassUnit, forKey: Key.massUnit.rawValue)
         }
-        if UserDefaults.standard.object(forKey: Key.plates.rawValue) == nil {
-            UserDefaults.standard.set(defaultPlates, forKey: Key.plates.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.plates.rawValue) == nil {
+            NSUbiquitousKeyValueStore.default.set(defaultPlates, forKey: Key.plates.rawValue)
         }
-        if UserDefaults.standard.object(forKey: Key.maxPercent.rawValue) == nil {
-            UserDefaults.standard.set(defaultMaxPercent, forKey: Key.maxPercent.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.maxPercent.rawValue) == nil {
+            NSUbiquitousKeyValueStore.default.set(defaultMaxPercent, forKey: Key.maxPercent.rawValue)
         }
-        if UserDefaults.standard.object(forKey: Key.minPercent.rawValue) == nil {
-            UserDefaults.standard.set(defaultMinPercent, forKey: Key.minPercent.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.minPercent.rawValue) == nil {
+            NSUbiquitousKeyValueStore.default.set(defaultMinPercent, forKey: Key.minPercent.rawValue)
         }
-        if UserDefaults.standard.object(forKey: Key.percentStep.rawValue) == nil {
-            UserDefaults.standard.set(defaultPercentStep, forKey: Key.percentStep.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.percentStep.rawValue) == nil {
+            NSUbiquitousKeyValueStore.default.set(defaultPercentStep, forKey: Key.percentStep.rawValue)
         }
-        if UserDefaults.standard.object(forKey: Key.formulas.rawValue) == nil {
-            UserDefaults.standard.set([Formula.brzycki.rawValue], forKey: Key.formulas.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) == nil {
+            NSUbiquitousKeyValueStore.default.set([Formula.brzycki.rawValue], forKey: Key.formulas.rawValue)
         }
 
         if let idToken = FileManager.default.ubiquityIdentityToken,
             let newTokenData = try? NSKeyedArchiver.archivedData(withRootObject: idToken, requiringSecureCoding: true) {
-            UserDefaults.standard.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
+            NSUbiquitousKeyValueStore.default.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
             debugPrint("net.ersatzworld.OneRM.UbiquityIdentityToken = \(newTokenData)")
         } else {
-            UserDefaults.standard.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
+            NSUbiquitousKeyValueStore.default.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
         }
 
         NotificationCenter.default.addObserver(self,
@@ -48,7 +48,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                                                name: Notification.Name.NSUbiquityIdentityDidChange,
                                                object: nil)
 
-//        UserDefaults.standard.set(false, forKey: "appSuccessfullyInitialized")
+//        NSUbiquitousKeyValueStore.default.set(false, forKey: "appSuccessfullyInitialized")
 //        if isFirstStart() {
 //            addDefaultEntities(completeFirstLaunch)
 //        }
@@ -136,12 +136,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate {
 
     func isFirstStart() -> Bool {
-        return !UserDefaults.standard.bool(forKey: "appSuccessfullyInitialized")
+        return !NSUbiquitousKeyValueStore.default.bool(forKey: "appSuccessfullyInitialized")
     }
 
     func completeFirstLaunch(_ error: AppError) {
         if error == .initialized {
-            UserDefaults.standard.set(true, forKey: "appSuccessfullyInitialized")
+            NSUbiquitousKeyValueStore.default.set(true, forKey: "appSuccessfullyInitialized")
         } else {
             debugPrint("ERROR: 1st launch not successfully completed")
         }

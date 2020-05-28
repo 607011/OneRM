@@ -29,11 +29,11 @@ class SettingsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue)
+        let massUnit = NSUbiquitousKeyValueStore.default.string(forKey: Key.massUnit.rawValue)
         massUnitLabel.text = "\(massUnit ?? defaultMassUnit)"
-        let maxPercent = UserDefaults.standard.integer(forKey: Key.maxPercent.rawValue)
-        let minPercent = UserDefaults.standard.integer(forKey: Key.minPercent.rawValue)
-        let percentStep = UserDefaults.standard.integer(forKey: Key.percentStep.rawValue)
+        let maxPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.maxPercent.rawValue))
+        let minPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.minPercent.rawValue))
+        let percentStep = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.percentStep.rawValue))
         limitsLabel.text = "\(minPercent)…\(maxPercent) +\(percentStep)"
         syncWithiCloudCell.accessoryType = FileManager.default.ubiquityIdentityToken == nil
             ? .none

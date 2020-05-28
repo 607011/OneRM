@@ -8,7 +8,7 @@ class FormulaTableViewController: UITableViewController {
 
     var activeFormulas: [String] = [] {
         didSet {
-            UserDefaults.standard.set(activeFormulas, forKey: Key.formulas.rawValue)
+            NSUbiquitousKeyValueStore.default.set(activeFormulas, forKey: Key.formulas.rawValue)
         }
     }
 
@@ -16,8 +16,8 @@ class FormulaTableViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        if UserDefaults.standard.object(forKey: Key.formulas.rawValue) != nil {
-            activeFormulas = UserDefaults.standard.object(forKey: Key.formulas.rawValue) as? [String] ?? [Formula.brzycki.rawValue]
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) != nil {
+            activeFormulas = NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) as? [String] ?? [Formula.brzycki.rawValue]
         }
     }
 

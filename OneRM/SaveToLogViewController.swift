@@ -14,38 +14,38 @@ class SaveToLogViewController: UITableViewController {
     var exercises: [Exercise] = []
     var exercise: Exercise? {
         didSet {
-            UserDefaults.standard.set(exercise?.name, forKey: Key.lastSavedExercise.rawValue)
+            NSUbiquitousKeyValueStore.default.set(exercise?.name, forKey: Key.lastSavedExercise.rawValue)
         }
     }
     var date: Date? {
         didSet {
-            UserDefaults.standard.set(date, forKey: Key.lastSaveDate.rawValue)
+            NSUbiquitousKeyValueStore.default.set(date, forKey: Key.lastSaveDate.rawValue)
         }
     }
     var notes: String? {
         didSet {
-            UserDefaults.standard.set(notes, forKey: Key.lastSaveNotes.rawValue)
+            NSUbiquitousKeyValueStore.default.set(notes, forKey: Key.lastSaveNotes.rawValue)
         }
     }
-    var rating: Int = 0 {
+    var rating: Int16 = 0 {
         didSet {
-            UserDefaults.standard.set(rating, forKey: Key.lastSaveRating.rawValue)
+            NSUbiquitousKeyValueStore.default.set(rating, forKey: Key.lastSaveRating.rawValue)
             for i in 0..<rating {
-                starButton[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
+                starButton?[Int(i)].setImage(UIImage(systemName: "star.fill"), for: .normal)
             }
-            for i in rating..<starButton.count {
-                starButton[i].setImage(UIImage(systemName: "star"), for: .normal)
+            for i in rating..<Int16(starButton.count) {
+                starButton[Int(i)].setImage(UIImage(systemName: "star"), for: .normal)
             }
         }
     }
-    var reps: Int = 0
+    var reps: Int16 = 0
     var massUnit: String = defaultMassUnit
     var weight: Double = 0
     var oneRM: Double = 0
 
     @IBAction func starButtonPressed(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
-        rating = (button.tag == 1 && rating == 1) ? 0 : button.tag
+        rating = (button.tag == 1 && rating == 1) ? 0 : Int16(button.tag)
     }
 
     override func viewDidLoad() {
@@ -59,26 +59,26 @@ class SaveToLogViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        massUnit = NSUbiquitousKeyValueStore.default.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
         exercises = LiftDataManager.shared.loadExercises()
         repsAndWeightLabel.text = "\(reps) × \(weight.rounded(toPlaces: 1)) \(massUnit)"
         oneRMLabel.text = "\(oneRM.rounded(toPlaces: 1)) \(massUnit)"
-        if UserDefaults.standard.object(forKey: Key.lastSavedExercise.rawValue) != nil {
-            let lastSavedExercise = UserDefaults.standard.string(forKey: Key.lastSavedExercise.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSavedExercise.rawValue) != nil {
+            let lastSavedExercise = NSUbiquitousKeyValueStore.default.string(forKey: Key.lastSavedExercise.rawValue)
             guard let idx = exercises.firstIndex(where: { $0.name == lastSavedExercise }) else { return }
             exercisePicker.selectRow(idx, inComponent: 0, animated: false)
             exercise = exercises[idx]
         }
-        if UserDefaults.standard.object(forKey: Key.lastSaveDate.rawValue) != nil {
-            guard let lastDate = UserDefaults.standard.object(forKey: Key.lastSaveDate.rawValue) as? Date else { return }
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveDate.rawValue) != nil {
+            guard let lastDate = NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveDate.rawValue) as? Date else { return }
             datePicker.date = lastDate
         }
-        if UserDefaults.standard.object(forKey: Key.lastSaveNotes.rawValue) != nil {
-            guard let lastNotes = UserDefaults.standard.string(forKey: Key.lastSaveNotes.rawValue) else { return }
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveNotes.rawValue) != nil {
+            guard let lastNotes = NSUbiquitousKeyValueStore.default.string(forKey: Key.lastSaveNotes.rawValue) else { return }
             notesTextView.text = lastNotes
         }
-        if UserDefaults.standard.object(forKey: Key.lastSaveRating.rawValue) != nil {
-            rating = UserDefaults.standard.integer(forKey: Key.lastSaveRating.rawValue)
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveRating.rawValue) != nil {
+            rating = Int16(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.lastSaveRating.rawValue))
         }
     }
 
@@ -94,10 +94,10 @@ class SaveToLogViewController: UITableViewController {
                 !self.exercises.isEmpty else { return }
             let liftData = LiftData(
                 date: self.datePicker.date,
-                reps: Int16(self.reps),
+                reps: self.reps,
                 weight: self.weight,
                 oneRM: self.oneRM,
-                rating: Int16(self.rating),
+                rating: self.rating,
                 notes: self.notesTextView.text,
                 exercise: self.exercise ?? self.exercises[0],
                 unit: unit)
