@@ -45,8 +45,8 @@
 		65D0460D246FE08500E45D0D /* Lift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0460C246FE08500E45D0D /* Lift.swift */; };
 		65D90598247D37F80036B679 /* CDMarkdownKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65D90591247D37CE0036B679 /* CDMarkdownKit.framework */; };
 		65D90599247D37F80036B679 /* CDMarkdownKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65D90591247D37CE0036B679 /* CDMarkdownKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		65D9059B247D46220036B679 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 65EF2E6E246EBE4A00A828DE /* README.md */; };
 		65D9059D247D47360036B679 /* gpl-3.0.md in Resources */ = {isa = PBXBuildFile; fileRef = 65D9059C247D47360036B679 /* gpl-3.0.md */; };
+		65D905A6247F9EAC0036B679 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = 65D905A5247F9EAC0036B679 /* About.md */; };
 		65EF2E6C246E9F3A00A828DE /* PercentageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -146,6 +146,7 @@
 		65D0460C246FE08500E45D0D /* Lift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lift.swift; sourceTree = "<group>"; };
 		65D90589247D37CE0036B679 /* CDMarkdownKit.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = CDMarkdownKit.xcodeproj; path = CDMarkdownKit/CDMarkdownKit.xcodeproj; sourceTree = "<group>"; };
 		65D9059C247D47360036B679 /* gpl-3.0.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = "gpl-3.0.md"; sourceTree = "<group>"; };
+		65D905A5247F9EAC0036B679 /* About.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 		65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageTableViewCell.swift; sourceTree = "<group>"; };
 		65EF2E6E246EBE4A00A828DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -305,6 +306,7 @@
 		65EF2E6D246EBE3600A828DE /* doc */ = {
 			isa = PBXGroup;
 			children = (
+				65D905A5247F9EAC0036B679 /* About.md */,
 				65EF2E6E246EBE4A00A828DE /* README.md */,
 				65D9059C247D47360036B679 /* gpl-3.0.md */,
 				6559842F246F21B800A5976E /* LICENSE */,
@@ -439,8 +441,8 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65D9059B247D46220036B679 /* README.md in Resources */,
 				656EC3A0246929DC00A30C43 /* LaunchScreen.storyboard in Resources */,
+				65D905A6247F9EAC0036B679 /* About.md in Resources */,
 				65D9059D247D47360036B679 /* gpl-3.0.md in Resources */,
 				656EC39D246929DC00A30C43 /* Assets.xcassets in Resources */,
 				65598430246F21B800A5976E /* LICENSE in Resources */,
