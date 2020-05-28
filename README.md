@@ -1,9 +1,8 @@
 #  OneRM
 
-__One repetition maximum calculator for iOS__
+__One repetition maximum calculator and logger for iOS__
 
 [![license](https://img.shields.io/github/license/ola-ct/OneRM)](LICENSE)
-
 
 The 1RM is useful to determine an individual's maximum strength. It's also useful to determine the correct weights (as % of 1RM) when training for a specific goal. 
 
