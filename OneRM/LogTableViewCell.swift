@@ -21,7 +21,7 @@ class LogTableViewCell: UITableViewCell {
             guard let lift = lift else { return }
             exerciseLabel.text = lift.exercise.name
             dateLabel.text = dateFormatter.string(from: lift.date)
-            oneRMLabel.text = "\(lift.oneRM.rounded(toPlaces: 1)) \(lift.unit.name) 1RM"
+            oneRMLabel.text = "\(lift.oneRM.rounded(toPlaces: 1)) \(lift.unit.name)"
             repsAndWeightLabel.text = "\(lift.reps) × \(lift.weight.rounded(toPlaces: 1)) \(lift.unit.name)"
         }
     }
