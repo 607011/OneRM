@@ -15,6 +15,7 @@ class EditExerciseViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         exerciseField.text = currentExercise?.name
+        exerciseField.becomeFirstResponder()
         self.title = (exerciseField.text == "")
             ? NSLocalizedString("Add exercise", comment: "")
             : NSLocalizedString("Edit exercise", comment: "")
