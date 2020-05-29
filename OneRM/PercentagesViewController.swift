@@ -5,15 +5,14 @@ import UIKit
 
 class PercentagesViewController: UITableViewController {
 
-    var massUnit: String = defaultMassUnit
-    var weight: Double = 0
-    var reps: Int = 0
-    var orm: Double = 0
-
-    var maxPercent: Int = defaultMaxPercent
-    var minPercent: Int = defaultMinPercent
-    var percentStep: Int = defaultPercentStep
-    var formula: OneRMFormula = Brzycki()
+    private var massUnit: String = defaultMassUnit
+    private var weight: Double = 0
+    private var reps: Int = 0
+    private var orm: Double = 0
+    private var maxPercent: Int = defaultMaxPercent
+    private var minPercent: Int = defaultMinPercent
+    private var percentStep: Int = defaultPercentStep
+    private var formula: OneRMFormula = Brzycki()
 
     override func viewDidLoad() {
         super.viewDidLoad()

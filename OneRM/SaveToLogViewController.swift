@@ -11,23 +11,23 @@ class SaveToLogViewController: UITableViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
 
-    var exercises: [Exercise] = []
-    var exercise: Exercise? {
+    private var exercises: [Exercise] = []
+    private var exercise: Exercise? {
         didSet {
             NSUbiquitousKeyValueStore.default.set(exercise?.name, forKey: Key.lastSavedExercise.rawValue)
         }
     }
-    var date: Date? {
+    private var date: Date? {
         didSet {
             NSUbiquitousKeyValueStore.default.set(date, forKey: Key.lastSaveDate.rawValue)
         }
     }
-    var notes: String? {
+    private var notes: String? {
         didSet {
             NSUbiquitousKeyValueStore.default.set(notes, forKey: Key.lastSaveNotes.rawValue)
         }
     }
-    var rating: Int16 = 0 {
+    private var rating: Int16 = 0 {
         didSet {
             NSUbiquitousKeyValueStore.default.set(rating, forKey: Key.lastSaveRating.rawValue)
             for i in 0..<rating {

@@ -7,9 +7,9 @@ class MassUnitPickerViewController: UIViewController {
 
     @IBOutlet weak var massUnitPicker: UIPickerView!
 
-    var units: [Unit] = []
+    private var units: [Unit] = []
 
-    var massUnit: String = defaultMassUnit {
+    private var massUnit: String = defaultMassUnit {
         didSet {
             NSUbiquitousKeyValueStore.default.set(massUnit, forKey: Key.massUnit.rawValue)
         }

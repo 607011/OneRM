@@ -4,9 +4,9 @@ import UIKit
 
 class FormulaTableViewController: UITableViewController {
 
-    var formulas: [Formula] = defaultFormulas.keys.map({ $0 }).sorted(by: { $0.rawValue < $1.rawValue })
+    private var formulas: [Formula] = defaultFormulas.keys.map({ $0 }).sorted(by: { $0.rawValue < $1.rawValue })
 
-    var activeFormulas: [String] = [] {
+    private var activeFormulas: [String] = [] {
         didSet {
             NSUbiquitousKeyValueStore.default.set(activeFormulas, forKey: Key.formulas.rawValue)
         }

@@ -4,7 +4,7 @@ import UIKit
 
 class LogViewController: UITableViewController {
 
-    var lifts: [Lift] = []
+    private var lifts: [Lift] = []
 
     @IBAction func refreshButtonPressed(_ sender: Any) {
         refreshUI()
