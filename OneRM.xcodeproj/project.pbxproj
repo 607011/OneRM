@@ -343,7 +343,8 @@
 				656EC388246929DA00A30C43 /* Frameworks */,
 				656EC389246929DA00A30C43 /* Resources */,
 				65D9059A247D37F80036B679 /* Embed Frameworks */,
-				65D9059F247D68810036B679 /* ShellScript */,
+				65D9059F247D68810036B679 /* Swiftlint */,
+				65B052342480F7FF000EA7F7 /* Increment build number */,
 			);
 			buildRules = (
 			);
@@ -454,7 +455,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		65D9059F247D68810036B679 /* ShellScript */ = {
+		65B052342480F7FF000EA7F7 /* Increment build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -463,6 +464,25 @@
 			);
 			inputPaths = (
 			);
+			name = "Increment build number";
+			outputFileListPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "xcrun agvtool next-version -all\n";
+		};
+		65D9059F247D68810036B679 /* Swiftlint */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 12;
+			files = (
+			);
+			inputFileListPaths = (
+			);
+			inputPaths = (
+			);
+			name = Swiftlint;
 			outputFileListPaths = (
 			);
 			outputPaths = (
@@ -718,7 +738,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneRM/OneRM.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 64627RE2QD;
 				INFOPLIST_FILE = OneRM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -741,7 +761,7 @@
 				CODE_SIGN_ENTITLEMENTS = OneRM/OneRM.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Manual;
-				CURRENT_PROJECT_VERSION = 2;
+				CURRENT_PROJECT_VERSION = 25;
 				DEVELOPMENT_TEAM = 64627RE2QD;
 				INFOPLIST_FILE = OneRM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
