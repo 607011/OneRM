@@ -38,7 +38,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if let idToken = FileManager.default.ubiquityIdentityToken,
             let newTokenData = try? NSKeyedArchiver.archivedData(withRootObject: idToken, requiringSecureCoding: true) {
             NSUbiquitousKeyValueStore.default.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
-            debugPrint("net.ersatzworld.OneRM.UbiquityIdentityToken = \(newTokenData)")
         } else {
             NSUbiquitousKeyValueStore.default.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
         }
