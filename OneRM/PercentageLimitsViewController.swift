@@ -54,6 +54,11 @@ class PercentageLimitsViewController: UITableViewController {
         percentStepField.text = "\(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.percentStep.rawValue))"
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSUbiquitousKeyValueStore.default.synchronize()
+    }
+
     @objc func keyboardDidShow(notification: Notification) {
         guard notification.name == UITextField.textDidChangeNotification else { return }
         guard let field = notification.object as? UITextField else { return }

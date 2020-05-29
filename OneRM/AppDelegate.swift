@@ -13,49 +13,42 @@ enum AppError: Error {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.barWeight.rawValue) == nil {
-            NSUbiquitousKeyValueStore.default.set(defaultBarWeight, forKey: Key.barWeight.rawValue)
+        let kvStore = NSUbiquitousKeyValueStore.default
+        kvStore.synchronize()
+        if kvStore.object(forKey: Key.barWeight.rawValue) == nil {
+            kvStore.set(defaultBarWeight, forKey: Key.barWeight.rawValue)
         }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.massUnit.rawValue) == nil {
-            NSUbiquitousKeyValueStore.default.set(defaultMassUnit, forKey: Key.massUnit.rawValue)
+        if kvStore.object(forKey: Key.massUnit.rawValue) == nil {
+            kvStore.set(defaultMassUnit, forKey: Key.massUnit.rawValue)
         }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.plates.rawValue) == nil {
-            NSUbiquitousKeyValueStore.default.set(defaultPlates, forKey: Key.plates.rawValue)
+        if kvStore.object(forKey: Key.plates.rawValue) == nil {
+            kvStore.set(defaultPlates, forKey: Key.plates.rawValue)
         }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.maxPercent.rawValue) == nil {
-            NSUbiquitousKeyValueStore.default.set(defaultMaxPercent, forKey: Key.maxPercent.rawValue)
+        if kvStore.object(forKey: Key.maxPercent.rawValue) == nil {
+            kvStore.set(defaultMaxPercent, forKey: Key.maxPercent.rawValue)
         }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.minPercent.rawValue) == nil {
-            NSUbiquitousKeyValueStore.default.set(defaultMinPercent, forKey: Key.minPercent.rawValue)
+        if kvStore.object(forKey: Key.minPercent.rawValue) == nil {
+            kvStore.set(defaultMinPercent, forKey: Key.minPercent.rawValue)
         }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.percentStep.rawValue) == nil {
-            NSUbiquitousKeyValueStore.default.set(defaultPercentStep, forKey: Key.percentStep.rawValue)
+        if kvStore.object(forKey: Key.percentStep.rawValue) == nil {
+            kvStore.set(defaultPercentStep, forKey: Key.percentStep.rawValue)
         }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) == nil {
-            NSUbiquitousKeyValueStore.default.set([Formula.brzycki.rawValue], forKey: Key.formulas.rawValue)
+        if kvStore.object(forKey: Key.formulas.rawValue) == nil {
+            kvStore.set([Formula.brzycki.rawValue], forKey: Key.formulas.rawValue)
         }
-
-        if let idToken = FileManager.default.ubiquityIdentityToken,
-            let newTokenData = try? NSKeyedArchiver.archivedData(withRootObject: idToken, requiringSecureCoding: true) {
-            NSUbiquitousKeyValueStore.default.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
-        } else {
-            NSUbiquitousKeyValueStore.default.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
-        }
-
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(iCloudAvailabilityChanged),
                                                name: Notification.Name.NSUbiquityIdentityDidChange,
+                                               object: nil)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(externalStorageChanged),
+                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
                                                object: nil)
 
 //        NSUbiquitousKeyValueStore.default.set(false, forKey: "appSuccessfullyInitialized")
 //        if isFirstStart() {
 //            addDefaultEntities(completeFirstLaunch)
 //        }
-
-        UINavigationBar.appearance().backgroundColor = UIColor(named: "Olive")
-        UINavigationBar.appearance().barTintColor = UIColor(named: "Olive")
-        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
-        UINavigationBar.appearance().tintColor = .white
 
 //        let alertController = UIAlertController(title: NSLocalizedString("Choose storage", comment: ""),
 //                                      message: NSLocalizedString("Should your data be stored in iCloud and available on all your devices?", comment: ""),
@@ -65,11 +58,37 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 //        alertController.addAction(actionLocal)
 //        alertController.addAction(actionCloud)
 
+        UINavigationBar.appearance().backgroundColor = UIColor(named: "Olive")
+        UINavigationBar.appearance().barTintColor = UIColor(named: "Olive")
+        UINavigationBar.appearance().titleTextAttributes = [NSAttributedString.Key.foregroundColor: UIColor.white]
+        UINavigationBar.appearance().tintColor = .white
         return true
     }
 
+    func applicationWillEnterForeground(_ application: UIApplication) {
+        NSUbiquitousKeyValueStore.default.synchronize()
+        debugPrint("applicationWillEnterForeground()")
+    }
+
+    @objc func externalStorageChanged(notification: Notification) {
+        debugPrint("externalStorageChanged()")
+    }
+
     @objc func iCloudAvailabilityChanged(notification: Notification) {
-        debugPrint("AppDelegate.iCloudAvailabilityChanged()", notification)
+        debugPrint("iCloudAvailabilityChanged()")
+        let kvStore = NSUbiquitousKeyValueStore.default
+        if let idToken = FileManager.default.ubiquityIdentityToken,
+            let newTokenData = try? NSKeyedArchiver.archivedData(withRootObject: idToken, requiringSecureCoding: false) {
+            if let oldTokenData = kvStore.object(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken") as? Data {
+                if oldTokenData != newTokenData {
+                    // user has changed identity -> clear local caches of exercises, lifts units and settings
+                }
+            }
+            kvStore.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
+        } else {
+            // user has logged out of iCloud
+            kvStore.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
+        }
     }
 
     // MARK: UISceneSession Lifecycle

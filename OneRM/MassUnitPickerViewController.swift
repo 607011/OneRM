@@ -28,6 +28,11 @@ class MassUnitPickerViewController: UIViewController {
         guard let row = defaultUnits.firstIndex(of: massUnit) else { return }
         massUnitPicker.selectRow(row, inComponent: 0, animated: true)
     }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSUbiquitousKeyValueStore.default.synchronize()
+    }
 }
 
 extension MassUnitPickerViewController: UIPickerViewDelegate {

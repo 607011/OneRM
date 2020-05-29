@@ -5,19 +5,13 @@ import UIKit
 
 class MainViewController: UIViewController {
 
-    private typealias MVC = MainViewController
-
-    static let WeightDigitCount: Int = 5
-    static let WeightData: [[Int]] = [[Int]](repeating: Array(0...9), count: MVC.WeightDigitCount)
-    static let RepInterval: ClosedRange = 1...12
-    static let RepData: [Int] = Array(RepInterval)
-    static let DefaultRepsInView: Int = 12
-
     @IBOutlet private weak var weightPicker: UIPickerView!
     @IBOutlet private weak var repsPicker: UIPickerView!
     @IBOutlet private weak var repsCollectionView: UICollectionView!
 
-    private var repsInView: Int = DefaultRepsInView
+    private let repInterval: ClosedRange = 1...12
+    private var repData: [Int] = []
+    private var weightData: [[Int]] = [[]]
     private var massUnit: String = defaultMassUnit
     private var formula: OneRMFormula = Brzycki()
 
@@ -40,27 +34,33 @@ class MainViewController: UIViewController {
         return formula.oneRM(weight: weight, reps: Int(reps))
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        weightPicker.delegate = self
-        weightPicker.dataSource = self
-        repsPicker.delegate = self
-        repsPicker.dataSource = self
-        repsCollectionView.delegate = self
-        repsCollectionView.dataSource = self
-        weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
+    private func updateWeightPicker(from weight: Double) {
         var w = weight
-        var divisor = pow(10.0, Double(MVC.WeightDigitCount - 2))
-        for idx in 0..<MVC.WeightDigitCount {
+        var divisor = pow(10.0, Double(weightPicker.numberOfComponents - 2))
+        for idx in 0..<weightPicker.numberOfComponents {
             let v = Int(w / divisor)
             w -= Double(v) * divisor
-            if let row = MVC.WeightData[idx].firstIndex(of: v) {
+            if let row = weightData[idx].firstIndex(of: v) {
                 weightPicker.selectRow(row, inComponent: idx, animated: false)
             }
             divisor /= 10
         }
-        reps = Int16(MVC.RepInterval.clamp(value: Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue))))
-        if let row = MVC.RepData.firstIndex(of: Int(reps)) {
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        weightPicker.delegate = self
+        weightPicker.dataSource = self
+        weightData = [[Int]](repeating: Array(0...9), count: weightPicker.numberOfComponents)
+        repsPicker.delegate = self
+        repsPicker.dataSource = self
+        repData = Array(repInterval)
+        repsCollectionView.delegate = self
+        repsCollectionView.dataSource = self
+        weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
+        updateWeightPicker(from: weight)
+        reps = Int16(repInterval.clamp(value: Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue))))
+        if let row = repData.firstIndex(of: Int(reps)) {
             repsPicker.selectRow(row, inComponent: 0, animated: false)
         }
         if let layout = repsCollectionView?.collectionViewLayout as? RepCollectionViewCellLayout {
@@ -82,14 +82,18 @@ class MainViewController: UIViewController {
         cellWidth = ceil(attributedString.size().width)
 
         repsCollectionView.reloadData()
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) != nil {
-            guard let activeFormulas = NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) as? [String] else { return }
+        if NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) != nil,
+            let activeFormulas = NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) as? [String] {
             formula = activeFormulas.isEmpty
                 ? Brzycki()
                 : MixedOneRM(formulas: activeFormulas)
         }
-
         // debugPrint("FileManager.default.ubiquityIdentityToken = \(FileManager.default.ubiquityIdentityToken)")
+    }
+
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSUbiquitousKeyValueStore.default.synchronize()
     }
 
     override func viewDidLayoutSubviews() {
@@ -144,7 +148,7 @@ extension MainViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
         case weightPicker: return 10
-        case repsPicker: return MVC.RepData.count
+        case repsPicker: return repData.count
         default: return 0
         }
     }
@@ -153,23 +157,23 @@ extension MainViewController: UIPickerViewDelegate {
         switch pickerView {
         case weightPicker:
             var w = 0.0
-            var factor = pow(10.0, Double(MVC.WeightDigitCount - 2))
-            for idx in 0..<MVC.WeightDigitCount {
-                let v = MVC.WeightData[component][weightPicker.selectedRow(inComponent: idx)]
+            var factor = pow(10.0, Double(weightPicker.numberOfComponents - 2))
+            for idx in 0..<weightPicker.numberOfComponents {
+                let v = weightData[component][weightPicker.selectedRow(inComponent: idx)]
                 w += Double(v) * factor
                 factor /= 10
             }
             weight = w
         case repsPicker:
-            reps = Int16(MVC.RepData[row])
+            reps = Int16(repData[row])
         default: break
         }
     }
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
-        case weightPicker: return "\(MVC.WeightData[component][row])"
-        case repsPicker: return "\(MVC.RepData[row])"
+        case weightPicker: return "\(weightData[component][row])"
+        case repsPicker: return "\(repData[row])"
         default: return ""
         }
     }
@@ -185,7 +189,7 @@ extension MainViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
         var attributedString: NSAttributedString?
         if pickerView == weightPicker && component == 4 {
-            attributedString = NSAttributedString(string: String(MVC.WeightData[component][row]), attributes: [
+            attributedString = NSAttributedString(string: String(weightData[component][row]), attributes: [
                 NSAttributedString.Key.backgroundColor: UIColor.gray,
                 NSAttributedString.Key.foregroundColor: UIColor.white
             ])
@@ -197,7 +201,7 @@ extension MainViewController: UIPickerViewDelegate {
 extension MainViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         switch pickerView {
-        case weightPicker: return MVC.WeightDigitCount
+        case weightPicker: return 5
         case repsPicker: return 1
         default: return 0
         }
@@ -206,7 +210,7 @@ extension MainViewController: UIPickerViewDataSource {
 
 extension MainViewController: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return repsInView
+        return repData.count
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

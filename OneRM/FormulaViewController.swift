@@ -26,10 +26,10 @@ class FormulaTableViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSUbiquitousKeyValueStore.default.synchronize()
     }
-
 }
 
 extension FormulaTableViewController {

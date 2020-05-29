@@ -88,6 +88,11 @@ class SaveToLogViewController: UITableViewController {
         notes = notesTextView.text
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSUbiquitousKeyValueStore.default.synchronize()
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoLog" {
             guard let unit = LiftDataManager.shared.load(unitWithName: self.massUnit),

@@ -27,6 +27,11 @@ class EditExerciseViewController: UIViewController {
         exerciseField.text = ""
     }
 
+    override func viewDidDisappear(_ animated: Bool) {
+        super.viewDidDisappear(animated)
+        NSUbiquitousKeyValueStore.default.synchronize()
+    }
+
     @IBAction func saveExercise(_ sender: Any) {
         if currentExercise == nil {
             let exerciseData = ExerciseData(name: exerciseField.text ?? "", order: -1)

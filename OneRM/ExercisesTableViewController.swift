@@ -4,23 +4,45 @@ import UIKit
 
 class ExercisesTableViewController: UITableViewController {
 
-    var exercises: [Exercise] = []
-    var lifts: [Lift] = []
-    var currentExercise: Exercise?
+    private var exercises: [Exercise] = []
+    private var lifts: [Lift] = []
+    private var currentExercise: Exercise?
+
+    private lazy var spinner: UIActivityIndicatorView = {
+        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
+        indicator.color = .gray
+        indicator.hidesWhenStopped = true
+        indicator.translatesAutoresizingMaskIntoConstraints = false
+        return indicator
+    }()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.isEditing = true
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(managedObjectContextChanged),
+                                               name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
+                                               object: LiftDataManager.shared.mainContext)
+        NotificationCenter.default.addObserver(self,
+                                               selector: #selector(managedObjectContextChanged),
+                                               name: NSNotification.Name.NSPersistentStoreRemoteChange,
+                                               object: LiftDataManager.shared.mainContext)
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        if spinner.superview == nil, let superView = tableView.superview {
+            debugPrint("################################ spinner added")
+            superView.addSubview(spinner)
+            superView.bringSubviewToFront(spinner)
+            spinner.centerXAnchor.constraint(equalTo: superView.centerXAnchor).isActive = true
+            spinner.centerYAnchor.constraint(equalTo: superView.centerYAnchor).isActive = true
+        }
+        spinner.startAnimating()
         self.currentExercise = nil
-        exercises = LiftDataManager.shared.loadExercises()
-        lifts = LiftDataManager.shared.loadLifts()
-        tableView.reloadData()
+        refreshUI()
     }
 
     override func viewWillDisappear(_ animated: Bool) {
@@ -42,10 +64,23 @@ class ExercisesTableViewController: UITableViewController {
 }
 
 extension ExercisesTableViewController {
+
     func updateExerciseOrder() {
         for (idx, exercise) in exercises.enumerated() {
             exercise.order = Int16(idx)
         }
+    }
+
+    func refreshUI() {
+        lifts = LiftDataManager.shared.loadLifts()
+        exercises = LiftDataManager.shared.loadExercises()
+        tableView.reloadData()
+    }
+
+    @objc
+    func managedObjectContextChanged(notification: NSNotification) {
+        debugPrint("ExercisesTableViewController.managedObjectContextChanged()", notification)
+        refreshUI()
     }
 }
 
