@@ -48,8 +48,15 @@ class SaveToLogViewController: UITableViewController {
         rating = (button.tag == 1 && rating == 1) ? 0 : Int16(button.tag)
     }
 
+    @objc func updateFromDefaults(notification: Notification) {
+        guard let defaults = notification.object as? UserDefaults else { return }
+        massUnit = defaults.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        tableView.reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
         exercisePicker.delegate = self
         exercisePicker.dataSource = self
         for (idx, button) in starButton.enumerated() {
@@ -59,7 +66,7 @@ class SaveToLogViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = NSUbiquitousKeyValueStore.default.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
         exercises = LiftDataManager.shared.loadExercises()
         repsAndWeightLabel.text = "\(reps) × \(weight.rounded(toPlaces: 1)) \(massUnit)"
         oneRMLabel.text = "\(oneRM.rounded(toPlaces: 1)) \(massUnit)"

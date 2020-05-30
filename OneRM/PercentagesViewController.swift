@@ -14,26 +14,30 @@ class PercentagesViewController: UITableViewController {
     private var percentStep: Int = defaultPercentStep
     private var formula: OneRMFormula = Brzycki()
 
+    @objc func updateFromDefaults(notification: Notification) {
+        guard let defaults = notification.object as? UserDefaults else { return }
+        massUnit = defaults.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        formula = currentFormula()
+        orm = formula.oneRM(weight: weight, reps: reps)
+        tableView.reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = NSUbiquitousKeyValueStore.default.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
         weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
         reps = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue))
         maxPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.maxPercent.rawValue))
         minPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.minPercent.rawValue))
         percentStep = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.percentStep.rawValue))
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) != nil,
-            let activeFormulas = NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) as? [String] {
-            formula = activeFormulas.isEmpty
-                ? Brzycki()
-                : MixedOneRM(formulas: activeFormulas)
-        }
+        formula = currentFormula()
         orm = formula.oneRM(weight: weight, reps: reps)
         self.tableView.reloadData()
     }

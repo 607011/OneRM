@@ -29,7 +29,7 @@ class SettingsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let massUnit = NSUbiquitousKeyValueStore.default.string(forKey: Key.massUnit.rawValue)
+        let massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue)
         massUnitLabel.text = "\(massUnit ?? defaultMassUnit)"
         let maxPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.maxPercent.rawValue))
         let minPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.minPercent.rawValue))

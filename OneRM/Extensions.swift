@@ -2,6 +2,8 @@
 
 import Foundation
 
+// MARK: - Double
+
 extension Double {
     func rounded(toPlaces places: Int) -> Double {
         let divisor = pow(10.0, Double(places))
@@ -14,6 +16,8 @@ extension Double {
         return abs(self - other) < epsilon
     }
 }
+
+// MARK: - ClosedRange
 
 extension ClosedRange {
     func clamp(value: Bound) -> Bound {

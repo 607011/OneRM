@@ -129,3 +129,25 @@ let defaultFormulas: [Formula: OneRMFormula] = [
     .oconner: OConner(),
     .wathen: Wathen()
 ]
+
+let availableFormulas: [String] = [
+    Key.formulaBrzycki.rawValue,
+    Key.formulaEpley.rawValue,
+    Key.formulaLombardi.rawValue,
+    Key.formulaMayhew.rawValue,
+    Key.formulaMcGlothin.rawValue,
+    Key.formulaOConner.rawValue,
+    Key.formulaWathen.rawValue
+]
+
+func currentFormula() -> OneRMFormula {
+    var activeFormulas: [String] = []
+    for fn in availableFormulas {
+        if UserDefaults.standard.bool(forKey: fn) {
+            activeFormulas.append(fn)
+        }
+    }
+    return activeFormulas.isEmpty
+        ? Brzycki()
+        : MixedOneRM(formulas: activeFormulas)
+}

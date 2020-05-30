@@ -13,17 +13,15 @@ enum AppError: Error {
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
+        registerAppSettings()
         let kvStore = NSUbiquitousKeyValueStore.default
         kvStore.synchronize()
-        if kvStore.object(forKey: Key.barWeight.rawValue) == nil {
-            kvStore.set(defaultBarWeight, forKey: Key.barWeight.rawValue)
-        }
-        if kvStore.object(forKey: Key.massUnit.rawValue) == nil {
-            kvStore.set(defaultMassUnit, forKey: Key.massUnit.rawValue)
-        }
-        if kvStore.object(forKey: Key.plates.rawValue) == nil {
-            kvStore.set(defaultPlates, forKey: Key.plates.rawValue)
-        }
+//        if kvStore.object(forKey: Key.barWeight.rawValue) == nil {
+//            kvStore.set(defaultBarWeight, forKey: Key.barWeight.rawValue)
+//        }
+//        if kvStore.object(forKey: Key.plates.rawValue) == nil {
+//            kvStore.set(defaultPlates, forKey: Key.plates.rawValue)
+//        }
         if kvStore.object(forKey: Key.maxPercent.rawValue) == nil {
             kvStore.set(defaultMaxPercent, forKey: Key.maxPercent.rawValue)
         }
@@ -32,9 +30,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
         if kvStore.object(forKey: Key.percentStep.rawValue) == nil {
             kvStore.set(defaultPercentStep, forKey: Key.percentStep.rawValue)
-        }
-        if kvStore.object(forKey: Key.formulas.rawValue) == nil {
-            kvStore.set([Formula.brzycki.rawValue], forKey: Key.formulas.rawValue)
         }
         NotificationCenter.default.addObserver(self,
                                                selector: #selector(iCloudAvailabilityChanged),
@@ -166,15 +161,22 @@ extension AppDelegate {
     }
 
     func addDefaultEntities(_ completionHandler: (_ error: AppError) -> Void) {
-
         let exercises = defaultExercises.enumerated().map { ExerciseData(name: $0.1, order: Int16($0.0)) }
         // swiftlint:disable:next force_try
         try! LiftDataManager.shared.save(exercises: exercises)
-
-        let units = defaultUnits.map { UnitData(name: $0) }
-        // swiftlint:disable:next force_try
-        try! LiftDataManager.shared.save(units: units)
-
+        let settingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Root.plist")
+        if let settingsPlist = NSDictionary(contentsOf: settingsUrl),
+            let preferences = settingsPlist["PreferenceSpecifiers"] as? [NSDictionary] {
+            for preference in preferences {
+                guard let key = preference["Key"] as? String else { continue }
+                if key == Key.massUnit.rawValue {
+                    guard let defaultUnits = preference["Values"] as? [String] else { continue }
+                    let units = defaultUnits.map { UnitData(name: $0) }
+                    // swiftlint:disable:next force_try
+                    try! LiftDataManager.shared.save(units: units)
+                }
+            }
+        }
         completionHandler(.initialized)
     }
 }

@@ -34,7 +34,7 @@ class WeightsViewController: UITableViewController {
         super.viewWillAppear(animated)
         let barWeight = NSUbiquitousKeyValueStore.default.double(forKey: Key.barWeight.rawValue)
         barWeightTextField.text = "\(barWeight.rounded(toPlaces: 2))"
-        massUnitLabel.text = NSUbiquitousKeyValueStore.default.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        massUnitLabel.text = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
     }
 }
 

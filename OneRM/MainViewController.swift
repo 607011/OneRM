@@ -47,8 +47,15 @@ class MainViewController: UIViewController {
         }
     }
 
+    @objc func updateFromDefaults(notification: Notification) {
+        guard let defaults = notification.object as? UserDefaults else { return }
+        massUnit = defaults.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        repsCollectionView.reloadData()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
         weightPicker.delegate = self
         weightPicker.dataSource = self
         weightData = [[Int]](repeating: Array(0...9), count: weightPicker.numberOfComponents)
@@ -68,27 +75,17 @@ class MainViewController: UIViewController {
         }
     }
 
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-    }
-
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        massUnit = NSUbiquitousKeyValueStore.default.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
 
         // cellWidth must be recalculated on every appearance because massUnit could have changed
         let attributedString = NSAttributedString(string: "8888.8 \(massUnit)",
             attributes: [.font: UIFont.systemFont(ofSize: 25.0, weight: .semibold)])
         cellWidth = ceil(attributedString.size().width)
 
+        massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        formula = currentFormula()
         repsCollectionView.reloadData()
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) != nil,
-            let activeFormulas = NSUbiquitousKeyValueStore.default.object(forKey: Key.formulas.rawValue) as? [String] {
-            formula = activeFormulas.isEmpty
-                ? Brzycki()
-                : MixedOneRM(formulas: activeFormulas)
-        }
-        // debugPrint("FileManager.default.ubiquityIdentityToken = \(FileManager.default.ubiquityIdentityToken)")
     }
 
     override func viewDidDisappear(_ animated: Bool) {
@@ -117,25 +114,25 @@ class MainViewController: UIViewController {
     }
 }
 
-extension MainViewController {
-    func nextLower(weight: Double) -> (Double, [String]) {
-        var plates: [Double] = defaultPlates
-        let bar: Double = defaultBarWeight
-        if weight < bar {
-            return (0, [])
-        }
-        var result: [String] = ["\(bar) \(massUnit)"]
-        var x = bar
-        while x < weight && plates.first != nil {
-            while 2 * plates.first! <= weight - x {
-                x += 2 * plates.first!
-                result.append("2 × \(plates.first!) \(massUnit)")
-            }
-            plates.removeFirst()
-        }
-        return (x, result)
-    }
-}
+//extension MainViewController {
+//    func nextLower(weight: Double) -> (Double, [String]) {
+//        var plates: [Double] = defaultPlates
+//        let bar: Double = defaultBarWeight
+//        if weight < bar {
+//            return (0, [])
+//        }
+//        var result: [String] = ["\(bar) \(massUnit)"]
+//        var x = bar
+//        while x < weight && plates.first != nil {
+//            while 2 * plates.first! <= weight - x {
+//                x += 2 * plates.first!
+//                result.append("2 × \(plates.first!) \(massUnit)")
+//            }
+//            plates.removeFirst()
+//        }
+//        return (x, result)
+//    }
+//}
 
 extension MainViewController: RepsCollectionViewCellLayoutDelegate {
     func collectionView(_ collectionView: UICollectionView, sizeAtIndexPath indexPath: IndexPath) -> CGSize {
