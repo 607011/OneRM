@@ -335,7 +335,7 @@
 				656EC389246929DA00A30C43 /* Resources */,
 				65D9059A247D37F80036B679 /* Embed Frameworks */,
 				65D9059F247D68810036B679 /* Swiftlint */,
-				65B052342480F7FF000EA7F7 /* Increment build number */,
+				65B052342480F7FF000EA7F7 /* Update build number */,
 			);
 			buildRules = (
 			);
@@ -448,7 +448,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		65B052342480F7FF000EA7F7 /* Increment build number */ = {
+		65B052342480F7FF000EA7F7 /* Update build number */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -457,14 +457,14 @@
 			);
 			inputPaths = (
 			);
-			name = "Increment build number";
+			name = "Update build number";
 			outputFileListPaths = (
 			);
 			outputPaths = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "xcrun agvtool next-version -all\n";
+			shellScript = "branch=${1:-'master'}\nbuildNumber=$(expr $(git rev-list $branch --count) - $(git rev-list HEAD..$branch --count))\necho \"Updating build number to $buildNumber using branch '$branch'.\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"$PRODUCT_SETTINGS_PATH\"\n/usr/libexec/PlistBuddy -c \"Set :CFBundleVersion $buildNumber\" \"${TARGET_BUILD_DIR}/${INFOPLIST_PATH}\"\n";
 		};
 		65D9059F247D68810036B679 /* Swiftlint */ = {
 			isa = PBXShellScriptBuildPhase;
