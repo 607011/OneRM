@@ -25,4 +25,4 @@ You can even build and run your own version based on the [source code published 
 
 ## License
 
-[GPLv3](LICENSE) – [Oliver Lau](https://github.com/ola-ct)
+[GPLv3](LICENSE) © [Oliver Lau](https://github.com/ola-ct)
