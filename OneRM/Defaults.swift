@@ -69,13 +69,19 @@ enum Key: String {
 }
 
 func registerAppSettings() {
-    let settingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Root.plist")
-    guard let settingsPlist = NSDictionary(contentsOf: settingsUrl) else { return }
-    guard let preferences = settingsPlist["PreferenceSpecifiers"] as? [NSDictionary] else { return }
+    guard let settingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle"),
+        let settingsData = try? Data(contentsOf: settingsUrl.appendingPathComponent("Root.plist")),
+        let settingsPlist = try? PropertyListSerialization.propertyList(
+            from: settingsData,
+            options: [],
+            format: nil) as? [String: Any],
+        let settingsPreferences = settingsPlist["PreferenceSpecifiers"] as? [[String: Any]] else {
+            return }
     var defaultsToRegister: [String: Any] = [:]
-    for preference in preferences {
-        guard let key = preference["Key"] as? String else { continue }
-        defaultsToRegister[key] = preference["DefaultValue"]
+    settingsPreferences.forEach { preference in
+        if let key = preference["Key"] as? String {
+            defaultsToRegister[key] = preference["DefaultValue"]
+        }
     }
     UserDefaults.standard.register(defaults: defaultsToRegister)
 }
