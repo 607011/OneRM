@@ -50,6 +50,7 @@ class MainViewController: UIViewController {
     @objc func updateFromDefaults(notification: Notification) {
         guard let defaults = notification.object as? UserDefaults else { return }
         massUnit = defaults.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
+        formula = currentFormula()
         repsCollectionView.reloadData()
     }
 
