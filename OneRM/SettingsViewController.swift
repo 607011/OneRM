@@ -5,7 +5,6 @@ import UIKit
 
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var versionLabel: UILabel!
-    @IBOutlet weak var massUnitLabel: UILabel!
     @IBOutlet weak var limitsLabel: UILabel!
     @IBOutlet weak var buildDateLabel: UILabel!
     @IBOutlet weak var syncWithiCloudCell: UITableViewCell!
@@ -29,8 +28,6 @@ class SettingsViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        let massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue)
-        massUnitLabel.text = "\(massUnit ?? defaultMassUnit)"
         let maxPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.maxPercent.rawValue))
         let minPercent = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.minPercent.rawValue))
         let percentStep = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.percentStep.rawValue))
