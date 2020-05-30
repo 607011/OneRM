@@ -60,16 +60,17 @@ class PercentageLimitsViewController: UITableViewController {
     }
 
     @objc func keyboardDidShow(notification: Notification) {
-        guard notification.name == UITextField.textDidChangeNotification else { return }
-        guard let field = notification.object as? UITextField else { return }
-        switch field {
-        case maxPercentField:
-            maxPercent = Int(maxPercentField.text ?? "") ?? defaultMaxPercent
-        case minPercentField:
-            minPercent = Int(minPercentField.text ?? "") ?? defaultMinPercent
-        case percentStepField:
-            percentStep = Int(percentStepField.text ?? "") ?? defaultPercentStep
-        default: break
+        if notification.name == UITextField.textDidChangeNotification,
+            let field = notification.object as? UITextField {
+            switch field {
+            case maxPercentField:
+                maxPercent = Int(maxPercentField.text ?? "") ?? defaultMaxPercent
+            case minPercentField:
+                minPercent = Int(minPercentField.text ?? "") ?? defaultMinPercent
+            case percentStepField:
+                percentStep = Int(percentStepField.text ?? "") ?? defaultPercentStep
+            default: break
+            }
         }
     }
 }
