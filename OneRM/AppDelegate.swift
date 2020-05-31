@@ -31,27 +31,14 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if kvStore.object(forKey: Key.percentStep.rawValue) == nil {
             kvStore.set(defaultPercentStep, forKey: Key.percentStep.rawValue)
         }
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(iCloudAvailabilityChanged),
-                                               name: Notification.Name.NSUbiquityIdentityDidChange,
-                                               object: nil)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(externalStorageChanged),
-                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-                                               object: nil)
-
-//        NSUbiquitousKeyValueStore.default.set(false, forKey: "appSuccessfullyInitialized")
-//        if isFirstStart() {
-//            addDefaultEntities(completeFirstLaunch)
-//        }
-
-//        let alertController = UIAlertController(title: NSLocalizedString("Choose storage", comment: ""),
-//                                      message: NSLocalizedString("Should your data be stored in iCloud and available on all your devices?", comment: ""),
-//                                      preferredStyle: .actionSheet)
-//        let actionLocal = UIAlertAction(title: NSLocalizedString("Local only", comment: ""), style: .default, handler: { action in debugPrint(action) })
-//        let actionCloud = UIAlertAction(title: NSLocalizedString("Use iCloud", comment: ""), style: .default, handler: { action in debugPrint(action) })
-//        alertController.addAction(actionLocal)
-//        alertController.addAction(actionCloud)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(iCloudAvailabilityChanged),
+//                                               name: Notification.Name.NSUbiquityIdentityDidChange,
+//                                               object: nil)
+//        NotificationCenter.default.addObserver(self,
+//                                               selector: #selector(externalStorageChanged),
+//                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
+//                                               object: nil)
 
         UINavigationBar.appearance().backgroundColor = UIColor(named: "Olive")
         UINavigationBar.appearance().barTintColor = UIColor(named: "Olive")
@@ -65,26 +52,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         debugPrint("applicationWillEnterForeground()")
     }
 
-    @objc func externalStorageChanged(notification: Notification) {
-        debugPrint("externalStorageChanged()")
-    }
-
-    @objc func iCloudAvailabilityChanged(notification: Notification) {
-        debugPrint("iCloudAvailabilityChanged()")
-        let kvStore = NSUbiquitousKeyValueStore.default
-        if let idToken = FileManager.default.ubiquityIdentityToken,
-            let newTokenData = try? NSKeyedArchiver.archivedData(withRootObject: idToken, requiringSecureCoding: false) {
-            if let oldTokenData = kvStore.object(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken") as? Data {
-                if oldTokenData != newTokenData {
-                    // user has changed identity -> clear local caches of exercises, lifts units and settings
-                }
-            }
-            kvStore.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
-        } else {
-            // user has logged out of iCloud
-            kvStore.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
-        }
-    }
+//    @objc func externalStorageChanged(notification: Notification) {
+//        debugPrint("externalStorageChanged()")
+//    }
+//
+//    @objc func iCloudAvailabilityChanged(notification: Notification) {
+//        debugPrint("iCloudAvailabilityChanged()")
+//        let kvStore = NSUbiquitousKeyValueStore.default
+//        if let idToken = FileManager.default.ubiquityIdentityToken,
+//            let newTokenData = try? NSKeyedArchiver.archivedData(withRootObject: idToken, requiringSecureCoding: false) {
+//            if let oldTokenData = kvStore.object(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken") as? Data {
+//                if oldTokenData != newTokenData {
+//                    // user has changed identity -> clear local caches of exercises, lifts units and settings
+//                }
+//            }
+//            kvStore.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
+//        } else {
+//            // user has logged out of iCloud
+//            kvStore.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
+//        }
+//    }
 
     // MARK: UISceneSession Lifecycle
 
@@ -144,39 +131,4 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         }
     }
 
-}
-
-extension AppDelegate {
-
-    func isFirstStart() -> Bool {
-        return !NSUbiquitousKeyValueStore.default.bool(forKey: "appSuccessfullyInitialized")
-    }
-
-    func completeFirstLaunch(_ error: AppError) {
-        if error == .initialized {
-            NSUbiquitousKeyValueStore.default.set(true, forKey: "appSuccessfullyInitialized")
-        } else {
-            debugPrint("ERROR: 1st launch not successfully completed")
-        }
-    }
-
-    func addDefaultEntities(_ completionHandler: (_ error: AppError) -> Void) {
-        let exercises = defaultExercises.enumerated().map { ExerciseData(name: $0.1, order: Int16($0.0)) }
-        // swiftlint:disable:next force_try
-        try! LiftDataManager.shared.save(exercises: exercises)
-        let settingsUrl = Bundle.main.url(forResource: "Settings", withExtension: "bundle")!.appendingPathComponent("Root.plist")
-        if let settingsPlist = NSDictionary(contentsOf: settingsUrl),
-            let preferences = settingsPlist["PreferenceSpecifiers"] as? [NSDictionary] {
-            for preference in preferences {
-                guard let key = preference["Key"] as? String else { continue }
-                if key == Key.massUnit.rawValue {
-                    guard let defaultUnits = preference["Values"] as? [String] else { continue }
-                    let units = defaultUnits.map { UnitData(name: $0) }
-                    // swiftlint:disable:next force_try
-                    try! LiftDataManager.shared.save(units: units)
-                }
-            }
-        }
-        completionHandler(.initialized)
-    }
 }
