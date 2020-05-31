@@ -61,11 +61,23 @@ extension LogViewController {
 
     override func tableView(_ tableView: UITableView, trailingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
         let deleteAction = UIContextualAction(style: .destructive, title: "delete") {  (_, _, _) in
-            let removedLift = self.lifts[indexPath.row]
-            LiftDataManager.shared.mainContext.delete(removedLift)
-            self.lifts.remove(at: indexPath.row)
-            tableView.deleteRows(at: [indexPath], with: .automatic)
-            LiftDataManager.shared.save()
+            let actionSheet = UIAlertController(
+                title: NSLocalizedString("Really delete lift?", comment: ""),
+                message: NSLocalizedString("Deletion of lift cannot be undone. Do you really want to delete it?", comment: ""),
+                preferredStyle: .alert)
+            let yesAction = UIAlertAction(title: NSLocalizedString("Yes", comment: ""), style: .destructive, handler: { _ in
+                DispatchQueue.main.async {
+                    let removedLift = self.lifts[indexPath.row]
+                    LiftDataManager.shared.mainContext.delete(removedLift)
+                    self.lifts.remove(at: indexPath.row)
+                    self.tableView.deleteRows(at: [indexPath], with: .automatic)
+                    LiftDataManager.shared.save()
+                }
+            })
+            let noAction = UIAlertAction(title: NSLocalizedString("No", comment: ""), style: .cancel, handler: nil)
+            actionSheet.addAction(noAction)
+            actionSheet.addAction(yesAction)
+            self.present(actionSheet, animated: true, completion: nil)
         }
         deleteAction.backgroundColor = .systemRed
         deleteAction.image = UIImage(systemName: "trash")
