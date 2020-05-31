@@ -8,14 +8,6 @@ class ExercisesTableViewController: UITableViewController {
     private var lifts: [Lift] = []
     private var currentExercise: Exercise?
 
-    private lazy var spinner: UIActivityIndicatorView = {
-        let indicator = UIActivityIndicatorView(style: UIActivityIndicatorView.Style.large)
-        indicator.color = .gray
-        indicator.hidesWhenStopped = true
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        return indicator
-    }()
-
     override func viewDidLoad() {
         super.viewDidLoad()
         self.tableView.delegate = self
@@ -33,14 +25,6 @@ class ExercisesTableViewController: UITableViewController {
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        if spinner.superview == nil, let superView = tableView.superview {
-            debugPrint("################################ spinner added")
-            superView.addSubview(spinner)
-            superView.bringSubviewToFront(spinner)
-            spinner.centerXAnchor.constraint(equalTo: superView.centerXAnchor).isActive = true
-            spinner.centerYAnchor.constraint(equalTo: superView.centerYAnchor).isActive = true
-        }
-        spinner.startAnimating()
         self.currentExercise = nil
         refreshUI()
     }
@@ -77,9 +61,7 @@ extension ExercisesTableViewController {
         tableView.reloadData()
     }
 
-    @objc
-    func managedObjectContextChanged(notification: NSNotification) {
-        debugPrint("ExercisesTableViewController.managedObjectContextChanged()", notification)
+    @objc func managedObjectContextChanged(notification: NSNotification) {
         refreshUI()
     }
 }
