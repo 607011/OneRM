@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="16097" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="49e-Tb-3d3">
     <device id="retina4_0" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="16087"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
         <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -47,7 +47,7 @@
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1RM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7T-Bv-06e">
                                                             <rect key="frame" x="0.0" y="0.0" width="77.5" height="16"/>
-                                                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                            <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372549019611" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                             <color key="textColor" name="Olive"/>
                                                             <nil key="highlightedColor"/>
@@ -126,16 +126,16 @@
                     </view>
                     <tabBarItem key="tabBarItem" title="Weight &amp; Reps" image="number" catalog="system" id="acW-dT-cKf"/>
                     <navigationItem key="navigationItem" title="OneRM" id="ZP5-My-5RT">
-                        <barButtonItem key="leftBarButtonItem" title="Log lift" image="text.badge.plus" catalog="system" id="GVK-t9-doY">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <segue destination="Uh5-Ws-wRO" kind="show" identifier="saveToLog" id="3KG-RD-vDF"/>
-                            </connections>
-                        </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Settings" image="gear" catalog="system" id="W68-Va-bXI">
+                        <barButtonItem key="leftBarButtonItem" title="Settings" image="gear" catalog="system" id="W68-Va-bXI">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="i1l-P8-Fd0" kind="show" id="hBD-A6-2VZ"/>
+                            </connections>
+                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" title="Log lift" image="text.badge.plus" catalog="system" id="GVK-t9-doY">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <connections>
+                                <segue destination="Uh5-Ws-wRO" kind="show" identifier="saveToLog" id="3KG-RD-vDF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -164,17 +164,17 @@
                                         <rect key="frame" x="0.0" y="28" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="DfA-Et-Qg2" id="DK1-eF-u0N">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="292.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="% Bounds" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="760-oH-2sn">
-                                                    <rect key="frame" x="16" y="12.5" width="130.5" height="19"/>
+                                                    <rect key="frame" x="16" y="12.5" width="130" height="19"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="10…120+5" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="cmN-FR-LFA">
-                                                    <rect key="frame" x="154.5" y="11" width="130" height="22"/>
+                                                    <rect key="frame" x="154" y="11" width="130" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -199,7 +199,7 @@
                                         <rect key="frame" x="0.0" y="71.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="qrf-Jb-YcB" id="LeC-cS-h7z">
-                                            <rect key="frame" x="0.0" y="0.0" width="293" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="292.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercises" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhQ-tY-Uxp">
@@ -311,11 +311,11 @@
                                         <rect key="frame" x="0.0" y="301.5" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="ocr-4j-oLM" id="o61-QG-c3P">
-                                            <rect key="frame" x="0.0" y="0.0" width="261" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="260.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="License information" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y6Q-Bh-H4C">
-                                                    <rect key="frame" x="16" y="11" width="237.5" height="22"/>
+                                                    <rect key="frame" x="16" y="11" width="237" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -336,11 +336,11 @@
                                         <rect key="frame" x="0.0" y="345" width="320" height="43.5"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="urT-6R-b5P" id="DF1-Jo-0Dp">
-                                            <rect key="frame" x="0.0" y="0.0" width="261" height="43.5"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="260.5" height="43.5"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="About" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="vKI-oe-uik">
-                                                    <rect key="frame" x="16" y="11" width="237.5" height="22"/>
+                                                    <rect key="frame" x="16" y="11" width="237" height="22"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -1056,10 +1056,10 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="rPQ-3c-CuF">
-                                                    <rect key="frame" x="88.5" y="9.5" width="143" height="25"/>
+                                                    <rect key="frame" x="87.5" y="9.5" width="145.5" height="25"/>
                                                     <subviews>
                                                         <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="6pv-qU-sR5">
-                                                            <rect key="frame" x="0.0" y="0.0" width="27" height="25"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="27.5" height="25"/>
                                                             <accessibility key="accessibilityConfiguration" identifier="star1"/>
                                                             <color key="tintColor" name="Olive"/>
                                                             <state key="normal" image="star" catalog="system">
@@ -1070,7 +1070,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXH-Sd-9jg">
-                                                            <rect key="frame" x="29" y="0.0" width="27" height="25"/>
+                                                            <rect key="frame" x="29.5" y="0.0" width="27.5" height="25"/>
                                                             <color key="tintColor" name="Olive"/>
                                                             <state key="normal" image="star" catalog="system">
                                                                 <color key="titleColor" name="Olive"/>
@@ -1081,7 +1081,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="0Xa-Qp-pyg">
-                                                            <rect key="frame" x="58" y="0.0" width="27" height="25"/>
+                                                            <rect key="frame" x="59" y="0.0" width="27.5" height="25"/>
                                                             <color key="tintColor" name="Olive"/>
                                                             <state key="normal" image="star" catalog="system">
                                                                 <color key="titleColor" name="Olive"/>
@@ -1092,7 +1092,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="SyI-hj-pre">
-                                                            <rect key="frame" x="87" y="0.0" width="27" height="25"/>
+                                                            <rect key="frame" x="88.5" y="0.0" width="27.5" height="25"/>
                                                             <color key="tintColor" name="Olive"/>
                                                             <state key="normal" image="star" catalog="system">
                                                                 <color key="titleColor" name="Olive"/>
@@ -1103,7 +1103,7 @@
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tFI-Tp-H9j">
-                                                            <rect key="frame" x="116" y="0.0" width="27" height="25"/>
+                                                            <rect key="frame" x="118" y="0.0" width="27.5" height="25"/>
                                                             <color key="tintColor" name="Olive"/>
                                                             <state key="normal" image="star" catalog="system">
                                                                 <color key="titleColor" name="Olive"/>
@@ -1198,21 +1198,21 @@
             <point key="canvasLocation" x="-114" y="14"/>
         </scene>
     </scenes>
-    <inferredMetricsTieBreakers>
-        <segue reference="wWo-Fl-zfV"/>
-        <segue reference="ax8-sw-wFy"/>
-    </inferredMetricsTieBreakers>
-    <color key="tintColor" name="Olive"/>
     <resources>
-        <image name="gear" catalog="system" width="128" height="119"/>
-        <image name="list.bullet" catalog="system" width="128" height="88"/>
-        <image name="number" catalog="system" width="128" height="124"/>
-        <image name="percent" catalog="system" width="128" height="118"/>
-        <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="star" catalog="system" width="128" height="116"/>
-        <image name="text.badge.plus" catalog="system" width="128" height="109"/>
+        <image name="gear" catalog="system" width="64" height="60"/>
+        <image name="list.bullet" catalog="system" width="64" height="44"/>
+        <image name="number" catalog="system" width="64" height="60"/>
+        <image name="percent" catalog="system" width="64" height="60"/>
+        <image name="plus" catalog="system" width="64" height="58"/>
+        <image name="star" catalog="system" width="64" height="58"/>
+        <image name="text.badge.plus" catalog="system" width="64" height="56"/>
         <namedColor name="Olive">
             <color red="0.5607843137254902" green="0.72549019607843135" blue="0.32156862745098042" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
+    <inferredMetricsTieBreakers>
+        <segue reference="wWo-Fl-zfV"/>
+        <segue reference="xzY-ai-gtr"/>
+    </inferredMetricsTieBreakers>
+    <color key="tintColor" name="Olive"/>
 </document>
