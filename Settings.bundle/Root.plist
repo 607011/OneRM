@@ -50,7 +50,7 @@
 			<key>Key</key>
 			<string>formulaEpley</string>
 			<key>DefaultValue</key>
-			<true/>
+			<false/>
 		</dict>
 		<dict>
 			<key>Type</key>
