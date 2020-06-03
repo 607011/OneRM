@@ -842,12 +842,29 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="YLk-eQ-yyo" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="746.25" y="372.88732394366195"/>
+            <point key="canvasLocation" x="748" y="335"/>
         </scene>
-        <!--Log-->
+        <!--Navigation Controller-->
+        <scene sceneID="iB7-yL-YtL">
+            <objects>
+                <navigationController id="U38-UM-2Tp" sceneMemberID="viewController">
+                    <navigationItem key="navigationItem" id="hhq-Cs-jgq"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="sZ4-fq-bta">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="sCC-v0-IfH" kind="relationship" relationship="rootViewController" id="IFz-87-ImB"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="cQj-dB-aGM" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="2335"/>
+        </scene>
+        <!--Log Master View Controller-->
         <scene sceneID="Dey-zT-dcB">
             <objects>
-                <tableViewController id="sCC-v0-IfH" customClass="LogViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="LogViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sCC-v0-IfH" userLabel="Log Master View Controller" customClass="LogViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ehm-QT-84l">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -915,18 +932,183 @@
                         </connections>
                     </tableView>
                     <tabBarItem key="tabBarItem" title="Log" image="list.bullet" catalog="system" selectedImage="list.bullet" id="Jid-e2-pwB"/>
-                    <navigationItem key="navigationItem" id="bab-Ez-rhY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="refresh" id="TxY-L3-cMi">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <connections>
-                                <action selector="refreshButtonPressed:" destination="sCC-v0-IfH" id="jDG-lB-Zgt"/>
-                            </connections>
-                        </barButtonItem>
-                    </navigationItem>
+                    <navigationItem key="navigationItem" id="bab-Ez-rhY"/>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdz-Sp-Mnx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="748" y="1330"/>
+            <point key="canvasLocation" x="1628" y="2335"/>
+        </scene>
+        <!--Log Detail View Controller-->
+        <scene sceneID="HLg-la-BNo">
+            <objects>
+                <viewController storyboardIdentifier="LogDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="OWl-cr-wPF" userLabel="Log Detail View Controller" customClass="LogDetailViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="xc7-fO-8ig">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" userInteractionEnabled="NO" contentMode="scaleToFill" text="Lorem ipsum …" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="4Al-cI-KLu">
+                                <rect key="frame" x="16" y="214" width="288" height="305"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                                <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="DD.MM.YYYY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iac-5P-NXn">
+                                <rect key="frame" x="16" y="51" width="288" height="17"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KaT-Gc-ddT">
+                                <rect key="frame" x="16" y="76" width="288" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwD-un-4M1">
+                                <rect key="frame" x="16" y="110.5" width="288" height="26.5"/>
+                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1 x 100 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Hkc-LX-zSV">
+                                <rect key="frame" x="16" y="145" width="288" height="20.5"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <stackView opaque="NO" contentMode="scaleToFill" spacing="2" translatesAutoresizingMaskIntoConstraints="NO" id="o17-DH-sGK">
+                                <rect key="frame" x="88" y="181" width="144" height="25"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" horizontalCompressionResistancePriority="749" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="d7M-p4-DFC">
+                                        <rect key="frame" x="0.0" y="0.0" width="27.5" height="25"/>
+                                        <accessibility key="accessibilityConfiguration" identifier="star1"/>
+                                        <color key="tintColor" name="Olive"/>
+                                        <state key="normal" image="star" catalog="system">
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="Uh5-Ws-wRO" eventType="touchUpInside" id="exk-vH-SBh"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZA3-iF-bnM">
+                                        <rect key="frame" x="29.5" y="0.0" width="27.5" height="25"/>
+                                        <color key="tintColor" name="Olive"/>
+                                        <state key="normal" image="star" catalog="system">
+                                            <color key="titleColor" name="Olive"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="Uh5-Ws-wRO" eventType="touchUpInside" id="YMg-8x-ZnP"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="R19-pY-Ugk">
+                                        <rect key="frame" x="59" y="0.0" width="26" height="25"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="26" id="uXS-Od-ijv"/>
+                                        </constraints>
+                                        <color key="tintColor" name="Olive"/>
+                                        <state key="normal" image="star" catalog="system">
+                                            <color key="titleColor" name="Olive"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="Uh5-Ws-wRO" eventType="touchUpInside" id="mDD-TM-xDk"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Gr0-aq-Xjk">
+                                        <rect key="frame" x="87" y="0.0" width="27.5" height="25"/>
+                                        <color key="tintColor" name="Olive"/>
+                                        <state key="normal" image="star" catalog="system">
+                                            <color key="titleColor" name="Olive"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="starButtonPressed:" destination="Uh5-Ws-wRO" eventType="touchUpInside" id="WBa-zT-360"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="F0j-7p-Oz7">
+                                        <rect key="frame" x="116.5" y="0.0" width="27.5" height="25"/>
+                                        <color key="tintColor" name="Olive"/>
+                                        <state key="normal" image="star" catalog="system">
+                                            <color key="titleColor" name="Olive"/>
+                                            <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
+                                        </state>
+                                    </button>
+                                </subviews>
+                            </stackView>
+                        </subviews>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <constraints>
+                            <constraint firstItem="KaT-Gc-ddT" firstAttribute="leading" secondItem="LwD-un-4M1" secondAttribute="leading" id="1OC-bl-GPv"/>
+                            <constraint firstItem="iac-5P-NXn" firstAttribute="trailing" secondItem="xc7-fO-8ig" secondAttribute="trailingMargin" id="7gQ-r4-SYC"/>
+                            <constraint firstItem="Hkc-LX-zSV" firstAttribute="top" secondItem="LwD-un-4M1" secondAttribute="bottom" constant="8" id="8Tu-dA-I80"/>
+                            <constraint firstItem="4Al-cI-KLu" firstAttribute="bottom" secondItem="IEw-4v-YNf" secondAttribute="bottom" id="9QE-cU-dES"/>
+                            <constraint firstItem="LwD-un-4M1" firstAttribute="leading" secondItem="Hkc-LX-zSV" secondAttribute="leading" id="EVw-fY-JHe"/>
+                            <constraint firstItem="4Al-cI-KLu" firstAttribute="top" secondItem="o17-DH-sGK" secondAttribute="bottom" constant="8" id="Gql-Vu-uu9"/>
+                            <constraint firstItem="LwD-un-4M1" firstAttribute="trailing" secondItem="Hkc-LX-zSV" secondAttribute="trailing" id="IFs-Sr-woS"/>
+                            <constraint firstItem="KaT-Gc-ddT" firstAttribute="trailing" secondItem="LwD-un-4M1" secondAttribute="trailing" id="IiX-6X-vqt"/>
+                            <constraint firstItem="iac-5P-NXn" firstAttribute="leading" secondItem="xc7-fO-8ig" secondAttribute="leadingMargin" id="PHR-HA-79i"/>
+                            <constraint firstItem="Hkc-LX-zSV" firstAttribute="trailing" secondItem="4Al-cI-KLu" secondAttribute="trailing" id="Sl9-jc-kcc"/>
+                            <constraint firstItem="Hkc-LX-zSV" firstAttribute="centerX" secondItem="o17-DH-sGK" secondAttribute="centerX" id="Z8V-IY-y1a"/>
+                            <constraint firstItem="iac-5P-NXn" firstAttribute="trailing" secondItem="KaT-Gc-ddT" secondAttribute="trailing" id="c9b-Vb-rYp"/>
+                            <constraint firstItem="o17-DH-sGK" firstAttribute="top" secondItem="Hkc-LX-zSV" secondAttribute="bottom" constant="15.5" id="ew7-Rt-Wky"/>
+                            <constraint firstItem="Hkc-LX-zSV" firstAttribute="leading" secondItem="4Al-cI-KLu" secondAttribute="leading" id="jNF-ar-9wf"/>
+                            <constraint firstItem="KaT-Gc-ddT" firstAttribute="top" secondItem="iac-5P-NXn" secondAttribute="bottom" constant="8" id="msM-lP-UHz"/>
+                            <constraint firstItem="iac-5P-NXn" firstAttribute="top" secondItem="IEw-4v-YNf" secondAttribute="top" constant="7" id="sWo-JQ-ynp"/>
+                            <constraint firstItem="LwD-un-4M1" firstAttribute="top" secondItem="KaT-Gc-ddT" secondAttribute="bottom" constant="8" id="ulu-Sx-mla"/>
+                            <constraint firstItem="iac-5P-NXn" firstAttribute="leading" secondItem="KaT-Gc-ddT" secondAttribute="leading" id="wa7-V5-tsr"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="IEw-4v-YNf"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="hQy-DB-330"/>
+                    <connections>
+                        <outlet property="dateLabel" destination="iac-5P-NXn" id="GB5-nI-5Kt"/>
+                        <outlet property="exerciseLabel" destination="KaT-Gc-ddT" id="I9c-1Z-Bv2"/>
+                        <outlet property="notesTextView" destination="4Al-cI-KLu" id="OrC-pt-f4x"/>
+                        <outlet property="oneRMLabel" destination="LwD-un-4M1" id="xnV-at-235"/>
+                        <outlet property="repsAndWeightLabel" destination="Hkc-LX-zSV" id="Nsa-Qu-l3E"/>
+                        <outletCollection property="starButton" destination="d7M-p4-DFC" collectionClass="NSMutableArray" id="tgM-Ms-3mU"/>
+                        <outletCollection property="starButton" destination="ZA3-iF-bnM" collectionClass="NSMutableArray" id="ubh-wP-L36"/>
+                        <outletCollection property="starButton" destination="R19-pY-Ugk" collectionClass="NSMutableArray" id="zbk-gX-k3Q"/>
+                        <outletCollection property="starButton" destination="Gr0-aq-Xjk" collectionClass="NSMutableArray" id="5K0-wq-NSR"/>
+                        <outletCollection property="starButton" destination="F0j-7p-Oz7" collectionClass="NSMutableArray" id="ydg-Rr-wk8"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="wW3-Ju-Jr4" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1515" y="1580"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="LeB-6Y-1da">
+            <objects>
+                <navigationController storyboardIdentifier="LogDetailNavigationController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="iQa-iq-T8D" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="N84-tt-ovc">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="OWl-cr-wPF" kind="relationship" relationship="rootViewController" id="9wW-t3-dgM"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="zFc-Er-KVE" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="743" y="1581"/>
+        </scene>
+        <!--Log-->
+        <scene sceneID="Htf-DV-nvT">
+            <objects>
+                <splitViewController storyboardIdentifier="MasterLogViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="r43-Ae-l32" sceneMemberID="viewController">
+                    <tabBarItem key="tabBarItem" title="Log" image="list.bullet" catalog="system" selectedImage="list.bullet" id="iY8-Md-EK7"/>
+                    <navigationItem key="navigationItem" id="aMW-DW-Y53"/>
+                    <connections>
+                        <segue destination="iQa-iq-T8D" kind="relationship" relationship="detailViewController" id="g2u-y3-TXa"/>
+                        <segue destination="U38-UM-2Tp" kind="relationship" relationship="masterViewController" id="pLO-fK-ImN"/>
+                    </connections>
+                </splitViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="uI4-h6-o3O" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-114" y="1793"/>
         </scene>
         <!--Save To Log View Controller-->
         <scene sceneID="6Zs-6D-lHx">
@@ -1066,7 +1248,7 @@
                                                                 <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="large"/>
                                                             </state>
                                                             <connections>
-                                                                <action selector="starButtonPressed:" destination="Uh5-Ws-wRO" eventType="touchUpInside" id="IwI-cI-B6E"/>
+                                                                <action selector="starButtonPressed:" destination="Uh5-Ws-wRO" eventType="touchUpInside" id="5Ui-Xm-g8S"/>
                                                             </connections>
                                                         </button>
                                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="LXH-Sd-9jg">
@@ -1154,8 +1336,10 @@
                     </tableView>
                     <navigationItem key="navigationItem" id="KzL-sn-q95">
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="IHr-hM-XKs">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="sCC-v0-IfH" kind="show" identifier="gotoLog" id="FXT-XA-mPi"/>
+                                <action selector="savePressed:" destination="Uh5-Ws-wRO" id="2mx-Yk-cEH"/>
+                                <segue destination="sCC-v0-IfH" kind="show" identifier="gotoLog" id="Nd5-Pn-i4f"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -1190,7 +1374,7 @@
                     <connections>
                         <segue destination="TCg-fe-nlV" kind="relationship" relationship="viewControllers" id="e46-is-MZ3"/>
                         <segue destination="Gdp-l6-PXj" kind="relationship" relationship="viewControllers" id="Kpt-ql-7xL"/>
-                        <segue destination="sCC-v0-IfH" kind="relationship" relationship="viewControllers" id="wWo-Fl-zfV"/>
+                        <segue destination="r43-Ae-l32" kind="relationship" relationship="viewControllers" destinationCreationSelector="enterLog" id="esq-hP-rPD"/>
                     </connections>
                 </tabBarController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="HuB-VB-40B" sceneMemberID="firstResponder"/>
@@ -1211,7 +1395,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="wWo-Fl-zfV"/>
+        <segue reference="Nd5-Pn-i4f"/>
         <segue reference="xzY-ai-gtr"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="Olive"/>

@@ -27,25 +27,25 @@ class SaveToLogViewController: UITableViewController {
             NSUbiquitousKeyValueStore.default.set(notes, forKey: Key.lastSaveNotes.rawValue)
         }
     }
-    private var rating: Int16 = 0 {
+    private var rating: Int = 0 {
         didSet {
             NSUbiquitousKeyValueStore.default.set(rating, forKey: Key.lastSaveRating.rawValue)
             for i in 0..<rating {
-                starButton?[Int(i)].setImage(UIImage(systemName: "star.fill"), for: .normal)
+                starButton[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
             }
-            for i in rating..<Int16(starButton.count) {
-                starButton[Int(i)].setImage(UIImage(systemName: "star"), for: .normal)
+            for i in rating..<starButton.count {
+                starButton[i].setImage(UIImage(systemName: "star"), for: .normal)
             }
         }
     }
-    var reps: Int16 = 0
+    var reps: Int = 0
     var massUnit: String = defaultMassUnit
     var weight: Double = 0
     var oneRM: Double = 0
 
     @IBAction func starButtonPressed(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
-        rating = (button.tag == 1 && rating == 1) ? 0 : Int16(button.tag)
+        rating = (button.tag == 1 && rating == 1) ? 0 : button.tag
     }
 
     @objc func updateFromDefaults(notification: Notification) {
@@ -85,7 +85,7 @@ class SaveToLogViewController: UITableViewController {
             notesTextView.text = lastNotes
         }
         if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveRating.rawValue) != nil {
-            rating = Int16(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.lastSaveRating.rawValue))
+            rating = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.lastSaveRating.rawValue))
         }
     }
 
@@ -106,10 +106,10 @@ class SaveToLogViewController: UITableViewController {
                 !self.exercises.isEmpty else { return }
             let liftData = LiftData(
                 date: self.datePicker.date,
-                reps: self.reps,
+                reps: Int16(self.reps),
                 weight: self.weight,
                 oneRM: self.oneRM,
-                rating: self.rating,
+                rating: Int16(self.rating),
                 notes: self.notesTextView.text,
                 exercise: self.exercise ?? self.exercises[0],
                 unit: unit)

@@ -17,7 +17,7 @@ class MainViewController: UIViewController {
 
     private var cellWidth: CGFloat = 130
 
-    private var reps: Int16 = 1 {
+    private var reps: Int = 1 {
         didSet {
             repsCollectionView.reloadData()
             NSUbiquitousKeyValueStore.default.set(reps, forKey: Key.reps.rawValue)
@@ -67,7 +67,7 @@ class MainViewController: UIViewController {
         repsCollectionView.dataSource = self
         weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
         updateWeightPicker(from: weight)
-        reps = Int16(repInterval.clamp(value: Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue))))
+        reps = repInterval.clamp(value: Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue)))
         if let row = repData.firstIndex(of: Int(reps)) {
             repsPicker.selectRow(row, inComponent: 0, animated: false)
         }
@@ -163,7 +163,7 @@ extension MainViewController: UIPickerViewDelegate {
             }
             weight = w
         case repsPicker:
-            reps = Int16(repData[row])
+            reps = repData[row]
         default: break
         }
     }

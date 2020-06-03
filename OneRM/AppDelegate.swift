@@ -47,11 +47,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         return true
     }
 
-    func applicationWillEnterForeground(_ application: UIApplication) {
-        NSUbiquitousKeyValueStore.default.synchronize()
-        debugPrint("applicationWillEnterForeground()")
-    }
-
 //    @objc func externalStorageChanged(notification: Notification) {
 //        debugPrint("externalStorageChanged()")
 //    }

@@ -44,6 +44,7 @@
 		65D9059D247D47360036B679 /* gpl-3.0.md in Resources */ = {isa = PBXBuildFile; fileRef = 65D9059C247D47360036B679 /* gpl-3.0.md */; };
 		65D905A6247F9EAC0036B679 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = 65D905A5247F9EAC0036B679 /* About.md */; };
 		65EF2E6C246E9F3A00A828DE /* PercentageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */; };
+		65F3BECC248676860042FB81 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F3BECB248676860042FB81 /* LogDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -141,6 +142,7 @@
 		65D905A5247F9EAC0036B679 /* About.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = About.md; sourceTree = "<group>"; };
 		65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageTableViewCell.swift; sourceTree = "<group>"; };
 		65EF2E6E246EBE4A00A828DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		65F3BECB248676860042FB81 /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -196,6 +198,7 @@
 				65B8F50F247417E000618ECD /* SaveToLogViewController.swift */,
 				65B8F511247423A100618ECD /* LogViewController.swift */,
 				65B8F5132474485000618ECD /* LogTableViewCell.swift */,
+				65F3BECB248676860042FB81 /* LogDetailViewController.swift */,
 				6559842D246F1F4F00A5976E /* LicenseViewController.swift */,
 				65598435246F2C5500A5976E /* AboutViewController.swift */,
 			);
@@ -520,6 +523,7 @@
 				6559842C246F010100A5976E /* ExerciseTableViewCell.swift in Sources */,
 				65D0460B246FE07700E45D0D /* Unit.swift in Sources */,
 				65598436246F2C5500A5976E /* AboutViewController.swift in Sources */,
+				65F3BECC248676860042FB81 /* LogDetailViewController.swift in Sources */,
 				65B8F5012474008500618ECD /* EditExerciseViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

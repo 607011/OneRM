@@ -2,9 +2,15 @@
 
 import UIKit
 
+protocol LiftSelectionDelegate: class {
+    func liftSelected(_ newLift: Lift)
+}
+
 class LogViewController: UITableViewController {
 
-    private var lifts: [Lift] = []
+    var lifts: [Lift] = []
+
+    weak var delegate: LiftSelectionDelegate?
 
     @IBAction func refreshButtonPressed(_ sender: Any) {
         refreshUI()
@@ -23,6 +29,13 @@ class LogViewController: UITableViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         refreshUI()
+    }
+
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        DispatchQueue.main.async {
+            LiftDataManager.shared.save()
+        }
     }
 
 }
@@ -50,6 +63,15 @@ extension LogViewController {
         return lifts.count
     }
 
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let lift = lifts[indexPath.row]
+        delegate?.liftSelected(lift)
+        if let detailViewController = delegate as? LogDetailViewController,
+            let detailNavigationController = detailViewController.navigationController {
+            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
+        }
+    }
+
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
         if let cell = tableView.dequeueReusableCell(withIdentifier: "logEntryCell", for: indexPath) as? LogTableViewCell {
@@ -71,10 +93,11 @@ extension LogViewController {
                     LiftDataManager.shared.mainContext.delete(removedLift)
                     self.lifts.remove(at: indexPath.row)
                     self.tableView.deleteRows(at: [indexPath], with: .automatic)
-                    LiftDataManager.shared.save()
                 }
             })
-            let noAction = UIAlertAction(title: NSLocalizedString("No", comment: "answer No"), style: .cancel, handler: nil)
+            let noAction = UIAlertAction(title: NSLocalizedString("No", comment: "answer No"), style: .cancel, handler: { _ in
+                self.tableView.reloadRows(at: [indexPath], with: .right)
+            })
             actionSheet.addAction(noAction)
             actionSheet.addAction(yesAction)
             self.present(actionSheet, animated: true, completion: nil)
