@@ -43,6 +43,7 @@
 		65D90599247D37F80036B679 /* CDMarkdownKit.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65D90591247D37CE0036B679 /* CDMarkdownKit.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65D9059D247D47360036B679 /* gpl-3.0.md in Resources */ = {isa = PBXBuildFile; fileRef = 65D9059C247D47360036B679 /* gpl-3.0.md */; };
 		65D905A6247F9EAC0036B679 /* About.md in Resources */ = {isa = PBXBuildFile; fileRef = 65D905A5247F9EAC0036B679 /* About.md */; };
+		65DCEE37248AC4C3007D1FC9 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 65DCEE36248AC4C3007D1FC9 /* SideMenu */; };
 		65EF2E6C246E9F3A00A828DE /* PercentageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */; };
 		65F3BECC248676860042FB81 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F3BECB248676860042FB81 /* LogDetailViewController.swift */; };
 /* End PBXBuildFile section */
@@ -158,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */,
+				65DCEE37248AC4C3007D1FC9 /* SideMenu in Frameworks */,
 				65D90598247D37F80036B679 /* CDMarkdownKit.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -342,6 +344,9 @@
 			dependencies = (
 			);
 			name = OneRM;
+			packageProductDependencies = (
+				65DCEE36248AC4C3007D1FC9 /* SideMenu */,
+			);
 			productName = 1RM;
 			productReference = 656EC38B246929DB00A30C43 /* OneRM.app */;
 			productType = "com.apple.product-type.application";
@@ -375,6 +380,9 @@
 				Base,
 			);
 			mainGroup = 656EC382246929DA00A30C43;
+			packageReferences = (
+				65DCEE35248AC4C3007D1FC9 /* XCRemoteSwiftPackageReference "SideMenu" */,
+			);
 			productRefGroup = 656EC38C246929DB00A30C43 /* Products */;
 			projectDirPath = "";
 			projectReferences = (
@@ -801,6 +809,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		65DCEE35248AC4C3007D1FC9 /* XCRemoteSwiftPackageReference "SideMenu" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/jonkykong/SideMenu.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.4.8;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		65DCEE36248AC4C3007D1FC9 /* SideMenu */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 65DCEE35248AC4C3007D1FC9 /* XCRemoteSwiftPackageReference "SideMenu" */;
+			productName = SideMenu;
+		};
+/* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
 		6555A48C247B9D3E001F7ED3 /* OneRM.xcdatamodeld */ = {
