@@ -9,6 +9,7 @@ protocol LiftSelectionDelegate: class {
 class LogViewController: UITableViewController {
 
     var lifts: [Lift] = []
+    var selectedLift: Lift?
 
     weak var delegate: LiftSelectionDelegate?
 
@@ -38,6 +39,13 @@ class LogViewController: UITableViewController {
         }
     }
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoLogDetail" {
+            guard let lift = selectedLift else { return }
+            let dest = segue.destination as! LogDetailViewController // swiftlint:disable:this force_cast
+            dest.lift = lift
+        }
+    }
 }
 
 extension LogViewController {
@@ -64,12 +72,8 @@ extension LogViewController {
     }
 
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let lift = lifts[indexPath.row]
-        delegate?.liftSelected(lift)
-        if let detailViewController = delegate as? LogDetailViewController,
-            let detailNavigationController = detailViewController.navigationController {
-            splitViewController?.showDetailViewController(detailNavigationController, sender: nil)
-        }
+        selectedLift = lifts[indexPath.row]
+        performSegue(withIdentifier: "gotoLogDetail", sender: self)
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {

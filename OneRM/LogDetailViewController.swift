@@ -2,7 +2,7 @@
 
 import UIKit
 
-class LogDetailViewController: UIViewController {
+class LogDetailViewController: UITableViewController {
 
     @IBOutlet weak var dateLabel: UILabel!
     @IBOutlet weak var exerciseLabel: UILabel!
@@ -27,10 +27,11 @@ class LogDetailViewController: UIViewController {
     private func refreshUI() {
         guard let lift = lift else { return }
         loadViewIfNeeded()
-        for i in 0..<min(Int(lift.rating), starButton.count) {
+        let minRating = min(Int(lift.rating), starButton.count)
+        for i in 0..<minRating {
             starButton[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
         }
-        for i in min(Int(lift.rating), starButton.count)..<starButton.count {
+        for i in minRating..<starButton.count {
             starButton[i].setImage(UIImage(systemName: "star"), for: .normal)
         }
         dateLabel.text = dateFormatter.string(from: lift.date)
@@ -40,10 +41,4 @@ class LogDetailViewController: UIViewController {
         notesTextView.text = lift.notes
     }
 
-}
-
-extension LogDetailViewController: LiftSelectionDelegate {
-    func liftSelected(_ newLift: Lift) {
-        lift = newLift
-    }
 }

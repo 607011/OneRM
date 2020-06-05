@@ -4,9 +4,7 @@ import UIKit
 
 class LogTableViewCell: UITableViewCell {
 
-    @IBOutlet private weak var repsAndWeightLabel: UILabel!
     @IBOutlet private weak var oneRMLabel: UILabel!
-    @IBOutlet private weak var dateLabel: UILabel!
     @IBOutlet private weak var exerciseLabel: UILabel!
 
     let dateFormatter: DateFormatter = {
@@ -20,9 +18,7 @@ class LogTableViewCell: UITableViewCell {
         didSet {
             guard let lift = lift else { return }
             exerciseLabel.text = lift.exercise.name
-            dateLabel.text = dateFormatter.string(from: lift.date)
             oneRMLabel.text = "\(lift.oneRM.rounded(toPlaces: 1)) \(lift.unit.name)"
-            repsAndWeightLabel.text = "\(lift.reps) × \(lift.weight.rounded(toPlaces: 1)) \(lift.unit.name)"
         }
     }
 }
