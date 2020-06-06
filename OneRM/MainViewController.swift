@@ -15,6 +15,15 @@ class MainViewController: UIViewController {
     private var weightData: [[Int]] = [[]]
     private var massUnit: String = defaultMassUnit
     private var formula: OneRMFormula = Brzycki()
+    private lazy var factors: [Double] = {
+        var factors = Array(repeating: 0.0, count: weightPicker.numberOfComponents)
+        var factor = pow(10.0, Double(weightPicker.numberOfComponents - 1))
+        for idx in 0..<weightPicker.numberOfComponents {
+            factor *= 0.1
+            factors[idx] = factor
+        }
+        return factors
+    }()
 
     private var cellWidth: CGFloat = 130
 
@@ -24,6 +33,7 @@ class MainViewController: UIViewController {
             NSUbiquitousKeyValueStore.default.set(reps, forKey: Key.reps.rawValue)
         }
     }
+
     private var weight: Double = 0 {
         didSet {
             repsCollectionView.reloadData()
@@ -37,14 +47,13 @@ class MainViewController: UIViewController {
 
     private func updateWeightPicker(from weight: Double) {
         var w = weight
-        var divisor = pow(10.0, Double(weightPicker.numberOfComponents - 2))
         for idx in 0..<weightPicker.numberOfComponents {
+            let divisor = factors[idx]
             let v = Int(w / divisor)
             w -= Double(v) * divisor
             if let row = weightData[idx].firstIndex(of: v) {
                 weightPicker.selectRow(row, inComponent: idx, animated: false)
             }
-            divisor /= 10
         }
     }
 
@@ -55,13 +64,17 @@ class MainViewController: UIViewController {
         repsCollectionView.reloadData()
     }
 
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
+    fileprivate func setupSideMenu() {
         SideMenuManager.default.leftMenuNavigationController =
             storyboard?.instantiateViewController(withIdentifier: "SideMenuNavigationController") as? SideMenuNavigationController
         SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
+    }
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
+        setupSideMenu()
         weightPicker.delegate = self
         weightPicker.dataSource = self
         weightData = [[Int]](repeating: Array(0...9), count: weightPicker.numberOfComponents)
@@ -88,7 +101,6 @@ class MainViewController: UIViewController {
         let attributedString = NSAttributedString(string: "8888.8 \(massUnit)",
             attributes: [.font: UIFont.systemFont(ofSize: 25.0, weight: .semibold)])
         cellWidth = ceil(attributedString.size().width)
-
         massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
         formula = currentFormula()
         repsCollectionView.reloadData()
@@ -160,11 +172,9 @@ extension MainViewController: UIPickerViewDelegate {
         switch pickerView {
         case weightPicker:
             var w = 0.0
-            var factor = pow(10.0, Double(weightPicker.numberOfComponents - 2))
             for idx in 0..<weightPicker.numberOfComponents {
                 let v = weightData[component][weightPicker.selectedRow(inComponent: idx)]
-                w += Double(v) * factor
-                factor /= 10
+                w += Double(v) * factors[idx]
             }
             weight = w
         case repsPicker:
