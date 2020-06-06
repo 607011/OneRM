@@ -25,6 +25,6 @@ You can even build and run your own version based on the [source code published 
 
 ## Licenses
 
-**[OneRM]((https://github.com/ola-ct/1RM))**  Copyright © 2020 [Oliver Lau](https://github.com/ola-ct) | [GPLv3 License](LICENSE)
+**[OneRM](https://github.com/ola-ct/1RM)**  Copyright © 2020 [Oliver Lau](https://github.com/ola-ct) | [GPLv3 License](LICENSE)
 
 **[SideMenu](https://github.com/jonkykong/SideMenu)** Copyright © 2015 [Jonathan Kent](mailto:contact@jonkent.me) | [MIT License](https://opensource.org/licenses/MIT)
