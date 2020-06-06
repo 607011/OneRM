@@ -1,4 +1,7 @@
+// Copyright © 2020 Oliver Lau <oliver@ersatzworld.net>
+
 import UIKit
+import SideMenu
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 

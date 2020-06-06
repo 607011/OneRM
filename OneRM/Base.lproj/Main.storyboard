@@ -127,7 +127,7 @@
                     <navigationItem key="navigationItem" title="OneRM" id="ZP5-My-5RT">
                         <barButtonItem key="leftBarButtonItem" title="Menu" image="Hamburger" id="W1y-lb-BRt">
                             <connections>
-                                <segue destination="uLP-YD-3vC" kind="show" id="AuS-65-pTc"/>
+                                <segue destination="uLP-YD-3vC" kind="presentation" id="AuS-65-pTc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log lift" image="text.badge.plus" catalog="system" id="GVK-t9-doY">
@@ -552,7 +552,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" keyboardDismissMode="interactive" editable="NO" text="Lorem ipsum …" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hm-D1-AfS">
-                                <rect key="frame" x="16" y="0.0" width="288" height="577"/>
+                                <rect key="frame" x="16" y="0.0" width="288" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -643,7 +643,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" keyboardDismissMode="interactive" editable="NO" text="Lorem ipsum …" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhe-e8-883">
-                                <rect key="frame" x="16" y="0.0" width="288" height="577"/>
+                                <rect key="frame" x="16" y="0.0" width="288" height="557"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -1305,7 +1305,7 @@
         <!--Menu View Controller-->
         <scene sceneID="QG0-36-TfU">
             <objects>
-                <tableViewController title="Menu View Controller" id="hQB-AZ-6Dh" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="SideMenuTableViewController" title="Menu View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hQB-AZ-6Dh" customClass="SideMenuTableViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="G3p-Wo-o4K">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -1313,80 +1313,104 @@
                         <sections>
                             <tableViewSection id="XhY-Un-xrW">
                                 <cells>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" focusStyle="custom" rowHeight="44" id="oQn-7j-pOl">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" focusStyle="custom" rowHeight="44" id="oQn-7j-pOl" customClass="UITableViewVibrantCell" customModule="SideMenu">
                                         <rect key="frame" x="0.0" y="28" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="oQn-7j-pOl" id="uyo-OZ-9vV">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="7jZ-Ky-GL4">
-                                                    <rect key="frame" x="16" y="11" width="100.5" height="18.5"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="Percentages" image="percent" catalog="system">
-                                                        <color key="titleColor" name="Olive"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="Gdp-l6-PXj" kind="show" id="Pav-7u-iIJ"/>
-                                                    </connections>
-                                                </button>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Percentages" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="MlH-Fe-tPc">
+                                                    <rect key="frame" x="46" y="11" width="96" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="percent" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="9VY-5R-5H3">
+                                                    <rect key="frame" x="16" y="9.5" width="22" height="25"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="cwH-yE-nKE"/>
+                                                    </constraints>
+                                                </imageView>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="7jZ-Ky-GL4" firstAttribute="leading" secondItem="uyo-OZ-9vV" secondAttribute="leadingMargin" id="Vsk-en-yxw"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="7jZ-Ky-GL4" secondAttribute="trailing" constant="20" symbolic="YES" id="ZLa-K4-LSn"/>
-                                                <constraint firstItem="7jZ-Ky-GL4" firstAttribute="top" secondItem="uyo-OZ-9vV" secondAttribute="topMargin" id="ibS-jg-gHp"/>
+                                                <constraint firstItem="9VY-5R-5H3" firstAttribute="leading" secondItem="uyo-OZ-9vV" secondAttribute="leadingMargin" id="BDP-kd-2GB"/>
+                                                <constraint firstItem="9VY-5R-5H3" firstAttribute="centerY" secondItem="MlH-Fe-tPc" secondAttribute="centerY" id="LUD-Oy-22N"/>
+                                                <constraint firstItem="MlH-Fe-tPc" firstAttribute="top" secondItem="uyo-OZ-9vV" secondAttribute="topMargin" id="VAn-I1-OSU"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MlH-Fe-tPc" secondAttribute="trailing" constant="20" symbolic="YES" id="XGx-kS-qop"/>
+                                                <constraint firstItem="MlH-Fe-tPc" firstAttribute="bottom" secondItem="uyo-OZ-9vV" secondAttribute="bottomMargin" id="lfC-7Y-woQ"/>
+                                                <constraint firstItem="9VY-5R-5H3" firstAttribute="top" secondItem="uyo-OZ-9vV" secondAttribute="topMargin" constant="-2.5" id="nqd-aR-gCF"/>
+                                                <constraint firstItem="MlH-Fe-tPc" firstAttribute="leading" secondItem="9VY-5R-5H3" secondAttribute="trailing" constant="8" id="q4o-HO-7wp"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="Gdp-l6-PXj" kind="show" id="chd-2u-JQ5"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="vQG-qF-PED">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="vQG-qF-PED" customClass="UITableViewVibrantCell" customModule="SideMenu">
                                         <rect key="frame" x="0.0" y="72" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vQG-qF-PED" id="isx-5J-OKR">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tUO-Gb-htl">
-                                                    <rect key="frame" x="16" y="11" width="66" height="17"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="Lift log" image="list.bullet" catalog="system">
-                                                        <color key="titleColor" name="Olive"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="sCC-v0-IfH" kind="show" id="0Bq-FS-D0g"/>
-                                                    </connections>
-                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="list.bullet" catalog="system" adjustsImageSizeForAccessibilityContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="WJ4-5C-z9h">
+                                                    <rect key="frame" x="16" y="15.5" width="22" height="12.5"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="22" id="b9E-f0-pi9"/>
+                                                    </constraints>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Lift log" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="v7G-AD-eiW">
+                                                    <rect key="frame" x="46" y="11" width="53" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="tUO-Gb-htl" secondAttribute="trailing" constant="20" symbolic="YES" id="8OH-9P-nEU"/>
-                                                <constraint firstItem="tUO-Gb-htl" firstAttribute="top" secondItem="isx-5J-OKR" secondAttribute="topMargin" id="Bwe-AQ-56w"/>
-                                                <constraint firstItem="tUO-Gb-htl" firstAttribute="leading" secondItem="isx-5J-OKR" secondAttribute="leadingMargin" id="IkA-qc-e9b"/>
+                                                <constraint firstItem="WJ4-5C-z9h" firstAttribute="top" secondItem="isx-5J-OKR" secondAttribute="topMargin" constant="2" id="12P-yZ-uWE"/>
+                                                <constraint firstItem="v7G-AD-eiW" firstAttribute="leading" secondItem="WJ4-5C-z9h" secondAttribute="trailing" constant="8" id="KM9-jl-BTj"/>
+                                                <constraint firstItem="WJ4-5C-z9h" firstAttribute="centerY" secondItem="v7G-AD-eiW" secondAttribute="centerY" id="WXu-vx-Ch3"/>
+                                                <constraint firstItem="WJ4-5C-z9h" firstAttribute="baseline" secondItem="v7G-AD-eiW" secondAttribute="baseline" id="j3x-Zy-OS5"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="v7G-AD-eiW" secondAttribute="trailing" constant="20" symbolic="YES" id="js2-DC-6m2"/>
+                                                <constraint firstItem="WJ4-5C-z9h" firstAttribute="centerY" secondItem="isx-5J-OKR" secondAttribute="centerY" id="kf7-gn-Khr"/>
+                                                <constraint firstItem="WJ4-5C-z9h" firstAttribute="leading" secondItem="isx-5J-OKR" secondAttribute="leadingMargin" id="rQx-NY-TcI"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="sCC-v0-IfH" kind="show" id="5Ai-dB-wVp"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="riU-QZ-YXV">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="44" id="riU-QZ-YXV" customClass="UITableViewVibrantCell" customModule="SideMenu">
                                         <rect key="frame" x="0.0" y="116" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="riU-QZ-YXV" id="Fbq-rN-COC">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZXQ-Kr-beW">
-                                                    <rect key="frame" x="16" y="11" width="76" height="21"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <state key="normal" title="Settings" image="gear" catalog="system">
-                                                        <color key="titleColor" name="Olive"/>
-                                                    </state>
-                                                    <connections>
-                                                        <segue destination="i1l-P8-Fd0" kind="show" id="6EU-Wf-vLC"/>
-                                                    </connections>
-                                                </button>
+                                                <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="gear" catalog="system" translatesAutoresizingMaskIntoConstraints="NO" id="Taz-rr-hJa">
+                                                    <rect key="frame" x="16" y="10" width="22" height="24.5"/>
+                                                </imageView>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Settings" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="9av-dD-Vgy">
+                                                    <rect key="frame" x="46" y="11" width="64" height="22"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="ZXQ-Kr-beW" firstAttribute="top" secondItem="Fbq-rN-COC" secondAttribute="topMargin" id="fIl-pd-Cjf"/>
-                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="ZXQ-Kr-beW" secondAttribute="trailing" constant="20" symbolic="YES" id="laY-JF-lIu"/>
-                                                <constraint firstItem="ZXQ-Kr-beW" firstAttribute="leading" secondItem="Fbq-rN-COC" secondAttribute="leadingMargin" id="tPS-qI-mc3"/>
+                                                <constraint firstItem="Taz-rr-hJa" firstAttribute="top" secondItem="Fbq-rN-COC" secondAttribute="topMargin" constant="-1" id="6lQ-oY-Qig"/>
+                                                <constraint firstItem="9av-dD-Vgy" firstAttribute="leading" secondItem="Taz-rr-hJa" secondAttribute="trailing" constant="8" id="7Es-nH-rQi"/>
+                                                <constraint firstItem="Taz-rr-hJa" firstAttribute="leading" secondItem="Fbq-rN-COC" secondAttribute="leadingMargin" id="fe5-eB-ryt"/>
+                                                <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="9av-dD-Vgy" secondAttribute="trailing" constant="20" symbolic="YES" id="lBg-zQ-wTF"/>
+                                                <constraint firstItem="Taz-rr-hJa" firstAttribute="centerY" secondItem="9av-dD-Vgy" secondAttribute="centerY" id="rhB-0C-55y"/>
+                                                <constraint firstItem="9av-dD-Vgy" firstAttribute="bottom" secondItem="Fbq-rN-COC" secondAttribute="bottomMargin" id="sUn-vz-e5x"/>
+                                                <constraint firstItem="9av-dD-Vgy" firstAttribute="top" secondItem="Fbq-rN-COC" secondAttribute="topMargin" id="yR8-MN-0s9"/>
                                             </constraints>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <segue destination="i1l-P8-Fd0" kind="show" id="nW9-9v-3U0"/>
+                                        </connections>
                                     </tableViewCell>
                                 </cells>
                             </tableViewSection>
@@ -1405,14 +1429,16 @@
         <!--Side Menu Navigation Controller-->
         <scene sceneID="Ykw-5v-4ry">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" navigationBarHidden="YES" id="uLP-YD-3vC" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="SideMenuNavigationController" title="Side Menu Navigation Controller" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" navigationBarHidden="YES" id="uLP-YD-3vC" customClass="SideMenuNavigationController" customModule="SideMenu" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GRy-g2-Rq0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="50u-4c-Q7J">
+                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zd5-gF-4ai">
+                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <userDefinedRuntimeAttributes>
@@ -1429,7 +1455,7 @@
         <!--Weight & Reps-->
         <scene sceneID="aah-Pn-pv3">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="6Wh-ib-HFs" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MainNavigationController" automaticallyAdjustsScrollViewInsets="NO" useStoryboardIdentifierAsRestorationIdentifier="YES" id="6Wh-ib-HFs" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="Weight &amp; Reps" image="number" catalog="system" id="acW-dT-cKf"/>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="Ox7-oH-KRE"/>
@@ -1448,7 +1474,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="0Bq-FS-D0g"/>
+        <segue reference="5Ai-dB-wVp"/>
         <segue reference="ax8-sw-wFy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="Olive"/>

@@ -2,6 +2,7 @@
 
 import Foundation
 import UIKit
+import SideMenu
 
 class MainViewController: UIViewController {
 
@@ -57,6 +58,10 @@ class MainViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
+        SideMenuManager.default.leftMenuNavigationController =
+            storyboard?.instantiateViewController(withIdentifier: "SideMenuNavigationController") as? SideMenuNavigationController
+        SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
+        SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
         weightPicker.delegate = self
         weightPicker.dataSource = self
         weightData = [[Int]](repeating: Array(0...9), count: weightPicker.numberOfComponents)
