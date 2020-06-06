@@ -23,3 +23,5 @@ _OneRM_ by default uses the [Brzycki formula](https://en.wikipedia.org/wiki/One-
 ## 3rd party components
 
 **[SideMenu](https://github.com/jonkykong/SideMenu)** Copyright © 2015 [Jonathan Kent](mailto:contact@jonkent.me) | [MIT License](https://opensource.org/licenses/MIT)
+
+**[CDMarkdownKit](https://github.com/chrisdhaan/CDMarkdownKit)** Copyright 2016–2018 © [Christopher de Haan](mailtocontact@christopherdehaan.me) | [MIT License](https://opensource.org/licenses/MIT)
