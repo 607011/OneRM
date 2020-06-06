@@ -16,6 +16,10 @@ _OneRM_ by default uses the [Brzycki formula](https://en.wikipedia.org/wiki/One-
  
  ## Free
 
- _OneRM_ is absolutely free: no ads, no in-app purchases! 
+ _OneRM_ is absolutely free: no ads, no in-app purchases!
 
  You can even build and run your own version based on the [source code published on GitHub](https://github.com/ola-ct/1RM), if you are enrolled in the [Apple Developer Program](https://developer.apple.com/programs/). 
+
+## 3rd party components
+
+**[SideMenu](https://github.com/jonkykong/SideMenu)** Copyright © 2015 [Jonathan Kent](mailto:contact@jonkent.me) | [MIT License](https://opensource.org/licenses/MIT)
