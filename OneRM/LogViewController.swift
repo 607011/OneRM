@@ -2,10 +2,6 @@
 
 import UIKit
 
-protocol LiftSelectionDelegate: class {
-    func liftSelected(_ newLift: Lift)
-}
-
 class LogViewController: UITableViewController {
 
     let searchBarHeight: CGFloat = 44
@@ -18,8 +14,6 @@ class LogViewController: UITableViewController {
     @IBAction func searchButtonTapped(_ sender: Any) {
         toggleSearchBar()
     }
-
-    weak var delegate: LiftSelectionDelegate?
 
     override func viewDidLoad() {
         super.viewDidLoad()
