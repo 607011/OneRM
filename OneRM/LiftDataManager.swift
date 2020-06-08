@@ -73,11 +73,14 @@ class LiftDataManager {
         return []
     }
 
-    func loadLifts() -> [Lift] {
+    func loadLifts(by exerciseName: String? = nil) -> [Lift] {
         let mainContext = LiftDataManager.shared.mainContext
         do {
             let fetchRequest = LiftDataManager.liftFetchRequest()
             fetchRequest.sortDescriptors = [NSSortDescriptor(key: "date", ascending: false)]
+            if let exerciseName = exerciseName {
+                fetchRequest.predicate = NSPredicate(format: "exercise.name contains[cd] %@", exerciseName)
+            }
             let lifts = try mainContext.fetch(fetchRequest)
             return lifts
         } catch {

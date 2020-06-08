@@ -127,13 +127,13 @@
                     <navigationItem key="navigationItem" title="OneRM" id="ZP5-My-5RT">
                         <barButtonItem key="leftBarButtonItem" title="Menu" image="Hamburger" id="W1y-lb-BRt">
                             <connections>
-                                <segue destination="uLP-YD-3vC" kind="presentation" id="AuS-65-pTc"/>
+                                <segue destination="uLP-YD-3vC" kind="show" id="AuS-65-pTc"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log lift" image="text.badge.plus" catalog="system" id="GVK-t9-doY">
                             <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
-                                <segue destination="Uh5-Ws-wRO" kind="show" identifier="saveToLog" id="3KG-RD-vDF"/>
+                                <segue destination="hVT-ir-xjD" kind="show" identifier="saveToLog" id="3KG-RD-vDF"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -152,7 +152,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="SettingsViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="i1l-P8-Fd0" customClass="SettingsViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ndc-gU-Zzw">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -382,7 +382,7 @@
             <objects>
                 <viewController storyboardIdentifier="AddExerciseViewController" title="Add Exercise Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="8jv-4Z-IBZ" customClass="EditExerciseViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8kC-jA-oAg">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Enter name of new exercise" textAlignment="natural" adjustsFontSizeToFit="NO" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="9mf-lz-ZSS">
@@ -419,14 +419,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="qVq-Eq-NS8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5724" y="1187"/>
+            <point key="canvasLocation" x="6722" y="1185"/>
         </scene>
         <!--Percentage Limits-->
         <scene sceneID="Xuk-mu-3zX">
             <objects>
                 <tableViewController storyboardIdentifier="PercentageLimitsViewController" title="Percentage Limits" useStoryboardIdentifierAsRestorationIdentifier="YES" id="wXA-eo-4fH" customClass="PercentageLimitsViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="68p-Du-bc8">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -548,11 +548,11 @@
             <objects>
                 <viewController storyboardIdentifier="LicenseViewController" title="License" useStoryboardIdentifierAsRestorationIdentifier="YES" id="HT8-3t-hNt" customClass="LicenseViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P3q-qt-Uys">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" keyboardDismissMode="interactive" editable="NO" text="Lorem ipsum …" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6Hm-D1-AfS">
-                                <rect key="frame" x="16" y="0.0" width="288" height="557"/>
+                                <rect key="frame" x="16" y="0.0" width="288" height="577"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -582,19 +582,19 @@
             <objects>
                 <tableViewController storyboardIdentifier="ExercicesTableViewController" title="Exercises View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="THr-9l-qhM" customClass="ExercisesTableViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" pagingEnabled="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="3Eb-Nw-Jw7">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="exerciseCell" id="Nod-gy-ZBi" customClass="ExerciseTableViewCell" customModule="OneRM" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="40.5"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="40"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nod-gy-ZBi" id="YDx-dM-87F">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40.5"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGe-wt-AOZ">
-                                            <rect key="frame" x="16" y="11" width="218" height="21.5"/>
+                                            <rect key="frame" x="16" y="11" width="218" height="21"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -632,18 +632,18 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="q5h-BT-qk8" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5726" y="407"/>
+            <point key="canvasLocation" x="6721.875" y="406.6901408450704"/>
         </scene>
         <!--About 1RM-->
         <scene sceneID="VNA-Qj-kri">
             <objects>
                 <viewController storyboardIdentifier="AboutViewController" title="About 1RM" useStoryboardIdentifierAsRestorationIdentifier="YES" id="u82-3C-CCi" customClass="AboutViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="z9R-9C-CqE">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" pagingEnabled="YES" keyboardDismissMode="interactive" editable="NO" text="Lorem ipsum …" textAlignment="natural" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mhe-e8-883">
-                                <rect key="frame" x="16" y="0.0" width="288" height="557"/>
+                                <rect key="frame" x="16" y="0.0" width="288" height="577"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <color key="textColor" systemColor="labelColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
@@ -666,14 +666,14 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="erH-ZP-Zfu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="6549" y="407"/>
+            <point key="canvasLocation" x="7545" y="406.6901408450704"/>
         </scene>
         <!--PercentagesViewController-->
         <scene sceneID="FyF-W0-pzt">
             <objects>
                 <tableViewController storyboardIdentifier="PercentageViewController" title="PercentagesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gdp-l6-PXj" customClass="PercentagesViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0To-jT-ZFL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -749,9 +749,10 @@
             <objects>
                 <tableViewController storyboardIdentifier="LogViewController" title="Log View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="sCC-v0-IfH" userLabel="Log Master View Controller" customClass="LogViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="Ehm-QT-84l">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <gestureRecognizers/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="logEntryCell" rowHeight="43" id="dzo-te-Agk" customClass="LogTableViewCell" customModule="OneRM" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="28" width="320" height="43"/>
@@ -800,22 +801,30 @@
                             <outlet property="delegate" destination="sCC-v0-IfH" id="ZNd-tf-vjq"/>
                         </connections>
                     </tableView>
-                    <tabBarItem key="tabBarItem" title="Lift log" image="list.bullet" catalog="system" selectedImage="list.bullet" id="Jid-e2-pwB"/>
-                    <navigationItem key="navigationItem" title="Lift log" id="bab-Ez-rhY"/>
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" title="Lift log" id="bab-Ez-rhY">
+                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="jp7-Zo-iZv">
+                            <connections>
+                                <action selector="searchButtonTapped:" destination="sCC-v0-IfH" id="uj0-EW-yBU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <simulatedToolbarMetrics key="simulatedBottomBarMetrics"/>
                     <connections>
+                        <outlet property="tableView" destination="Ehm-QT-84l" id="V0r-Gn-wf7"/>
                         <segue destination="LDx-x8-AuA" kind="show" identifier="gotoLogDetail" id="mpo-At-c2M"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="zdz-Sp-Mnx" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4875" y="275"/>
+            <point key="canvasLocation" x="4875" y="407"/>
         </scene>
         <!--Log Detail View Controller-->
         <scene sceneID="46q-5j-kb8">
             <objects>
                 <tableViewController storyboardIdentifier="LogDetailViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="LDx-x8-AuA" customClass="LogDetailViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" sectionFooterHeight="1" id="ox2-WQ-T1U">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -1300,14 +1309,14 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="38H-on-hRg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3493" y="407"/>
+            <point key="canvasLocation" x="3726" y="407"/>
         </scene>
         <!--Menu View Controller-->
         <scene sceneID="QG0-36-TfU">
             <objects>
                 <tableViewController storyboardIdentifier="SideMenuTableViewController" title="Menu View Controller" useStoryboardIdentifierAsRestorationIdentifier="YES" id="hQB-AZ-6Dh" customClass="SideMenuTableViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="G3p-Wo-o4K">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <sections>
@@ -1433,12 +1442,10 @@
                     <toolbarItems/>
                     <navigationItem key="navigationItem" id="GRy-g2-Rq0"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="50u-4c-Q7J">
-                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <toolbar key="toolbar" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="Zd5-gF-4ai">
-                        <rect key="frame" x="0.0" y="-20" width="0.0" height="0.0"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </toolbar>
                     <userDefinedRuntimeAttributes>
@@ -1472,6 +1479,25 @@
             </objects>
             <point key="canvasLocation" x="1918" y="-433"/>
         </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="wa0-4A-2Oh">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="hVT-ir-xjD" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationItem key="navigationItem" id="sAw-t9-y5p"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="iJj-8C-kVG">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="Uh5-Ws-wRO" kind="relationship" relationship="rootViewController" id="dA2-ME-1HG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="V3B-80-sU6" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2869" y="407"/>
+        </scene>
     </scenes>
     <resources>
         <image name="Hamburger" width="24" height="24"/>
@@ -1487,7 +1513,7 @@
         </namedColor>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="5Ai-dB-wVp"/>
+        <segue reference="POW-bm-K46"/>
         <segue reference="ax8-sw-wFy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="Olive"/>

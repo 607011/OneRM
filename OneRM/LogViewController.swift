@@ -10,12 +10,21 @@ class LogViewController: UITableViewController {
 
     var lifts: [Lift] = []
     var selectedLift: Lift?
+    var searchBar: UISearchBar?
+    var searchBarVisible: Bool = false
+    var searchTerm: String?
+
+    @IBAction func searchButtonTapped(_ sender: Any) {
+        if searchBarVisible {
+            self.tableView.tableHeaderView = nil
+        } else {
+            searchBar?.becomeFirstResponder()
+            self.tableView.tableHeaderView = searchBar
+        }
+        searchBarVisible = !searchBarVisible
+    }
 
     weak var delegate: LiftSelectionDelegate?
-
-    @IBAction func refreshButtonPressed(_ sender: Any) {
-        refreshUI()
-    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,10 +34,13 @@ class LogViewController: UITableViewController {
                                                selector: #selector(managedObjectContextChanged),
                                                name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
                                                object: LiftDataManager.shared.mainContext)
+        searchBar = UISearchBar(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: 44.0))
+        searchBar?.delegate = self
     }
 
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        searchBar?.text = searchTerm
         refreshUI()
     }
 
@@ -39,12 +51,29 @@ class LogViewController: UITableViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoLogDetail" {
             guard let lift = selectedLift else { return }
             let dest = segue.destination as! LogDetailViewController // swiftlint:disable:this force_cast
             dest.lift = lift
         }
+    }
+}
+
+extension LogViewController: UISearchBarDelegate {
+    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
+        if searchText.isEmpty {
+            lifts = LiftDataManager.shared.loadLifts()
+            searchTerm = nil
+        } else {
+            lifts = LiftDataManager.shared.loadLifts(by: searchText)
+            searchTerm = searchText
+        }
+        tableView.reloadData()
     }
 }
 
