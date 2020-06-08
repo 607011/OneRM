@@ -8,6 +8,7 @@ protocol LiftSelectionDelegate: class {
 
 class LogViewController: UITableViewController {
 
+    let searchBarHeight: CGFloat = 44
     var lifts: [Lift] = []
     var selectedLift: Lift?
     var searchBar: UISearchBar?
@@ -15,13 +16,7 @@ class LogViewController: UITableViewController {
     var searchTerm: String?
 
     @IBAction func searchButtonTapped(_ sender: Any) {
-        if searchBarVisible {
-            self.tableView.tableHeaderView = nil
-        } else {
-            searchBar?.becomeFirstResponder()
-            self.tableView.tableHeaderView = searchBar
-        }
-        searchBarVisible = !searchBarVisible
+        toggleSearchBar()
     }
 
     weak var delegate: LiftSelectionDelegate?
@@ -34,7 +29,7 @@ class LogViewController: UITableViewController {
                                                selector: #selector(managedObjectContextChanged),
                                                name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
                                                object: LiftDataManager.shared.mainContext)
-        searchBar = UISearchBar(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: 44.0))
+        searchBar = UISearchBar(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: searchBarHeight))
         searchBar?.delegate = self
     }
 
@@ -55,6 +50,14 @@ class LogViewController: UITableViewController {
         super.viewDidAppear(animated)
     }
 
+    override func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
+        if searchBarVisible && scrollView.contentOffset.y > searchBarHeight {
+            hideSearchBar()
+        } else if searchBarVisible == false && scrollView.contentOffset.y < searchBarHeight {
+            showSearchBar()
+        }
+    }
+
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoLogDetail" {
             guard let lift = selectedLift else { return }
@@ -65,6 +68,26 @@ class LogViewController: UITableViewController {
 }
 
 extension LogViewController: UISearchBarDelegate {
+
+    func hideSearchBar() {
+        self.tableView.tableHeaderView = nil
+        searchBarVisible = false
+    }
+
+    func showSearchBar() {
+        searchBar?.becomeFirstResponder()
+        self.tableView.tableHeaderView = searchBar
+        searchBarVisible = true
+    }
+
+    func toggleSearchBar() {
+        if searchBarVisible {
+            hideSearchBar()
+        } else {
+            showSearchBar()
+        }
+    }
+
     func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
         if searchText.isEmpty {
             lifts = LiftDataManager.shared.loadLifts()
