@@ -103,6 +103,7 @@ class MainViewController: UIViewController {
         cellWidth = ceil(attributedString.size().width)
         massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
         formula = currentFormula()
+        weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
         repsCollectionView.reloadData()
     }
 

@@ -24,6 +24,12 @@ class LogDetailViewController: UITableViewController {
         return dateFormatter
     }()
 
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "gotoPercentages" {
+            NSUbiquitousKeyValueStore.default.set(lift?.weight, forKey: Key.weight.rawValue)
+        }
+    }
+
     private func refreshUI() {
         guard let lift = lift else { return }
         loadViewIfNeeded()

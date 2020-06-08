@@ -587,14 +587,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="exerciseCell" id="Nod-gy-ZBi" customClass="ExerciseTableViewCell" customModule="OneRM" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="40.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nod-gy-ZBi" id="YDx-dM-87F">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGe-wt-AOZ">
-                                            <rect key="frame" x="16" y="11" width="218" height="21"/>
+                                            <rect key="frame" x="16" y="11" width="218" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
@@ -673,7 +673,7 @@
             <objects>
                 <tableViewController storyboardIdentifier="PercentageViewController" title="PercentagesViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="Gdp-l6-PXj" customClass="PercentagesViewController" customModule="OneRM" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="0To-jT-ZFL">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="548"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
@@ -889,16 +889,30 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 kg" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LwD-un-4M1">
-                                                    <rect key="frame" x="16" y="9" width="288" height="26"/>
+                                                    <rect key="frame" x="16" y="9" width="222" height="26"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="22"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSz-Ow-Cie">
+                                                    <rect key="frame" x="246" y="11" width="58" height="22"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="58" id="OMZ-gz-l48"/>
+                                                    </constraints>
+                                                    <state key="normal" image="percent" catalog="system">
+                                                        <color key="titleColor" name="Olive"/>
+                                                    </state>
+                                                    <connections>
+                                                        <segue destination="Gdp-l6-PXj" kind="presentation" identifier="gotoPercentages" id="oPH-SX-hqq"/>
+                                                    </connections>
+                                                </button>
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="LwD-un-4M1" firstAttribute="leading" secondItem="mXX-em-cJz" secondAttribute="leadingMargin" id="3RS-xJ-yay"/>
-                                                <constraint firstItem="LwD-un-4M1" firstAttribute="trailing" secondItem="mXX-em-cJz" secondAttribute="trailingMargin" id="7Ws-as-YDC"/>
+                                                <constraint firstItem="LwD-un-4M1" firstAttribute="trailing" secondItem="mXX-em-cJz" secondAttribute="trailingMargin" constant="-66" id="7Ws-as-YDC"/>
                                                 <constraint firstItem="LwD-un-4M1" firstAttribute="centerY" secondItem="mXX-em-cJz" secondAttribute="centerY" id="Lpy-zE-Q4A"/>
+                                                <constraint firstItem="hSz-Ow-Cie" firstAttribute="trailing" secondItem="LwD-un-4M1" secondAttribute="trailing" constant="66" id="MhC-ts-gQX"/>
+                                                <constraint firstItem="hSz-Ow-Cie" firstAttribute="centerY" secondItem="LwD-un-4M1" secondAttribute="centerY" id="vls-qo-Fi1"/>
                                             </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
@@ -1059,7 +1073,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ZAC-ja-lmn" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4875" y="1186"/>
+            <point key="canvasLocation" x="4875" y="1185.2112676056338"/>
         </scene>
         <!--Save To Log View Controller-->
         <scene sceneID="6Zs-6D-lHx">
@@ -1501,6 +1515,7 @@
     </scenes>
     <inferredMetricsTieBreakers>
         <segue reference="POW-bm-K46"/>
+        <segue reference="oPH-SX-hqq"/>
         <segue reference="ax8-sw-wFy"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" name="Olive"/>
