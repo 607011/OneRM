@@ -24,7 +24,11 @@ class PercentagesViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateFromDefaults),
+            name: UserDefaults.didChangeNotification,
+            object: nil)
         self.tableView.dataSource = self
         self.tableView.delegate = self
     }
@@ -48,7 +52,9 @@ class PercentagesViewController: UITableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "percentageCell", for: indexPath) as? PercentageTableViewCell {
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: "percentageCell",
+            for: indexPath) as? PercentageTableViewCell {
             cell.massUnitLabel.text = massUnit
             let pct = maxPercent - indexPath.row * percentStep
             cell.percentageLabel.text = "\(pct)%"

@@ -56,7 +56,11 @@ class SaveToLogViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateFromDefaults),
+            name: UserDefaults.didChangeNotification,
+            object: nil)
         exercisePicker.delegate = self
         exercisePicker.dataSource = self
         for (idx, button) in starButton.enumerated() {

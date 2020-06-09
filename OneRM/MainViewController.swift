@@ -72,14 +72,19 @@ class MainViewController: UIViewController {
 
     fileprivate func setupSideMenu() {
         SideMenuManager.default.leftMenuNavigationController =
-            storyboard?.instantiateViewController(withIdentifier: "SideMenuNavigationController") as? SideMenuNavigationController
+            storyboard?.instantiateViewController(
+                withIdentifier: "SideMenuNavigationController") as? SideMenuNavigationController
         SideMenuManager.default.addPanGestureToPresent(toView: self.navigationController!.navigationBar)
         SideMenuManager.default.addScreenEdgePanGesturesToPresent(toView: self.navigationController!.view)
     }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        NotificationCenter.default.addObserver(self, selector: #selector(updateFromDefaults), name: UserDefaults.didChangeNotification, object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updateFromDefaults),
+            name: UserDefaults.didChangeNotification,
+            object: nil)
         setupSideMenu()
         weightPicker.delegate = self
         weightPicker.dataSource = self
@@ -231,7 +236,9 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
     }
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "repsCell", for: indexPath as IndexPath) as? RepCollectionViewCell {
+        if let cell = collectionView.dequeueReusableCell(
+            withReuseIdentifier: "repsCell",
+            for: indexPath as IndexPath) as? RepCollectionViewCell {
             let reps = indexPath.item + 1
             cell.repLabel.text = "\(reps)RM"
             let orm = formula.oneRM(weight: self.weight, reps: Int(self.reps))

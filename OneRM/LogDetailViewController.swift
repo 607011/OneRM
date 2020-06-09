@@ -20,7 +20,10 @@ class LogDetailViewController: UITableViewController {
     let dateFormatter: DateFormatter = {
         let dateFormatter = DateFormatter()
         dateFormatter.calendar = Locale.current.calendar
-        dateFormatter.dateFormat = DateFormatter.dateFormat(fromTemplate: "dMY", options: 0, locale: Locale.current)
+        dateFormatter.dateFormat = DateFormatter.dateFormat(
+            fromTemplate: "dMY",
+            options: 0,
+            locale: Locale.current)
         return dateFormatter
     }()
 

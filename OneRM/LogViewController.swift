@@ -19,10 +19,11 @@ class LogViewController: UITableViewController {
         super.viewDidLoad()
         self.tableView.delegate = self
         self.tableView.dataSource = self
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(managedObjectContextChanged),
-                                               name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
-                                               object: LiftDataManager.shared.mainContext)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(managedObjectContextChanged),
+            name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
+            object: LiftDataManager.shared.mainContext)
         searchBar = UISearchBar(frame: CGRect(x: 0.0, y: 0.0, width: self.view.frame.size.width, height: searchBarHeight))
         searchBar?.delegate = self
     }
@@ -124,7 +125,9 @@ extension LogViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "logEntryCell", for: indexPath) as? LogTableViewCell {
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: "logEntryCell",
+            for: indexPath) as? LogTableViewCell {
             cell.lift =  LiftData(from: lifts[indexPath.row])
             return cell
         }

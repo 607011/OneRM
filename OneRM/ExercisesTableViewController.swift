@@ -13,14 +13,16 @@ class ExercisesTableViewController: UITableViewController {
         self.tableView.delegate = self
         self.tableView.dataSource = self
         self.tableView.isEditing = true
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(managedObjectContextChanged),
-                                               name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
-                                               object: LiftDataManager.shared.mainContext)
-        NotificationCenter.default.addObserver(self,
-                                               selector: #selector(managedObjectContextChanged),
-                                               name: NSNotification.Name.NSPersistentStoreRemoteChange,
-                                               object: LiftDataManager.shared.mainContext)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(managedObjectContextChanged),
+            name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
+            object: LiftDataManager.shared.mainContext)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(managedObjectContextChanged),
+            name: NSNotification.Name.NSPersistentStoreRemoteChange,
+            object: LiftDataManager.shared.mainContext)
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -77,7 +79,9 @@ extension ExercisesTableViewController {
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard self.tableView != nil else { return UITableViewCell() }
-        if let cell = tableView.dequeueReusableCell(withIdentifier: "exerciseCell", for: indexPath) as? ExerciseTableViewCell {
+        if let cell = tableView.dequeueReusableCell(
+            withIdentifier: "exerciseCell",
+            for: indexPath) as? ExerciseTableViewCell {
             cell.exercise = exercises[indexPath.row]
             return cell
         }
@@ -112,11 +116,12 @@ extension ExercisesTableViewController {
             }
 
             if self.lifts.contains(where: { $0.exercise == removedExercise }) {
-                let alertController = UIAlertController(title: NSLocalizedString("Really delete exercise?", comment: ""),
-                                                        message: NSLocalizedString("There are lifts that refer to this exercise. " +
-                                                            "Deleting the exercise will delete all associated lifts in your log. " +
-                                                            "Do you really want to delete this exercise? ", comment: ""),
-                                                        preferredStyle: .alert)
+                let alertController = UIAlertController(
+                    title: NSLocalizedString("Really delete exercise?", comment: ""),
+                    message: NSLocalizedString("There are lifts that refer to this exercise. " +
+                        "Deleting the exercise will delete all associated lifts in your log. " +
+                        "Do you really want to delete this exercise? ", comment: ""),
+                    preferredStyle: .alert)
                 let cancelAction = UIAlertAction(title: NSLocalizedString("Cancel", comment: ""), style: .cancel, handler: { _ in
                     self.tableView.reloadRows(at: [indexPath], with: .right)
                 })
