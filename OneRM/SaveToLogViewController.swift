@@ -74,6 +74,8 @@ class SaveToLogViewController: UITableViewController {
         exercises = LiftDataManager.shared.loadExercises()
         repsAndWeightLabel.text = "\(reps) × \(weight.rounded(toPlaces: 1)) \(massUnit)"
         oneRMLabel.text = "\(oneRM.rounded(toPlaces: 1)) \(massUnit)"
+        weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
+        reps = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue))
         if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSavedExercise.rawValue) != nil {
             let lastSavedExercise = NSUbiquitousKeyValueStore.default.string(forKey: Key.lastSavedExercise.rawValue)
             guard let idx = exercises.firstIndex(where: { $0.name == lastSavedExercise }) else { return }

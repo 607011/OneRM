@@ -132,11 +132,13 @@ class MainViewController: UIViewController {
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "saveToLog" {
-            guard let destination = segue.destination as? SaveToLogViewController else { return }
-            destination.reps = reps
-            destination.weight = weight
-            destination.oneRM = oneRM
-            destination.massUnit = massUnit
+            if let destination = segue.destination as? UINavigationController,
+                let viewController = destination.viewControllers.first as? SaveToLogViewController {
+                viewController.reps = reps
+                viewController.weight = weight
+                viewController.oneRM = oneRM
+                viewController.massUnit = massUnit
+            }
         }
     }
 }
