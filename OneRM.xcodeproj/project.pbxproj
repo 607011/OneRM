@@ -130,6 +130,7 @@
 		656EC3BE246AA89800A30C43 /* RepCollectionViewCellLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RepCollectionViewCellLayout.swift; sourceTree = "<group>"; };
 		656EC3C2246C258600A30C43 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		656EC3C6246C2B8300A30C43 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		657A3C15248FB10200E4CD58 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
 		65B8F5002474008400618ECD /* EditExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExerciseViewController.swift; sourceTree = "<group>"; };
 		65B8F50A2474024800618ECD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		65B8F50F247417E000618ECD /* SaveToLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToLogViewController.swift; sourceTree = "<group>"; };
@@ -213,6 +214,7 @@
 		656EC382246929DA00A30C43 = {
 			isa = PBXGroup;
 			children = (
+				657A3C15248FB10200E4CD58 /* PRIVACY.md */,
 				65CF033E2482529100D7428B /* Settings.bundle */,
 				656EC38D246929DB00A30C43 /* OneRM */,
 				6555A48024798FD7001F7ED3 /* OneRMTests */,
