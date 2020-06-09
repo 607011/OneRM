@@ -27,6 +27,7 @@ class LogDetailViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "gotoPercentages" {
             NSUbiquitousKeyValueStore.default.set(lift?.weight, forKey: Key.weight.rawValue)
+            NSUbiquitousKeyValueStore.default.set(lift?.reps, forKey: Key.reps.rawValue)
         }
     }
 

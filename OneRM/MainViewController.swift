@@ -57,6 +57,12 @@ class MainViewController: UIViewController {
         }
     }
 
+    private func updateRepsPicker(from reps: Int) {
+        if let row = repData.firstIndex(of: Int(reps)) {
+            repsPicker.selectRow(row, inComponent: 0, animated: false)
+        }
+    }
+
     @objc func updateFromDefaults(notification: Notification) {
         guard let defaults = notification.object as? UserDefaults else { return }
         massUnit = defaults.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
@@ -83,12 +89,6 @@ class MainViewController: UIViewController {
         repData = Array(repInterval)
         repsCollectionView.delegate = self
         repsCollectionView.dataSource = self
-        weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
-        updateWeightPicker(from: weight)
-        reps = repInterval.clamp(value: Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue)))
-        if let row = repData.firstIndex(of: Int(reps)) {
-            repsPicker.selectRow(row, inComponent: 0, animated: false)
-        }
         if let layout = repsCollectionView?.collectionViewLayout as? RepCollectionViewCellLayout {
             layout.delegate = self
         }
@@ -104,6 +104,9 @@ class MainViewController: UIViewController {
         massUnit = UserDefaults.standard.string(forKey: Key.massUnit.rawValue) ?? defaultMassUnit
         formula = currentFormula()
         weight = NSUbiquitousKeyValueStore.default.double(forKey: Key.weight.rawValue)
+        updateWeightPicker(from: weight)
+        reps = repInterval.clamp(value: Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue)))
+        updateRepsPicker(from: reps)
         repsCollectionView.reloadData()
     }
 
