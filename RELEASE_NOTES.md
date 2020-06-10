@@ -1,6 +1,6 @@
 #  Release notes
 
-You can find the [latest release of One-RM](https://apps.apple.com/de/app/one-rm/id1515096906) in the App Store.
+You can download the [latest release of One-RM](https://apps.apple.com/de/app/one-rm/id1515096906) from the App Store.
 
 ## 1.0.1
 
