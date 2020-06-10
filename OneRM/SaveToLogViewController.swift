@@ -95,6 +95,34 @@ class SaveToLogViewController: UITableViewController {
         }
     }
 
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if exercises.isEmpty {
+            let alertController = UIAlertController(
+                title: NSLocalizedString("No exercises", comment: ""),
+                message: NSLocalizedString(
+                    """
+        You haven't entered any exercises.
+        Please go to Settings/Exercises to add an exercise,
+        then come back here.
+        """, comment: ""),
+                preferredStyle: .actionSheet)
+            let okAction = UIAlertAction(
+                title: NSLocalizedString("Take me there", comment: ""),
+                style: .default,
+                handler: { _ in
+                    self.performSegue(withIdentifier: "gotoExercises", sender: nil)
+            })
+            let cancelAction = UIAlertAction(
+                title: NSLocalizedString("Cancel", comment: ""),
+                style: .default,
+                handler: nil)
+            alertController.addAction(cancelAction)
+            alertController.addAction(okAction)
+            self.present(alertController, animated: true, completion: nil)
+        }
+    }
+
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         date = datePicker.date
@@ -107,7 +135,8 @@ class SaveToLogViewController: UITableViewController {
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "gotoLog" {
+        switch segue.identifier {
+        case "gotoLog":
             guard let unit = LiftDataManager.shared.load(unitWithName: self.massUnit),
                 !self.exercises.isEmpty else { return }
             let liftData = LiftData(
@@ -120,6 +149,8 @@ class SaveToLogViewController: UITableViewController {
                 exercise: self.exercise ?? self.exercises[0],
                 unit: unit)
             try? LiftDataManager.shared.save(lift: liftData)
+        case "gotoExercises": break
+        default: break
         }
     }
 
