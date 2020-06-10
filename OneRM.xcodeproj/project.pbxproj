@@ -31,7 +31,6 @@
 		656EC3C3246C258600A30C43 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC3C2246C258600A30C43 /* Defaults.swift */; };
 		656EC3C7246C2B8300A30C43 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC3C6246C2B8300A30C43 /* SettingsViewController.swift */; };
 		65B8F5012474008500618ECD /* EditExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F5002474008400618ECD /* EditExerciseViewController.swift */; };
-		65B8F50B2474024800618ECD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 65B8F5092474024800618ECD /* Localizable.strings */; };
 		65B8F510247417E000618ECD /* SaveToLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F50F247417E000618ECD /* SaveToLogViewController.swift */; };
 		65B8F512247423A100618ECD /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F511247423A100618ECD /* LogViewController.swift */; };
 		65B8F5142474485000618ECD /* LogTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F5132474485000618ECD /* LogTableViewCell.swift */; };
@@ -132,7 +131,6 @@
 		656EC3C6246C2B8300A30C43 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		657A3C15248FB10200E4CD58 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
 		65B8F5002474008400618ECD /* EditExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExerciseViewController.swift; sourceTree = "<group>"; };
-		65B8F50A2474024800618ECD /* de */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = de; path = de.lproj/Localizable.strings; sourceTree = "<group>"; };
 		65B8F50F247417E000618ECD /* SaveToLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToLogViewController.swift; sourceTree = "<group>"; };
 		65B8F511247423A100618ECD /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
 		65B8F5132474485000618ECD /* LogTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogTableViewCell.swift; sourceTree = "<group>"; };
@@ -258,17 +256,8 @@
 		65B8F503247401F700618ECD /* l10n */ = {
 			isa = PBXGroup;
 			children = (
-				65B8F5082474023E00618ECD /* de */,
 			);
 			name = l10n;
-			sourceTree = "<group>";
-		};
-		65B8F5082474023E00618ECD /* de */ = {
-			isa = PBXGroup;
-			children = (
-				65B8F5092474024800618ECD /* Localizable.strings */,
-			);
-			name = de;
 			sourceTree = "<group>";
 		};
 		65D04609246FE01400E45D0D /* Model */ = {
@@ -453,7 +442,6 @@
 				65D9059D247D47360036B679 /* gpl-3.0.md in Resources */,
 				656EC39D246929DC00A30C43 /* Assets.xcassets in Resources */,
 				65598430246F21B800A5976E /* LICENSE in Resources */,
-				65B8F50B2474024800618ECD /* Localizable.strings in Resources */,
 				656EC398246929DB00A30C43 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -567,14 +555,6 @@
 				65552F7E248105BE00F71550 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			sourceTree = "<group>";
-		};
-		65B8F5092474024800618ECD /* Localizable.strings */ = {
-			isa = PBXVariantGroup;
-			children = (
-				65B8F50A2474024800618ECD /* de */,
-			);
-			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
