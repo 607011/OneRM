@@ -4,7 +4,7 @@ You can download the [latest release of One-RM](https://apps.apple.com/de/app/on
 
 ## 1.0.1
 
-- If user tries to log a lift but hasn't added any exercise yet, user is sent to exercise table to enter a new exercise.
+ - If user tries to log a lift but hasn't entered any exercise, user is sent to the exercise table in order to add one.
 
 ## 1.0.0
 
