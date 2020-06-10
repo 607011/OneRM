@@ -11,7 +11,11 @@ class SaveToLogViewController: UITableViewController {
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
 
-    private var exercises: [Exercise] = []
+    private var exercises: [Exercise] = [] {
+        didSet {
+            exercisePicker.reloadAllComponents()
+        }
+    }
     private var exercise: Exercise? {
         didSet {
             NSUbiquitousKeyValueStore.default.set(exercise?.name, forKey: Key.lastSavedExercise.rawValue)
@@ -54,6 +58,10 @@ class SaveToLogViewController: UITableViewController {
         tableView.reloadData()
     }
 
+    @objc func updatePicker(_ notification: Notification) {
+        exercisePicker.reloadAllComponents()
+    }
+
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationCenter.default.addObserver(
@@ -61,6 +69,11 @@ class SaveToLogViewController: UITableViewController {
             selector: #selector(updateFromDefaults),
             name: UserDefaults.didChangeNotification,
             object: nil)
+        NotificationCenter.default.addObserver(
+            self,
+            selector: #selector(updatePicker),
+            name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
+            object: LiftDataManager.shared.mainContext)
         exercisePicker.delegate = self
         exercisePicker.dataSource = self
         for (idx, button) in starButton.enumerated() {
@@ -93,15 +106,19 @@ class SaveToLogViewController: UITableViewController {
         if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveRating.rawValue) != nil {
             rating = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.lastSaveRating.rawValue))
         }
+    }
+
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
         if exercises.isEmpty {
             let alertController = UIAlertController(
                 title: NSLocalizedString("No exercises", comment: ""),
                 message: NSLocalizedString(
                     """
-You haven't entered any exercises.
-Please go to Settings/Exercises to add an exercise,
-then come back here.
-""",
+        You haven't entered any exercises.
+        Please go to Settings/Exercises to add an exercise,
+        then come back here.
+        """,
                     comment: ""),
                 preferredStyle: .alert)
             let okAction = UIAlertAction(
@@ -118,11 +135,6 @@ then come back here.
             alertController.addAction(cancelAction)
             self.present(alertController, animated: true, completion: nil)
         }
-        exercisePicker.reloadAllComponents()
-    }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
     }
 
     override func viewWillDisappear(_ animated: Bool) {
