@@ -24,6 +24,16 @@ You can even build and run your own version based on the [source code published 
  - Customizable list of exercises
  - Customizable list of mass units
  - Sync your settings and lifting records via iCloud
+ 
+## Contribute
+
+### Testflight
+
+Do you like to be one the first to test a new release? Then you're welcome to be a test pilot. Just send me an email so that I can invite you to a [Testflight](https://developer.apple.com/testflight/).
+
+### Improve
+
+You found a bug or miss a feature? Feel free to [leave a report](https://github.com/ola-ct/OneRM/issues).
 
 ## Licenses
 
