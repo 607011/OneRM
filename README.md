@@ -12,6 +12,8 @@ _OneRM_ by default uses the [Brzycki formula](https://en.wikipedia.org/wiki/One-
 
 _OneRM_ comes for free: no ads, no in-app purchases!
 
+You can [download OneRM](https://apps.apple.com/de/app/one-rm/id1515096906) from the App Store.
+
 You can even build and run your own version based on the [source code published on GitHub](https://github.com/ola-ct/1RM), if you are enrolled in the [Apple Developer Program](https://developer.apple.com/programs/).
 
 ## Features
