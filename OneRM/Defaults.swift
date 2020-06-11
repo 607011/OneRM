@@ -30,15 +30,21 @@ let defaultMassUnit: String = Locale.current.usesMetricSystem
 
 let defaultExercises: [String] = [
     "Bench press",
-    "Deadlift",
-    "Squat",
-    "Front squat",
-    "Overhead squat",
     "Front press",
     "Push press",
+    "Deadlift",
+    "Romanian deadlift",
+    "Sumo deadlift",
+    "Good morning",
+    "Squat",
+    "Box squat",
+    "Front squat",
+    "Box front squat",
+    "Overhead squat",
     "Power clean",
     "Snatch",
-    "Clean & jerk"
+    "Clean & jerk",
+    "Pull-up"
 ]
 
 let defaultMaxPercent = 120
