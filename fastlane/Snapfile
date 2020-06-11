@@ -2,21 +2,16 @@
 
 # A list of devices you want to take the screenshots from
 devices([
-    "iPhone 8",
-    "iPhone 11 Pro Max",
-    "iPad Pro (12.9-inch) (2nd generation)",
-    "iPad Pro (12.9-inch) (3rd generation)"
+   "iPhone 8 Plus",
+   "iPhone 11 Pro Max",
+   "iPad Pro (12.9-inch) (2nd generation)",
+   "iPad Pro (12.9-inch) (3rd generation)",
 ])
-
-ios_version(
-  "13.5"
-)
 
 languages([
-  "en-US",
+   "en-US",
 ])
 
-# The name of the scheme which contains the UI Tests
 scheme("OneRMTests")
 
 # Where should the resulting screenshots be stored?

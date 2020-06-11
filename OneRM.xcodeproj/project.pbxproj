@@ -30,6 +30,8 @@
 		656EC3BF246AA89800A30C43 /* RepCollectionViewCellLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC3BE246AA89800A30C43 /* RepCollectionViewCellLayout.swift */; };
 		656EC3C3246C258600A30C43 /* Defaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC3C2246C258600A30C43 /* Defaults.swift */; };
 		656EC3C7246C2B8300A30C43 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC3C6246C2B8300A30C43 /* SettingsViewController.swift */; };
+		657A3C212491461A00E4CD58 /* OneRMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A3C202491461A00E4CD58 /* OneRMUITests.swift */; };
+		657A3C292491464500E4CD58 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A3C282491464500E4CD58 /* SnapshotHelper.swift */; };
 		65B8F5012474008500618ECD /* EditExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F5002474008400618ECD /* EditExerciseViewController.swift */; };
 		65B8F510247417E000618ECD /* SaveToLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F50F247417E000618ECD /* SaveToLogViewController.swift */; };
 		65B8F512247423A100618ECD /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F511247423A100618ECD /* LogViewController.swift */; };
@@ -46,6 +48,13 @@
 
 /* Begin PBXContainerItemProxy section */
 		6555A48424798FD7001F7ED3 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 656EC383246929DA00A30C43 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 656EC38A246929DA00A30C43;
+			remoteInfo = OneRM;
+		};
+		657A3C232491461A00E4CD58 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = 656EC383246929DA00A30C43 /* Project object */;
 			proxyType = 1;
@@ -98,6 +107,10 @@
 		656EC3C2246C258600A30C43 /* Defaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Defaults.swift; sourceTree = "<group>"; };
 		656EC3C6246C2B8300A30C43 /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
 		657A3C15248FB10200E4CD58 /* PRIVACY.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = PRIVACY.md; sourceTree = "<group>"; };
+		657A3C1E2491461A00E4CD58 /* OneRMUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OneRMUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		657A3C202491461A00E4CD58 /* OneRMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRMUITests.swift; sourceTree = "<group>"; };
+		657A3C222491461A00E4CD58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		657A3C282491464500E4CD58 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
 		65B8F5002474008400618ECD /* EditExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExerciseViewController.swift; sourceTree = "<group>"; };
 		65B8F50F247417E000618ECD /* SaveToLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToLogViewController.swift; sourceTree = "<group>"; };
 		65B8F511247423A100618ECD /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
@@ -126,6 +139,13 @@
 			files = (
 				6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */,
 				65DCEE37248AC4C3007D1FC9 /* SideMenu in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		657A3C1B2491461A00E4CD58 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -178,6 +198,7 @@
 				65CF033E2482529100D7428B /* Settings.bundle */,
 				656EC38D246929DB00A30C43 /* OneRM */,
 				6555A48024798FD7001F7ED3 /* OneRMTests */,
+				657A3C1F2491461A00E4CD58 /* OneRMUITests */,
 				656EC38C246929DB00A30C43 /* Products */,
 				65EF2E6D246EBE3600A828DE /* doc */,
 				65D905A4247D6BA30036B679 /* other */,
@@ -190,6 +211,7 @@
 			children = (
 				656EC38B246929DB00A30C43 /* OneRM.app */,
 				6555A47F24798FD7001F7ED3 /* OneRMTests.xctest */,
+				657A3C1E2491461A00E4CD58 /* OneRMUITests.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -212,6 +234,16 @@
 				6555A48E247B9D3E001F7ED3 /* OneRM.entitlements */,
 			);
 			path = OneRM;
+			sourceTree = "<group>";
+		};
+		657A3C1F2491461A00E4CD58 /* OneRMUITests */ = {
+			isa = PBXGroup;
+			children = (
+				657A3C282491464500E4CD58 /* SnapshotHelper.swift */,
+				657A3C202491461A00E4CD58 /* OneRMUITests.swift */,
+				657A3C222491461A00E4CD58 /* Info.plist */,
+			);
+			path = OneRMUITests;
 			sourceTree = "<group>";
 		};
 		65B8F503247401F700618ECD /* l10n */ = {
@@ -296,13 +328,31 @@
 			productReference = 656EC38B246929DB00A30C43 /* OneRM.app */;
 			productType = "com.apple.product-type.application";
 		};
+		657A3C1D2491461A00E4CD58 /* OneRMUITests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 657A3C252491461A00E4CD58 /* Build configuration list for PBXNativeTarget "OneRMUITests" */;
+			buildPhases = (
+				657A3C1A2491461A00E4CD58 /* Sources */,
+				657A3C1B2491461A00E4CD58 /* Frameworks */,
+				657A3C1C2491461A00E4CD58 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				657A3C242491461A00E4CD58 /* PBXTargetDependency */,
+			);
+			name = OneRMUITests;
+			productName = OneRMUITests;
+			productReference = 657A3C1E2491461A00E4CD58 /* OneRMUITests.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
 		656EC383246929DA00A30C43 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastSwiftUpdateCheck = 1100;
+				LastSwiftUpdateCheck = 1150;
 				LastUpgradeCheck = 1150;
 				ORGANIZATIONNAME = "Oliver Lau";
 				TargetAttributes = {
@@ -312,6 +362,10 @@
 					};
 					656EC38A246929DA00A30C43 = {
 						CreatedOnToolsVersion = 11.0;
+					};
+					657A3C1D2491461A00E4CD58 = {
+						CreatedOnToolsVersion = 11.5;
+						TestTargetID = 656EC38A246929DA00A30C43;
 					};
 				};
 			};
@@ -334,6 +388,7 @@
 			targets = (
 				656EC38A246929DA00A30C43 /* OneRM */,
 				6555A47E24798FD7001F7ED3 /* OneRMTests */,
+				657A3C1D2491461A00E4CD58 /* OneRMUITests */,
 			);
 		};
 /* End PBXProject section */
@@ -356,6 +411,13 @@
 				65598430246F21B800A5976E /* LICENSE in Resources */,
 				6543D2982490F05700A7B4F4 /* About.rtf in Resources */,
 				656EC398246929DB00A30C43 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		657A3C1C2491461A00E4CD58 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -442,6 +504,15 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
+		657A3C1A2491461A00E4CD58 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				657A3C212491461A00E4CD58 /* OneRMUITests.swift in Sources */,
+				657A3C292491464500E4CD58 /* SnapshotHelper.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
@@ -449,6 +520,11 @@
 			isa = PBXTargetDependency;
 			target = 656EC38A246929DA00A30C43 /* OneRM */;
 			targetProxy = 6555A48424798FD7001F7ED3 /* PBXContainerItemProxy */;
+		};
+		657A3C242491461A00E4CD58 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 656EC38A246929DA00A30C43 /* OneRM */;
+			targetProxy = 657A3C232491461A00E4CD58 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -642,7 +718,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
 				PRODUCT_NAME = OneRM;
 				PROVISIONING_PROFILE_SPECIFIER = "";
@@ -666,13 +742,53 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.1;
+				MARKETING_VERSION = 1.0.2;
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
 				PRODUCT_NAME = OneRM;
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Release;
+		};
+		657A3C262491461A00E4CD58 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 64627RE2QD;
+				INFOPLIST_FILE = OneRMUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRMUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OneRM;
+			};
+			name = Debug;
+		};
+		657A3C272491461A00E4CD58 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = 64627RE2QD;
+				INFOPLIST_FILE = OneRMUITests/Info.plist;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.5;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@loader_path/Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRMUITests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = OneRM;
 			};
 			name = Release;
 		};
@@ -702,6 +818,15 @@
 			buildConfigurations = (
 				656EC3B0246929DC00A30C43 /* Debug */,
 				656EC3B1246929DC00A30C43 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		657A3C252491461A00E4CD58 /* Build configuration list for PBXNativeTarget "OneRMUITests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				657A3C262491461A00E4CD58 /* Debug */,
+				657A3C272491461A00E4CD58 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
