@@ -96,7 +96,7 @@ func registerAppSettings() {
 
 func populateExercisesIfNeeded() {
     let currentExercises = LiftDataManager.shared.loadExercises()
-    NSLog("Loaded exercises = \(currentExercises.map({ $0.name }))")
+    NSLog("Loaded exercises: \(currentExercises.map({ $0.name }))")
     if currentExercises.isEmpty {
         let newExercises: [ExerciseData] = defaultExercises.enumerated().map({ arg in
             let (idx, name) = arg
