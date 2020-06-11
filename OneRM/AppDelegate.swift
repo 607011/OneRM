@@ -16,12 +16,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         registerAppSettings()
         let kvStore = NSUbiquitousKeyValueStore.default
         kvStore.synchronize()
-//        if kvStore.object(forKey: Key.barWeight.rawValue) == nil {
-//            kvStore.set(defaultBarWeight, forKey: Key.barWeight.rawValue)
-//        }
-//        if kvStore.object(forKey: Key.plates.rawValue) == nil {
-//            kvStore.set(defaultPlates, forKey: Key.plates.rawValue)
-//        }
+
         if kvStore.object(forKey: Key.maxPercent.rawValue) == nil {
             kvStore.set(defaultMaxPercent, forKey: Key.maxPercent.rawValue)
         }
@@ -31,14 +26,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if kvStore.object(forKey: Key.percentStep.rawValue) == nil {
             kvStore.set(defaultPercentStep, forKey: Key.percentStep.rawValue)
         }
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(iCloudAvailabilityChanged),
-//                                               name: Notification.Name.NSUbiquityIdentityDidChange,
-//                                               object: nil)
-//        NotificationCenter.default.addObserver(self,
-//                                               selector: #selector(externalStorageChanged),
-//                                               name: NSUbiquitousKeyValueStore.didChangeExternallyNotification,
-//                                               object: nil)
 
         UINavigationBar.appearance().backgroundColor = UIColor(named: "Olive")
         UINavigationBar.appearance().barTintColor = UIColor(named: "Olive")
@@ -46,27 +33,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         UINavigationBar.appearance().tintColor = .white
         return true
     }
-
-//    @objc func externalStorageChanged(notification: Notification) {
-//        debugPrint("externalStorageChanged()")
-//    }
-//
-//    @objc func iCloudAvailabilityChanged(notification: Notification) {
-//        debugPrint("iCloudAvailabilityChanged()")
-//        let kvStore = NSUbiquitousKeyValueStore.default
-//        if let idToken = FileManager.default.ubiquityIdentityToken,
-//            let newTokenData = try? NSKeyedArchiver.archivedData(withRootObject: idToken, requiringSecureCoding: false) {
-//            if let oldTokenData = kvStore.object(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken") as? Data {
-//                if oldTokenData != newTokenData {
-//                    // user has changed identity -> clear local caches of exercises, lifts units and settings
-//                }
-//            }
-//            kvStore.set(newTokenData, forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
-//        } else {
-//            // user has logged out of iCloud
-//            kvStore.removeObject(forKey: "net.ersatzworld.OneRM.UbiquityIdentityToken")
-//        }
-//    }
 
     // MARK: UISceneSession Lifecycle
 
