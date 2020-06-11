@@ -77,11 +77,26 @@ func registerAppSettings() {
             format: nil) as? [String: Any],
         let settingsPreferences = settingsPlist["PreferenceSpecifiers"] as? [[String: Any]] else {
             return }
+    let currentUnits = LiftDataManager.shared.loadUnits()
+    var newUnits: [UnitData] = []
+    debugPrint("currentUnits = \(currentUnits.map({ $0.name }))")
     var defaultsToRegister: [String: Any] = [:]
     settingsPreferences.forEach { preference in
         if let key = preference["Key"] as? String {
             defaultsToRegister[key] = preference["DefaultValue"]
+            if key == "massUnit",
+                let values = preference["Values"] as? [String] {
+                for unitName in values {
+                    if !currentUnits.contains(where: { $0.name == unitName }) {
+                        newUnits.append(UnitData(name: unitName))
+                    }
+                }
+            }
         }
+    }
+    debugPrint("newUnits = \(newUnits)")
+    if !newUnits.isEmpty {
+        LiftDataManager.shared.save(units: newUnits)
     }
     UserDefaults.standard.register(defaults: defaultsToRegister)
 }

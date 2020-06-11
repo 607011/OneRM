@@ -111,7 +111,7 @@ class LiftDataManager {
         }
     }
 
-    func save(units: [UnitData]) throws {
+    func save(units: [UnitData]) {
         let ctx = LiftDataManager.shared.backgroundContext()
         ctx.perform {
             for unit in units {
