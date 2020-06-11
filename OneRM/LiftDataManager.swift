@@ -99,7 +99,7 @@ class LiftDataManager {
         return units[0]
     }
 
-    func save(exercises: [ExerciseData]) throws {
+    func save(exercises: [ExerciseData]) {
         let ctx = LiftDataManager.shared.backgroundContext()
         ctx.perform {
             for exercise in exercises {
