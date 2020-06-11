@@ -2,6 +2,8 @@
 
 import Foundation
 
+let defaultUnits: [String] = ["kg", "lbs"]
+
 let defaultMassUnit: String = Locale.current.usesMetricSystem
     ? "kg"
     : "lbs"
@@ -83,26 +85,34 @@ func registerAppSettings() {
             format: nil) as? [String: Any],
         let settingsPreferences = settingsPlist["PreferenceSpecifiers"] as? [[String: Any]] else {
             return }
-    let currentUnits = LiftDataManager.shared.loadUnits()
-    var newUnits: [UnitData] = []
-    debugPrint("currentUnits = \(currentUnits.map({ $0.name }))")
     var defaultsToRegister: [String: Any] = [:]
     settingsPreferences.forEach { preference in
         if let key = preference["Key"] as? String {
             defaultsToRegister[key] = preference["DefaultValue"]
-            if key == "massUnit",
-                let values = preference["Values"] as? [String] {
-                for unitName in values {
-                    if !currentUnits.contains(where: { $0.name == unitName }) {
-                        newUnits.append(UnitData(name: unitName))
-                    }
-                }
-            }
         }
     }
-    debugPrint("newUnits = \(newUnits)")
-    if !newUnits.isEmpty {
-        LiftDataManager.shared.save(units: newUnits)
-    }
     UserDefaults.standard.register(defaults: defaultsToRegister)
+}
+
+func populateExercisesIfNeeded() {
+    let currentExercises = LiftDataManager.shared.loadExercises()
+    NSLog("Loaded exercises = \(currentExercises.map({ $0.name }))")
+    if currentExercises.isEmpty {
+        let newExercises: [ExerciseData] = defaultExercises.enumerated().map({ arg in
+            let (idx, name) = arg
+            return ExerciseData(name: name, order: Int16(idx), ofLift: nil)
+        })
+        LiftDataManager.shared.save(exercises: newExercises)
+        NSLog("Added default exercises: \(newExercises.map({ $0.name }))")
+    }
+}
+
+func populateUnitsIfNeeded() {
+    let currentUnits = LiftDataManager.shared.loadUnits()
+    NSLog("Loaded units: \(currentUnits.map({ $0.name }))")
+    if currentUnits.isEmpty {
+        let newUnits: [UnitData] = defaultUnits.map({ UnitData(name: $0, ofLift: nil) })
+        LiftDataManager.shared.save(units: newUnits)
+        NSLog("Added default units: \(newUnits.map({ $0.name }))")
+    }
 }
