@@ -58,7 +58,8 @@ class SaveToLogViewController: UITableViewController {
         tableView.reloadData()
     }
 
-    @objc func updatePicker(_ notification: Notification) {
+    @objc func updateExercisePicker(_ notification: Notification) {
+        exercises = LiftDataManager.shared.loadExercises()
         exercisePicker.reloadAllComponents()
     }
 
@@ -71,7 +72,7 @@ class SaveToLogViewController: UITableViewController {
             object: nil)
         NotificationCenter.default.addObserver(
             self,
-            selector: #selector(updatePicker),
+            selector: #selector(updateExercisePicker),
             name: NSNotification.Name.NSManagedObjectContextObjectsDidChange,
             object: LiftDataManager.shared.mainContext)
         exercisePicker.delegate = self
