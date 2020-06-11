@@ -131,7 +131,6 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Log lift" image="text.badge.plus" catalog="system" id="GVK-t9-doY">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <segue destination="hVT-ir-xjD" kind="show" identifier="saveToLog" id="3KG-RD-vDF"/>
                             </connections>
@@ -382,7 +381,6 @@
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Save" id="WQW-oV-SbR">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             <connections>
                                 <action selector="saveExercise:" destination="8jv-4Z-IBZ" id="gb1-zO-n9e"/>
                             </connections>
@@ -559,8 +557,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" title="Exercises" id="3xv-JA-TuD">
-                        <barButtonItem key="rightBarButtonItem" title="Item" image="plus" catalog="system" id="XIy-6q-9xf">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="rightBarButtonItem" title="Add" image="plus" catalog="system" id="XIy-6q-9xf">
                             <connections>
                                 <action selector="addExercise:" destination="THr-9l-qhM" id="ZwO-kB-jOc"/>
                                 <segue destination="8jv-4Z-IBZ" kind="show" identifier="addExercise" id="ax8-sw-wFy"/>
@@ -744,7 +741,7 @@
                     </tableView>
                     <toolbarItems/>
                     <navigationItem key="navigationItem" title="Lift log" id="bab-Ez-rhY">
-                        <barButtonItem key="rightBarButtonItem" systemItem="search" id="jp7-Zo-iZv">
+                        <barButtonItem key="rightBarButtonItem" title="Search" image="magnifyingglass" catalog="system" id="jp7-Zo-iZv">
                             <connections>
                                 <action selector="searchButtonTapped:" destination="sCC-v0-IfH" id="uj0-EW-yBU"/>
                             </connections>
@@ -834,7 +831,7 @@
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSz-Ow-Cie">
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hSz-Ow-Cie" userLabel="Percentage">
                                                     <rect key="frame" x="246" y="11" width="58" height="22"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="58" id="OMZ-gz-l48"/>
@@ -1240,8 +1237,7 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="KzL-sn-q95">
-                        <barButtonItem key="rightBarButtonItem" systemItem="save" id="IHr-hM-XKs">
-                            <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <barButtonItem key="rightBarButtonItem" title="Save" id="IHr-hM-XKs">
                             <connections>
                                 <action selector="savePressed:" destination="Uh5-Ws-wRO" id="2mx-Yk-cEH"/>
                                 <segue destination="sCC-v0-IfH" kind="show" identifier="gotoLog" id="POW-bm-K46"/>
@@ -1458,6 +1454,7 @@
         <image name="Hamburger" width="24" height="24"/>
         <image name="gear" catalog="system" width="64" height="60"/>
         <image name="list.bullet" catalog="system" width="64" height="44"/>
+        <image name="magnifyingglass" catalog="system" width="64" height="60"/>
         <image name="number" catalog="system" width="64" height="60"/>
         <image name="percent" catalog="system" width="64" height="60"/>
         <image name="plus" catalog="system" width="64" height="58"/>

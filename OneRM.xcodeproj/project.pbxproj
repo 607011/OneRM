@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		650940F32472AC0F000BB84D /* LiftDataManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 650940F22472AC0F000BB84D /* LiftDataManager.swift */; };
 		6543D2982490F05700A7B4F4 /* About.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 6543D2972490F05700A7B4F4 /* About.rtf */; };
+		6543D2A12492615400A7B4F4 /* Fastfile in Resources */ = {isa = PBXBuildFile; fileRef = 6543D29E2492615400A7B4F4 /* Fastfile */; };
+		6543D2A22492615400A7B4F4 /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = 6543D29F2492615400A7B4F4 /* Appfile */; };
+		6543D2A32492615400A7B4F4 /* Snapfile in Resources */ = {isa = PBXBuildFile; fileRef = 6543D2A02492615400A7B4F4 /* Snapfile */; };
 		6555A48224798FD7001F7ED3 /* OneRMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A48124798FD7001F7ED3 /* OneRMTests.swift */; };
 		6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555A48A247B9CA2001F7ED3 /* CloudKit.framework */; };
 		6555A48F247B9D3E001F7ED3 /* OneRM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6555A48C247B9D3E001F7ED3 /* OneRM.xcdatamodeld */; };
@@ -79,6 +82,9 @@
 /* Begin PBXFileReference section */
 		650940F22472AC0F000BB84D /* LiftDataManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiftDataManager.swift; sourceTree = "<group>"; };
 		6543D2972490F05700A7B4F4 /* About.rtf */ = {isa = PBXFileReference; lastKnownFileType = text.rtf; path = About.rtf; sourceTree = "<group>"; };
+		6543D29E2492615400A7B4F4 /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = "<group>"; };
+		6543D29F2492615400A7B4F4 /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Appfile; path = fastlane/Appfile; sourceTree = "<group>"; };
+		6543D2A02492615400A7B4F4 /* Snapfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Snapfile; path = fastlane/Snapfile; sourceTree = "<group>"; };
 		655006A72490C0CD00CE8677 /* RELEASE_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTES.md; sourceTree = "<group>"; };
 		65552F7D248105BE00F71550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65552F7E248105BE00F71550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -152,6 +158,16 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6543D29D2492613B00A7B4F4 /* fastlane */ = {
+			isa = PBXGroup;
+			children = (
+				6543D29F2492615400A7B4F4 /* Appfile */,
+				6543D29E2492615400A7B4F4 /* Fastfile */,
+				6543D2A02492615400A7B4F4 /* Snapfile */,
+			);
+			name = fastlane;
+			sourceTree = "<group>";
+		};
 		6555A48024798FD7001F7ED3 /* OneRMTests */ = {
 			isa = PBXGroup;
 			children = (
@@ -195,6 +211,7 @@
 		656EC382246929DA00A30C43 = {
 			isa = PBXGroup;
 			children = (
+				6543D29D2492613B00A7B4F4 /* fastlane */,
 				65CF033E2482529100D7428B /* Settings.bundle */,
 				656EC38D246929DB00A30C43 /* OneRM */,
 				6555A48024798FD7001F7ED3 /* OneRMTests */,
@@ -405,7 +422,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6543D2A32492615400A7B4F4 /* Snapfile in Resources */,
+				6543D2A22492615400A7B4F4 /* Appfile in Resources */,
 				65CF033F2482529100D7428B /* Settings.bundle in Resources */,
+				6543D2A12492615400A7B4F4 /* Fastfile in Resources */,
 				656EC3A0246929DC00A30C43 /* LaunchScreen.storyboard in Resources */,
 				656EC39D246929DC00A30C43 /* Assets.xcassets in Resources */,
 				65598430246F21B800A5976E /* LICENSE in Resources */,

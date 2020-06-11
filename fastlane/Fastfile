@@ -22,8 +22,8 @@ platform :ios do
       skip_codesigning: false,
       export_method: "ad-hoc",
       skip_package_ipa: true,
-      destination: "platform=iOS Simulator,OS=13.0,name=iPhone 11",
-      scheme: "1RM"
+      destination: "platform=iOS Simulator,OS=13.0,name=iPhone 11 Pro Max",
+      scheme: "OneRM App Store"
     )
   end
 end

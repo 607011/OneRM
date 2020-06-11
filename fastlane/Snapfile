@@ -2,17 +2,17 @@
 
 # A list of devices you want to take the screenshots from
 devices([
-   "iPhone 8 Plus",
-   "iPhone 11 Pro Max",
-   "iPad Pro (12.9-inch) (2nd generation)",
-   "iPad Pro (12.9-inch) (3rd generation)",
+#   "iPhone 11 Pro Max",
+#   "iPad Pro (12.9-inch) (3rd generation)",
+#   "iPad Pro (12.9-inch) (2nd generation)"
+   "iPhone 8 Plus"
 ])
 
 languages([
    "en-US",
 ])
 
-scheme("OneRMTests")
+scheme("OneRMUITests")
 
 # Where should the resulting screenshots be stored?
 output_directory("./screenshots")

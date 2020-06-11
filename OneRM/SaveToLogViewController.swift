@@ -100,10 +100,10 @@ class SaveToLogViewController: UITableViewController {
             guard let lastDate = NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveDate.rawValue) as? Date else { return }
             datePicker.date = lastDate
         }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveNotes.rawValue) != nil {
-            guard let lastNotes = NSUbiquitousKeyValueStore.default.string(forKey: Key.lastSaveNotes.rawValue) else { return }
-            notesTextView.text = lastNotes
-        }
+//        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveNotes.rawValue) != nil {
+//            guard let lastNotes = NSUbiquitousKeyValueStore.default.string(forKey: Key.lastSaveNotes.rawValue) else { return }
+//            notesTextView.text = lastNotes
+//        }
         if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveRating.rawValue) != nil {
             rating = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.lastSaveRating.rawValue))
         }
