@@ -4,6 +4,7 @@ You can download the [latest release of One-RM](https://apps.apple.com/de/app/on
 
 ## 1.0.1
 
+ - Personal database populated with a couple of popular exercises on first launch.
  - If user tries to log a lift but hasn't yet entered an exercise, user is sent to the exercise table in order to add one.
 
 ## 1.0.0
