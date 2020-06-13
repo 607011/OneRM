@@ -10,10 +10,12 @@ class SaveToLogViewController: UITableViewController {
     @IBOutlet var starButton: [UIButton]!
     @IBOutlet weak var notesTextView: UITextView!
     @IBOutlet weak var datePicker: UIDatePicker!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
 
     private var exercises: [Exercise] = [] {
         didSet {
             exercisePicker.reloadAllComponents()
+            saveButton.isEnabled = !exercises.isEmpty
         }
     }
     private var exercise: Exercise? {
