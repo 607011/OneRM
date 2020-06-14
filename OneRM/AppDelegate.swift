@@ -71,7 +71,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
                  * The store could not be migrated to the current model version.
                  Check the error message to determine what the actual problem was.
                  */
-                debugPrint("Unresolved error \(error), \(error.userInfo)")
+                NSLog("Unresolved error \(error), \(error.userInfo)")
             }
         })
         let description = container.persistentStoreDescriptions.first
@@ -90,7 +90,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
             } catch {
                 // Replace this implementation with code to handle the error appropriately.
                 let nserror = error as NSError
-                debugPrint("Unresolved error \(nserror), \(nserror.userInfo)")
+                NSLog("Unresolved error \(nserror), \(nserror.userInfo)")
             }
         }
     }

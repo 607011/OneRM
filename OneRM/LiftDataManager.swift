@@ -12,7 +12,7 @@ class LiftDataManager {
     }
     lazy var persistentContainer: NSPersistentContainer = {
         guard let appDelegate = self.appDelegate else {
-            debugPrint("WARNING: Could not access AppDelegate. Falling back to NSPersistentContainer.")
+            NSLog("WARNING: Could not access AppDelegate. Falling back to NSPersistentContainer.")
             let container = NSPersistentContainer(name: "OneRM")
             container.loadPersistentStores(completionHandler: { _, error in
                 _ = error.map { fatalError("Unresolved error \($0)") }
@@ -55,7 +55,7 @@ class LiftDataManager {
             let units = try mainContext.fetch(fetchRequest)
             return units
         } catch {
-            debugPrint(error)
+            NSLog("Error in LiftDataManager.shared.loadUnits(): \(error)")
         }
         return []
     }
@@ -68,7 +68,7 @@ class LiftDataManager {
             let exercises = try mainContext.fetch(fetchRequest)
             return exercises
         } catch {
-            debugPrint(error)
+            NSLog("Error in LiftDataManager.shared.loadExercises(): \(error)")
         }
         return []
     }
@@ -84,7 +84,7 @@ class LiftDataManager {
             let lifts = try mainContext.fetch(fetchRequest)
             return lifts
         } catch {
-            debugPrint(error)
+            NSLog("Error in LiftDataManager.shared.loadLifts(): \(error)")
         }
         return []
     }
