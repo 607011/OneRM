@@ -4,7 +4,9 @@
 
 __One repetition maximum calculator and logger for iOS__
 
-[![license](https://img.shields.io/github/license/ola-ct/OneRM)](LICENSE)
+[![license](https://img.shields.io/github/license/ola-ct/OneRM)](./LICENSE)
+[![last commit](https://img.shields.io/github/last-commit/ola-ct/OneRM)](https://github.com/ola-ct/OneRM/commits/)
+[![open issues](https://img.shields.io/github/issues/ola-ct/OneRM)](https://github.com/ola-ct/OneRM/issues/)
 
 The 1RM is useful to determine an individual's maximum strength. It's also useful to determine the correct weights (as % of 1RM) when training for a specific goal. 
 
@@ -25,7 +27,7 @@ You can even build and run your own version based on the [source code published 
  - Log lifting records of your favorite exercise
  - Customizable list of exercises
  - Customizable list of mass units
- - Sync your settings and lifting records via iCloud
+ - **Sync your settings and lifting records via iCloud**
  
 ## Contribute
 
