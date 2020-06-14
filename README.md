@@ -31,7 +31,7 @@ You can even build and run your own version based on the [source code published 
 
 ### Testflight
 
-Do you like to be one the first to test a new release? Then you're welcome to be a test pilot. Just send me an email with some words about your expertise so that I can invite you to a [Testflight](https://developer.apple.com/testflight/).
+Do you like to be one of the first to test a new release? Then you're welcome to be a test pilot. Just send me an email with some words about your expertise so I can invite you to a [Testflight](https://developer.apple.com/testflight/).
 
 ### Improve
 
