@@ -2,6 +2,10 @@
 
 You can download the [latest release of One-RM](https://apps.apple.com/de/app/one-rm/id1515096906) from the App Store.
 
+## 1.0.2 (pending)
+
+ - If user hasn't entered any exercise, the Save button is disabled.
+
 ## 1.0.1
 
  - Personal database populated with a couple of popular exercises on first launch.
