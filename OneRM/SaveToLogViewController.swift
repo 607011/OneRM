@@ -131,7 +131,7 @@ class SaveToLogViewController: UITableViewController {
                     self.performSegue(withIdentifier: "gotoExercises", sender: nil)
             })
             let cancelAction = UIAlertAction(
-                title: NSLocalizedString("Cancel", comment: ""),
+                title: NSLocalizedString("Stay here", comment: ""),
                 style: .cancel,
                 handler: nil)
             alertController.addAction(okAction)
@@ -154,19 +154,36 @@ class SaveToLogViewController: UITableViewController {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         switch segue.identifier {
         case "gotoLog":
-            guard let unit = LiftDataManager.shared.load(unitWithName: self.massUnit),
-                !self.exercises.isEmpty else { return }
+            guard let unit = LiftDataManager.shared.load(unitWithName: self.massUnit) else {
+                NSLog("Error: No units present while preparing for segue '\(segue.identifier!)'. This should not have happened.")
+                return
+            }
+            guard !self.exercises.isEmpty else {
+                NSLog("Error: No exercises presentwhile preparing for segue '\(segue.identifier!)'. This should not have happened.")
+                return
+            }
+            let exercise = self.exercise ?? exercises[0]
+            var date = datePicker.date
+            if date < Date() { // reset time if selected date is in the past
+                let calendar = Calendar.current
+                var dateComponents = calendar.dateComponents([.year, .month, .day, .hour, .minute, .second, .nanosecond, .timeZone], from: date)
+                dateComponents.hour = 0
+                dateComponents.minute = 0
+                dateComponents.second = 0
+                dateComponents.nanosecond = 0
+                date = calendar.date(from: dateComponents) ?? date
+            }
             let liftData = LiftData(
-                date: self.datePicker.date,
-                reps: Int16(self.reps),
-                weight: self.weight,
-                oneRM: self.oneRM,
-                rating: Int16(self.rating),
-                notes: self.notesTextView.text,
-                exercise: self.exercise ?? self.exercises[0],
+                date: date,
+                reps: Int16(reps),
+                weight: weight,
+                oneRM: oneRM,
+                rating: Int16(rating),
+                notes: notesTextView.text,
+                exercise: exercise,
                 unit: unit)
             try? LiftDataManager.shared.save(lift: liftData)
-        case "gotoExercises": break
+        case "gotoExercises": break // case explicitly listed to remind developer of all the possible segues in SaveToLogViewController ;-)
         default: break
         }
     }
