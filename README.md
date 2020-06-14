@@ -27,7 +27,7 @@ You can even build and run your own version based on the [source code published 
  - Log lifting records of your favorite exercise
  - Customizable list of exercises
  - Customizable list of mass units
- - Sync your settings and lifting records via iCloud
+ - **Sync your settings and lifting records via iCloud**
  
 ## Contribute
 
