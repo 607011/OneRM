@@ -1,3 +1,5 @@
+![One-RM](https://raw.githubusercontent.com/ola-ct/OneRM/master/_raw/1RM-AppIcon.svg)
+
 #  One-RM
 
 __One repetition maximum calculator and logger for iOS__
