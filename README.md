@@ -33,7 +33,7 @@ Do you like to be one the first to test a new release? Then you're welcome to be
 
 ### Improve
 
-You found a bug or miss a feature? Feel free to [leave a report](https://github.com/ola-ct/OneRM/issues).
+You found a bug or miss a feature? Feel free to [report an issue](https://github.com/ola-ct/OneRM/issues).
 
 ## Licenses
 
