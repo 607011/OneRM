@@ -25,8 +25,7 @@ You can even build and run your own version based on the [source code published 
  - Calculate 1RM
  - Display a list of weights for arbitrary percentages of 1RM
  - Log lifting records of your favorite exercise
- - Customizable list of exercises
- - Customizable list of mass units
+ - Customize list of exercises
  - **Sync your settings and lifting records via iCloud**
  
 ## Contribute
