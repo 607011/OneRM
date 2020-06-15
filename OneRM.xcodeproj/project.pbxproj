@@ -35,6 +35,8 @@
 		656EC3C7246C2B8300A30C43 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC3C6246C2B8300A30C43 /* SettingsViewController.swift */; };
 		657A3C212491461A00E4CD58 /* OneRMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A3C202491461A00E4CD58 /* OneRMUITests.swift */; };
 		657A3C292491464500E4CD58 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A3C282491464500E4CD58 /* SnapshotHelper.swift */; };
+		657A3C2C24979C7A00E4CD58 /* Sync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657A3C2A24979C6300E4CD58 /* Sync.framework */; };
+		657A3C2D24979C7A00E4CD58 /* Sync.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 657A3C2A24979C6300E4CD58 /* Sync.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65B8F5012474008500618ECD /* EditExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F5002474008400618ECD /* EditExerciseViewController.swift */; };
 		65B8F510247417E000618ECD /* SaveToLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F50F247417E000618ECD /* SaveToLogViewController.swift */; };
 		65B8F512247423A100618ECD /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F511247423A100618ECD /* LogViewController.swift */; };
@@ -73,6 +75,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
+				657A3C2D24979C7A00E4CD58 /* Sync.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -117,6 +120,7 @@
 		657A3C202491461A00E4CD58 /* OneRMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRMUITests.swift; sourceTree = "<group>"; };
 		657A3C222491461A00E4CD58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		657A3C282491464500E4CD58 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
+		657A3C2A24979C6300E4CD58 /* Sync.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sync.framework; path = Carthage/Build/iOS/Sync.framework; sourceTree = "<group>"; };
 		65B8F5002474008400618ECD /* EditExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExerciseViewController.swift; sourceTree = "<group>"; };
 		65B8F50F247417E000618ECD /* SaveToLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToLogViewController.swift; sourceTree = "<group>"; };
 		65B8F511247423A100618ECD /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
@@ -145,6 +149,7 @@
 			files = (
 				6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */,
 				65DCEE37248AC4C3007D1FC9 /* SideMenu in Frameworks */,
+				657A3C2C24979C7A00E4CD58 /* Sync.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +216,7 @@
 		656EC382246929DA00A30C43 = {
 			isa = PBXGroup;
 			children = (
+				657A3C2A24979C6300E4CD58 /* Sync.framework */,
 				6543D29D2492613B00A7B4F4 /* fastlane */,
 				65CF033E2482529100D7428B /* Settings.bundle */,
 				656EC38D246929DB00A30C43 /* OneRM */,
@@ -733,6 +739,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_TEAM = 64627RE2QD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OneRM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -757,6 +767,10 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 80;
 				DEVELOPMENT_TEAM = 64627RE2QD;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS",
+				);
 				INFOPLIST_FILE = OneRM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
