@@ -24,6 +24,12 @@ class MainViewController: UIViewController {
         }
         return factors
     }()
+    private lazy var weightDigitWidth: CGFloat = {
+        return min(32, weightPicker.bounds.width / 5)
+    }()
+    private lazy var repsDigitWidth: CGFloat = {
+        return min(36, repsPicker.bounds.width)
+    }()
 
     private var cellWidth: CGFloat = 130
 
@@ -204,8 +210,8 @@ extension MainViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         switch pickerView {
-        case weightPicker: return 32
-        case repsPicker: return 32
+        case weightPicker: return weightDigitWidth
+        case repsPicker: return repsDigitWidth
         default: return 0
         }
     }
