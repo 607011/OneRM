@@ -31,6 +31,14 @@ class MainViewController: UIViewController {
     private lazy var repsDigitWidth: CGFloat = {
         return min(36, repsPicker.bounds.width)
     }()
+    private var saveButtonEnabled: Bool {
+        return !exercises.isEmpty && weight > 0
+    }
+    private var exercises: [Exercise] = [] {
+        didSet {
+            saveButton.isEnabled = saveButtonEnabled
+        }
+    }
 
     private var cellWidth: CGFloat = 130
 
@@ -45,7 +53,7 @@ class MainViewController: UIViewController {
         didSet {
             repsCollectionView.reloadData()
             NSUbiquitousKeyValueStore.default.set(weight, forKey: Key.weight.rawValue)
-            saveButton.isEnabled = weight > 0
+            saveButton.isEnabled = saveButtonEnabled
         }
     }
 
@@ -121,6 +129,7 @@ class MainViewController: UIViewController {
         reps = repInterval.clamp(value: Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.reps.rawValue)))
         updateRepsPicker(from: reps)
         repsCollectionView.reloadData()
+        exercises = LiftDataManager.shared.loadExercises()
     }
 
     override func viewDidDisappear(_ animated: Bool) {
