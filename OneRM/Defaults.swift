@@ -64,9 +64,6 @@ enum Key: String {
     case percentStep
     case exercises
     case lastSavedExercise
-    case lastSaveDate
-    case lastSaveRating
-    case lastSaveNotes
     case formulaBrzycki
     case formulaEpley
     case formulaLombardi

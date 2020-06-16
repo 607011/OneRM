@@ -23,19 +23,10 @@ class SaveToLogViewController: UITableViewController {
             NSUbiquitousKeyValueStore.default.set(exercise?.name, forKey: Key.lastSavedExercise.rawValue)
         }
     }
-    private var date: Date? {
-        didSet {
-            NSUbiquitousKeyValueStore.default.set(date, forKey: Key.lastSaveDate.rawValue)
-        }
-    }
-    private var notes: String? {
-        didSet {
-            NSUbiquitousKeyValueStore.default.set(notes, forKey: Key.lastSaveNotes.rawValue)
-        }
-    }
+    private var date: Date?
+    private var notes: String?
     private var rating: Int = 0 {
         didSet {
-            NSUbiquitousKeyValueStore.default.set(rating, forKey: Key.lastSaveRating.rawValue)
             for i in 0..<rating {
                 starButton[i].setImage(UIImage(systemName: "star.fill"), for: .normal)
             }
@@ -97,17 +88,6 @@ class SaveToLogViewController: UITableViewController {
             guard let idx = exercises.firstIndex(where: { $0.name == lastSavedExercise }) else { return }
             exercisePicker.selectRow(idx, inComponent: 0, animated: false)
             exercise = exercises[idx]
-        }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveDate.rawValue) != nil {
-            guard let lastDate = NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveDate.rawValue) as? Date else { return }
-            datePicker.date = lastDate
-        }
-//        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveNotes.rawValue) != nil {
-//            guard let lastNotes = NSUbiquitousKeyValueStore.default.string(forKey: Key.lastSaveNotes.rawValue) else { return }
-//            notesTextView.text = lastNotes
-//        }
-        if NSUbiquitousKeyValueStore.default.object(forKey: Key.lastSaveRating.rawValue) != nil {
-            rating = Int(NSUbiquitousKeyValueStore.default.longLong(forKey: Key.lastSaveRating.rawValue))
         }
     }
 
