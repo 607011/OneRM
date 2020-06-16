@@ -6,28 +6,17 @@ import SideMenu
 
 class MainViewController: UIViewController {
 
-    @IBOutlet private weak var weightPicker: UIPickerView!
     @IBOutlet private weak var repsPicker: UIPickerView!
     @IBOutlet private weak var repsCollectionView: UICollectionView!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
+    @IBOutlet weak var weightScaleScrollView: WeightScaleScrollView!
+    @IBOutlet weak var weightScaleView: WeightScaleView!
+
     private let repInterval: ClosedRange = 1...12
     private var repData: [Int] = []
-    private var weightData: [[Int]] = [[]]
     private var massUnit: String = defaultMassUnit
     private var formula: OneRMFormula = Brzycki()
-    private lazy var factors: [Double] = {
-        var factors = Array(repeating: 0.0, count: weightPicker.numberOfComponents)
-        var factor = pow(10.0, Double(weightPicker.numberOfComponents - 1))
-        for idx in 0..<weightPicker.numberOfComponents {
-            factor *= 0.1
-            factors[idx] = factor
-        }
-        return factors
-    }()
-    private lazy var weightDigitWidth: CGFloat = {
-        return min(32, weightPicker.bounds.width / 5)
-    }()
     private lazy var repsDigitWidth: CGFloat = {
         return min(36, repsPicker.bounds.width)
     }()
@@ -62,15 +51,6 @@ class MainViewController: UIViewController {
     }
 
     private func updateWeightPicker(from weight: Double) {
-        var w = weight
-        for idx in 0..<weightPicker.numberOfComponents {
-            let divisor = factors[idx]
-            let v = Int(w / divisor)
-            w -= Double(v) * divisor
-            if let row = weightData[idx].firstIndex(of: v) {
-                weightPicker.selectRow(row, inComponent: idx, animated: false)
-            }
-        }
     }
 
     private func updateRepsPicker(from reps: Int) {
@@ -102,9 +82,6 @@ class MainViewController: UIViewController {
             name: UserDefaults.didChangeNotification,
             object: nil)
         setupSideMenu()
-        weightPicker.delegate = self
-        weightPicker.dataSource = self
-        weightData = [[Int]](repeating: Array(0...9), count: weightPicker.numberOfComponents)
         repsPicker.delegate = self
         repsPicker.dataSource = self
         repData = Array(repInterval)
@@ -113,6 +90,10 @@ class MainViewController: UIViewController {
         if let layout = repsCollectionView?.collectionViewLayout as? RepCollectionViewCellLayout {
             layout.delegate = self
         }
+        weightScaleScrollView.contentSize = weightScaleView.frame.size
+        debugPrint("weightScaleView.frame.size = \(weightScaleView.frame.size)")
+        weightScaleScrollView.delegate = self
+        // weightScaleScrollView.autoresizingMask = .flexibleLeftMargin | .flexibleWidth
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -190,7 +171,6 @@ extension MainViewController: RepsCollectionViewCellLayoutDelegate {
 extension MainViewController: UIPickerViewDelegate {
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
         switch pickerView {
-        case weightPicker: return 10
         case repsPicker: return repData.count
         default: return 0
         }
@@ -198,13 +178,6 @@ extension MainViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         switch pickerView {
-        case weightPicker:
-            var w = 0.0
-            for idx in 0..<weightPicker.numberOfComponents {
-                let v = weightData[component][weightPicker.selectedRow(inComponent: idx)]
-                w += Double(v) * factors[idx]
-            }
-            weight = w
         case repsPicker:
             reps = repData[row]
         default: break
@@ -213,7 +186,6 @@ extension MainViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
         switch pickerView {
-        case weightPicker: return "\(weightData[component][row])"
         case repsPicker: return "\(repData[row])"
         default: return ""
         }
@@ -221,28 +193,16 @@ extension MainViewController: UIPickerViewDelegate {
 
     func pickerView(_ pickerView: UIPickerView, widthForComponent component: Int) -> CGFloat {
         switch pickerView {
-        case weightPicker: return weightDigitWidth
         case repsPicker: return repsDigitWidth
         default: return 0
         }
     }
 
-    func pickerView(_ pickerView: UIPickerView, attributedTitleForRow row: Int, forComponent component: Int) -> NSAttributedString? {
-        var attributedString: NSAttributedString?
-        if pickerView == weightPicker && component == 4 {
-            attributedString = NSAttributedString(string: String(weightData[component][row]), attributes: [
-                NSAttributedString.Key.backgroundColor: UIColor.gray,
-                NSAttributedString.Key.foregroundColor: UIColor.white
-            ])
-        }
-        return attributedString
-    }
 }
 
 extension MainViewController: UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {
         switch pickerView {
-        case weightPicker: return 5
         case repsPicker: return 1
         default: return 0
         }
@@ -269,5 +229,15 @@ extension MainViewController: UICollectionViewDataSource, UICollectionViewDelega
             return cell
         }
         return UICollectionViewCell()
+    }
+}
+
+extension MainViewController: UIScrollViewDelegate {
+    func viewForZooming(in scrollView: UIScrollView) -> UIView? {
+        return weightScaleView
+    }
+
+    override func viewWillLayoutSubviews() {
+        debugPrint("MainViewController.viewWillLayoutSubviews()")
     }
 }

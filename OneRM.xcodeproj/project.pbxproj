@@ -48,6 +48,7 @@
 		65DCEE39248B87FB007D1FC9 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DCEE38248B87FB007D1FC9 /* SideMenuTableViewController.swift */; };
 		65EF2E6C246E9F3A00A828DE /* PercentageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */; };
 		65F3BECC248676860042FB81 /* LogDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65F3BECB248676860042FB81 /* LogDetailViewController.swift */; };
+		6FF45FBC2498FCA800CB2482 /* WeightScaleScrollView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6FF45FBB2498FCA800CB2482 /* WeightScaleScrollView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -131,6 +132,7 @@
 		65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageTableViewCell.swift; sourceTree = "<group>"; };
 		65EF2E6E246EBE4A00A828DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65F3BECB248676860042FB81 /* LogDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogDetailViewController.swift; sourceTree = "<group>"; };
+		6FF45FBB2498FCA800CB2482 /* WeightScaleScrollView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightScaleScrollView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -192,6 +194,7 @@
 			children = (
 				65DCEE38248B87FB007D1FC9 /* SideMenuTableViewController.swift */,
 				656EC392246929DB00A30C43 /* MainViewController.swift */,
+				6FF45FBB2498FCA800CB2482 /* WeightScaleScrollView.swift */,
 				65D1822A2498D2B30079C821 /* WeightScaleView.swift */,
 				656EC3B92469423900A30C43 /* RepCollectionViewCell.swift */,
 				656EC3BE246AA89800A30C43 /* RepCollectionViewCellLayout.swift */,
@@ -514,6 +517,7 @@
 				65B8F5142474485000618ECD /* LogTableViewCell.swift in Sources */,
 				65DCEE39248B87FB007D1FC9 /* SideMenuTableViewController.swift in Sources */,
 				656EC38F246929DB00A30C43 /* AppDelegate.swift in Sources */,
+				6FF45FBC2498FCA800CB2482 /* WeightScaleScrollView.swift in Sources */,
 				656EC391246929DB00A30C43 /* SceneDelegate.swift in Sources */,
 				65598428246EF28800A5976E /* Extensions.swift in Sources */,
 				65D04608246FDFF500E45D0D /* Exercise.swift in Sources */,
