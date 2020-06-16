@@ -2,12 +2,22 @@
 
 import Foundation
 import UIKit
+import Sync
 
 class SettingsViewController: UITableViewController {
     @IBOutlet weak var versionLabel: UILabel!
     @IBOutlet weak var limitsLabel: UILabel!
     @IBOutlet weak var buildDateLabel: UILabel!
     @IBOutlet weak var syncWithiCloudCell: UITableViewCell!
+
+    @IBAction func exportButtonTapped(_ sender: Any) {
+        let dataStack = DataStack(modelName: "OneRM")
+        let data = LiftDataManager.shared.loadExercises()
+        
+        if let exported = data.first?.export() {
+            debugPrint(exported)
+        }
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -12,6 +12,8 @@
 		6543D2A12492615400A7B4F4 /* Fastfile in Resources */ = {isa = PBXBuildFile; fileRef = 6543D29E2492615400A7B4F4 /* Fastfile */; };
 		6543D2A22492615400A7B4F4 /* Appfile in Resources */ = {isa = PBXBuildFile; fileRef = 6543D29F2492615400A7B4F4 /* Appfile */; };
 		6543D2A32492615400A7B4F4 /* Snapfile in Resources */ = {isa = PBXBuildFile; fileRef = 6543D2A02492615400A7B4F4 /* Snapfile */; };
+		6543D2B12497AC4A00A7B4F4 /* Sync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6543D2B02497AC4A00A7B4F4 /* Sync.framework */; };
+		6543D2B22497AC4A00A7B4F4 /* Sync.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 6543D2B02497AC4A00A7B4F4 /* Sync.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		6555A48224798FD7001F7ED3 /* OneRMTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6555A48124798FD7001F7ED3 /* OneRMTests.swift */; };
 		6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6555A48A247B9CA2001F7ED3 /* CloudKit.framework */; };
 		6555A48F247B9D3E001F7ED3 /* OneRM.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 6555A48C247B9D3E001F7ED3 /* OneRM.xcdatamodeld */; };
@@ -35,8 +37,6 @@
 		656EC3C7246C2B8300A30C43 /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 656EC3C6246C2B8300A30C43 /* SettingsViewController.swift */; };
 		657A3C212491461A00E4CD58 /* OneRMUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A3C202491461A00E4CD58 /* OneRMUITests.swift */; };
 		657A3C292491464500E4CD58 /* SnapshotHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 657A3C282491464500E4CD58 /* SnapshotHelper.swift */; };
-		657A3C2C24979C7A00E4CD58 /* Sync.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 657A3C2A24979C6300E4CD58 /* Sync.framework */; };
-		657A3C2D24979C7A00E4CD58 /* Sync.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 657A3C2A24979C6300E4CD58 /* Sync.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		65B8F5012474008500618ECD /* EditExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F5002474008400618ECD /* EditExerciseViewController.swift */; };
 		65B8F510247417E000618ECD /* SaveToLogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F50F247417E000618ECD /* SaveToLogViewController.swift */; };
 		65B8F512247423A100618ECD /* LogViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65B8F511247423A100618ECD /* LogViewController.swift */; };
@@ -69,13 +69,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		65D9059A247D37F80036B679 /* Embed Frameworks */ = {
+		6543D2B32497AC4A00A7B4F4 /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				657A3C2D24979C7A00E4CD58 /* Sync.framework in Embed Frameworks */,
+				6543D2B22497AC4A00A7B4F4 /* Sync.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -88,6 +88,7 @@
 		6543D29E2492615400A7B4F4 /* Fastfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Fastfile; path = fastlane/Fastfile; sourceTree = "<group>"; };
 		6543D29F2492615400A7B4F4 /* Appfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Appfile; path = fastlane/Appfile; sourceTree = "<group>"; };
 		6543D2A02492615400A7B4F4 /* Snapfile */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Snapfile; path = fastlane/Snapfile; sourceTree = "<group>"; };
+		6543D2B02497AC4A00A7B4F4 /* Sync.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sync.framework; path = Carthage/Build/iOS/Sync.framework; sourceTree = "<group>"; };
 		655006A72490C0CD00CE8677 /* RELEASE_NOTES.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = RELEASE_NOTES.md; sourceTree = "<group>"; };
 		65552F7D248105BE00F71550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		65552F7E248105BE00F71550 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -120,7 +121,6 @@
 		657A3C202491461A00E4CD58 /* OneRMUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OneRMUITests.swift; sourceTree = "<group>"; };
 		657A3C222491461A00E4CD58 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		657A3C282491464500E4CD58 /* SnapshotHelper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = SnapshotHelper.swift; path = fastlane/SnapshotHelper.swift; sourceTree = SOURCE_ROOT; };
-		657A3C2A24979C6300E4CD58 /* Sync.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Sync.framework; path = Carthage/Build/iOS/Sync.framework; sourceTree = "<group>"; };
 		65B8F5002474008400618ECD /* EditExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditExerciseViewController.swift; sourceTree = "<group>"; };
 		65B8F50F247417E000618ECD /* SaveToLogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SaveToLogViewController.swift; sourceTree = "<group>"; };
 		65B8F511247423A100618ECD /* LogViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogViewController.swift; sourceTree = "<group>"; };
@@ -149,7 +149,7 @@
 			files = (
 				6555A48B247B9CA2001F7ED3 /* CloudKit.framework in Frameworks */,
 				65DCEE37248AC4C3007D1FC9 /* SideMenu in Frameworks */,
-				657A3C2C24979C7A00E4CD58 /* Sync.framework in Frameworks */,
+				6543D2B12497AC4A00A7B4F4 /* Sync.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -185,6 +185,7 @@
 		6555A489247B9CA2001F7ED3 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6543D2B02497AC4A00A7B4F4 /* Sync.framework */,
 				6555A48A247B9CA2001F7ED3 /* CloudKit.framework */,
 			);
 			name = Frameworks;
@@ -216,7 +217,6 @@
 		656EC382246929DA00A30C43 = {
 			isa = PBXGroup;
 			children = (
-				657A3C2A24979C6300E4CD58 /* Sync.framework */,
 				6543D29D2492613B00A7B4F4 /* fastlane */,
 				65CF033E2482529100D7428B /* Settings.bundle */,
 				656EC38D246929DB00A30C43 /* OneRM */,
@@ -335,9 +335,9 @@
 				656EC387246929DA00A30C43 /* Sources */,
 				656EC388246929DA00A30C43 /* Frameworks */,
 				656EC389246929DA00A30C43 /* Resources */,
-				65D9059A247D37F80036B679 /* Embed Frameworks */,
 				65D9059F247D68810036B679 /* Swiftlint */,
 				65B052342480F7FF000EA7F7 /* Update build number */,
+				6543D2B32497AC4A00A7B4F4 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -742,11 +742,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = OneRM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Sync.framework",
 				);
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;
@@ -770,11 +775,16 @@
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/Carthage/Build/iOS",
+					"$(PROJECT_DIR)/Carthage/Build/Mac",
 				);
 				INFOPLIST_FILE = OneRM/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
+				);
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Carthage/Build/iOS/Sync.framework",
 				);
 				MARKETING_VERSION = 1.0.1;
 				PRODUCT_BUNDLE_IDENTIFIER = net.ersatzworld.OneRM;

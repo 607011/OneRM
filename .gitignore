@@ -43,3 +43,8 @@ DerivedData/
 certs
 archives
 screenshots
+
+Cartfile.resolved
+Carthage/
+Gemfile.lock
+OneRM.xcodeproj/xcshareddata/
