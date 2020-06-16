@@ -9,6 +9,7 @@ class MainViewController: UIViewController {
     @IBOutlet private weak var weightPicker: UIPickerView!
     @IBOutlet private weak var repsPicker: UIPickerView!
     @IBOutlet private weak var repsCollectionView: UICollectionView!
+    @IBOutlet weak var saveButton: UIBarButtonItem!
 
     private let repInterval: ClosedRange = 1...12
     private var repData: [Int] = []
@@ -44,6 +45,7 @@ class MainViewController: UIViewController {
         didSet {
             repsCollectionView.reloadData()
             NSUbiquitousKeyValueStore.default.set(weight, forKey: Key.weight.rawValue)
+            saveButton.isEnabled = weight > 0
         }
     }
 

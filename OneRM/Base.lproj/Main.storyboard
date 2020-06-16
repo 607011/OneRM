@@ -130,7 +130,7 @@
                                 <segue destination="uLP-YD-3vC" kind="show" identifier="" id="AuS-65-pTc"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Log lift" image="text.badge.plus" catalog="system" id="GVK-t9-doY">
+                        <barButtonItem key="rightBarButtonItem" enabled="NO" title="Log lift" image="text.badge.plus" catalog="system" id="GVK-t9-doY">
                             <connections>
                                 <segue destination="hVT-ir-xjD" kind="show" identifier="saveToLog" id="3KG-RD-vDF"/>
                             </connections>
@@ -139,6 +139,7 @@
                     <connections>
                         <outlet property="repsCollectionView" destination="hjc-8D-H0K" id="9yp-Oy-QNb"/>
                         <outlet property="repsPicker" destination="zt5-wO-sSY" id="qXX-H2-EdF"/>
+                        <outlet property="saveButton" destination="GVK-t9-doY" id="mLV-33-JeO"/>
                         <outlet property="weightPicker" destination="4Vg-x9-GOI" id="zYM-HW-Rve"/>
                     </connections>
                 </viewController>
