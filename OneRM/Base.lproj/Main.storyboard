@@ -17,21 +17,9 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Weight" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="huT-Q2-sEt">
-                                <rect key="frame" x="16" y="76" width="85" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="9Tf-4u-Ffd"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="85" id="lB8-sX-IGh"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <pickerView contentMode="scaleToFill" horizontalCompressionResistancePriority="749" translatesAutoresizingMaskIntoConstraints="NO" id="4Vg-x9-GOI" userLabel="Weight Picker">
-                                <rect key="frame" x="119" y="44" width="183" height="85"/>
-                            </pickerView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hjc-8D-H0K">
-                                <rect key="frame" x="16" y="221" width="292" height="347"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="hjc-8D-H0K">
+                                <rect key="frame" x="16" y="276" width="292" height="272"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                                 <collectionViewLayout key="collectionViewLayout" id="oTW-s6-4WY" customClass="RepCollectionViewCellLayout" customModule="OneRM" customModuleProvider="target"/>
                                 <cells>
@@ -42,42 +30,31 @@
                                             <rect key="frame" x="0.0" y="0.0" width="100" height="75"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Vx-ot-ONp">
+                                                <stackView opaque="NO" contentMode="scaleToFill" fixedFrame="YES" axis="vertical" spacing="1" translatesAutoresizingMaskIntoConstraints="NO" id="7Vx-ot-ONp">
                                                     <rect key="frame" x="0.0" y="5" width="77.5" height="65"/>
                                                     <subviews>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="1RM" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="s7T-Bv-06e">
-                                                            <rect key="frame" x="0.0" y="0.0" width="77.5" height="16"/>
+                                                            <rect key="frame" x="0.0" y="0.0" width="77.5" height="17"/>
                                                             <color key="tintColor" systemColor="systemOrangeColor" red="1" green="0.58431372550000005" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="14"/>
                                                             <color key="textColor" name="Olive"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="100 kg" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xlC-Gn-6gN">
-                                                            <rect key="frame" x="0.0" y="17" width="77.5" height="31"/>
+                                                            <rect key="frame" x="0.0" y="18" width="77.5" height="30"/>
                                                             <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="25"/>
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="%" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="hIi-uK-26j">
                                                             <rect key="frame" x="0.0" y="49" width="77.5" height="16"/>
-                                                            <constraints>
-                                                                <constraint firstAttribute="height" constant="16" id="h8U-z8-F7z"/>
-                                                            </constraints>
                                                             <fontDescription key="fontDescription" type="system" pointSize="13"/>
                                                             <color key="textColor" name="Olive"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
                                                     </subviews>
-                                                    <constraints>
-                                                        <constraint firstItem="xlC-Gn-6gN" firstAttribute="centerY" secondItem="7Vx-ot-ONp" secondAttribute="centerY" id="YSC-Xz-0yu"/>
-                                                    </constraints>
                                                 </stackView>
                                             </subviews>
-                                            <constraints>
-                                                <constraint firstItem="7Vx-ot-ONp" firstAttribute="leading" secondItem="7Xc-FX-XJd" secondAttribute="leading" id="TlO-e2-An4"/>
-                                                <constraint firstItem="7Vx-ot-ONp" firstAttribute="centerY" secondItem="7Xc-FX-XJd" secondAttribute="centerY" id="jph-CK-XyZ"/>
-                                                <constraint firstItem="7Vx-ot-ONp" firstAttribute="top" secondItem="7Xc-FX-XJd" secondAttribute="top" constant="5" id="myK-9E-DIu"/>
-                                            </constraints>
                                         </collectionViewCellContentView>
                                         <edgeInsets key="layoutMargins" top="8" left="8" bottom="8" right="8"/>
                                         <size key="customSize" width="100" height="75"/>
@@ -89,14 +66,15 @@
                                     </collectionViewCell>
                                 </cells>
                             </collectionView>
-                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zt5-wO-sSY" userLabel="Reps Picker">
-                                <rect key="frame" x="119" y="130" width="183" height="95"/>
+                            <pickerView contentMode="scaleToFill" ambiguous="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zt5-wO-sSY" userLabel="Reps Picker">
+                                <rect key="frame" x="112" y="180" width="196" height="88"/>
                             </pickerView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVO-Hh-MUQ">
-                                <rect key="frame" x="16" y="167" width="85" height="21"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="21" id="L8H-5t-EJc"/>
-                                </constraints>
+                            <view contentMode="scaleToFill" fixedFrame="YES" restorationIdentifier="weightScale" translatesAutoresizingMaskIntoConstraints="NO" id="6hr-re-pdK" customClass="WeightScaleView" customModule="OneRM" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="44" width="320" height="128"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </view>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" text="Reps" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HVO-Hh-MUQ">
+                                <rect key="frame" x="19" y="214" width="85" height="21"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -104,23 +82,7 @@
                         </subviews>
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <constraints>
-                            <constraint firstItem="4Vg-x9-GOI" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" id="3bG-un-sQQ"/>
-                            <constraint firstItem="huT-Q2-sEt" firstAttribute="leading" secondItem="HVO-Hh-MUQ" secondAttribute="leading" id="5P4-Vy-Wd7"/>
-                            <constraint firstItem="zt5-wO-sSY" firstAttribute="centerY" secondItem="HVO-Hh-MUQ" secondAttribute="centerY" id="6y1-SE-LyT"/>
-                            <constraint firstItem="HVO-Hh-MUQ" firstAttribute="leading" secondItem="hjc-8D-H0K" secondAttribute="leading" id="CbS-Vg-KLR"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="hjc-8D-H0K" secondAttribute="trailing" constant="12" id="GHG-F9-5vc"/>
-                            <constraint firstItem="hjc-8D-H0K" firstAttribute="top" secondItem="HVO-Hh-MUQ" secondAttribute="bottom" constant="33" id="H7D-w0-Av9"/>
-                            <constraint firstItem="4Vg-x9-GOI" firstAttribute="centerY" secondItem="huT-Q2-sEt" secondAttribute="centerY" id="N9X-WJ-bPZ"/>
-                            <constraint firstItem="huT-Q2-sEt" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leadingMargin" id="Q0M-Qz-ZOw"/>
-                            <constraint firstItem="huT-Q2-sEt" firstAttribute="top" secondItem="PQr-Ze-W5v" secondAttribute="top" constant="32" id="TGk-sB-ShU"/>
-                            <constraint firstItem="hjc-8D-H0K" firstAttribute="bottom" secondItem="PQr-Ze-W5v" secondAttribute="bottom" id="W8l-Tu-YzC"/>
-                            <constraint firstItem="4Vg-x9-GOI" firstAttribute="leading" secondItem="zt5-wO-sSY" secondAttribute="leading" id="diP-Tu-uwL"/>
-                            <constraint firstItem="zt5-wO-sSY" firstAttribute="top" secondItem="4Vg-x9-GOI" secondAttribute="bottom" constant="1" id="eoT-1z-baA"/>
-                            <constraint firstItem="huT-Q2-sEt" firstAttribute="trailing" secondItem="HVO-Hh-MUQ" secondAttribute="trailing" id="jod-Ug-Pae"/>
-                            <constraint firstItem="PQr-Ze-W5v" firstAttribute="trailing" secondItem="4Vg-x9-GOI" secondAttribute="trailing" constant="18" id="pyW-ab-8EU"/>
-                            <constraint firstItem="HVO-Hh-MUQ" firstAttribute="top" secondItem="huT-Q2-sEt" secondAttribute="bottom" constant="70" id="rTi-ty-g1M"/>
-                            <constraint firstItem="4Vg-x9-GOI" firstAttribute="trailing" secondItem="zt5-wO-sSY" secondAttribute="trailing" id="uPR-Qt-6SA"/>
-                            <constraint firstItem="4Vg-x9-GOI" firstAttribute="leading" secondItem="huT-Q2-sEt" secondAttribute="trailing" constant="18" id="uit-LK-doR"/>
+                            <constraint firstItem="HVO-Hh-MUQ" firstAttribute="centerY" secondItem="zt5-wO-sSY" secondAttribute="centerY" id="Zv0-GI-YQ5"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="PQr-Ze-W5v"/>
                     </view>
@@ -140,12 +102,11 @@
                         <outlet property="repsCollectionView" destination="hjc-8D-H0K" id="9yp-Oy-QNb"/>
                         <outlet property="repsPicker" destination="zt5-wO-sSY" id="qXX-H2-EdF"/>
                         <outlet property="saveButton" destination="GVK-t9-doY" id="mLV-33-JeO"/>
-                        <outlet property="weightPicker" destination="4Vg-x9-GOI" id="zYM-HW-Rve"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2869" y="-433"/>
+            <point key="canvasLocation" x="2868.75" y="-433.0985915492958"/>
         </scene>
         <!--Settings-->
         <scene sceneID="AOM-hc-d38">

@@ -43,6 +43,7 @@
 		65D04608246FDFF500E45D0D /* Exercise.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D04607246FDFF500E45D0D /* Exercise.swift */; };
 		65D0460B246FE07700E45D0D /* Unit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0460A246FE07700E45D0D /* Unit.swift */; };
 		65D0460D246FE08500E45D0D /* Lift.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D0460C246FE08500E45D0D /* Lift.swift */; };
+		65D1822B2498D2B30079C821 /* WeightScaleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65D1822A2498D2B30079C821 /* WeightScaleView.swift */; };
 		65DCEE37248AC4C3007D1FC9 /* SideMenu in Frameworks */ = {isa = PBXBuildFile; productRef = 65DCEE36248AC4C3007D1FC9 /* SideMenu */; };
 		65DCEE39248B87FB007D1FC9 /* SideMenuTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65DCEE38248B87FB007D1FC9 /* SideMenuTableViewController.swift */; };
 		65EF2E6C246E9F3A00A828DE /* PercentageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */; };
@@ -125,6 +126,7 @@
 		65D04607246FDFF500E45D0D /* Exercise.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Exercise.swift; sourceTree = "<group>"; };
 		65D0460A246FE07700E45D0D /* Unit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Unit.swift; sourceTree = "<group>"; };
 		65D0460C246FE08500E45D0D /* Lift.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Lift.swift; sourceTree = "<group>"; };
+		65D1822A2498D2B30079C821 /* WeightScaleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightScaleView.swift; sourceTree = "<group>"; };
 		65DCEE38248B87FB007D1FC9 /* SideMenuTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SideMenuTableViewController.swift; sourceTree = "<group>"; };
 		65EF2E6B246E9F3A00A828DE /* PercentageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PercentageTableViewCell.swift; sourceTree = "<group>"; };
 		65EF2E6E246EBE4A00A828DE /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
@@ -190,6 +192,7 @@
 			children = (
 				65DCEE38248B87FB007D1FC9 /* SideMenuTableViewController.swift */,
 				656EC392246929DB00A30C43 /* MainViewController.swift */,
+				65D1822A2498D2B30079C821 /* WeightScaleView.swift */,
 				656EC3B92469423900A30C43 /* RepCollectionViewCell.swift */,
 				656EC3BE246AA89800A30C43 /* RepCollectionViewCellLayout.swift */,
 				656EC3C6246C2B8300A30C43 /* SettingsViewController.swift */,
@@ -495,6 +498,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				65D1822B2498D2B30079C821 /* WeightScaleView.swift in Sources */,
 				656EC3B624693AA100A30C43 /* Formulas.swift in Sources */,
 				656EC395246929DB00A30C43 /* PercentagesViewController.swift in Sources */,
 				656EC3C7246C2B8300A30C43 /* SettingsViewController.swift in Sources */,
