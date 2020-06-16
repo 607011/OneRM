@@ -2,9 +2,10 @@
 
 You can download the [latest release of One-RM](https://apps.apple.com/de/app/one-rm/id1515096906) from the App Store.
 
-## 1.0.2 (pending)
+## 1.0.2
 
- - If user hasn't entered any exercise, the Save button is disabled.
+ - If user hasn't entered any exercise or the selected weight is 0, the Save button is disabled.
+ - Bugfixes.
 
 ## 1.0.1
 

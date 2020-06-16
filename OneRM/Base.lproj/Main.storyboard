@@ -527,14 +527,14 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="none" showsReorderControl="YES" indentationWidth="10" reuseIdentifier="exerciseCell" id="Nod-gy-ZBi" customClass="ExerciseTableViewCell" customModule="OneRM" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="40"/>
+                                <rect key="frame" x="0.0" y="28" width="320" height="40.5"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="Nod-gy-ZBi" id="YDx-dM-87F">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="320" height="40.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="exercise" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UGe-wt-AOZ">
-                                            <rect key="frame" x="16" y="11" width="218" height="21"/>
+                                            <rect key="frame" x="16" y="11" width="218" height="21.5"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
