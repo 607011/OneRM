@@ -46,7 +46,7 @@ let defaultExercises: [String] = [
     "Power clean",
     "Snatch",
     "Clean & jerk",
-    "Pull-up"
+    "Weighted pull-up"
 ]
 
 let defaultMaxPercent = 120
