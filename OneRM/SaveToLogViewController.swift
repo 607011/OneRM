@@ -40,6 +40,10 @@ class SaveToLogViewController: UITableViewController {
     var weight: Double = 0
     var oneRM: Double = 0
 
+    @IBAction func cancelTapped(_ sender: Any) {
+        self.dismiss(animated: true, completion: nil)
+    }
+
     @IBAction func starButtonPressed(_ sender: Any) {
         guard let button = sender as? UIButton else { return }
         rating = (button.tag == 1 && rating == 1) ? 0 : button.tag
